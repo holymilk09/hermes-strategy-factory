@@ -1,0 +1,44 @@
+[
+  {
+    "strategy_name": "mean_reversion",
+    "phase5_result": "MR_FILTER_CONFIRMED (+0.58%)",
+    "eligibility_status": "RESEARCH_SIMULATION_ELIGIBLE",
+    "reason": "Strongest surviving use case. D8-D10 filter confirmed improvement.",
+    "next_action": "Build MR_BASE and MR_D8-D10 research variants"
+  },
+  {
+    "strategy_name": "structural_mr",
+    "phase5_result": "+0.71% improvement with D8-D10",
+    "eligibility_status": "RESEARCH_SIMULATION_ELIGIBLE",
+    "reason": "Improvement observed. Filter may help separate controlled pullback from noisy stretch.",
+    "next_action": "Build STRUCTURAL_MR_BASE and STRUCTURAL_MR_D8-D10 variants"
+  },
+  {
+    "strategy_name": "qullamaggie_avoid_chasing",
+    "phase5_result": "+0.50% improvement, compressed BLOCKED at 51 events",
+    "eligibility_status": "RESEARCH_SIMULATION_ELIGIBLE",
+    "reason": "Avoid D1-D3 shows possible improvement. Compressed variants sample-limited.",
+    "next_action": "Build QULL_BASE and QULL_AVOID_D1-D3 variants. Flag compressed variants BLOCKED."
+  },
+  {
+    "strategy_name": "momentum_swing",
+    "phase5_result": "+0.06% improvement (negligible)",
+    "eligibility_status": "BLOCKED_NO_FILTER_EDGE",
+    "reason": "No meaningful improvement from any filter variant.",
+    "next_action": "Do not advance. Keep strategy unfiltered."
+  },
+  {
+    "strategy_name": "ml_enhanced",
+    "phase5_result": "0% improvement",
+    "eligibility_status": "BLOCKED_NO_FILTER_EDGE",
+    "reason": "Filter provides zero benefit for ML-enhanced strategy.",
+    "next_action": "Do not advance."
+  },
+  {
+    "strategy_name": "factor_residual_mr",
+    "phase5_result": "BLOCKED \u2014 residual_z_20 not in store",
+    "eligibility_status": "BLOCKED_MISSING_FEATURE",
+    "reason": "Feature name mismatch: residual_z_20 should be residual_z. Needs resolution.",
+    "next_action": "Fix feature name in strategy code, then reconsider."
+  }
+]

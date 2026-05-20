@@ -1,0 +1,42 @@
+[
+  {
+    "strategy": "mean_reversion",
+    "variant": "REQUIRE_D8_D10",
+    "old": "CONTROLLED_RESEARCH_BACKTEST_CANDIDATE",
+    "corrected": "PROVISIONAL_CONTROLLED_RESEARCH_CANDIDATE_PENDING_RISK_CONSTRAINTS",
+    "reason": "Phase 7 sim had inflated returns, missing risk constraints. Promotion premature.",
+    "risk_constrained_validation_required": true,
+    "production_migration_allowed": false,
+    "live_trading_allowed": false
+  },
+  {
+    "strategy": "mean_reversion",
+    "variant": "REQUIRE_D9_D10",
+    "old": "CONTROLLED_RESEARCH_BACKTEST_CANDIDATE",
+    "corrected": "PROVISIONAL_CONTROLLED_RESEARCH_CANDIDATE_PENDING_RISK_CONSTRAINTS",
+    "reason": "Same issue: inflated returns, missing risk constraints.",
+    "risk_constrained_validation_required": true,
+    "production_migration_allowed": false,
+    "live_trading_allowed": false
+  },
+  {
+    "strategy": "structural_mr",
+    "variant": "REQUIRE_D8_D10",
+    "old": "CONTROLLED_RESEARCH_BACKTEST_CANDIDATE",
+    "corrected": "PROVISIONAL_CONTROLLED_RESEARCH_CANDIDATE_PENDING_RISK_CONSTRAINTS",
+    "reason": "Same issue: inflated returns, missing risk constraints.",
+    "risk_constrained_validation_required": true,
+    "production_migration_allowed": false,
+    "live_trading_allowed": false
+  },
+  {
+    "strategy": "structural_mr",
+    "variant": "REQUIRE_D9_D10",
+    "old": "CONTROLLED_RESEARCH_BACKTEST_CANDIDATE",
+    "corrected": "PROVISIONAL_CONTROLLED_RESEARCH_CANDIDATE_PENDING_RISK_CONSTRAINTS",
+    "reason": "Same issue: inflated returns, missing risk constraints.",
+    "risk_constrained_validation_required": true,
+    "production_migration_allowed": false,
+    "live_trading_allowed": false
+  }
+]

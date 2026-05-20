@@ -1,0 +1,17 @@
+{
+  "timestamp": "2026-05-20T01:27:00.107825+00:00",
+  "package": "/opt/data/checkpoints/strategy_factory_v0_14_0_checkpoint.tar.gz",
+  "sha256": "83a91e76dc454efd66a44d69f65517a3296508ac000d21e9e19fb902d4f75efa",
+  "secret_scan_result": "6 FALSE_POSITIVES \u2014 all instructional text mentioning FMP_API_KEY env var name, no actual keys",
+  "false_positives_detail": [
+    "reports/data_sources/phase13_5_fmp_trial_readiness_report.json \u2014 'FMP_API_KEY not set' / 'Set FMP_API_KEY=<your_key>'",
+    "reports/data_sources/FMP_PHASE_13_5_DRY_RUN_AND_COVERAGE_SUMMARY.md \u2014 'FMP_API_KEY: NOT SET' / 'BLOCKED_FMP_API_KEY_MISSING'",
+    "docs/NEXT_STEPS.md \u2014 'export FMP_API_KEY=<your_key>' (placeholder)"
+  ],
+  "real_secrets_found": 0,
+  "hardcoded_keys_found": 0,
+  "large_caches_found": 0,
+  "raw_caches_found": 0,
+  "total_files_scanned": 383,
+  "status": "UPLOAD_SAFE"
+}

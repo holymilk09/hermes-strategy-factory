@@ -1,0 +1,14 @@
+{
+  "timestamp": "2026-05-20T00:38:43.689396+00:00",
+  "branch_created": null,
+  "files_staged": null,
+  "commit_created": false,
+  "commit_hash": null,
+  "remote_exists": false,
+  "pushed": false,
+  "push_reason_or_blocker": "No git repo at /opt/data. Clean tar.gz package created instead. User can initialize git repo and push manually.",
+  "package_created": "/opt/data/checkpoints/strategy_factory_v0_14_0_checkpoint.tar.gz",
+  "package_size_mb": 1.7,
+  "package_files": 383,
+  "status": "PACKAGE_READY_NO_COMMIT"
+}

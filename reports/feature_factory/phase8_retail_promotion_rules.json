@@ -1,0 +1,74 @@
+[
+  {
+    "strategy": "mean_reversion",
+    "variant": "AVOID_D1_D3",
+    "classification": "WEAK_FILTER",
+    "reason": "Beats BASE (+10.7%) but 84 trades only. Fails random pruning. WEAK evidence."
+  },
+  {
+    "strategy": "mean_reversion",
+    "variant": "REQUIRE_D8_D10",
+    "classification": "PROVISIONAL_CONTROLLED_RESEARCH_CANDIDATE_PENDING_RISK_CONSTRAINTS",
+    "reason": "Beats BASE (+8.5%), 259 trades. Hit rate 0.48 vs 0.39. Fails random pruning but random baseline unreliable. Keep provisional."
+  },
+  {
+    "strategy": "mean_reversion",
+    "variant": "REQUIRE_D9_D10",
+    "classification": "PROVISIONAL_CONTROLLED_RESEARCH_CANDIDATE_PENDING_RISK_CONSTRAINTS",
+    "reason": "Beats BASE (+8.4%), 698 trades (most). Hit rate 0.53 best. Fails random pruning."
+  },
+  {
+    "strategy": "mean_reversion",
+    "variant": "REQUIRE_D10_ONLY",
+    "classification": "WEAK_FILTER",
+    "reason": "Beats BASE (+16.3%) but only 62 trades. Best per-trade but too selective. Profit factor 1.89 best."
+  },
+  {
+    "strategy": "structural_mr",
+    "variant": "AVOID_D1_D3",
+    "classification": "REJECTED_FILTER",
+    "reason": "WORSE than BASE (-16.0%). 84 trades vs 821. Kills strategy."
+  },
+  {
+    "strategy": "structural_mr",
+    "variant": "REQUIRE_D8_D10",
+    "classification": "REJECTED_FILTER",
+    "reason": "WORSE than BASE (-31.4%). 145 trades. Filter destroys structural MR edge."
+  },
+  {
+    "strategy": "structural_mr",
+    "variant": "REQUIRE_D9_D10",
+    "classification": "REJECTED_FILTER",
+    "reason": "WORSE than BASE (-25.1%). 420 trades. Negative return."
+  },
+  {
+    "strategy": "structural_mr",
+    "variant": "REQUIRE_D10_ONLY",
+    "classification": "REJECTED_FILTER",
+    "reason": "WORSE than BASE (-28.3%). 264 trades. Negative return."
+  },
+  {
+    "strategy": "qullamaggie",
+    "variant": "AVOID_D1_D3",
+    "classification": "HIT_RATE_ONLY_FILTER",
+    "reason": "Beats BASE (+17.0%). Hit rate similar (0.51 vs 0.52). Return improvement but not return-confirmed under retail."
+  },
+  {
+    "strategy": "qullamaggie",
+    "variant": "REQUIRE_D8_D10",
+    "classification": "SAMPLE_BLOCKED_FILTER",
+    "reason": "37 trades only. Insufficient for promotion."
+  },
+  {
+    "strategy": "qullamaggie",
+    "variant": "REQUIRE_D9_D10",
+    "classification": "SAMPLE_BLOCKED_FILTER",
+    "reason": "4 trades."
+  },
+  {
+    "strategy": "qullamaggie",
+    "variant": "REQUIRE_D10_ONLY",
+    "classification": "SAMPLE_BLOCKED_FILTER",
+    "reason": "0 trades."
+  }
+]

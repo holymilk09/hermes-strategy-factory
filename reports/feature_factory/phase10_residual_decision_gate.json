@@ -1,0 +1,25 @@
+{
+  "candidates": [
+    {
+      "candidate": "residual_z standalone",
+      "event_study": "mean +0.3% to +5.2% across thresholds",
+      "random_baseline": "Z_NEG_1_5 FAILS, Z_NEG_2_0 BORDERLINE, Z_NEG_2_5 BORDERLINE (n=51)",
+      "classification": "FILTER_ONLY_CANDIDATE \u2014 does not beat random as standalone"
+    },
+    {
+      "candidate": "residual_z + mean_reversion",
+      "strategy_conditioned": "Z_NEG_2_0 +0.72% over BASE (196 events)",
+      "classification": "RESIDUAL_FILTER_IMPROVES_SETUP \u2014 but small sample"
+    },
+    {
+      "candidate": "residual_z + structural_mr",
+      "strategy_conditioned": "Z_NEG_2_0 +2.05% over BASE (71 events)",
+      "classification": "RESIDUAL_FILTER_IMPROVES_SETUP \u2014 but very small sample"
+    }
+  ],
+  "event_context": "EVENT_CONTEXT_INCOMPLETE",
+  "final_classification": "FILTER_ONLY_CANDIDATE",
+  "next_allowed_step": "No promotion. Residual_z <= -2.0 shows promise as strategy conditioner but: fails standalone random baseline, small sample (196-338 events), event context incomplete.",
+  "production_migration_allowed": false,
+  "live_trading_allowed": false
+}

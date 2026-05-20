@@ -1,0 +1,14 @@
+{
+  "key_status": "MISSING",
+  "dry_run_status": "BLOCKED",
+  "cache_status": "BLOCKED",
+  "field_coverage_status": "BLOCKED",
+  "universe_coverage_status": "BLOCKED",
+  "pit_status": "BLOCKED",
+  "event_blocker_feasibility": "BLOCKED",
+  "trial_readiness": "FMP_TRIAL_BLOCKED_KEY_MISSING",
+  "final_classification": "FMP_BLOCKED_KEY_MISSING",
+  "next_allowed_step": "Set FMP_API_KEY and rerun Phase 13.5",
+  "production_migration_allowed": false,
+  "live_trading_allowed": false
+}

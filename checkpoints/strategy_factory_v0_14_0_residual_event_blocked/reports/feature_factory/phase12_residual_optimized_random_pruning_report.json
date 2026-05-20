@@ -1,0 +1,54 @@
+[
+  {
+    "strategy": "mean_reversion",
+    "fit": "ALL",
+    "permutations": 250,
+    "n_events": 338,
+    "actual_mean": 2.4868,
+    "actual_pf": 1.76,
+    "baseline_p50": 0.7861,
+    "baseline_p95": 6.0494,
+    "actual_vs_p95": false,
+    "confidence": "LOWER_CONFIDENCE",
+    "status": "BORDERLINE"
+  },
+  {
+    "strategy": "mean_reversion",
+    "fit": "GOOD",
+    "permutations": 250,
+    "n_events": 321,
+    "actual_mean": 2.5215,
+    "actual_pf": 1.74,
+    "baseline_p50": 0.8408,
+    "baseline_p95": 6.3416,
+    "actual_vs_p95": false,
+    "confidence": "LOWER_CONFIDENCE",
+    "status": "BORDERLINE"
+  },
+  {
+    "strategy": "structural_mr",
+    "fit": "ALL",
+    "permutations": 250,
+    "n_events": 338,
+    "actual_mean": 2.4868,
+    "actual_pf": 1.76,
+    "baseline_p50": 0.7861,
+    "baseline_p95": 6.0494,
+    "actual_vs_p95": false,
+    "confidence": "LOWER_CONFIDENCE",
+    "status": "BORDERLINE"
+  },
+  {
+    "strategy": "structural_mr",
+    "fit": "GOOD",
+    "permutations": 250,
+    "n_events": 321,
+    "actual_mean": 2.5215,
+    "actual_pf": 1.74,
+    "baseline_p50": 0.8408,
+    "baseline_p95": 6.3416,
+    "actual_vs_p95": false,
+    "confidence": "LOWER_CONFIDENCE",
+    "status": "BORDERLINE"
+  }
+]

@@ -1,0 +1,137 @@
+[
+  {
+    "strategy": "mean_reversion",
+    "variant": "BASE",
+    "raw_signals": 20755,
+    "executed_trades": 947,
+    "final_cash": 49853.07,
+    "profit_factor": 0.55,
+    "mean_pnl_pct": -0.05
+  },
+  {
+    "strategy": "mean_reversion",
+    "variant": "D8_D10",
+    "raw_signals": 8143,
+    "executed_trades": 838,
+    "final_cash": 130593.43,
+    "profit_factor": 1.2,
+    "mean_pnl_pct": 0.04
+  },
+  {
+    "strategy": "mean_reversion",
+    "variant": "D9_D10",
+    "raw_signals": 5634,
+    "executed_trades": 713,
+    "final_cash": 69865.32,
+    "profit_factor": 0.78,
+    "mean_pnl_pct": -0.04
+  },
+  {
+    "strategy": "mean_reversion",
+    "variant": "D10_ONLY",
+    "raw_signals": 3008,
+    "executed_trades": 517,
+    "final_cash": 77025.44,
+    "profit_factor": 0.78,
+    "mean_pnl_pct": -0.04
+  },
+  {
+    "strategy": "mean_reversion",
+    "variant": "AVOID_D1_D3",
+    "raw_signals": 16495,
+    "executed_trades": 921,
+    "final_cash": 61346.02,
+    "profit_factor": 0.68,
+    "mean_pnl_pct": -0.04
+  },
+  {
+    "strategy": "structural_mr",
+    "variant": "BASE",
+    "raw_signals": 7039,
+    "executed_trades": 833,
+    "final_cash": 72410.61,
+    "profit_factor": 0.82,
+    "mean_pnl_pct": -0.03
+  },
+  {
+    "strategy": "structural_mr",
+    "variant": "D8_D10",
+    "raw_signals": 2828,
+    "executed_trades": 547,
+    "final_cash": 201194.0,
+    "profit_factor": 1.64,
+    "mean_pnl_pct": 0.18
+  },
+  {
+    "strategy": "structural_mr",
+    "variant": "D9_D10",
+    "raw_signals": 2060,
+    "executed_trades": 432,
+    "final_cash": 77227.88,
+    "profit_factor": 0.77,
+    "mean_pnl_pct": -0.05
+  },
+  {
+    "strategy": "structural_mr",
+    "variant": "D10_ONLY",
+    "raw_signals": 1165,
+    "executed_trades": 272,
+    "final_cash": 78738.7,
+    "profit_factor": 0.67,
+    "mean_pnl_pct": -0.08
+  },
+  {
+    "strategy": "structural_mr",
+    "variant": "AVOID_D1_D3",
+    "raw_signals": 5326,
+    "executed_trades": 767,
+    "final_cash": 135379.78,
+    "profit_factor": 1.22,
+    "mean_pnl_pct": 0.05
+  },
+  {
+    "strategy": "qullamaggie",
+    "variant": "BASE",
+    "raw_signals": 21585,
+    "executed_trades": 875,
+    "final_cash": 53973.08,
+    "profit_factor": 0.56,
+    "mean_pnl_pct": -0.05
+  },
+  {
+    "strategy": "qullamaggie",
+    "variant": "D8_D10",
+    "raw_signals": 55,
+    "executed_trades": 37,
+    "final_cash": 111521.57,
+    "profit_factor": 1.77,
+    "mean_pnl_pct": 0.31
+  },
+  {
+    "strategy": "qullamaggie",
+    "variant": "D9_D10",
+    "raw_signals": 4,
+    "executed_trades": 4,
+    "final_cash": 129370.25,
+    "profit_factor": 71.06,
+    "mean_pnl_pct": 7.34
+  },
+  {
+    "strategy": "qullamaggie",
+    "variant": "D10_ONLY",
+    "raw_signals": 0,
+    "executed_trades": 0,
+    "final_cash": 100000.0,
+    "profit_factor": 0.0,
+    "mean_pnl_pct": 0
+  },
+  {
+    "strategy": "qullamaggie",
+    "variant": "AVOID_D1_D3",
+    "raw_signals": 6784,
+    "executed_trades": 836,
+    "final_cash": 68578.88,
+    "profit_factor": 0.72,
+    "mean_pnl_pct": -0.04
+  }
+]

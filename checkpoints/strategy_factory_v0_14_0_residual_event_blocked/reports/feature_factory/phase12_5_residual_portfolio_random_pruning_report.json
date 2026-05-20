@@ -1,0 +1,10 @@
+[
+  {
+    "strategy": "mean_reversion",
+    "fit": "ALL",
+    "n_events": 196,
+    "actual_pf": 1.93,
+    "actual_return_pct": 63.24,
+    "baseline_p50_pf": 1.2,
+    "baseline_p95_pf": 2.86,
+    "actual_vs_p95_pf": 

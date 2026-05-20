@@ -1,0 +1,47 @@
+[
+  {
+    "segment": "year_2023",
+    "n_obs": 3750,
+    "status": "ROBUST_ACROSS_SEGMENTS"
+  },
+  {
+    "segment": "year_2024",
+    "n_obs": 3780,
+    "status": "ROBUST_ACROSS_SEGMENTS"
+  },
+  {
+    "segment": "year_2025",
+    "n_obs": 0,
+    "status": "BLOCKED_SMALL_SAMPLE"
+  },
+  {
+    "segment": "bull",
+    "n_obs": 3967,
+    "status": "ROBUST_ACROSS_SEGMENTS"
+  },
+  {
+    "segment": "sideways",
+    "n_obs": 6424,
+    "status": "ROBUST_ACROSS_SEGMENTS"
+  },
+  {
+    "segment": "bear",
+    "n_obs": 904,
+    "status": "ROBUST_ACROSS_SEGMENTS"
+  },
+  {
+    "segment": "sector_large_cap_consumer",
+    "n_obs": 7530,
+    "status": "ROBUST_ACROSS_SEGMENTS"
+  },
+  {
+    "segment": "sector_large_cap_finance",
+    "n_obs": 3765,
+    "status": "ROBUST_ACROSS_SEGMENTS"
+  },
+  {
+    "segment": "NOTE",
+    "n_obs": 0,
+    "status": "PROTOTYPE_UNIVERSE_LIMITED \u2014 20 symbols, 2.3 years. Bull/sideways dominate. Bear regime under-sampled."
+  }
+]

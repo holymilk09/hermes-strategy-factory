@@ -1,0 +1,16 @@
+{
+  "killed_signal": "trend_extension_reversal_set",
+  "classification": "REJECTED_FILTER",
+  "reason_rejected": "Failed Backtrader random-pruning baseline. D8_D10 PF below random p50.",
+  "forbidden_rescue_rules": [
+    "Do not test D6-D10 thresholds",
+    "Do not test D7-D10 thresholds",
+    "Do not hunt random seeds",
+    "Do not retune stop combinations",
+    "Do not shop for favorable labels",
+    "Do not change wording to revive signal"
+  ],
+  "graveyard_file": "/opt/data/checkpoints/phase12_5_pre_fmp_checkpoint/alpha_graveyard/trend_extension_reversal_filter.md",
+  "sha256": "a632d97defdff7a03931a5c9a0782b22a519fb7e4c5f1a7f075454b1b77ed70d",
+  "status": "ARCHIVED"
+}

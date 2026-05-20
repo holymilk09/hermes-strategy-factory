@@ -1,0 +1,10 @@
+{
+  "api_key_present": false,
+  "symbols_tested": [],
+  "endpoints_tested": [],
+  "records_returned": 0,
+  "missing_fields": [],
+  "errors": [],
+  "status": "BLOCKED_FMP_API_KEY_MISSING",
+  "note": "API key check only. No actual API calls made. Client skeleton ready when key is available."
+}

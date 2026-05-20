@@ -1,0 +1,11 @@
+{
+  "residual_quality_status": "RECOMPUTED \u2014 67/76 good/acceptable, median R\u00b2=0.3723",
+  "event_study_status": "Z_NEG_2_0: n=338, +2.49%, hit=57.1%. GOOD_ACCEPTABLE: n=321, +2.52%. Fit class minimal impact on standalone.",
+  "strategy_conditioned_status": "GOOD_ACCEPTABLE fit: MR +2.08% (188ev), SMR +4.64% (67ev). Fit filter DRAMATICALLY improves.",
+  "random_pruning_status": "Standalone Z_NEG_2_0: BORDERLINE (2.49% vs p95=6.04%). Strategy-conditioned random pruning: BUG \u2014 signals not applied to pool. Needs fix.",
+  "event_context_status": "INCOMPLETE",
+  "final_classification": "RANDOM_PRUNING_FAILED_FILTER",
+  "next_allowed_step": "Fix strategy-conditioned random pruning. Then FMP evaluation.",
+  "production_migration_allowed": false,
+  "live_trading_allowed": false
+}

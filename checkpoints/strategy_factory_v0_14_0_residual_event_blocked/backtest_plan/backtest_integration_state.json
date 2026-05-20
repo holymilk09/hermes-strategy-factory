@@ -1,0 +1,9 @@
+{
+  "production_migration_status": "BLOCKED",
+  "live_trading_status": "BLOCKED",
+  "controlled_research_status": "CONTROLLED_RESEARCH_CANDIDATE_EVENT_BLOCKED",
+  "trend_extension_status": "REJECTED",
+  "residual_reversion_status": "CONTROLLED_RESEARCH_CANDIDATE_EVENT_BLOCKED",
+  "fmp_status": "SANDBOX_ONLY_KEY_REQUIRED",
+  "next_allowed_step": "FMP_DRY_RUN_AFTER_KEY"
+}

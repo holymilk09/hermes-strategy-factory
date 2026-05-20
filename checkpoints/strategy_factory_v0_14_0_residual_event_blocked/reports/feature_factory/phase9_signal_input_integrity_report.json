@@ -1,0 +1,42 @@
+[
+  {
+    "strategy": "mean_reversion",
+    "variant": "BASE",
+    "signal_count": 20755,
+    "subset_of_base": "N/A (baseline)",
+    "duplicates": 0,
+    "future_data_check": "PASS",
+    "synthetic_data_used": false,
+    "status": "PASS_SIGNAL_INPUT_INTEGRITY"
+  },
+  {
+    "strategy": "mean_reversion",
+    "variant": "D8_D10",
+    "signal_count": 8143,
+    "subset_of_base": true,
+    "duplicates": 0,
+    "future_data_check": "PASS",
+    "synthetic_data_used": false,
+    "status": "PASS_SIGNAL_INPUT_INTEGRITY"
+  },
+  {
+    "strategy": "structural_mr",
+    "variant": "BASE",
+    "signal_count": 7039,
+    "subset_of_base": "N/A (baseline)",
+    "duplicates": 0,
+    "future_data_check": "PASS",
+    "synthetic_data_used": false,
+    "status": "PASS_SIGNAL_INPUT_INTEGRITY"
+  },
+  {
+    "strategy": "structural_mr",
+    "variant": "D8_D10",
+    "signal_count": 2828,
+    "subset_of_base": true,
+    "duplicates": 0,
+    "future_data_check": "PASS",
+    "synthetic_data_used": false,
+    "status": "PASS_SIGNAL_INPUT_INTEGRITY"
+  }
+]

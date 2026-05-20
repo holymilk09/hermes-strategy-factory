@@ -1,0 +1,10 @@
+feature_family,priority,why,leakage_risk
+realized_volatility,high,"risk sizing, regime gate, cost sensitivity",low if computed on closed bars
+relative_volume,high,liquidity/execution and breakout confirmation,medium if intraday seasonality mishandled
+market_breadth,high,participation filter for equity strategies,medium due universe construction
+spread_liquidity,high,execution feasibility,low/medium depending quote timing
+cross_asset_risk,medium,regime context,low with correct timestamps
+options_iv_skew,medium,volatility and positioning context,medium due chain completeness
+macro_release_calendar,medium,event avoidance,low if calendar known in advance
+13f_holdings,low/medium,slow crowding/clone studies,high if filing delay ignored
+news_sentiment,low/medium,event overlay,high due timestamp/vendor bias

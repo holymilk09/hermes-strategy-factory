@@ -1,0 +1,94 @@
+[
+  {
+    "variant": "RESIDUAL_LONG_Z_NEG_1_5",
+    "direction": "long",
+    "threshold": -1.5,
+    "required_filters": [
+      "residual_z <= -1.5"
+    ],
+    "expected_horizon": "5d-20d",
+    "allowed_use": "MR setup generator, structural MR filter",
+    "blocked_use": "standalone buy signal, live trading"
+  },
+  {
+    "variant": "RESIDUAL_LONG_Z_NEG_2_0",
+    "direction": "long",
+    "threshold": -2.0,
+    "required_filters": [
+      "residual_z <= -2.0"
+    ],
+    "expected_horizon": "5d-20d",
+    "allowed_use": "MR setup generator, structural MR filter",
+    "blocked_use": "standalone buy signal, live trading"
+  },
+  {
+    "variant": "RESIDUAL_LONG_Z_NEG_2_5",
+    "direction": "long",
+    "threshold": -2.5,
+    "required_filters": [
+      "residual_z <= -2.5"
+    ],
+    "expected_horizon": "5d-20d",
+    "allowed_use": "High-conviction MR setup only",
+    "blocked_use": "broad filtering, live trading"
+  },
+  {
+    "variant": "RESIDUAL_LONG_Z_NEG_2_0_R2",
+    "direction": "long",
+    "threshold": -2.0,
+    "required_filters": [
+      "residual_z <= -2.0",
+      "rolling_r2 >= 0.20"
+    ],
+    "expected_horizon": "5d-20d",
+    "allowed_use": "MR setup with model-quality filter",
+    "blocked_use": "standalone buy signal, live trading"
+  },
+  {
+    "variant": "RESIDUAL_LONG_Z_NEG_2_0_HALFLIFE",
+    "direction": "long",
+    "threshold": -2.0,
+    "required_filters": [
+      "residual_z <= -2.0",
+      "half_life 2-30 days"
+    ],
+    "expected_horizon": "5d-20d",
+    "allowed_use": "MR setup with mean-reversion speed filter",
+    "blocked_use": "live trading"
+  },
+  {
+    "variant": "RESIDUAL_LONG_Z_NEG_2_0_REGIME",
+    "direction": "long",
+    "threshold": -2.0,
+    "required_filters": [
+      "residual_z <= -2.0",
+      "regime_score <= 2 (not hostile)"
+    ],
+    "expected_horizon": "5d-20d",
+    "allowed_use": "MR setup in friendly regimes",
+    "blocked_use": "live trading"
+  },
+  {
+    "variant": "RESIDUAL_LONG_Z_NEG_2_0_LIQUIDITY",
+    "direction": "long",
+    "threshold": -2.0,
+    "required_filters": [
+      "residual_z <= -2.0",
+      "liquidity proxy acceptable"
+    ],
+    "expected_horizon": "5d-20d",
+    "allowed_use": "MR setup in liquid names",
+    "blocked_use": "live trading"
+  },
+  {
+    "variant": "RESIDUAL_AVOID_Z_POS_2_0",
+    "direction": "avoid_long",
+    "threshold": 2.0,
+    "required_filters": [
+      "residual_z >= 2.0 (avoid longs here)"
+    ],
+    "expected_horizon": "N/A",
+    "allowed_use": "Avoid-fading filter, dont-buy-here warning",
+    "blocked_use": "short signal, live trading"
+  }
+]

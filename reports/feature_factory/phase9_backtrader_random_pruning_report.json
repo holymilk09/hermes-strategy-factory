@@ -1,0 +1,28 @@
+[
+  {
+    "strategy": "mean_reversion",
+    "variant": "D8_D10",
+    "actual_pf": 22.81,
+    "actual_return": 24445.3,
+    "baseline_p50_pf": 52.6,
+    "baseline_p95_pf": 86.3,
+    "baseline_p50_return": 58601.87,
+    "baseline_p95_return": 96997.72,
+    "beats_p95_pf": false,
+    "n_perms": 500,
+    "status": "FAILS_BACKTRADER_RANDOM_PRUNING"
+  },
+  {
+    "strategy": "structural_mr",
+    "variant": "D8_D10",
+    "actual_pf": 34.96,
+    "actual_return": 29609.0,
+    "baseline_p50_pf": 32.12,
+    "baseline_p95_pf": 64.42,
+    "baseline_p50_return": 33273.06,
+    "baseline_p95_return": 65952.89,
+    "beats_p95_pf": false,
+    "n_perms": 497,
+    "status": "BORDERLINE_BACKTRADER_RANDOM_PRUNING"
+  }
+]

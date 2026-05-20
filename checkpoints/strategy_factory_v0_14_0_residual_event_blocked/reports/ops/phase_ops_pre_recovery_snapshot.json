@@ -1,0 +1,18 @@
+{
+  "timestamp": "2026-05-20T00:28:13.515213+00:00",
+  "hermes_version": "v0.14.0",
+  "git_commit": "39c41d0f2",
+  "gateway_pid": 36340,
+  "gateway_status": "RUNNING",
+  "watchdog_status": "ZOMBIE",
+  "watchdog_zombie_pids": [
+    32249,
+    32683
+  ],
+  "production_migration_status": "BLOCKED",
+  "live_trading_status": "BLOCKED",
+  "active_research_track": "residual_reversion_event_blocked",
+  "rejected_track": "trend_extension_reversal",
+  "fmp_status": "BLOCKED_FMP_API_KEY_MISSING",
+  "checkpoint_purpose": "pre-recovery snapshot before watchdog restart"
+}

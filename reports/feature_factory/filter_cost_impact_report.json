@@ -1,0 +1,52 @@
+[
+  {
+    "strategy_name": "qullamaggie_watchlist",
+    "base_trade_count": 21460,
+    "filtered_trade_count": 6733,
+    "trade_reduction_pct": 68.6,
+    "mean_return_base": 0.013631,
+    "mean_return_filtered": 0.018603,
+    "quality_improvement": 0.004972,
+    "status": "FILTER_IMPROVES_COST_ADJUSTED_QUALITY"
+  },
+  {
+    "strategy_name": "momentum_swing",
+    "base_trade_count": 28903,
+    "filtered_trade_count": 12607,
+    "trade_reduction_pct": 56.4,
+    "mean_return_base": 0.009041,
+    "mean_return_filtered": 0.009614,
+    "quality_improvement": 0.000573,
+    "status": "FILTER_IMPROVES_COST_ADJUSTED_QUALITY"
+  },
+  {
+    "strategy_name": "mean_reversion",
+    "base_trade_count": 20313,
+    "filtered_trade_count": 16066,
+    "trade_reduction_pct": 20.9,
+    "mean_return_base": 0.018633,
+    "mean_return_filtered": 0.022754,
+    "quality_improvement": 0.004121,
+    "status": "FILTER_IMPROVES_COST_ADJUSTED_QUALITY"
+  },
+  {
+    "strategy_name": "structural_mr",
+    "base_trade_count": 9852,
+    "filtered_trade_count": 8045,
+    "trade_reduction_pct": 18.3,
+    "mean_return_base": 0.017176,
+    "mean_return_filtered": 0.024263,
+    "quality_improvement": 0.007087,
+    "status": "FILTER_IMPROVES_COST_ADJUSTED_QUALITY"
+  },
+  {
+    "strategy_name": "ml_enhanced",
+    "base_trade_count": 7525,
+    "filtered_trade_count": 7488,
+    "trade_reduction_pct": 0.5,
+    "mean_return_base": 0.029135,
+    "mean_return_filtered": 0.02914,
+    "quality_improvement": 5e-06,
+    "status": "FILTER_IMPROVES_COST_ADJUSTED_QUALITY"
+  }
+]

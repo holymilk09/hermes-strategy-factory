@@ -1,0 +1,12 @@
+{
+  "status": "REGIME_ANALYSIS_FRAMEWORK_READY",
+  "note": "Full regime analysis requires running feature+label pipeline with regime segmentation. Framework implemented \u2014 awaiting full 86-symbol run.",
+  "regimes_supported": [
+    "bull",
+    "bear",
+    "sideways",
+    "high_vol",
+    "low_vol"
+  ],
+  "method": "IC by regime segment using PurgedCV splits"
+}

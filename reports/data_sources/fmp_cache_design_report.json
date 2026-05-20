@@ -1,0 +1,23 @@
+{
+  "cache_path": "/opt/data/data/cache/fmp/",
+  "structure": {
+    "earnings_calendar": "fmp/earnings_calendar/",
+    "earnings_surprises": "fmp/earnings_surprises/",
+    "company_profile": "fmp/company_profile/",
+    "analyst_changes": "fmp/analyst_changes/",
+    "news": "fmp/news/"
+  },
+  "manifest": {
+    "cache_id": "20260518_124038",
+    "created_at": "20260518_124038",
+    "source": "FMP",
+    "api_key_used": false,
+    "symbols": 0,
+    "date_range": "N/A",
+    "endpoints_cached": [],
+    "raw_response_saved": false,
+    "normalized_data_saved": false,
+    "synthetic_data_used": false,
+    "known_at_time_policy": "STRICT \u2014 post-event data marked with timestamp"
+  }
+}

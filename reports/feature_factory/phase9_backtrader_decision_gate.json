@@ -1,0 +1,32 @@
+[
+  {
+    "strategy": "mean_reversion",
+    "variant": "D8_D10",
+    "best_exit_model": "fixed_time_exit_20d",
+    "best_cost_mode": "moderate",
+    "backtrader_status": "BACKTRADER_FAILS_BASE (numerical issues in sim)",
+    "random_pruning_status": "FAILS_BACKTRADER_RANDOM_PRUNING",
+    "path_quality_status": "INCONCLUSIVE (sim unreliable)",
+    "robustness_status": "INCONCLUSIVE",
+    "final_classification": "REJECTED_BACKTRADER_VALIDATION",
+    "next_allowed_step": "NONE \u2014 filter failed random-pruning baseline",
+    "production_migration_allowed": false,
+    "live_trading_allowed": false,
+    "note": "D8_D10 PF=22.81 vs random same-count p95 PF=86.30. Filter does NOT beat random pruning. This is the clearest signal that D8_D10 does not add value beyond random trade selection under Backtrader rules."
+  },
+  {
+    "strategy": "structural_mr",
+    "variant": "D8_D10",
+    "best_exit_model": "fixed_time_exit_20d",
+    "best_cost_mode": "moderate",
+    "backtrader_status": "INCONCLUSIVE (numerical issues)",
+    "random_pruning_status": "BORDERLINE_BACKTRADER_RANDOM_PRUNING",
+    "path_quality_status": "INCONCLUSIVE",
+    "robustness_status": "INCONCLUSIVE",
+    "final_classification": "WEAK_BACKTRADER_FILTER",
+    "next_allowed_step": "NONE \u2014 borderline random pruning, numerical issues",
+    "production_migration_allowed": false,
+    "live_trading_allowed": false,
+    "note": "PF=34.96 vs random p95 PF=64.42. Borderline \u2014 actual PF below p95 but above p50. Cannot promote with numerical issues in sim."
+  }
+]

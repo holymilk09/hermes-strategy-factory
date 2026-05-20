@@ -1,0 +1,10 @@
+{
+  "d1_meaning": "MOST EXTENDED",
+  "d10_meaning": "LEAST EXTENDED / COMPRESSED",
+  "d1_mean_reversal": -1.5925,
+  "d10_mean_reversal": 1.6202,
+  "d1_mean_raw_trend": 1.5925,
+  "d10_mean_raw_trend": -1.6202,
+  "polarity_correct": true,
+  "status": "PASS_DECILE_POLARITY"
+}

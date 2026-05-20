@@ -1,0 +1,42 @@
+{
+  "title": "MarketEvent",
+  "type": "object",
+  "required": [
+    "event_id",
+    "symbol",
+    "timestamp",
+    "source",
+    "event_type"
+  ],
+  "properties": {
+    "event_id": {
+      "type": "string"
+    },
+    "symbol": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source": {
+      "type": "string"
+    },
+    "event_type": {
+      "enum": [
+        "bar",
+        "trade",
+        "quote",
+        "book",
+        "fundamental",
+        "macro"
+      ]
+    },
+    "quality_flags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

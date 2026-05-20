@@ -1,0 +1,44 @@
+# Suggested Project Tree
+
+```text
+trading_bot/
+  README.md
+  pyproject.toml
+  configs/
+    strategy.yaml
+    risk_limits.yaml
+  data/
+    raw/
+    normalized/
+    features/
+    quality_reports/
+  src/
+    core/
+      contracts.py
+      data.py
+      features.py
+      strategy.py
+      portfolio.py
+      risk.py
+      execution.py
+      broker.py
+      ledger.py
+      metrics.py
+      review.py
+    strategies/
+      baseline_momentum.py
+    tools/
+      run_backtest.py
+      make_report.py
+      make_heatmaps.py
+  tests/
+    fixtures/
+    test_features.py
+    test_signal.py
+    test_risk.py
+    test_ledger.py
+    test_metrics.py
+  reports/
+    runs/
+    reviews/
+```

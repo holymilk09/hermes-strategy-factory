@@ -1,0 +1,1181 @@
+{
+  "checkpoint_time": "2026-05-20T00:35:04.308537+00:00",
+  "reports": [
+    {
+      "file": "feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_10_SUMMARY.md",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_10_SUMMARY.md",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_10_SUMMARY.md",
+      "sha256": "5c9919960b6b9a61ed02cd8adb017d9265dab3e22486e38b511f23586fd554be",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_11_SUMMARY.md",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_11_SUMMARY.md",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_11_SUMMARY.md",
+      "sha256": "2d86efc904ca661b934166d77b4506eb3b9784985cf8d75c47175285802b9e46",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_12_5_SUMMARY.md",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_12_5_SUMMARY.md",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_12_5_SUMMARY.md",
+      "sha256": "ab7224c61d639dc44d53ab573add382bc16e1bae90fa8a61ea3d6447cb24c85d",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_12_SUMMARY.md",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_12_SUMMARY.md",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_12_SUMMARY.md",
+      "sha256": "d17773387bfe9c5ef347b53bf89879cd6158ea3aa04a0eb61d4a57c0c0d10713",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_2_SUMMARY.md",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_2_SUMMARY.md",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_2_SUMMARY.md",
+      "sha256": "20a265ab4569a1a50e0c76135dad7eeaf654eeb1d31f8b50b91be87b27e4813b",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_3_SUMMARY.md",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_3_SUMMARY.md",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_3_SUMMARY.md",
+      "sha256": "5c0cf24209769e9a628f60adffe59d2525eab1d31cb10a030c671adc23628c46",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_4_5_SUMMARY.md",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_4_5_SUMMARY.md",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_4_5_SUMMARY.md",
+      "sha256": "54474d15c63da13a70bbc4bc42a96b9a5190350380feb807e691060059712dbe",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_4_SUMMARY.md",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_4_SUMMARY.md",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_4_SUMMARY.md",
+      "sha256": "c59dcd758d599bbfe6d94c5a0e67e02b104b524dcb7fee3608ce056b7e2d5da6",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_5_SUMMARY.md",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_5_SUMMARY.md",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_5_SUMMARY.md",
+      "sha256": "188e0e17dc8902b3d5b1a9ab4a3bea9e3593dbd006270cdfb654a0fc81073790",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_6_SUMMARY.md",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_6_SUMMARY.md",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_6_SUMMARY.md",
+      "sha256": "b781c3a406bd5a810be08f38251535989f4745f0f02be79d6f1baf0fefc6fde5",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_7_SUMMARY.md",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_7_SUMMARY.md",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_7_SUMMARY.md",
+      "sha256": "5fce56f92c12c491afe4914d2f7095464d71b443cdc00d6d5b45aa6b0f93cc31",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_8_5_SUMMARY.md",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_8_5_SUMMARY.md",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_8_5_SUMMARY.md",
+      "sha256": "f1a843f3488192161db4401ec775604f8ca639c3fdfb0842801df3186339f20f",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_8_SUMMARY.md",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_8_SUMMARY.md",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_8_SUMMARY.md",
+      "sha256": "fe4253c27a29d85f54772a6dd61dbe2f1e2beccf4a27356a16840991edc3bf2a",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_9_SUMMARY.md",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_9_SUMMARY.md",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_9_SUMMARY.md",
+      "sha256": "6f95d85687b78432cdeb98d4fb4590ef6e202e48fd9a2e3c05ae7e669b2eeb91",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/PHASE_11_5_RESIDUAL_DIAGNOSTIC_PACKET.md",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/PHASE_11_5_RESIDUAL_DIAGNOSTIC_PACKET.md",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/PHASE_11_5_RESIDUAL_DIAGNOSTIC_PACKET.md",
+      "sha256": "301c04f320771149de94481553e34fa33f5e1bc14d472f63daea3410a6060e6e",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/PHASE_12_5_PRE_FMP_CHECKPOINT_SUMMARY.md",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/PHASE_12_5_PRE_FMP_CHECKPOINT_SUMMARY.md",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/PHASE_12_5_PRE_FMP_CHECKPOINT_SUMMARY.md",
+      "sha256": "2338c9e9ab0716501378757c692a79e67ce9aa50de87e8f67d71430620172d8b",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/cost_adjusted_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/cost_adjusted_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/cost_adjusted_report.json",
+      "sha256": "ef5f02907fd1bff191cd2033a0cdbc0e89b5eebe700eed62f2cc3efdfa57f9ea",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/event_risk_blocker_spec.md",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/event_risk_blocker_spec.md",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/event_risk_blocker_spec.md",
+      "sha256": "ee36b9e2835952d3d52891cf6cd6f2a7546ca932340d9796106445155016c614",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/feature_importance_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/feature_importance_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/feature_importance_report.json",
+      "sha256": "9d9ee3d4f7e30bf38418a82694a485eaaf36577033d82e2cf7bd46fe5ed0eeae",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/feature_set_cost_adjusted_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/feature_set_cost_adjusted_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/feature_set_cost_adjusted_report.json",
+      "sha256": "11178178fb83665d5a3343f169cd3b279236f91adf58253f643e047641573d23",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/feature_set_discovery_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/feature_set_discovery_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/feature_set_discovery_report.json",
+      "sha256": "b7486836e3ca1ffcd7a241a31682ecd112549d461ac2a3d47d804d193b4b8594",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/filter_cost_impact_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/filter_cost_impact_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/filter_cost_impact_report.json",
+      "sha256": "93d52682b9fd46e5a13d29ee455b3ea8bfd4b69c0c25539663e77a134bd6ef56",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/full_universe_data_sufficiency_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/full_universe_data_sufficiency_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/full_universe_data_sufficiency_report.json",
+      "sha256": "19d177082a30036bc9134aec30714564b2d17f1d61d9152c0410910795c18318",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/full_universe_feature_importance_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/full_universe_feature_importance_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/full_universe_feature_importance_report.json",
+      "sha256": "93fb8d01429f1e96bb95452602e2b2106eb743be2e7b329102a5a873ac3adf1f",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/label_generation_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/label_generation_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/label_generation_report.json",
+      "sha256": "c640d861ac016ca1d3baf08917acf2529d0d7bb84cb1a413760f03a1281cf1b4",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/labels.npz",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/labels.npz",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/labels.npz",
+      "sha256": "e0b6bfe3152978f03452c5e239b190dcf7ca18b6cd879d2cd10746ff83d97e75",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/leakage_audit_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/leakage_audit_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/leakage_audit_report.json",
+      "sha256": "dd7f1f82761d64ed20b819611ca581e9abd26b6aee6f3753ee66f5fac3a27f99",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/mean_reversion_conditioned_test.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/mean_reversion_conditioned_test.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/mean_reversion_conditioned_test.json",
+      "sha256": "9fc6b4b5e2e6cabd6faad0f578143f32b1381752a50c01265d55ce3bee022925",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/null_baseline_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/null_baseline_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/null_baseline_report.json",
+      "sha256": "510e935d2123ebf21540801c9700778a2c45a6645bb47e012f9dc39edd0a2ec0",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase10_event_risk_limitation_note.md",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase10_event_risk_limitation_note.md",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase10_event_risk_limitation_note.md",
+      "sha256": "626739472634f534f8b4209a85e5dc821bf3d73495ef3a68b3834d70df68b19b",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase10_pre_residual_snapshot.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase10_pre_residual_snapshot.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase10_pre_residual_snapshot.json",
+      "sha256": "d6923136018d3dbef80bc221d889a1b6ab7b9b0f83a3040a847bd2d9d110efd8",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase10_residual_decision_gate.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase10_residual_decision_gate.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase10_residual_decision_gate.json",
+      "sha256": "a7134d6bfe0055b529df576951c893d29706dfc0bcf37334fbb206f87cea820e",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase10_residual_integrity_audit.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase10_residual_integrity_audit.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase10_residual_integrity_audit.json",
+      "sha256": "26ace6974d875d1a5550d6440a9d06e1c629556059fc68cec3be1dd52800cfe0",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase10_residual_model_quality_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase10_residual_model_quality_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase10_residual_model_quality_report.json",
+      "sha256": "99c254e9bcdb9e65dac55574925f3817512a7c5b4e62f246aa9d24136c900bf9",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase10_residual_random_baseline_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase10_residual_random_baseline_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase10_residual_random_baseline_report.json",
+      "sha256": "f498089d10da7564f86ed3691cce408a27cfeeec81cc99acb4cb04b9c66baec1",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase10_residual_retail_portfolio_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase10_residual_retail_portfolio_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase10_residual_retail_portfolio_report.json",
+      "sha256": "0c24d81af1e11132a3b38bf54c27ae0a2150b43f76d31a42295cfd62b2242f13",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase10_residual_signal_definitions.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase10_residual_signal_definitions.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase10_residual_signal_definitions.json",
+      "sha256": "3d3eecdff137d177d057ab8dd90fe84eb8bf7d20a59484e50e3d9832ec920642",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase10_residual_standalone_event_study.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase10_residual_standalone_event_study.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase10_residual_standalone_event_study.json",
+      "sha256": "3f425b37669fef20d144a76592d7ea508ac88b48f36cb75d743a9678f51b5171",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase10_residual_strategy_conditioned_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase10_residual_strategy_conditioned_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase10_residual_strategy_conditioned_report.json",
+      "sha256": "e4a7b3c5ebb6496ea776dba21dfeb051c8cb8e5623a644a0889568052241b975",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase11_5_event_proxy_diagnostic.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase11_5_event_proxy_diagnostic.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase11_5_event_proxy_diagnostic.json",
+      "sha256": "134466f29e93c99080a50c83e170682ff2934b82d986077c1878842a46acba75",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase11_5_optimized_random_pruning_plan.md",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase11_5_optimized_random_pruning_plan.md",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase11_5_optimized_random_pruning_plan.md",
+      "sha256": "602a90a3b615969a3d99cd07084522031a7a3963ddf8c68f450dd0fd35f50164",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase11_5_random_pruning_timeout_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase11_5_random_pruning_timeout_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase11_5_random_pruning_timeout_report.json",
+      "sha256": "fc9a92275ea332151f42a5ab9513e1a292b4fcb30a543f616c69962d270f75f9",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase11_5_residual_decision_update.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase11_5_residual_decision_update.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase11_5_residual_decision_update.json",
+      "sha256": "174f73ac82e0a1e284b7d1ad2eee8131fa33e2c3533cf282f12979e629b41489",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase11_5_residual_event_summary.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase11_5_residual_event_summary.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase11_5_residual_event_summary.json",
+      "sha256": "95aedef8c65e9f1fa931cfc6ad17cedd1b6b1bc8b10ec6b057f55df3406d0624",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase11_5_residual_feature_health.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase11_5_residual_feature_health.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase11_5_residual_feature_health.json",
+      "sha256": "8355eee2b9dfc255efd3ee7b3a2e254b326f734d2df8c687b48853c0b160e3b1",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase11_5_strategy_conditioned_residual_summary.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase11_5_strategy_conditioned_residual_summary.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase11_5_strategy_conditioned_residual_summary.json",
+      "sha256": "4fad90883b73b9bc5bd4ad6f0e1817b93021ac78caf9868bc5bb526313abc67e",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase11_event_proxy_flags_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase11_event_proxy_flags_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase11_event_proxy_flags_report.json",
+      "sha256": "def96c6a80e3fa6748b9fdca77d4cbdbb6f8dc8364996380c65a8c495c09c895",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase11_phase10_completeness_audit.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase11_phase10_completeness_audit.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase11_phase10_completeness_audit.json",
+      "sha256": "ae7516e1f2375366d993a0c2fadce3431fae1a0f77998bdba7fe81268ae93930",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase11_residual_event_context_decision_gate.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase11_residual_event_context_decision_gate.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase11_residual_event_context_decision_gate.json",
+      "sha256": "e8b0a917c10934ca549fa70fec5187d63be4d07bc54a2b3ebd35f481bfb06f8b",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase11_residual_event_proxy_block_test.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase11_residual_event_proxy_block_test.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase11_residual_event_proxy_block_test.json",
+      "sha256": "fddc331d6d1e00cc6de961696d504016c9a45ae5567a1b9e17e10bd86dde8e1b",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase11_residual_retail_portfolio_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase11_residual_retail_portfolio_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase11_residual_retail_portfolio_report.json",
+      "sha256": "12a26bcaa893b73c9c062be351ea1f886fda6218e6e97b946b0017f2b8ea5347",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase12_5_pre_repair_snapshot.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase12_5_pre_repair_snapshot.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase12_5_pre_repair_snapshot.json",
+      "sha256": "4ac8e28ba3813c8b9ff198bb2fca3d96ebb95d51a24f758b4fb232b80e7abc6b",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase12_5_random_pruning_bug_audit.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase12_5_random_pruning_bug_audit.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase12_5_random_pruning_bug_audit.json",
+      "sha256": "b08ee258483327b80cb26d9891510c12c008877598281238b19f68c828cf4970",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase12_5_residual_decision_gate.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase12_5_residual_decision_gate.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase12_5_residual_decision_gate.json",
+      "sha256": "cc8cd672c3e8739c21533cb855cfadc3409b73aa0f6451f8ddff3c504d8fe3d7",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase12_5_residual_portfolio_random_pruning_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase12_5_residual_portfolio_random_pruning_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase12_5_residual_portfolio_random_pruning_report.json",
+      "sha256": "ee2ef44258dc43aa5e04087754b7f612e9d01d531e9c7f1f17004a1796cd2918",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase12_5_strategy_conditioned_random_pruning_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase12_5_strategy_conditioned_random_pruning_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase12_5_strategy_conditioned_random_pruning_report.json",
+      "sha256": "154cc03ab48eb5c471f83cb8df218f1e15be25cc74bf926c4879c513c823dee1",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase12_feature_cache_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase12_feature_cache_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase12_feature_cache_report.json",
+      "sha256": "f0909499a987324dc48be004215fa75d7e54d45dceca8727280757bb84180584",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase12_pre_recompute_snapshot.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase12_pre_recompute_snapshot.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase12_pre_recompute_snapshot.json",
+      "sha256": "e8fedaac2d1ed1dfd6b46cad75d9f04313097b82830d4fe8d2fd65dfc1b88cab",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase12_residual_decision_gate.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase12_residual_decision_gate.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase12_residual_decision_gate.json",
+      "sha256": "b5b412d353acd206fecc1bd04be0f813a5ded7e5b0508e4df766b94823e539b3",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase12_residual_event_by_fit_class.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase12_residual_event_by_fit_class.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase12_residual_event_by_fit_class.json",
+      "sha256": "98f91e6ea7f96a92f0b6874f06b7db57911437664c8e96566fd2a06c366e91c9",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase12_residual_model_quality_recomputed.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase12_residual_model_quality_recomputed.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase12_residual_model_quality_recomputed.json",
+      "sha256": "e5a82298e2f4bb802553cf012ce424fc2baa3b7dc81a00315d5eb8c6f5d23a59",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase12_residual_model_quality_summary.md",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase12_residual_model_quality_summary.md",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase12_residual_model_quality_summary.md",
+      "sha256": "74f2e417b8461f075746cd88e4335e862c20080c3abed0463d0569b169613956",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase12_residual_optimized_random_pruning_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase12_residual_optimized_random_pruning_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase12_residual_optimized_random_pruning_report.json",
+      "sha256": "5241530a14ab234319872b1a68fec70ce1dcfd7937396cd77e8fee7c0324265a",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase12_residual_strategy_conditioned_by_fit_class.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase12_residual_strategy_conditioned_by_fit_class.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase12_residual_strategy_conditioned_by_fit_class.json",
+      "sha256": "23513ca3f8f5f8e425bcf284180ce610e6d75605bc58bcc523d3251bc82f8683",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase3_status_correction.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase3_status_correction.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase3_status_correction.json",
+      "sha256": "2151c74a56ea0f0eb6c60b2bd4e3d430725ea0f7039dde36e2882a58679b5e34",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase4_5_null_baseline_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase4_5_null_baseline_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase4_5_null_baseline_report.json",
+      "sha256": "576ab8ec6092ecf66e11c6fbb76ff07476aac623e8dd2968de87aab8763db35b",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase4_status_correction.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase4_status_correction.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase4_status_correction.json",
+      "sha256": "714f7e55dd32c781659d19af0af75ccf82d96ac6bfff64bb1c7fa675338762e5",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase5_classification.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase5_classification.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase5_classification.json",
+      "sha256": "8cc9e302fbd3a8c52f92f768637aecff3e011a159e212d37a80c92164988f65f",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase5_final_interpretation.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase5_final_interpretation.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase5_final_interpretation.json",
+      "sha256": "d7aa8c572cec1b4b656dc767a2918de9d6e51762f29b736a5daff2199031fb9e",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase6_base_vs_filtered_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase6_base_vs_filtered_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase6_base_vs_filtered_report.json",
+      "sha256": "30c9ab1c1e84e5f89a336563cb0d3cb0cab9bd882f99227a2dada952b5a3d06f",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase6_classification_correction.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase6_classification_correction.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase6_classification_correction.json",
+      "sha256": "350b18eb7a030fa51a9b68bc44722b93dc9ec3b7e11d9af35049246629108c25",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase6_promotion_rules.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase6_promotion_rules.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase6_promotion_rules.json",
+      "sha256": "141cf1af9f709d1daa8409ca686146520ec5f03be3574448f2db43bac02ed3be",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase6_strategy_eligibility_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase6_strategy_eligibility_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase6_strategy_eligibility_report.json",
+      "sha256": "12db11296382a3b5ac2a5e7632b23ea6db7fd6205775dfcd37518d858aa2089b",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase6_strategy_regime_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase6_strategy_regime_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase6_strategy_regime_report.json",
+      "sha256": "a892b9a3a46c54dda4f7dbef9fa66709db61a99bb7b683bd310ca5dd8fc8e204",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase7_classification_risk_correction.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase7_classification_risk_correction.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase7_classification_risk_correction.json",
+      "sha256": "36d2d03dc95ca3d8e778f4e78a9c682df1f392c95c09d1d6c1edd9c922fcb920",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase7_distribution_diagnostics_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase7_distribution_diagnostics_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase7_distribution_diagnostics_report.json",
+      "sha256": "ff6063768e5fa5c90f31c214d207fbe1fac57b502ce648acbfba04d91ab6f031",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase7_factor_residual_wiring_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase7_factor_residual_wiring_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase7_factor_residual_wiring_report.json",
+      "sha256": "86be7ea20cc6e32ba08a441ae6fc96ca313329178ec2dfdc65b3364eca6f0ae2",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase7_mae_mfe_stop_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase7_mae_mfe_stop_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase7_mae_mfe_stop_report.json",
+      "sha256": "34fce47612ab206168a27a3dd67961514c1e1e4c44f7b8b703f45ee8005cd371",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase7_opportunity_cost_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase7_opportunity_cost_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase7_opportunity_cost_report.json",
+      "sha256": "a5d5c73ce71931b021c585db4dc3b84992841699895100827668c3850546b0e3",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase7_portfolio_simulation_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase7_portfolio_simulation_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase7_portfolio_simulation_report.json",
+      "sha256": "5fdfae7b61371b9b12f63677441014c2541276a8cf0cdb6ed91b836af67fd8e4",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase7_promotion_rules.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase7_promotion_rules.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase7_promotion_rules.json",
+      "sha256": "1541b1cde69bf551806c2347571a212c20ea5fdb1dae3cc24e9d30065080b302",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase7_random_pruning_baseline_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase7_random_pruning_baseline_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase7_random_pruning_baseline_report.json",
+      "sha256": "c2556f399b8122bb101ab457d6192c1ffd865b1bba8aff692392ea4e5890b96f",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase8_5_backtrader_gate_decision.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase8_5_backtrader_gate_decision.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase8_5_backtrader_gate_decision.json",
+      "sha256": "d85ed4d8d2e84043052f892e0713bb69fc79bdfdd7d294c7ae6df10500212521",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase8_5_classification_after_audit.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase8_5_classification_after_audit.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase8_5_classification_after_audit.json",
+      "sha256": "7020d10c38ca474b0f3b191addee88f6fc8ca6037175ac8ed499f1edaa11c0a4",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase8_5_d8_d9_count_audit.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase8_5_d8_d9_count_audit.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase8_5_d8_d9_count_audit.json",
+      "sha256": "ed53ba45eee1ab12a902641cac8d312df233732af70f0f5d95e9a023d64bb9ec",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase8_5_decile_polarity_audit.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase8_5_decile_polarity_audit.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase8_5_decile_polarity_audit.json",
+      "sha256": "07eba31ba435a08955b235298a7c6cad20c8312948c9375d5f9248ef06433b54",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase8_5_duplicate_result_audit.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase8_5_duplicate_result_audit.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase8_5_duplicate_result_audit.json",
+      "sha256": "5027205ffa2839b829922311c9a3f24ac8e29803b07c7d20af18870e8de55d53",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase8_5_nested_filter_membership_audit.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase8_5_nested_filter_membership_audit.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase8_5_nested_filter_membership_audit.json",
+      "sha256": "424beee6db79b79111cb4e94e8692f4923805e1105271d148c1e3ca3807370d7",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase8_5_signal_to_execution_funnel.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase8_5_signal_to_execution_funnel.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase8_5_signal_to_execution_funnel.json",
+      "sha256": "942f79759f1a7ccdc23a7c29316a4692b3a9e25c4805252e9a96c54384dc3ca9",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase8_factor_residual_wiring_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase8_factor_residual_wiring_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase8_factor_residual_wiring_report.json",
+      "sha256": "a8548bfb85dc1f127931c6f48daa3cccc984d3e9df116599c3be36f41d881688",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase8_filter_subset_audit.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase8_filter_subset_audit.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase8_filter_subset_audit.json",
+      "sha256": "cb51d61c8f9019cdd4b10e20bed5b7bc48d4485242da39e433f7fc92c777456b",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase8_opportunity_cost_and_rejection_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase8_opportunity_cost_and_rejection_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase8_opportunity_cost_and_rejection_report.json",
+      "sha256": "e6676809bcc8edce82460a8b74b831972e64974b8496a558cce43eea6fd1b497",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase8_path_quality_stop_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase8_path_quality_stop_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase8_path_quality_stop_report.json",
+      "sha256": "0f94becfdcec0f26ee775b024f9645c63ae9636227631efbeed5b9f678c48707",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase8_pre_audit_snapshot.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase8_pre_audit_snapshot.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase8_pre_audit_snapshot.json",
+      "sha256": "5e0aa16a84f78962f04c45fd21b3a5d4267911ab35aa2ac3b4e45fc3f0e7f747",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase8_retail_constrained_portfolio_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase8_retail_constrained_portfolio_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase8_retail_constrained_portfolio_report.json",
+      "sha256": "24145bc2c89dd64951bee43d8dd975f27bbd548b41601704641bbbce1e7e4c43",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase8_retail_promotion_rules.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase8_retail_promotion_rules.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase8_retail_promotion_rules.json",
+      "sha256": "b040fe1ace008b46379008b36ec692365321ca5192bbd87cdff84e2a32cee3a9",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase8_retail_random_pruning_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase8_retail_random_pruning_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase8_retail_random_pruning_report.json",
+      "sha256": "6e199cb8f64c28e048d7d454c95dbf6b896ba04daedbed79d8960c4588972301",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase8_time_sector_regime_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase8_time_sector_regime_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase8_time_sector_regime_report.json",
+      "sha256": "b8f7121785d7182f88c5f9c2e7fd123aa6815bec8a3d9c7ab26a93871d3281c9",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase9_backtrader_decision_gate.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase9_backtrader_decision_gate.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase9_backtrader_decision_gate.json",
+      "sha256": "20f66e7c17d2a4ffd2cc589b9697d4e9219a6bd79211d04a9125395154976a7c",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase9_backtrader_path_quality_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase9_backtrader_path_quality_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase9_backtrader_path_quality_report.json",
+      "sha256": "a52fa5962e4c908f11206044c8d4e81d6b805a0f04ee039cb4b5a6e09182c850",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase9_backtrader_random_pruning_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase9_backtrader_random_pruning_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase9_backtrader_random_pruning_report.json",
+      "sha256": "cb5889dfd262bd77daa8a618b45ef774bf9dc76bade2a1a489f36e5134294633",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase9_backtrader_results.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase9_backtrader_results.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase9_backtrader_results.json",
+      "sha256": "8c6a879adb5bfed07a20d0a7a3a6d97194ca9775a0a2846babf381d302deaf4f",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase9_backtrader_robustness_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase9_backtrader_robustness_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase9_backtrader_robustness_report.json",
+      "sha256": "09f8f900f2429fb8a6fc9ab32473f0c21fb05ccd86d6d18c2ad545baa9c2c2dd",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase9_backtrader_scope.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase9_backtrader_scope.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase9_backtrader_scope.json",
+      "sha256": "bf577e5ed0edb5be434e5afa0247e3cfdf94da436b19312635fc9e065ca894f3",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase9_pre_backtrader_snapshot.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase9_pre_backtrader_snapshot.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase9_pre_backtrader_snapshot.json",
+      "sha256": "e610a23c0c13108589b4eb8ebfa43b9d7fcaadb64ef707888a682de636b12fbf",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/phase9_signal_input_integrity_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/phase9_signal_input_integrity_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/phase9_signal_input_integrity_report.json",
+      "sha256": "20d63f8af3606f810306451b48386e2e008bf88686326697342da69a11a7cd87",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/placeholder_result_invalidation_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/placeholder_result_invalidation_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/placeholder_result_invalidation_report.json",
+      "sha256": "16dc26f7ccfcbd9c500a5668d4cf065de991740bd145f25ef7a192deee5f5067",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/purged_cv_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/purged_cv_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/purged_cv_report.json",
+      "sha256": "f1e82795bf078873e287b38b5cde73d3dfb987b525667afd0d593bbc67c72faf",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/qlib_reference_benchmark_note.md",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/qlib_reference_benchmark_note.md",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/qlib_reference_benchmark_note.md",
+      "sha256": "88de91fe72b77bfa67441dfa21d441ee58c3a90a8f67bd195022d865de4ea6e7",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/qullamaggie_conditioned_test.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/qullamaggie_conditioned_test.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/qullamaggie_conditioned_test.json",
+      "sha256": "217cbbb2e03f8b8975857ef51e00080a43bd284d27a105e1e88256c76279d9c7",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/real_feature_set_validation_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/real_feature_set_validation_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/real_feature_set_validation_report.json",
+      "sha256": "9cc2c879beb3cf00149ab52a1e986c0ace58ba193582691c654ec0ac0d1a1332",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/real_regime_feature_set_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/real_regime_feature_set_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/real_regime_feature_set_report.json",
+      "sha256": "b96b426572b47d8873ef6c1756be616fa0722eee84999b610eefa7bc023ba322",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/redundancy_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/redundancy_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/redundancy_report.json",
+      "sha256": "3acc5d07b5424c4abf3a4fb4dba98fa3db9ef790057bcf134f4786b52ceae2b2",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/regime_feature_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/regime_feature_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/regime_feature_report.json",
+      "sha256": "137a66299293a6cdbf131db5b2685593e018dbb12812745f5c985e5fca43b086",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/residual_filter_interpretation.md",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/residual_filter_interpretation.md",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/residual_filter_interpretation.md",
+      "sha256": "09d84bed624cdfe9d665b7a3ee36299977447eac972eacd3d1ba70c9c7d32c1a",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/residual_z_20_blocker_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/residual_z_20_blocker_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/residual_z_20_blocker_report.json",
+      "sha256": "711bb674ead09e28dfe3085a8dcc61f4fe0f6881884f4c999e7612e4905620e9",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/sector_label_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/sector_label_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/sector_label_report.json",
+      "sha256": "a61e80a70cb9f1f71fefa17952fd38f84e5c26e20e4bd9a5a76de337371789ea",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/strategy_conditioned_feature_test.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/strategy_conditioned_feature_test.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/strategy_conditioned_feature_test.json",
+      "sha256": "495215d7eb5ad64b6b701857388d9fa18545262a68d2fa5779d16b6ff51b2cc3",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/trend_extension_reversal_cost_reality_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/trend_extension_reversal_cost_reality_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/trend_extension_reversal_cost_reality_report.json",
+      "sha256": "7755ebdb7688492161ae6220667242ff03a8cfe954cb0b1482aa67dc2f0a8878",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/trend_extension_reversal_full_universe_confirmation.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/trend_extension_reversal_full_universe_confirmation.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/trend_extension_reversal_full_universe_confirmation.json",
+      "sha256": "85fca0788045dfc3be96803c22c1b8938c743a43fd63954e8694857699479920",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/trend_extension_reversal_interpretation.md",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/trend_extension_reversal_interpretation.md",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/trend_extension_reversal_interpretation.md",
+      "sha256": "b82157700512f4e25d81e13168be8a705f1853c12e21ce3e2b4c29044ca40ae6",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/trend_extension_reversal_sanity_audit.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/trend_extension_reversal_sanity_audit.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/trend_extension_reversal_sanity_audit.json",
+      "sha256": "143aa183b18554f7fa5c5106e1ae0307160e6a3eb2c8edd773aea1878f799950",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/trend_extension_threshold_test.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/trend_extension_threshold_test.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/trend_extension_threshold_test.json",
+      "sha256": "72a4598257bf8abdd2cb05765436924b50dec8a3ffa38a5804c47e3f2d4a0053",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "feature_factory/validation_report_20260518_011256.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/feature_factory/validation_report_20260518_011256.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/feature_factory/validation_report_20260518_011256.json",
+      "sha256": "392e0af009a47116f6589629e255edcbef5857a5163432722fe21895cdaf751e",
+      "decision_relevance": "feature_factory"
+    },
+    {
+      "file": "data_sources/FMP_PHASE_13_5_DRY_RUN_AND_COVERAGE_SUMMARY.md",
+      "exists": true,
+      "source_path": "/opt/data/reports/data_sources/FMP_PHASE_13_5_DRY_RUN_AND_COVERAGE_SUMMARY.md",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/data_sources/FMP_PHASE_13_5_DRY_RUN_AND_COVERAGE_SUMMARY.md",
+      "sha256": "c4514789a047b63ac97bb65684cc9547be7c0279ab25fdcb31902ba50d0d88dd",
+      "decision_relevance": "data_sources"
+    },
+    {
+      "file": "data_sources/FMP_PHASE_13_EVALUATION_SUMMARY.md",
+      "exists": true,
+      "source_path": "/opt/data/reports/data_sources/FMP_PHASE_13_EVALUATION_SUMMARY.md",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/data_sources/FMP_PHASE_13_EVALUATION_SUMMARY.md",
+      "sha256": "6c269cba1043e5abcc71387f8d85528ac5af3f06f9c6135db85e88abf19dddc1",
+      "decision_relevance": "data_sources"
+    },
+    {
+      "file": "data_sources/fmp_api_dry_run_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/data_sources/fmp_api_dry_run_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/data_sources/fmp_api_dry_run_report.json",
+      "sha256": "b41fbce9c1afea148b45bc25bf8d75e9eaa197ea7518bd932d2f06396927de7f",
+      "decision_relevance": "data_sources"
+    },
+    {
+      "file": "data_sources/fmp_cache_design_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/data_sources/fmp_cache_design_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/data_sources/fmp_cache_design_report.json",
+      "sha256": "f4a05598e40fdaaab51088114537412855a9f600817e210c5e60fcfb808dec6a",
+      "decision_relevance": "data_sources"
+    },
+    {
+      "file": "data_sources/fmp_endpoint_inspection_report.md",
+      "exists": true,
+      "source_path": "/opt/data/reports/data_sources/fmp_endpoint_inspection_report.md",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/data_sources/fmp_endpoint_inspection_report.md",
+      "sha256": "23030de6172fca5a11898fe80ec2a3727eba1389606977e377e8ad2a3d9001f5",
+      "decision_relevance": "data_sources"
+    },
+    {
+      "file": "data_sources/fmp_event_overlay_trial_plan.md",
+      "exists": true,
+      "source_path": "/opt/data/reports/data_sources/fmp_event_overlay_trial_plan.md",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/data_sources/fmp_event_overlay_trial_plan.md",
+      "sha256": "f4ef88df62e8965404926d22a27e99fbe113921d4e9d8c449fd8aeb2d493c4ec",
+      "decision_relevance": "data_sources"
+    },
+    {
+      "file": "data_sources/fmp_justification_after_residual_random_pruning.md",
+      "exists": true,
+      "source_path": "/opt/data/reports/data_sources/fmp_justification_after_residual_random_pruning.md",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/data_sources/fmp_justification_after_residual_random_pruning.md",
+      "sha256": "d2284832c914607e38ffc01a19a47a535564d624476a8e6be2230bc12e21e33c",
+      "decision_relevance": "data_sources"
+    },
+    {
+      "file": "data_sources/fmp_need_spec_for_residual_filter.md",
+      "exists": true,
+      "source_path": "/opt/data/reports/data_sources/fmp_need_spec_for_residual_filter.md",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/data_sources/fmp_need_spec_for_residual_filter.md",
+      "sha256": "2b9a76c940cb2f126952f79501d7605d2603541c7728c9a034fe389fed1c6f23",
+      "decision_relevance": "data_sources"
+    },
+    {
+      "file": "data_sources/fmp_phase13_decision_gate.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/data_sources/fmp_phase13_decision_gate.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/data_sources/fmp_phase13_decision_gate.json",
+      "sha256": "a823b81b35f5ad203e5707cf66482b151bd907a718cabf8ce1a9735ba4714d95",
+      "decision_relevance": "data_sources"
+    },
+    {
+      "file": "data_sources/fmp_point_in_time_policy.md",
+      "exists": true,
+      "source_path": "/opt/data/reports/data_sources/fmp_point_in_time_policy.md",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/data_sources/fmp_point_in_time_policy.md",
+      "sha256": "e7c1a24ed0a5745e650721f3726689b13feb18d29b86a5fc5b6d099fd5a64932",
+      "decision_relevance": "data_sources"
+    },
+    {
+      "file": "data_sources/phase13_5_event_blocker_feasibility_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/data_sources/phase13_5_event_blocker_feasibility_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/data_sources/phase13_5_event_blocker_feasibility_report.json",
+      "sha256": "e3c89d7ee984862065e649a381611cb7c060abc183b4d580ecb4e85c8ac070bd",
+      "decision_relevance": "data_sources"
+    },
+    {
+      "file": "data_sources/phase13_5_fmp_cache_write_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/data_sources/phase13_5_fmp_cache_write_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/data_sources/phase13_5_fmp_cache_write_report.json",
+      "sha256": "2ecbe5f942dbe01ffd8828c580aeb6120429331b107c1da78f8773241032b895",
+      "decision_relevance": "data_sources"
+    },
+    {
+      "file": "data_sources/phase13_5_fmp_decision_gate.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/data_sources/phase13_5_fmp_decision_gate.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/data_sources/phase13_5_fmp_decision_gate.json",
+      "sha256": "8564aa944405182bf01f5a244c0b6bc3c8551545955f87f5182c748712a55834",
+      "decision_relevance": "data_sources"
+    },
+    {
+      "file": "data_sources/phase13_5_fmp_dry_run_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/data_sources/phase13_5_fmp_dry_run_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/data_sources/phase13_5_fmp_dry_run_report.json",
+      "sha256": "7d033d16aaf47b78a6ce335a9d1e95d39e8f5c884c582bc484b312579fe19abe",
+      "decision_relevance": "data_sources"
+    },
+    {
+      "file": "data_sources/phase13_5_fmp_field_coverage_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/data_sources/phase13_5_fmp_field_coverage_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/data_sources/phase13_5_fmp_field_coverage_report.json",
+      "sha256": "ce314a4951e53710544598b2d0b508ccfdcec47a0cf7cfb0f296cc9a1f86f17c",
+      "decision_relevance": "data_sources"
+    },
+    {
+      "file": "data_sources/phase13_5_fmp_key_check.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/data_sources/phase13_5_fmp_key_check.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/data_sources/phase13_5_fmp_key_check.json",
+      "sha256": "7be3c25925434ac27e8f1ce2faf68d02315e69143082a53ab8809625f2ad9379",
+      "decision_relevance": "data_sources"
+    },
+    {
+      "file": "data_sources/phase13_5_fmp_pit_validation_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/data_sources/phase13_5_fmp_pit_validation_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/data_sources/phase13_5_fmp_pit_validation_report.json",
+      "sha256": "a552c17aafdaea673c2e372bd27efb094cc7825cad9beb6f2ca6518fdc18a0bc",
+      "decision_relevance": "data_sources"
+    },
+    {
+      "file": "data_sources/phase13_5_fmp_trial_readiness_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/data_sources/phase13_5_fmp_trial_readiness_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/data_sources/phase13_5_fmp_trial_readiness_report.json",
+      "sha256": "7edb9a1d51cb3af83c066de368916951359f7ad41e8548cd296f174ef1a2c1a9",
+      "decision_relevance": "data_sources"
+    },
+    {
+      "file": "data_sources/phase13_5_fmp_universe_coverage_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/data_sources/phase13_5_fmp_universe_coverage_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/data_sources/phase13_5_fmp_universe_coverage_report.json",
+      "sha256": "bebc894f50646f45f8d4bb9a3125cc05c3ce4f44ef82156d72efe88f97a1d11c",
+      "decision_relevance": "data_sources"
+    },
+    {
+      "file": "data_sources/phase13_pre_fmp_snapshot.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/data_sources/phase13_pre_fmp_snapshot.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/data_sources/phase13_pre_fmp_snapshot.json",
+      "sha256": "cefc1120e2ba067025b8f351e2641bced00e5940e3b750dec6d8c7d13d04500f",
+      "decision_relevance": "data_sources"
+    },
+    {
+      "file": "strategy_factory/CURRENT_STRATEGY_FACTORY_STATE.md",
+      "exists": true,
+      "source_path": "/opt/data/reports/strategy_factory/CURRENT_STRATEGY_FACTORY_STATE.md",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/strategy_factory/CURRENT_STRATEGY_FACTORY_STATE.md",
+      "sha256": "9199337bc19a02ea3a9e940d8e40c271e209f43e18f948eb56bd36cc32d97f25",
+      "decision_relevance": "strategy_factory"
+    },
+    {
+      "file": "ops/phase_ops_pre_recovery_snapshot.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/ops/phase_ops_pre_recovery_snapshot.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/ops/phase_ops_pre_recovery_snapshot.json",
+      "sha256": "5d59424f8b8b19392c86206fac2a475097fa744b140f5a53548545e4ac00c22c",
+      "decision_relevance": "ops"
+    },
+    {
+      "file": "ops/watchdog_recovery_report.json",
+      "exists": true,
+      "source_path": "/opt/data/reports/ops/watchdog_recovery_report.json",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/reports/ops/watchdog_recovery_report.json",
+      "sha256": "4cf3760b02eaefe01cde7a83f8c33f11bcd57330760957367224dcc831624b77",
+      "decision_relevance": "ops"
+    }
+  ]
+}

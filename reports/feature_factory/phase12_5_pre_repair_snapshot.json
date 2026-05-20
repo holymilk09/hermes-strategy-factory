@@ -1,0 +1,14 @@
+{
+  "timestamp": "20260518_121111",
+  "phase12_status": "RANDOM_PRUNING_FAILED_FILTER",
+  "standalone_residual": "RANDOM_PRUNING_FAILED_STANDALONE",
+  "strategy_conditioned": "PENDING_RANDOM_PRUNING_REPAIR",
+  "median_r2": 0.3723,
+  "good_fit": 42,
+  "acceptable_fit": 25,
+  "low_fit": 3,
+  "blocked": 6,
+  "cache": "/opt/data/cache/phase12_etf_inclusive_features",
+  "production": "BLOCKED",
+  "live": "BLOCKED"
+}

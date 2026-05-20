@@ -1,0 +1,56 @@
+[
+  {
+    "file": "feature_registry.yaml",
+    "exists": true,
+    "source_path": "/opt/data/config/feature_registry.yaml",
+    "checkpoint_path": "/opt/data/checkpoints/phase12_5_pre_fmp_checkpoint/configs/feature_registry.yaml",
+    "sha256": "516d2d9ad7d10f1098de033dd05d38f463d246a5ae4c07a1d8731e7dca344713",
+    "modified_time": "2026-05-18 01:27:15.763794",
+    "notes": "snapshotted"
+  },
+  {
+    "file": "backtest_integration_plan.yaml",
+    "exists": true,
+    "source_path": "/opt/data/config/backtest_integration_plan.yaml",
+    "checkpoint_path": "/opt/data/checkpoints/phase12_5_pre_fmp_checkpoint/configs/backtest_integration_plan.yaml",
+    "sha256": "b39afb042e57f8e1d74b257d9a6d917c3e786a67400f455ce7f434e97fc44045",
+    "modified_time": "2026-05-18 12:14:15.099047",
+    "notes": "snapshotted"
+  },
+  {
+    "file": "sector_etf_map.yaml",
+    "exists": true,
+    "source_path": "/opt/data/config/sector_etf_map.yaml",
+    "checkpoint_path": "/opt/data/checkpoints/phase12_5_pre_fmp_checkpoint/configs/sector_etf_map.yaml",
+    "sha256": "4e738a4355991a84cdd413b8d9971106ec5dff3626ac2f0e07da9a7eb2cc050b",
+    "modified_time": "2026-05-18 01:04:14.840012",
+    "notes": "snapshotted"
+  },
+  {
+    "file": "retail_portfolio_constraints.yaml",
+    "exists": true,
+    "source_path": "/opt/data/config/retail_portfolio_constraints.yaml",
+    "checkpoint_path": "/opt/data/checkpoints/phase12_5_pre_fmp_checkpoint/configs/retail_portfolio_constraints.yaml",
+    "sha256": "6cc13340c9367b1a1ed6884545d925f5abc08f192ea8be961d0eac494d44cad9",
+    "modified_time": "2026-05-18 07:26:42.492585",
+    "notes": "snapshotted"
+  },
+  {
+    "file": "event_risk_blocker.yaml",
+    "exists": true,
+    "source_path": "/opt/data/config/event_risk_blocker.yaml",
+    "checkpoint_path": "/opt/data/checkpoints/phase12_5_pre_fmp_checkpoint/configs/event_risk_blocker.yaml",
+    "sha256": "ee933f46233d37d353d3b32dd628ec2aa9ef49468681719fb26979872a53116d",
+    "modified_time": "2026-05-18 10:43:07.969343",
+    "notes": "snapshotted"
+  },
+  {
+    "file": "backtrader_retail_research.yaml",
+    "exists": true,
+    "source_path": "/opt/data/config/backtrader_retail_research.yaml",
+    "checkpoint_path": "/opt/data/checkpoints/phase12_5_pre_fmp_checkpoint/configs/backtrader_retail_research.yaml",
+    "sha256": "fef85e899eac4ed3aa7af30e745ec9bc1f90b9e90928d70dbc753cccc94b9fe0",
+    "modified_time": "2026-05-18 08:48:08.494388",
+    "notes": "snapshotted"
+  }
+]

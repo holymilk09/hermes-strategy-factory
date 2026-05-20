@@ -1,0 +1,20 @@
+{
+  "invalidated_reports": [
+    "reports/feature_factory/feature_set_discovery_report.json (in-memory only, never persisted to disk)",
+    "reports/feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_2_SUMMARY.md (feature-set IC values)"
+  ],
+  "invalidated_metrics": [
+    "residual_reversion_set avg |IC| 0.0360",
+    "qullamaggie_watchlist_set avg |IC| 0.0332",
+    "volatility_compression_set avg |IC| 0.0322",
+    "trend_extension_set avg |IC| 0.0314",
+    "regime_filter_set avg |IC| 0.0302",
+    "mean_reversion_set avg |IC| 0.0200",
+    "liquidity_stress_set avg |IC| 0.0176"
+  ],
+  "reason": "Computed using np.random.randn(500) placeholder arrays instead of actual full-universe feature matrices.",
+  "replacement_required": "Rerun with actual feature data from full 86-symbol universe using real Alpaca data.",
+  "tradeable_claim_allowed": false,
+  "research_claim_allowed": false,
+  "status": "INVALID_PLACEHOLDER_RESULT"
+}

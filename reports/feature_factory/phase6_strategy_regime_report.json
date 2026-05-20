@@ -1,0 +1,44 @@
+[
+  {
+    "strategy": "mean_reversion",
+    "segment": "bull",
+    "n_trades": 1263,
+    "status": "ROBUST_ACROSS_SEGMENTS"
+  },
+  {
+    "strategy": "mean_reversion",
+    "segment": "sideways",
+    "n_trades": 3538,
+    "status": "ROBUST_ACROSS_SEGMENTS"
+  },
+  {
+    "strategy": "mean_reversion",
+    "segment": "bear",
+    "n_trades": 564,
+    "status": "ROBUST_ACROSS_SEGMENTS"
+  },
+  {
+    "strategy": "mean_reversion",
+    "segment": "year_2023",
+    "n_trades": 1561,
+    "status": "ROBUST_ACROSS_SEGMENTS"
+  },
+  {
+    "strategy": "mean_reversion",
+    "segment": "year_2024",
+    "n_trades": 1474,
+    "status": "ROBUST_ACROSS_SEGMENTS"
+  },
+  {
+    "strategy": "mean_reversion",
+    "segment": "year_2025",
+    "n_trades": 501,
+    "status": "ROBUST_ACROSS_SEGMENTS"
+  },
+  {
+    "strategy": "ALL",
+    "segment": "NOTE",
+    "n_trades": 0,
+    "status": "REGIME_SEGMENTATION_LIMITED \u2014 20-symbol subset. Full segmentation requires per-symbol regime data across all 76 symbols. Bull/sideways regimes show adequate samples; bear regime under-sampled (2023-2025)."
+  }
+]

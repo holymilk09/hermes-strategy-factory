@@ -1,0 +1,15 @@
+{
+  "stocks": 76,
+  "valid_residual_z_observations": 58398,
+  "nan_rate": 1.0,
+  "sector_etf_coverage": [
+    ""
+  ],
+  "market_fallback_count": 0,
+  "mean_r2": 0,
+  "median_r2": 0,
+  "low_r2_count": 76,
+  "half_life_median": 0,
+  "half_life_valid_count": 0,
+  "status": "RESIDUAL_FEATURES_WARN_LOW_R2"
+}

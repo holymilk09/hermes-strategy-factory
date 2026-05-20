@@ -1,0 +1,14 @@
+{
+  "timed_out_report": "phase10_residual_portfolio_random_pruning_report.json AND phase11 retail portfolio run",
+  "strategy_variants": [
+    "mean_reversion BASE/Z_NEG_2_0",
+    "structural_mr BASE/Z_NEG_2_0"
+  ],
+  "permutations_requested": 500,
+  "runtime_limit_seconds": 300,
+  "bottleneck": "Feature generation (~180s) + event proxy computation (76 symbols x bar-level flags) + portfolio simulation + random permutations. Feature gen alone consumes 60% of budget.",
+  "memory_usage": "Unknown in sandbox",
+  "proposed_fix": "Pre-cache features + event flags in Phase 10. Phase 11.5 portfolio runs read cached data. Reduce first-pass permutations to 250 with early-stopping if clearly pass/fail.",
+  "confidence_impact": "LOWER_CONFIDENCE_BASELINE if 250 perms used. Full 500-1000 recommended for final gate.",
+  "status": "TIMEOUT_ROOT_CAUSE_FOUND"
+}

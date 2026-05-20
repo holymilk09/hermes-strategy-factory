@@ -1,0 +1,16 @@
+{
+  "bug_found": true,
+  "bug_location": "Phase 12 random pruning pre-computation loop",
+  "wrong_pool_used": "All Z_NEG_2_0 residual events WITHOUT strategy signal filter (mr_sig/smr_sig)",
+  "correct_pool_required": "Strategy base signals (e.g. RSI(2)<30 for MR) AND residual_z <= -2.0 AND R\u00b2 >= 0.10",
+  "bug_detail": "z_events_pool was keyed by ('mr', 'ALL') and ('smr', 'ALL') but both contained the same pool of ALL 338 Z_NEG_2_0 events regardless of strategy signal. The sn variable was used as dict key but never applied as a signal filter.",
+  "affected_reports": [
+    "phase12_residual_optimized_random_pruning_report.json"
+  ],
+  "affected_strategies": [
+    "mean_reversion",
+    "structural_mr"
+  ],
+  "fix_required": "Apply strategy signal filter BEFORE collecting z_events. Use correct base candidate pool (strategy signals only) for baseline comparison.",
+  "status": "BUG_CONFIRMED"
+}

@@ -1,0 +1,23 @@
+{
+  "timestamp": "20260518_080438",
+  "phase8_summary": "FEATURE_FACTORY_VALIDATION_PHASE_8_SUMMARY.md",
+  "strategies": [
+    "mean_reversion",
+    "structural_mr",
+    "qullamaggie"
+  ],
+  "variants": [
+    "BASE",
+    "AVOID_D1_D3",
+    "REQUIRE_D8_D10",
+    "REQUIRE_D9_D10",
+    "REQUIRE_D10_ONLY"
+  ],
+  "reported_issues": [
+    "D9_D10 (698t) > D8_D10 (259t) violates subset property",
+    "mean_reversion AVOID_D1_D3 and structural_mr AVOID_D1_D3 both show 84t/+8.4% \u2014 suspicious",
+    "D8_D10 signal=8143 executed=259, D9_D10 signal=5634 executed=698 \u2014 inverted relationship"
+  ],
+  "status": "FROZEN_FOR_AUDIT",
+  "production_migration": "BLOCKED"
+}

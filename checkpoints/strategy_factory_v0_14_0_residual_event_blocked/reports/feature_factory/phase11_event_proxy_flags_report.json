@@ -1,0 +1,38 @@
+[
+  {
+    "flag": "large_gap_down",
+    "definition": "open_today/close_yesterday-1 <= -5%",
+    "n_events": 72,
+    "bars_checked": 25020,
+    "pct_bars": 0.29,
+    "status": "EVENT_PROXY_AVAILABLE"
+  },
+  {
+    "flag": "large_gap_up",
+    "definition": "open_today/close_yesterday-1 >= +5%",
+    "n_events": 0,
+    "status": "EVENT_PROXY_AVAILABLE (not computed in sample)"
+  },
+  {
+    "flag": "abnormal_volume_spike",
+    "definition": "volume_today/avg_volume_20d >= 3",
+    "n_events": 268,
+    "bars_checked": 25020,
+    "pct_bars": 1.1,
+    "status": "EVENT_PROXY_AVAILABLE"
+  },
+  {
+    "flag": "extreme_single_day_return",
+    "definition": "abs(return_1d) >= 5%",
+    "n_events": 402,
+    "bars_checked": 25020,
+    "pct_bars": 1.61,
+    "status": "EVENT_PROXY_AVAILABLE"
+  },
+  {
+    "flag": "extreme_range_expansion",
+    "definition": "true_range_today/avg_true_range_20d >= 2.5",
+    "n_events": 0,
+    "status": "EVENT_PROXY_AVAILABLE (not computed in sample)"
+  }
+]

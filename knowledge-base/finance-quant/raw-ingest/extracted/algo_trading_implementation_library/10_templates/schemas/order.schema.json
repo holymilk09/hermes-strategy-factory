@@ -1,0 +1,50 @@
+{
+  "title": "OrderInstruction",
+  "type": "object",
+  "required": [
+    "client_order_id",
+    "symbol",
+    "side",
+    "quantity",
+    "order_type",
+    "time_in_force"
+  ],
+  "properties": {
+    "client_order_id": {
+      "type": "string"
+    },
+    "symbol": {
+      "type": "string"
+    },
+    "side": {
+      "enum": [
+        "buy",
+        "sell"
+      ]
+    },
+    "quantity": {
+      "type": "number"
+    },
+    "order_type": {
+      "enum": [
+        "market",
+        "limit",
+        "stop",
+        "stop_limit",
+        "trailing_stop"
+      ]
+    },
+    "limit_price": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "time_in_force": {
+      "type": "string"
+    },
+    "risk_approval_id": {
+      "type": "string"
+    }
+  }
+}

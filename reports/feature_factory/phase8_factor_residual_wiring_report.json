@@ -1,0 +1,20 @@
+{
+  "requested_feature": "residual_z_20",
+  "actual_feature": "residual_z",
+  "exists_in_store": true,
+  "available_residual_features": [
+    "cumulative_residual",
+    "residual_alpha",
+    "residual_beta",
+    "residual_half_life",
+    "residual_r2",
+    "residual_return",
+    "residual_z"
+  ],
+  "alias_resolution": "residual_z_20 \u2192 residual_z",
+  "lookback": 20,
+  "lookback_in_config": true,
+  "strategy_fix_required": "Change residual_z_20 to residual_z in factor_residual_mr_strategy.py",
+  "status": "RESOLVED_STRATEGY_SHOULD_USE_RESIDUAL_Z",
+  "action": "One-line rename in strategy code"
+}

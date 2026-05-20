@@ -1,0 +1,11 @@
+{
+  "client_status": "FMP_CLIENT_READY_NO_API_CALLS",
+  "cache_status": "CACHE_DESIGNED",
+  "event_feature_schema_status": "SCHEMA_DEFINED",
+  "point_in_time_policy_status": "POLICY_DEFINED",
+  "dry_run_status": "BLOCKED_FMP_API_KEY_MISSING",
+  "final_classification": "FMP_CLIENT_READY_KEY_REQUIRED",
+  "next_allowed_step": "Add FMP_API_KEY to enable dry run and trial",
+  "production_migration_allowed": false,
+  "live_trading_allowed": false
+}

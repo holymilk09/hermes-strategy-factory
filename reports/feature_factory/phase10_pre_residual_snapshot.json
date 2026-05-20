@@ -1,0 +1,12 @@
+{
+  "timestamp": "20260518_094427",
+  "feature_factory_status": "VALIDATION_RUNNING",
+  "trend_extension_status": "REJECTED_FILTER / VALID_NEGATIVE_RESULT / ARCHIVED",
+  "alpha_graveyard_entry": "alpha_graveyard/trend_extension_reversal_filter.md",
+  "production_migration_status": "BLOCKED",
+  "live_trading_status": "BLOCKED",
+  "residual_features_available": true,
+  "sector_mapping_status": "AVAILABLE (sector_etf_map.yaml)",
+  "retail_mode_status": "CONFIGURED (retail_portfolio_constraints.yaml)",
+  "next_research_direction": "residual_reversion_set"
+}

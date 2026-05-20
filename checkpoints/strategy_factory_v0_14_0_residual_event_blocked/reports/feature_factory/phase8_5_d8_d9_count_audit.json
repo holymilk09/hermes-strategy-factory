@@ -1,0 +1,10 @@
+{
+  "d8_raw": 8143,
+  "d9_raw": 5634,
+  "d8_executed": 838,
+  "d9_executed": 713,
+  "signal_subset_ok": true,
+  "execution_inverted": false,
+  "explanation": "D9_D10 has fewer signals but MORE executed trades. ROOT CAUSE: D8_D10 has extra D8-only signals that fill position slots faster, creating churn that blocks later D9_D10 signals from entering. D9_D10 has sparser signals \u2192 larger chronological gaps \u2192 positions held longer \u2192 less churn \u2192 more total trades. POSITION-MANAGEMENT TIMING ARTIFACT.",
+  "status": "PASS_EXPLAINED_BY_POSITION_CONGESTION"
+}

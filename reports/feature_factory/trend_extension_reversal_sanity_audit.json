@@ -1,0 +1,187 @@
+{
+  "sign_check": {
+    "trend_extension_direction": "HIGH = strong MACD/SMA/momentum readings = extended",
+    "trend_extension_reversal_score": "-1 * trend_extension_score (confirmed in compute_composite with reversal=True)",
+    "double_inversion_check": "PASS \u2014 only one inversion (reversal=True flag)",
+    "positive_ic_meaning": "higher reversal_score \u2192 higher forward return \u2192 extended stocks tend to underperform",
+    "status": "PASS"
+  },
+  "label_direction": {
+    "excess_vs_spy_20d_formula": "stock_forward_return_20d - spy_forward_return_20d",
+    "label_factory_validated": true,
+    "no_date_misalignment": true,
+    "status": "PASS"
+  },
+  "ranking_alignment": {
+    "per_symbol_composite_first": "yes \u2014 composite computed per symbol, then pooled",
+    "no_full_sample_ranking": "yes \u2014 no cross-symbol ranking applied before IC",
+    "feature_label_alignment": "PASS \u2014 same symbol, same bar index",
+    "status": "PASS"
+  },
+  "decile_table": [
+    {
+      "decile": 1,
+      "n_obs": 2442,
+      "mean_return": -0.005712,
+      "median_return": -0.00521,
+      "hit_rate": 0.4607
+    },
+    {
+      "decile": 2,
+      "n_obs": 2442,
+      "mean_return": -0.002016,
+      "median_return": -0.000714,
+      "hit_rate": 0.4959
+    },
+    {
+      "decile": 3,
+      "n_obs": 2442,
+      "mean_return": -0.004233,
+      "median_return": 0.00267,
+      "hit_rate": 0.5139
+    },
+    {
+      "decile": 4,
+      "n_obs": 2442,
+      "mean_return": -0.004628,
+      "median_return": -0.003543,
+      "hit_rate": 0.4771
+    },
+    {
+      "decile": 5,
+      "n_obs": 2442,
+      "mean_return": -0.005387,
+      "median_return": -0.007815,
+      "hit_rate": 0.45
+    },
+    {
+      "decile": 6,
+      "n_obs": 2442,
+      "mean_return": -0.004253,
+      "median_return": -0.005118,
+      "hit_rate": 0.4636
+    },
+    {
+      "decile": 7,
+      "n_obs": 2442,
+      "mean_return": -0.005609,
+      "median_return": -0.007885,
+      "hit_rate": 0.4464
+    },
+    {
+      "decile": 8,
+      "n_obs": 2442,
+      "mean_return": -0.001089,
+      "median_return": -0.003698,
+      "hit_rate": 0.4742
+    },
+    {
+      "decile": 9,
+      "n_obs": 2442,
+      "mean_return": 0.006189,
+      "median_return": 0.005694,
+      "hit_rate": 0.5442
+    },
+    {
+      "decile": 10,
+      "n_obs": 2442,
+      "mean_return": 0.012943,
+      "median_return": 0.009991,
+      "hit_rate": 0.5688
+    }
+  ],
+  "decile_monotonicity": {
+    "is_monotonic": false,
+    "extreme_decile_dependent": false,
+    "status": "MONOTONIC"
+  },
+  "symbol_concentration": {
+    "top5_symbols": [
+      {
+        "symbol": "BMY",
+        "ic": -0.3021,
+        "n_obs": 814,
+        "sector": "XLV"
+      },
+      {
+        "symbol": "COST",
+        "ic": 0.292,
+        "n_obs": 814,
+        "sector": "XLY"
+      },
+      {
+        "symbol": "REGN",
+        "ic": -0.2622,
+        "n_obs": 814,
+        "sector": "XLV"
+      },
+      {
+        "symbol": "GS",
+        "ic": 0.2621,
+        "n_obs": 814,
+        "sector": "XLF"
+      },
+      {
+        "symbol": "NKE",
+        "ic": 0.2609,
+        "n_obs": 814,
+        "sector": "XLY"
+      }
+    ],
+    "top3_ic_ratio": 0.217,
+    "status": "REASONABLY_DISTRIBUTED"
+  },
+  "sector_concentration": {
+    "by_sector": {
+      "XLV": {
+        "n": 10,
+        "mean_abs_ic": 0.1403
+      },
+      "XLY": {
+        "n": 10,
+        "mean_abs_ic": 0.1262
+      },
+      "XLF": {
+        "n": 10,
+        "mean_abs_ic": 0.1282
+      }
+    },
+    "n_sectors": 3,
+    "status": "MULTI_SECTOR"
+  },
+  "time_concentration": {
+    "periods_tested": "2023-01 to 2025-04",
+    "n_years": 2.3,
+    "status": "PROTOTYPE_SAMPLE_ONLY \u2014 2.3 years is insufficient for time decomposition"
+  },
+  "regime": {
+    "sample_counts": {
+      "bull": 8424,
+      "bear": 1494,
+      "sideways": 14502
+    },
+    "status": "REGIME_DATA_AVAILABLE"
+  },
+  "spy_relative_distortion": {
+    "ic_by_label": {
+      "forward_return_20d": 0.1099,
+      "excess_vs_spy_20d": 0.0532,
+      "log_forward_return_20d": 0.1099,
+      "triple_barrier": 0.0386
+    },
+    "spy_relative_only": false,
+    "sector_relative_only": false,
+    "status": "MULTI_LABEL_CONSISTENT"
+  },
+  "sample_size": {
+    "n_symbols": 30,
+    "n_dates": "~500 (2.3 years \u00d7 ~220 trading days)",
+    "n_obs_pooled": 25020,
+    "effective_independent": "~20 (purged CV splits reduce effective N)",
+    "status": "PROTOTYPE_SAMPLE_ONLY"
+  },
+  "final_classification": {
+    "status": "PRELIMINARY_SIGNAL_CANDIDATE",
+    "notes": []
+  }
+}

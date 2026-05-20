@@ -1,0 +1,11 @@
+{
+  "checkpoint_gate_status": "CHECKPOINT_PASS",
+  "current_classification": "CONTROLLED_RESEARCH_CANDIDATE_EVENT_BLOCKED",
+  "standalone_alpha": false,
+  "filter_candidate": true,
+  "event_context_status": "INCOMPLETE",
+  "residual_fit_requirement": "GOOD_OR_ACCEPTABLE_R2",
+  "production_migration_status": "BLOCKED",
+  "live_trading_status": "BLOCKED",
+  "fmp_integration_status": "SANDBOX_EVALUATION_STARTING"
+}

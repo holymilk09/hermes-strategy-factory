@@ -1,0 +1,47 @@
+# Retail Portfolio Constraints — Phase 8 Validation
+# Realistic retail trading rules. No institutional assumptions.
+
+portfolio:
+  starting_cash: 100000
+  max_positions: 8
+  max_position_pct: 0.125
+  max_symbol_exposure_pct: 0.125
+  max_sector_exposure_pct: 0.30
+  allow_margin: false
+  allow_shorting: false
+  cash_drag_included: true
+
+position_sizing:
+  method: equal_weight_capped
+  fallback_method: fixed_fractional
+  max_new_positions_per_day: 3
+  duplicate_symbol_entries_allowed: false
+  same_symbol_cooldown_days: 10
+
+risk:
+  max_daily_loss_pct: 2.0
+  max_strategy_drawdown_pct: 10.0
+  stop_new_entries_on_drawdown: true
+  max_correlation_cluster_exposure_pct: 0.40
+
+costs:
+  commission_bps: 0
+  slippage_modes:
+    conservative_bps: 10
+    moderate_bps: 5
+    optimistic_liquid_bps: 2
+  use_spread_proxy_if_available: true
+  zero_commission_is_not_zero_cost: true
+
+execution:
+  entry_timing: next_bar_open
+  exit_timing: rule_defined
+  no_same_bar_entry_exit: true
+  no_future_bar_execution: true
+
+validation:
+  require_random_pruning_baseline: true
+  require_cost_adjustment: true
+  require_regime_segmentation: true
+  require_mae_mfe: true
+  require_opportunity_cost: true

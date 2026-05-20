@@ -1,0 +1,113 @@
+[
+  {
+    "field": "symbol",
+    "endpoint": "N/A",
+    "coverage_status": "UNKNOWN_NO_KEY",
+    "sample_values_present": false,
+    "known_at_time_risk": "UNKNOWN",
+    "usable_for_event_blocker": "UNKNOWN",
+    "notes": "API key missing \u2014 cannot inspect"
+  },
+  {
+    "field": "earnings_date",
+    "endpoint": "N/A",
+    "coverage_status": "UNKNOWN_NO_KEY",
+    "sample_values_present": false,
+    "known_at_time_risk": "UNKNOWN",
+    "usable_for_event_blocker": "UNKNOWN",
+    "notes": "API key missing \u2014 cannot inspect"
+  },
+  {
+    "field": "earnings_time",
+    "endpoint": "N/A",
+    "coverage_status": "UNKNOWN_NO_KEY",
+    "sample_values_present": false,
+    "known_at_time_risk": "UNKNOWN",
+    "usable_for_event_blocker": "UNKNOWN",
+    "notes": "API key missing \u2014 cannot inspect"
+  },
+  {
+    "field": "estimated_eps",
+    "endpoint": "N/A",
+    "coverage_status": "UNKNOWN_NO_KEY",
+    "sample_values_present": false,
+    "known_at_time_risk": "UNKNOWN",
+    "usable_for_event_blocker": "UNKNOWN",
+    "notes": "API key missing \u2014 cannot inspect"
+  },
+  {
+    "field": "actual_eps",
+    "endpoint": "N/A",
+    "coverage_status": "UNKNOWN_NO_KEY",
+    "sample_values_present": false,
+    "known_at_time_risk": "UNKNOWN",
+    "usable_for_event_blocker": "UNKNOWN",
+    "notes": "API key missing \u2014 cannot inspect"
+  },
+  {
+    "field": "eps_surprise",
+    "endpoint": "N/A",
+    "coverage_status": "UNKNOWN_NO_KEY",
+    "sample_values_present": false,
+    "known_at_time_risk": "UNKNOWN",
+    "usable_for_event_blocker": "UNKNOWN",
+    "notes": "API key missing \u2014 cannot inspect"
+  },
+  {
+    "field": "revenue_surprise",
+    "endpoint": "N/A",
+    "coverage_status": "UNKNOWN_NO_KEY",
+    "sample_values_present": false,
+    "known_at_time_risk": "UNKNOWN",
+    "usable_for_event_blocker": "UNKNOWN",
+    "notes": "API key missing \u2014 cannot inspect"
+  },
+  {
+    "field": "sector",
+    "endpoint": "N/A",
+    "coverage_status": "UNKNOWN_NO_KEY",
+    "sample_values_present": false,
+    "known_at_time_risk": "UNKNOWN",
+    "usable_for_event_blocker": "UNKNOWN",
+    "notes": "API key missing \u2014 cannot inspect"
+  },
+  {
+    "field": "industry",
+    "endpoint": "N/A",
+    "coverage_status": "UNKNOWN_NO_KEY",
+    "sample_values_present": false,
+    "known_at_time_risk": "UNKNOWN",
+    "usable_for_event_blocker": "UNKNOWN",
+    "notes": "API key missing \u2014 cannot inspect"
+  },
+  {
+    "field": "market_cap",
+    "endpoint": "N/A",
+    "coverage_status": "UNKNOWN_NO_KEY",
+    "sample_values_present": false,
+    "known_at_time_risk": "UNKNOWN",
+    "usable_for_event_blocker": "UNKNOWN",
+    "notes": "API key missing \u2014 cannot inspect"
+  },
+  {
+    "field": "analyst_rating_change",
+    "endpoint": "N/A",
+    "coverage_status": "UNKNOWN_NO_KEY",
+    "sample_values_present": false,
+    "known_at_time_risk": "UNKNOWN",
+    "usable_for_event_blocker": "UNKNOWN",
+    "notes": "API key missing \u2014 cannot inspect"
+  },
+  {
+    "field": "news_timestamp",
+    "endpoint": "N/A",
+    "coverage_status": "UNKNOWN_NO_KEY",
+    "sample_values_present": false,
+    "known_at_time_risk": "UNKNOWN",
+    "usable_for_event_blocker": "UNKNOWN",
+    "notes": "API key missing \u2014 cannot inspect"
+  },
+  {
+    "notes": "OVERALL: BLOCKED_FMP_API_KEY_MISSING"
+  }
+]

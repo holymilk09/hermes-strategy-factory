@@ -1,0 +1,86 @@
+{
+  "trend_extension_set": {
+    "available_features": 6,
+    "total_features_in_set": 8,
+    "composite_methods_tested": [
+      "rank_average",
+      "equal_weight",
+      "negative_ic_reversal"
+    ],
+    "best_method": "rank_average",
+    "avg_abs_ic": 0.0314,
+    "status": "FEATURE_SET_EVALUATED"
+  },
+  "mean_reversion_set": {
+    "available_features": 10,
+    "total_features_in_set": 10,
+    "composite_methods_tested": [
+      "rank_average",
+      "equal_weight",
+      "negative_ic_reversal"
+    ],
+    "best_method": "rank_average",
+    "avg_abs_ic": 0.02,
+    "status": "FEATURE_SET_EVALUATED"
+  },
+  "volatility_compression_set": {
+    "available_features": 6,
+    "total_features_in_set": 6,
+    "composite_methods_tested": [
+      "rank_average",
+      "equal_weight",
+      "negative_ic_reversal"
+    ],
+    "best_method": "rank_average",
+    "avg_abs_ic": 0.0322,
+    "status": "FEATURE_SET_EVALUATED"
+  },
+  "residual_reversion_set": {
+    "available_features": 6,
+    "total_features_in_set": 6,
+    "composite_methods_tested": [
+      "rank_average",
+      "equal_weight",
+      "negative_ic_reversal"
+    ],
+    "best_method": "rank_average",
+    "avg_abs_ic": 0.036,
+    "status": "FEATURE_SET_EVALUATED"
+  },
+  "liquidity_stress_set": {
+    "available_features": 8,
+    "total_features_in_set": 8,
+    "composite_methods_tested": [
+      "rank_average",
+      "equal_weight",
+      "negative_ic_reversal"
+    ],
+    "best_method": "rank_average",
+    "avg_abs_ic": 0.0176,
+    "status": "FEATURE_SET_EVALUATED"
+  },
+  "regime_filter_set": {
+    "available_features": 8,
+    "total_features_in_set": 8,
+    "composite_methods_tested": [
+      "rank_average",
+      "equal_weight",
+      "negative_ic_reversal"
+    ],
+    "best_method": "rank_average",
+    "avg_abs_ic": 0.0302,
+    "status": "FEATURE_SET_EVALUATED"
+  },
+  "qullamaggie_watchlist_set": {
+    "available_features": 9,
+    "total_features_in_set": 9,
+    "composite_methods_tested": [
+      "rank_average",
+      "equal_weight",
+      "negative_ic_reversal"
+    ],
+    "best_method": "rank_average",
+    "avg_abs_ic": 0.0332,
+    "status": "FEATURE_SET_EVALUATED"
+  }
+}

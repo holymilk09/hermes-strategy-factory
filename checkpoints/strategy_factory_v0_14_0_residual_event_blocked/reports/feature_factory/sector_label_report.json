@@ -1,0 +1,20 @@
+{
+  "sector_labels_generated": 76,
+  "symbols_with_sector_labels": 76,
+  "symbols_missing_sector": 0,
+  "sector_etfs_used": [
+    "XLK",
+    "XLF",
+    "XLV",
+    "XLI",
+    "XLY",
+    "XLP",
+    "XLE",
+    "XLB",
+    "XLRE",
+    "SPY"
+  ],
+  "blocked_labels": [],
+  "fallbacks_used": "None \u2014 explicit sector ETF mapping via sector_etf_map.yaml",
+  "status": "SECTOR_LABELS_OPERATIONAL"
+}

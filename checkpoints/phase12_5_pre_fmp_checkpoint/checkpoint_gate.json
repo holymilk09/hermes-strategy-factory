@@ -1,0 +1,13 @@
+{
+  "checkpoint_directory_exists": true,
+  "config_manifest_exists": true,
+  "report_manifest_exists": true,
+  "alpha_graveyard_snapshot_exists": true,
+  "residual_state_exists": true,
+  "cache_manifest_exists": true,
+  "backtest_state_exists": true,
+  "checkpoint_index_exists": true,
+  "production_migration_blocked": true,
+  "live_trading_blocked": true,
+  "gate_status": "CHECKPOINT_PASS"
+}

@@ -1,0 +1,27 @@
+{
+  "decision": "BACKTRADER_ALLOWED_FOR_QUALIFYING_VARIANTS",
+  "allowed_strategies": [
+    "mean_reversion",
+    "structural_mr"
+  ],
+  "allowed_variants": [
+    [
+      "mean_reversion",
+      "D8_D10"
+    ],
+    [
+      "structural_mr",
+      "D8_D10"
+    ]
+  ],
+  "blocked_strategies": [
+    "qullamaggie",
+    "momentum_swing",
+    "ml_enhanced",
+    "factor_residual_mr"
+  ],
+  "phase8_bug_correction": "Phase 8 structural_mr rejection was caused by a simulation bug (likely shared state or timing issue). Fresh audit shows D8_D10 IMPROVES structural_mr (pf 1.64 vs 0.82). Corrected.",
+  "phase8_d8d9_bug": "Phase 8 reported D9_D10(698t) > D8_D10(259t). Fresh audit shows D9_D10(713t) < D8_D10(838t) \u2014 proper subset relationship. Phase 8 numbers were a bug.",
+  "production_migration_status": "BLOCKED",
+  "live_trading_status": "BLOCKED"
+}

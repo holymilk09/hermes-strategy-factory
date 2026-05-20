@@ -1,0 +1,24 @@
+{
+  "feature_set": "trend_extension_reversal_set",
+  "phase_5_classification": "PRELIMINARY_AVOID_CHASING_FILTER",
+  "previous_classification": "PRELIMINARY_SIGNAL_CANDIDATE",
+  "downgrade_reason": "Full 76-stock universe shows D10-D1 pooled spread of -0.19% (effectively zero). Standalone decile ranking FAILS. Signal only survives as hit-rate-improving filter within specific strategy contexts (MR +0.58%, structural MR +0.71%).",
+  "threshold_type": "EXTREME_THRESHOLD_SIGNAL",
+  "not_monotonic": true,
+  "survives_as": [
+    "hit-rate filter in MR strategies",
+    "entry-timing conditioner in structural MR"
+  ],
+  "permitted_uses": [
+    "long-entry filter (avoid D1-D3 in MR contexts)",
+    "hit-rate improver (D8-D10 preference)",
+    "avoid-chasing filter"
+  ],
+  "forbidden_uses": [
+    "standalone long/short alpha",
+    "decile ranking factor",
+    "automatic short signal",
+    "live trading signal"
+  ],
+  "backtest_integration": "BLOCKED \u2014 fails standalone validation, survives only as conditional filter"
+}

@@ -1,0 +1,173 @@
+[
+  {
+    "file": "FEATURE_FACTORY_VALIDATION_PHASE_4_SUMMARY.md",
+    "exists": true,
+    "source_path": "/opt/data/reports/feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_4_SUMMARY.md",
+    "checkpoint_path": "/opt/data/checkpoints/phase12_5_pre_fmp_checkpoint/reports/FEATURE_FACTORY_VALIDATION_PHASE_4_SUMMARY.md",
+    "sha256": "c59dcd758d599bbfe6d94c5a0e67e02b104b524dcb7fee3608ce056b7e2d5da6",
+    "phase": "FEATURE",
+    "decision_relevance": "critical"
+  },
+  {
+    "file": "FEATURE_FACTORY_VALIDATION_PHASE_4_5_SUMMARY.md",
+    "exists": true,
+    "source_path": "/opt/data/reports/feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_4_5_SUMMARY.md",
+    "checkpoint_path": "/opt/data/checkpoints/phase12_5_pre_fmp_checkpoint/reports/FEATURE_FACTORY_VALIDATION_PHASE_4_5_SUMMARY.md",
+    "sha256": "54474d15c63da13a70bbc4bc42a96b9a5190350380feb807e691060059712dbe",
+    "phase": "FEATURE",
+    "decision_relevance": "critical"
+  },
+  {
+    "file": "FEATURE_FACTORY_VALIDATION_PHASE_5_SUMMARY.md",
+    "exists": true,
+    "source_path": "/opt/data/reports/feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_5_SUMMARY.md",
+    "checkpoint_path": "/opt/data/checkpoints/phase12_5_pre_fmp_checkpoint/reports/FEATURE_FACTORY_VALIDATION_PHASE_5_SUMMARY.md",
+    "sha256": "188e0e17dc8902b3d5b1a9ab4a3bea9e3593dbd006270cdfb654a0fc81073790",
+    "phase": "FEATURE",
+    "decision_relevance": "critical"
+  },
+  {
+    "file": "FEATURE_FACTORY_VALIDATION_PHASE_6_SUMMARY.md",
+    "exists": true,
+    "source_path": "/opt/data/reports/feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_6_SUMMARY.md",
+    "checkpoint_path": "/opt/data/checkpoints/phase12_5_pre_fmp_checkpoint/reports/FEATURE_FACTORY_VALIDATION_PHASE_6_SUMMARY.md",
+    "sha256": "b781c3a406bd5a810be08f38251535989f4745f0f02be79d6f1baf0fefc6fde5",
+    "phase": "FEATURE",
+    "decision_relevance": "critical"
+  },
+  {
+    "file": "FEATURE_FACTORY_VALIDATION_PHASE_7_SUMMARY.md",
+    "exists": true,
+    "source_path": "/opt/data/reports/feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_7_SUMMARY.md",
+    "checkpoint_path": "/opt/data/checkpoints/phase12_5_pre_fmp_checkpoint/reports/FEATURE_FACTORY_VALIDATION_PHASE_7_SUMMARY.md",
+    "sha256": "5fce56f92c12c491afe4914d2f7095464d71b443cdc00d6d5b45aa6b0f93cc31",
+    "phase": "FEATURE",
+    "decision_relevance": "critical"
+  },
+  {
+    "file": "FEATURE_FACTORY_VALIDATION_PHASE_8_SUMMARY.md",
+    "exists": true,
+    "source_path": "/opt/data/reports/feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_8_SUMMARY.md",
+    "checkpoint_path": "/opt/data/checkpoints/phase12_5_pre_fmp_checkpoint/reports/FEATURE_FACTORY_VALIDATION_PHASE_8_SUMMARY.md",
+    "sha256": "fe4253c27a29d85f54772a6dd61dbe2f1e2beccf4a27356a16840991edc3bf2a",
+    "phase": "FEATURE",
+    "decision_relevance": "critical"
+  },
+  {
+    "file": "FEATURE_FACTORY_VALIDATION_PHASE_8_5_SUMMARY.md",
+    "exists": true,
+    "source_path": "/opt/data/reports/feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_8_5_SUMMARY.md",
+    "checkpoint_path": "/opt/data/checkpoints/phase12_5_pre_fmp_checkpoint/reports/FEATURE_FACTORY_VALIDATION_PHASE_8_5_SUMMARY.md",
+    "sha256": "f1a843f3488192161db4401ec775604f8ca639c3fdfb0842801df3186339f20f",
+    "phase": "FEATURE",
+    "decision_relevance": "critical"
+  },
+  {
+    "file": "FEATURE_FACTORY_VALIDATION_PHASE_9_SUMMARY.md",
+    "exists": true,
+    "source_path": "/opt/data/reports/feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_9_SUMMARY.md",
+    "checkpoint_path": "/opt/data/checkpoints/phase12_5_pre_fmp_checkpoint/reports/FEATURE_FACTORY_VALIDATION_PHASE_9_SUMMARY.md",
+    "sha256": "6f95d85687b78432cdeb98d4fb4590ef6e202e48fd9a2e3c05ae7e669b2eeb91",
+    "phase": "FEATURE",
+    "decision_relevance": "critical"
+  },
+  {
+    "file": "FEATURE_FACTORY_VALIDATION_PHASE_10_SUMMARY.md",
+    "exists": true,
+    "source_path": "/opt/data/reports/feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_10_SUMMARY.md",
+    "checkpoint_path": "/opt/data/checkpoints/phase12_5_pre_fmp_checkpoint/reports/FEATURE_FACTORY_VALIDATION_PHASE_10_SUMMARY.md",
+    "sha256": "5c9919960b6b9a61ed02cd8adb017d9265dab3e22486e38b511f23586fd554be",
+    "phase": "FEATURE",
+    "decision_relevance": "critical"
+  },
+  {
+    "file": "FEATURE_FACTORY_VALIDATION_PHASE_11_SUMMARY.md",
+    "exists": true,
+    "source_path": "/opt/data/reports/feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_11_SUMMARY.md",
+    "checkpoint_path": "/opt/data/checkpoints/phase12_5_pre_fmp_checkpoint/reports/FEATURE_FACTORY_VALIDATION_PHASE_11_SUMMARY.md",
+    "sha256": "2d86efc904ca661b934166d77b4506eb3b9784985cf8d75c47175285802b9e46",
+    "phase": "FEATURE",
+    "decision_relevance": "critical"
+  },
+  {
+    "file": "PHASE_11_5_RESIDUAL_DIAGNOSTIC_PACKET.md",
+    "exists": true,
+    "source_path": "/opt/data/reports/feature_factory/PHASE_11_5_RESIDUAL_DIAGNOSTIC_PACKET.md",
+    "checkpoint_path": "/opt/data/checkpoints/phase12_5_pre_fmp_checkpoint/reports/PHASE_11_5_RESIDUAL_DIAGNOSTIC_PACKET.md",
+    "sha256": "301c04f320771149de94481553e34fa33f5e1bc14d472f63daea3410a6060e6e",
+    "phase": "PHASE",
+    "decision_relevance": "supporting"
+  },
+  {
+    "file": "FEATURE_FACTORY_VALIDATION_PHASE_12_SUMMARY.md",
+    "exists": true,
+    "source_path": "/opt/data/reports/feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_12_SUMMARY.md",
+    "checkpoint_path": "/opt/data/checkpoints/phase12_5_pre_fmp_checkpoint/reports/FEATURE_FACTORY_VALIDATION_PHASE_12_SUMMARY.md",
+    "sha256": "d17773387bfe9c5ef347b53bf89879cd6158ea3aa04a0eb61d4a57c0c0d10713",
+    "phase": "FEATURE",
+    "decision_relevance": "critical"
+  },
+  {
+    "file": "FEATURE_FACTORY_VALIDATION_PHASE_12_5_SUMMARY.md",
+    "exists": true,
+    "source_path": "/opt/data/reports/feature_factory/FEATURE_FACTORY_VALIDATION_PHASE_12_5_SUMMARY.md",
+    "checkpoint_path": "/opt/data/checkpoints/phase12_5_pre_fmp_checkpoint/reports/FEATURE_FACTORY_VALIDATION_PHASE_12_5_SUMMARY.md",
+    "sha256": "ab7224c61d639dc44d53ab573add382bc16e1bae90fa8a61ea3d6447cb24c85d",
+    "phase": "FEATURE",
+    "decision_relevance": "critical"
+  },
+  {
+    "file": "phase12_5_residual_decision_gate.json",
+    "exists": true,
+    "source_path": "/opt/data/reports/feature_factory/phase12_5_residual_decision_gate.json",
+    "checkpoint_path": "/opt/data/checkpoints/phase12_5_pre_fmp_checkpoint/reports/phase12_5_residual_decision_gate.json",
+    "sha256": "cc8cd672c3e8739c21533cb855cfadc3409b73aa0f6451f8ddff3c504d8fe3d7",
+    "phase": "phase12",
+    "decision_relevance": "critical"
+  },
+  {
+    "file": "phase12_5_strategy_conditioned_random_pruning_report.json",
+    "exists": true,
+    "source_path": "/opt/data/reports/feature_factory/phase12_5_strategy_conditioned_random_pruning_report.json",
+    "checkpoint_path": "/opt/data/checkpoints/phase12_5_pre_fmp_checkpoint/reports/phase12_5_strategy_conditioned_random_pruning_report.json",
+    "sha256": "154cc03ab48eb5c471f83cb8df218f1e15be25cc74bf926c4879c513c823dee1",
+    "phase": "phase12",
+    "decision_relevance": "supporting"
+  },
+  {
+    "file": "phase12_5_residual_portfolio_random_pruning_report.json",
+    "exists": true,
+    "source_path": "/opt/data/reports/feature_factory/phase12_5_residual_portfolio_random_pruning_report.json",
+    "checkpoint_path": "/opt/data/checkpoints/phase12_5_pre_fmp_checkpoint/reports/phase12_5_residual_portfolio_random_pruning_report.json",
+    "sha256": "ee2ef44258dc43aa5e04087754b7f612e9d01d531e9c7f1f17004a1796cd2918",
+    "phase": "phase12",
+    "decision_relevance": "supporting"
+  },
+  {
+    "file": "phase12_residual_model_quality_recomputed.json",
+    "exists": true,
+    "source_path": "/opt/data/reports/feature_factory/phase12_residual_model_quality_recomputed.json",
+    "checkpoint_path": "/opt/data/checkpoints/phase12_5_pre_fmp_checkpoint/reports/phase12_residual_model_quality_recomputed.json",
+    "sha256": "e5a82298e2f4bb802553cf012ce424fc2baa3b7dc81a00315d5eb8c6f5d23a59",
+    "phase": "phase12",
+    "decision_relevance": "supporting"
+  },
+  {
+    "file": "phase12_residual_model_quality_summary.md",
+    "exists": true,
+    "source_path": "/opt/data/reports/feature_factory/phase12_residual_model_quality_summary.md",
+    "checkpoint_path": "/opt/data/checkpoints/phase12_5_pre_fmp_checkpoint/reports/phase12_residual_model_quality_summary.md",
+    "sha256": "74f2e417b8461f075746cd88e4335e862c20080c3abed0463d0569b169613956",
+    "phase": "phase12",
+    "decision_relevance": "supporting"
+  },
+  {
+    "file": "phase12_event_context_gate_status.json",
+    "exists": false,
+    "source_path": "/opt/data/reports/feature_factory/phase12_event_context_gate_status.json",
+    "checkpoint_path": "/opt/data/checkpoints/phase12_5_pre_fmp_checkpoint/reports/phase12_event_context_gate_status.json",
+    "sha256": null,
+    "phase": "phase12",
+    "decision_relevance": "supporting"
+  }
+]

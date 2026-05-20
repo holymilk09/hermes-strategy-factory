@@ -1,0 +1,8 @@
+{
+  "symbols_total": 76,
+  "symbols_full_coverage": 0,
+  "symbols_partial_coverage": 0,
+  "symbols_missing_critical_fields": 76,
+  "coverage_pct": 0.0,
+  "status": "BLOCKED_FMP_API_KEY_MISSING"
+}

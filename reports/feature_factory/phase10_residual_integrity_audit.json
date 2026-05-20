@@ -1,0 +1,58 @@
+[
+  {
+    "feature": "residual_z",
+    "exists_in_features": true,
+    "symbols_with_feature": 76,
+    "nan_rate": 1.0,
+    "point_in_time_safe": true,
+    "status": "WARN_HIGH_NAN_EXPECTED_WARMUP"
+  },
+  {
+    "feature": "residual_beta",
+    "exists_in_features": true,
+    "symbols_with_feature": 76,
+    "nan_rate": 1.0,
+    "point_in_time_safe": true,
+    "status": "WARN_HIGH_NAN_EXPECTED_WARMUP"
+  },
+  {
+    "feature": "residual_alpha",
+    "exists_in_features": true,
+    "symbols_with_feature": 76,
+    "nan_rate": 1.0,
+    "point_in_time_safe": true,
+    "status": "WARN_HIGH_NAN_EXPECTED_WARMUP"
+  },
+  {
+    "feature": "cumulative_residual",
+    "exists_in_features": true,
+    "symbols_with_feature": 76,
+    "nan_rate": 1.0,
+    "point_in_time_safe": true,
+    "status": "WARN_HIGH_NAN_EXPECTED_WARMUP"
+  },
+  {
+    "feature": "residual_half_life",
+    "exists_in_features": true,
+    "symbols_with_feature": 76,
+    "nan_rate": 1.0,
+    "point_in_time_safe": true,
+    "status": "WARN_HIGH_NAN_EXPECTED_WARMUP"
+  },
+  {
+    "feature": "residual_r2",
+    "exists_in_features": true,
+    "symbols_with_feature": 76,
+    "nan_rate": 1.0,
+    "point_in_time_safe": true,
+    "status": "WARN_HIGH_NAN_EXPECTED_WARMUP"
+  },
+  {
+    "feature": "residual_return",
+    "exists_in_features": true,
+    "symbols_with_feature": 76,
+    "nan_rate": 1.0,
+    "point_in_time_safe": true,
+    "status": "WARN_HIGH_NAN_EXPECTED_WARMUP"
+  }
+]

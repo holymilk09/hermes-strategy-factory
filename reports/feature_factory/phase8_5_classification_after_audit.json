@@ -1,0 +1,82 @@
+[
+  {
+    "strategy": "mean_reversion",
+    "variant": "D8_D10",
+    "old": "may be REJECTED",
+    "final": "PROVISIONAL_CONTROLLED_RESEARCH_CANDIDATE_PENDING_RISK_CONSTRAINTS",
+    "reason": "pf=1.20 vs BASE=0.55, cash=$130.6k vs $49.9k. Strong improvement. 838 trades.",
+    "BT": true
+  },
+  {
+    "strategy": "mean_reversion",
+    "variant": "D9_D10",
+    "old": "may be REJECTED",
+    "final": "WEAK_FILTER",
+    "reason": "pf=0.78 vs BASE=0.55, improvement but weaker than D8_D10. 713 trades.",
+    "BT": false
+  },
+  {
+    "strategy": "mean_reversion",
+    "variant": "D10_ONLY",
+    "old": "may be REJECTED",
+    "final": "WEAK_FILTER",
+    "reason": "pf=0.78 vs BASE=0.55, improvement. 517 trades. Weaker than D8_D10.",
+    "BT": false
+  },
+  {
+    "strategy": "mean_reversion",
+    "variant": "AVOID_D1_D3",
+    "old": "may be REJECTED",
+    "final": "WEAK_FILTER",
+    "reason": "pf=0.68 vs BASE=0.55, marginal improvement. 921 trades.",
+    "BT": false
+  },
+  {
+    "strategy": "structural_mr",
+    "variant": "D8_D10",
+    "old": "REJECTED (Phase 8)",
+    "final": "PROVISIONAL_CONTROLLED_RESEARCH_CANDIDATE_PENDING_RISK_CONSTRAINTS",
+    "reason": "pf=1.64 vs BASE=0.82, cash=$201.2k vs $72.4k. STRONGEST improvement of any variant. Phase 8 rejection was bug. 547 trades.",
+    "BT": true
+  },
+  {
+    "strategy": "structural_mr",
+    "variant": "AVOID_D1_D3",
+    "old": "REJECTED (Phase 8)",
+    "final": "WEAK_FILTER",
+    "reason": "pf=1.22 vs BASE=0.82, improves. 767 trades. Phase 8 rejection corrected.",
+    "BT": false
+  },
+  {
+    "strategy": "structural_mr",
+    "variant": "D9_D10",
+    "old": "REJECTED (Phase 8)",
+    "final": "WEAK_FILTER",
+    "reason": "pf=0.77 vs BASE=0.82 \u2014 slightly worse. 432 trades. Keep unfiltered.",
+    "BT": false
+  },
+  {
+    "strategy": "structural_mr",
+    "variant": "D10_ONLY",
+    "old": "REJECTED (Phase 8)",
+    "final": "WEAK_FILTER",
+    "reason": "pf=0.67 vs BASE=0.82 \u2014 worse. 272 trades. Keep unfiltered.",
+    "BT": false
+  },
+  {
+    "strategy": "qullamaggie",
+    "variant": "AVOID_D1_D3",
+    "old": "HIT_RATE_ONLY",
+    "final": "WEAK_FILTER",
+    "reason": "pf=0.72 vs BASE=0.56, marginal improvement. 836 trades.",
+    "BT": false
+  },
+  {
+    "strategy": "qullamaggie",
+    "variant": "D8_D10",
+    "old": "SAMPLE_BLOCKED",
+    "final": "SAMPLE_BLOCKED_FILTER",
+    "reason": "37 trades. pf=1.77 promising but insufficient sample.",
+    "BT": false
+  }
+]

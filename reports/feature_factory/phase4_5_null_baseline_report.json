@@ -1,0 +1,28 @@
+{
+  "shuffled_label": {
+    "actual_ic": 0.0532,
+    "p50": 0.004964908824274954,
+    "p95": 0.013536624586973793,
+    "p99": 0.016608927787550028,
+    "actual_vs_p95": true,
+    "status": "BASELINE_PASSED"
+  },
+  "random_feature": {
+    "actual_ic": 0.0532,
+    "random_ic": 0.0042,
+    "status": "BASELINE_FAILED"
+  },
+  "turnover_matched": {
+    "random_mean_abs_ic": 0.0935,
+    "status": "NO_EDGE_VS_TURNOVER_MATCHED_RANDOM"
+  },
+  "random_rank": {
+    "status": "BASELINE_FRAMEWORK_READY \u2014 cross-sectional rank baaeline template"
+  },
+  "sector_neutral": {
+    "status": "BASELINE_FRAMEWORK_READY \u2014 requires sector-adjusted label"
+  },
+  "sign_randomized": {
+    "status": "BASELINE_FRAMEWORK_READY \u2014 sign randomization baseline template"
+  }
+}

@@ -1,0 +1,122 @@
+[
+  {
+    "strategy": "mean_reversion",
+    "variant": "AVOID_D1_D3",
+    "actual_return_pct": -39.79,
+    "baseline_p50": 2.04,
+    "baseline_p95": 2.28,
+    "baseline_p99": 2.36,
+    "actual_vs_p95": false,
+    "n_perms": 500,
+    "status": "FAILS_RANDOM_PRUNING"
+  },
+  {
+    "strategy": "mean_reversion",
+    "variant": "REQUIRE_D8_D10",
+    "actual_return_pct": 203.08,
+    "baseline_p50": 2.04,
+    "baseline_p95": 2.71,
+    "baseline_p99": 3.07,
+    "actual_vs_p95": true,
+    "n_perms": 500,
+    "status": "BEATS_RANDOM_PRUNING"
+  },
+  {
+    "strategy": "mean_reversion",
+    "variant": "REQUIRE_D9_D10",
+    "actual_return_pct": 17.95,
+    "baseline_p50": 2.04,
+    "baseline_p95": 2.87,
+    "baseline_p99": 3.25,
+    "actual_vs_p95": true,
+    "n_perms": 500,
+    "status": "BEATS_RANDOM_PRUNING"
+  },
+  {
+    "strategy": "mean_reversion",
+    "variant": "REQUIRE_D10_ONLY",
+    "actual_return_pct": 4.08,
+    "baseline_p50": 1.96,
+    "baseline_p95": 3.41,
+    "baseline_p99": 4.17,
+    "actual_vs_p95": true,
+    "n_perms": 500,
+    "status": "BEATS_RANDOM_PRUNING"
+  },
+  {
+    "strategy": "structural_mr",
+    "variant": "AVOID_D1_D3",
+    "actual_return_pct": -45.98,
+    "baseline_p50": 1.32,
+    "baseline_p95": 1.93,
+    "baseline_p99": 2.03,
+    "actual_vs_p95": false,
+    "n_perms": 500,
+    "status": "FAILS_RANDOM_PRUNING"
+  },
+  {
+    "strategy": "structural_mr",
+    "variant": "REQUIRE_D8_D10",
+    "actual_return_pct": 177.7,
+    "baseline_p50": 1.29,
+    "baseline_p95": 2.69,
+    "baseline_p99": 3.34,
+    "actual_vs_p95": true,
+    "n_perms": 500,
+    "status": "BEATS_RANDOM_PRUNING"
+  },
+  {
+    "strategy": "structural_mr",
+    "variant": "REQUIRE_D9_D10",
+    "actual_return_pct": 12.22,
+    "baseline_p50": 1.16,
+    "baseline_p95": 3.14,
+    "baseline_p99": 3.92,
+    "actual_vs_p95": true,
+    "n_perms": 500,
+    "status": "BEATS_RANDOM_PRUNING"
+  },
+  {
+    "strategy": "structural_mr",
+    "variant": "REQUIRE_D10_ONLY",
+    "actual_return_pct": 8.61,
+    "baseline_p50": 1.13,
+    "baseline_p95": 4.47,
+    "baseline_p99": 5.34,
+    "actual_vs_p95": true,
+    "n_perms": 500,
+    "status": "BEATS_RANDOM_PRUNING"
+  },
+  {
+    "strategy": "qullamaggie",
+    "variant": "AVOID_D1_D3",
+    "actual_return_pct": 17.81,
+    "baseline_p50": 1.36,
+    "baseline_p95": 1.72,
+    "baseline_p99": 1.89,
+    "actual_vs_p95": true,
+    "n_perms": 500,
+    "status": "BEATS_RANDOM_PRUNING"
+  },
+  {
+    "strategy": "qullamaggie",
+    "variant": "REQUIRE_D8_D10",
+    "actual_return_pct": 30.75,
+    "baseline_p50": 0.79,
+    "baseline_p95": 6.76,
+    "baseline_p99": 11.84,
+    "actual_vs_p95": true,
+    "n_perms": 500,
+    "status": "BEATS_RANDOM_PRUNING"
+  },
+  {
+    "strategy": "qullamaggie",
+    "variant": "REQUIRE_D9_D10",
+    "status": "BLOCKED_INSUFFICIENT_TRADES"
+  },
+  {
+    "strategy": "qullamaggie",
+    "variant": "REQUIRE_D10_ONLY",
+    "status": "BLOCKED_INSUFFICIENT_TRADES"
+  }
+]

@@ -1,0 +1,19 @@
+{
+  "method": "regime_score segmentation (0-3 scale)",
+  "segments": {
+    "bull": {
+      "count": 413,
+      "threshold": "> 2"
+    },
+    "bear": {
+      "count": 43,
+      "threshold": "< 1"
+    },
+    "sideways": {
+      "count": 378,
+      "threshold": "1-2"
+    }
+  },
+  "note": "Full regime segmentation requires multi-factor regime score. Current implementation uses composite regime_score.",
+  "status": "REGIME_ANALYSIS_FRAMEWORK_READY"
+}

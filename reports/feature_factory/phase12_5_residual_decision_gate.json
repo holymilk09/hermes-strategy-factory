@@ -1,0 +1,57 @@
+{
+  "strategy_conditioned_random": [
+    {
+      "strategy": "mean_reversion",
+      "fit": "ALL",
+      "n": 196,
+      "actual": 2.581,
+      "p95": 10.489,
+      "status": "BORDERLINE"
+    },
+    {
+      "strategy": "mean_reversion",
+      "fit": "GOOD",
+      "n": 188,
+      "actual": 2.647,
+      "p95": 2.208,
+      "status": "BEATS_STRATEGY_RANDOM"
+    },
+    {
+      "strategy": "structural_mr",
+      "fit": "ALL",
+      "n": 71,
+      "actual": 3.187,
+      "p95": 10.62,
+      "status": "BORDERLINE"
+    },
+    {
+      "strategy": "structural_mr",
+      "fit": "GOOD",
+      "n": 67,
+      "actual": 3.261,
+      "p95": 1.407,
+      "status": "BEATS_STRATEGY_RANDOM"
+    }
+  ],
+  "portfolio_random": [
+    {
+      "strategy": "mean_reversion",
+      "fit": "GOOD",
+      "pf": 1.93,
+      "p95_pf": 1.66,
+      "status": "BEATS_PORTFOLIO_RANDOM"
+    },
+    {
+      "strategy": "structural_mr",
+      "fit": "GOOD",
+      "pf": 2.19,
+      "p95_pf": 1.26,
+      "status": "BEATS_PORTFOLIO_RANDOM"
+    }
+  ],
+  "final_classification": "CONTROLLED_RESEARCH_CANDIDATE_EVENT_BLOCKED",
+  "fmp_decision": "ADD_FMP_NEXT_FOR_EVENT_BLOCKER",
+  "next_allowed_step": "FMP evaluation + integration plan (Phase 13)",
+  "production_migration_allowed": false,
+  "live_trading_allowed": false
+}

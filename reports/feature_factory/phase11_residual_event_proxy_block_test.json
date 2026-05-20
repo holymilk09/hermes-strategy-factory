@@ -1,0 +1,92 @@
+[
+  {
+    "variant": "Z_NEG_2_0",
+    "block": "raw",
+    "n_events": 338,
+    "mean_return_pct": 2.4868,
+    "hit_rate": 0.571,
+    "n_reduction_pct": 0.0,
+    "status": "EVENT_PROXY_IMPROVES_SIGNAL"
+  },
+  {
+    "variant": "Z_NEG_2_0",
+    "block": "no_gap_down",
+    "n_events": 333,
+    "mean_return_pct": 2.4268,
+    "hit_rate": 0.5706,
+    "n_reduction_pct": 1.5,
+    "status": "EVENT_PROXY_IMPROVES_SIGNAL"
+  },
+  {
+    "variant": "Z_NEG_2_0",
+    "block": "no_vol_spike",
+    "n_events": 330,
+    "mean_return_pct": 2.4849,
+    "hit_rate": 0.5697,
+    "n_reduction_pct": 2.4,
+    "status": "EVENT_PROXY_IMPROVES_SIGNAL"
+  },
+  {
+    "variant": "Z_NEG_2_0",
+    "block": "no_extreme_ret",
+    "n_events": 326,
+    "mean_return_pct": 2.2953,
+    "hit_rate": 0.5675,
+    "n_reduction_pct": 3.6,
+    "status": "EVENT_PROXY_IMPROVES_SIGNAL"
+  },
+  {
+    "variant": "Z_NEG_2_0",
+    "block": "no_any_event",
+    "n_events": 320,
+    "mean_return_pct": 2.2365,
+    "hit_rate": 0.5687,
+    "n_reduction_pct": 5.3,
+    "status": "EVENT_PROXY_IMPROVES_SIGNAL"
+  },
+  {
+    "variant": "Z_NEG_2_5",
+    "block": "raw",
+    "n_events": 51,
+    "mean_return_pct": 5.235,
+    "hit_rate": 0.8039,
+    "n_reduction_pct": 0.0,
+    "status": "EVENT_PROXY_IMPROVES_SIGNAL"
+  },
+  {
+    "variant": "Z_NEG_2_5",
+    "block": "no_gap_down",
+    "n_events": 51,
+    "mean_return_pct": 5.235,
+    "hit_rate": 0.8039,
+    "n_reduction_pct": 0.0,
+    "status": "EVENT_PROXY_IMPROVES_SIGNAL"
+  },
+  {
+    "variant": "Z_NEG_2_5",
+    "block": "no_vol_spike",
+    "n_events": 50,
+    "mean_return_pct": 5.1856,
+    "hit_rate": 0.8,
+    "n_reduction_pct": 2.0,
+    "status": "EVENT_PROXY_IMPROVES_SIGNAL"
+  },
+  {
+    "variant": "Z_NEG_2_5",
+    "block": "no_extreme_ret",
+    "n_events": 51,
+    "mean_return_pct": 5.235,
+    "hit_rate": 0.8039,
+    "n_reduction_pct": 0.0,
+    "status": "EVENT_PROXY_IMPROVES_SIGNAL"
+  },
+  {
+    "variant": "Z_NEG_2_5",
+    "block": "no_any_event",
+    "n_events": 50,
+    "mean_return_pct": 5.1856,
+    "hit_rate": 0.8,
+    "n_reduction_pct": 2.0,
+    "status": "EVENT_PROXY_IMPROVES_SIGNAL"
+  }
+]

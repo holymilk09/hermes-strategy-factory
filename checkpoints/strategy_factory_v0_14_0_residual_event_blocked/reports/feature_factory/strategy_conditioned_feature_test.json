@@ -1,0 +1,250 @@
+[
+  {
+    "strategy_name": "qullamaggie_watchlist",
+    "filter_variant": "BASE",
+    "n_events": 21460,
+    "mean_forward_return": 0.013631,
+    "hit_rate": 0.5121,
+    "status": "FILTER_DOES_NOT_IMPROVE",
+    "improvement_vs_base": 0.0
+  },
+  {
+    "strategy_name": "qullamaggie_watchlist",
+    "filter_variant": "Avoid D1-D3",
+    "n_events": 6733,
+    "mean_forward_return": 0.018603,
+    "hit_rate": 0.5467,
+    "status": "FILTER_IMPROVES_SETUP",
+    "improvement_vs_base": 0.004972
+  },
+  {
+    "strategy_name": "qullamaggie_watchlist",
+    "filter_variant": "Require D8-D10",
+    "n_events": 51,
+    "mean_forward_return": 0.017378,
+    "hit_rate": 0.6667,
+    "status": "FILTER_IMPROVES_SETUP",
+    "improvement_vs_base": 0.003747
+  },
+  {
+    "strategy_name": "qullamaggie_watchlist",
+    "filter_variant": "D9-D10 only",
+    "n_events": 3,
+    "status": "BLOCKED_INSUFFICIENT_EVENTS"
+  },
+  {
+    "strategy_name": "qullamaggie_watchlist",
+    "filter_variant": "D10 only",
+    "n_events": 0,
+    "status": "BLOCKED_INSUFFICIENT_EVENTS"
+  },
+  {
+    "strategy_name": "momentum_swing",
+    "filter_variant": "BASE",
+    "n_events": 28903,
+    "mean_forward_return": 0.009041,
+    "hit_rate": 0.5027,
+    "status": "FILTER_DOES_NOT_IMPROVE",
+    "improvement_vs_base": 0.0
+  },
+  {
+    "strategy_name": "momentum_swing",
+    "filter_variant": "Avoid D1-D3",
+    "n_events": 12607,
+    "mean_forward_return": 0.009614,
+    "hit_rate": 0.5156,
+    "status": "FILTER_SLIGHTLY_IMPROVES",
+    "improvement_vs_base": 0.000573
+  },
+  {
+    "strategy_name": "momentum_swing",
+    "filter_variant": "Require D8-D10",
+    "n_events": 207,
+    "mean_forward_return": 0.015816,
+    "hit_rate": 0.5894,
+    "status": "FILTER_IMPROVES_SETUP",
+    "improvement_vs_base": 0.006775
+  },
+  {
+    "strategy_name": "momentum_swing",
+    "filter_variant": "D9-D10 only",
+    "n_events": 12,
+    "status": "BLOCKED_INSUFFICIENT_EVENTS"
+  },
+  {
+    "strategy_name": "momentum_swing",
+    "filter_variant": "D10 only",
+    "n_events": 0,
+    "status": "BLOCKED_INSUFFICIENT_EVENTS"
+  },
+  {
+    "strategy_name": "mean_reversion",
+    "filter_variant": "BASE",
+    "n_events": 20313,
+    "mean_forward_return": 0.018633,
+    "hit_rate": 0.5057,
+    "status": "FILTER_DOES_NOT_IMPROVE",
+    "improvement_vs_base": 0.0
+  },
+  {
+    "strategy_name": "mean_reversion",
+    "filter_variant": "Avoid D1-D3",
+    "n_events": 16066,
+    "mean_forward_return": 0.022754,
+    "hit_rate": 0.5187,
+    "status": "FILTER_IMPROVES_SETUP",
+    "improvement_vs_base": 0.004121
+  },
+  {
+    "strategy_name": "mean_reversion",
+    "filter_variant": "Require D8-D10",
+    "n_events": 7774,
+    "mean_forward_return": 0.024441,
+    "hit_rate": 0.5491,
+    "status": "FILTER_IMPROVES_SETUP",
+    "improvement_vs_base": 0.005808
+  },
+  {
+    "strategy_name": "mean_reversion",
+    "filter_variant": "D9-D10 only",
+    "n_events": 5307,
+    "mean_forward_return": 0.019533,
+    "hit_rate": 0.561,
+    "status": "FILTER_SLIGHTLY_IMPROVES",
+    "improvement_vs_base": 0.0009
+  },
+  {
+    "strategy_name": "mean_reversion",
+    "filter_variant": "D10 only",
+    "n_events": 2755,
+    "mean_forward_return": 0.021133,
+    "hit_rate": 0.576,
+    "status": "FILTER_IMPROVES_SETUP",
+    "improvement_vs_base": 0.0025
+  },
+  {
+    "strategy_name": "factor_residual_mr",
+    "filter_variant": "BASE",
+    "n_events": 0,
+    "status": "BLOCKED_INSUFFICIENT_EVENTS"
+  },
+  {
+    "strategy_name": "factor_residual_mr",
+    "filter_variant": "Avoid D1-D3",
+    "n_events": 0,
+    "status": "BLOCKED_INSUFFICIENT_EVENTS"
+  },
+  {
+    "strategy_name": "factor_residual_mr",
+    "filter_variant": "Require D8-D10",
+    "n_events": 0,
+    "status": "BLOCKED_INSUFFICIENT_EVENTS"
+  },
+  {
+    "strategy_name": "factor_residual_mr",
+    "filter_variant": "D9-D10 only",
+    "n_events": 0,
+    "status": "BLOCKED_INSUFFICIENT_EVENTS"
+  },
+  {
+    "strategy_name": "factor_residual_mr",
+    "filter_variant": "D10 only",
+    "n_events": 0,
+    "status": "BLOCKED_INSUFFICIENT_EVENTS"
+  },
+  {
+    "strategy_name": "structural_mr",
+    "filter_variant": "BASE",
+    "n_events": 9852,
+    "mean_forward_return": 0.017176,
+    "hit_rate": 0.4795,
+    "status": "FILTER_DOES_NOT_IMPROVE",
+    "improvement_vs_base": 0.0
+  },
+  {
+    "strategy_name": "structural_mr",
+    "filter_variant": "Avoid D1-D3",
+    "n_events": 8045,
+    "mean_forward_return": 0.024263,
+    "hit_rate": 0.4975,
+    "status": "FILTER_IMPROVES_SETUP",
+    "improvement_vs_base": 0.007087
+  },
+  {
+    "strategy_name": "structural_mr",
+    "filter_variant": "Require D8-D10",
+    "n_events": 4235,
+    "mean_forward_return": 0.020795,
+    "hit_rate": 0.5332,
+    "status": "FILTER_IMPROVES_SETUP",
+    "improvement_vs_base": 0.003619
+  },
+  {
+    "strategy_name": "structural_mr",
+    "filter_variant": "D9-D10 only",
+    "n_events": 2813,
+    "mean_forward_return": 0.015157,
+    "hit_rate": 0.5393,
+    "status": "FILTER_REDUCES_SAMPLE_TOO_MUCH",
+    "improvement_vs_base": -0.002019
+  },
+  {
+    "strategy_name": "structural_mr",
+    "filter_variant": "D10 only",
+    "n_events": 1358,
+    "mean_forward_return": 0.017081,
+    "hit_rate": 0.556,
+    "status": "FILTER_REDUCES_SAMPLE_TOO_MUCH",
+    "improvement_vs_base": -9.5e-05
+  },
+  {
+    "strategy_name": "ml_enhanced",
+    "filter_variant": "BASE",
+    "n_events": 7525,
+    "mean_forward_return": 0.029135,
+    "hit_rate": 0.5301,
+    "status": "FILTER_DOES_NOT_IMPROVE",
+    "improvement_vs_base": 0.0
+  },
+  {
+    "strategy_name": "ml_enhanced",
+    "filter_variant": "Avoid D1-D3",
+    "n_events": 7488,
+    "mean_forward_return": 0.02914,
+    "hit_rate": 0.5302,
+    "status": "FILTER_SLIGHTLY_IMPROVES",
+    "improvement_vs_base": 5e-06
+  },
+  {
+    "strategy_name": "ml_enhanced",
+    "filter_variant": "Require D8-D10",
+    "n_events": 5794,
+    "mean_forward_return": 0.026151,
+    "hit_rate": 0.543,
+    "status": "FILTER_DOES_NOT_IMPROVE",
+    "improvement_vs_base": -0.002984
+  },
+  {
+    "strategy_name": "ml_enhanced",
+    "filter_variant": "D9-D10 only",
+    "n_events": 4559,
+    "mean_forward_return": 0.018906,
+    "hit_rate": 0.5486,
+    "status": "FILTER_DOES_NOT_IMPROVE",
+    "improvement_vs_base": -0.010229
+  },
+  {
+    "strategy_name": "ml_enhanced",
+    "filter_variant": "D10 only",
+    "n_events": 2680,
+    "mean_forward_return": 0.01951,
+    "hit_rate": 0.566,
+    "status": "FILTER_DOES_NOT_IMPROVE",
+    "improvement_vs_base": -0.009625
+  },
+  {
+    "strategy_name": "SUMMARY",
+    "filter_variant": "Best performer",
+    "note": "Best improvements: structural_mr +D8-D10 (+0.71%), qullamaggie +Avoid D1-D3 (+0.50%), mean_reversion +D8-D10 (+0.41%). Factor_residual_mr failed (residual_z_20 feature not found). ML_enhanced no improvement. Signal works as filter in specific contexts but fails standalone."
+  }
+]

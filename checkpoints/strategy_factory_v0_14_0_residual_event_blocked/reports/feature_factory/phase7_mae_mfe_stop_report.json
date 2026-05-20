@@ -1,0 +1,101 @@
+[
+  {
+    "strategy": "mean_reversion",
+    "variant": "BASE",
+    "mae_mean": -5.33,
+    "mfe_mean": 4.91,
+    "mae_median": -3.6,
+    "mfe_median": 3.66,
+    "mae_mfe_ratio": 1.09,
+    "n_samples": 2069,
+    "status": "EVENT_STUDY_ONLY_NOT_FULL_BACKTEST"
+  },
+  {
+    "strategy": "mean_reversion",
+    "variant": "AVOID_D1_D3",
+    "mae_mean": -4.82,
+    "mfe_mean": 5.31,
+    "mae_median": -3.26,
+    "mfe_median": 3.95,
+    "mae_mfe_ratio": 0.91,
+    "n_samples": 2067,
+    "status": "EVENT_STUDY_ONLY_NOT_FULL_BACKTEST"
+  },
+  {
+    "strategy": "mean_reversion",
+    "variant": "REQUIRE_D8_D10",
+    "mae_mean": -4.76,
+    "mfe_mean": 6.68,
+    "mae_median": -3.15,
+    "mfe_median": 5.67,
+    "mae_mfe_ratio": 0.71,
+    "n_samples": 2057,
+    "status": "EVENT_STUDY_ONLY_NOT_FULL_BACKTEST"
+  },
+  {
+    "strategy": "structural_mr",
+    "variant": "BASE",
+    "mae_mean": -6.72,
+    "mfe_mean": 4.91,
+    "mae_median": -5.41,
+    "mfe_median": 3.53,
+    "mae_mfe_ratio": 1.37,
+    "n_samples": 2053,
+    "status": "EVENT_STUDY_ONLY_NOT_FULL_BACKTEST"
+  },
+  {
+    "strategy": "structural_mr",
+    "variant": "AVOID_D1_D3",
+    "mae_mean": -6.08,
+    "mfe_mean": 5.36,
+    "mae_median": -4.88,
+    "mfe_median": 3.82,
+    "mae_mfe_ratio": 1.13,
+    "n_samples": 2045,
+    "status": "EVENT_STUDY_ONLY_NOT_FULL_BACKTEST"
+  },
+  {
+    "strategy": "structural_mr",
+    "variant": "REQUIRE_D8_D10",
+    "mae_mean": -6.96,
+    "mfe_mean": 7.05,
+    "mae_median": -4.78,
+    "mfe_median": 5.32,
+    "mae_mfe_ratio": 0.99,
+    "n_samples": 2021,
+    "status": "EVENT_STUDY_ONLY_NOT_FULL_BACKTEST"
+  },
+  {
+    "strategy": "qullamaggie",
+    "variant": "BASE",
+    "mae_mean": -5.16,
+    "mfe_mean": 4.29,
+    "mae_median": -2.97,
+    "mfe_median": 3.6,
+    "mae_mfe_ratio": 1.2,
+    "n_samples": 2069,
+    "status": "EVENT_STUDY_ONLY_NOT_FULL_BACKTEST"
+  },
+  {
+    "strategy": "qullamaggie",
+    "variant": "AVOID_D1_D3",
+    "mae_mean": -4.27,
+    "mfe_mean": 4.94,
+    "mae_median": -2.76,
+    "mfe_median": 3.84,
+    "mae_mfe_ratio": 0.86,
+    "n_samples": 2057,
+    "status": "EVENT_STUDY_ONLY_NOT_FULL_BACKTEST"
+  },
+  {
+    "strategy": "qullamaggie",
+    "variant": "REQUIRE_D8_D10",
+    "mae_mean": -5.57,
+    "mfe_mean": 8.82,
+    "mae_median": -2.41,
+    "mfe_median": 6.13,
+    "mae_mfe_ratio": 0.63,
+    "n_samples": 55,
+    "status": "EVENT_STUDY_ONLY_NOT_FULL_BACKTEST"
+  }
+]

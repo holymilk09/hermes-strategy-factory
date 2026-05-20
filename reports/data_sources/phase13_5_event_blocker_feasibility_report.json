@@ -1,0 +1,110 @@
+[
+  {
+    "blocker_feature": "earnings_within_5d",
+    "available": false,
+    "pit_safe": "UNKNOWN",
+    "coverage": "UNKNOWN",
+    "usable_now": false,
+    "limitations": "API key missing",
+    "decision": "BLOCKED_FMP_API_KEY_MISSING"
+  },
+  {
+    "blocker_feature": "earnings_within_10d",
+    "available": false,
+    "pit_safe": "UNKNOWN",
+    "coverage": "UNKNOWN",
+    "usable_now": false,
+    "limitations": "API key missing",
+    "decision": "BLOCKED_FMP_API_KEY_MISSING"
+  },
+  {
+    "blocker_feature": "earnings_day",
+    "available": false,
+    "pit_safe": "UNKNOWN",
+    "coverage": "UNKNOWN",
+    "usable_now": false,
+    "limitations": "API key missing",
+    "decision": "BLOCKED_FMP_API_KEY_MISSING"
+  },
+  {
+    "blocker_feature": "post_earnings_2d",
+    "available": false,
+    "pit_safe": "UNKNOWN",
+    "coverage": "UNKNOWN",
+    "usable_now": false,
+    "limitations": "API key missing",
+    "decision": "BLOCKED_FMP_API_KEY_MISSING"
+  },
+  {
+    "blocker_feature": "eps_surprise_context",
+    "available": false,
+    "pit_safe": "UNKNOWN",
+    "coverage": "UNKNOWN",
+    "usable_now": false,
+    "limitations": "API key missing",
+    "decision": "BLOCKED_FMP_API_KEY_MISSING"
+  },
+  {
+    "blocker_feature": "revenue_surprise_context",
+    "available": false,
+    "pit_safe": "UNKNOWN",
+    "coverage": "UNKNOWN",
+    "usable_now": false,
+    "limitations": "API key missing",
+    "decision": "BLOCKED_FMP_API_KEY_MISSING"
+  },
+  {
+    "blocker_feature": "analyst_downgrade_recent",
+    "available": false,
+    "pit_safe": "UNKNOWN",
+    "coverage": "UNKNOWN",
+    "usable_now": false,
+    "limitations": "API key missing",
+    "decision": "BLOCKED_FMP_API_KEY_MISSING"
+  },
+  {
+    "blocker_feature": "news_event_recent",
+    "available": false,
+    "pit_safe": "UNKNOWN",
+    "coverage": "UNKNOWN",
+    "usable_now": false,
+    "limitations": "API key missing",
+    "decision": "BLOCKED_FMP_API_KEY_MISSING"
+  },
+  {
+    "blocker_feature": "sector_metadata",
+    "available": false,
+    "pit_safe": "UNKNOWN",
+    "coverage": "UNKNOWN",
+    "usable_now": false,
+    "limitations": "API key missing",
+    "decision": "BLOCKED_FMP_API_KEY_MISSING"
+  },
+  {
+    "blocker_feature": "industry_metadata",
+    "available": false,
+    "pit_safe": "UNKNOWN",
+    "coverage": "UNKNOWN",
+    "usable_now": false,
+    "limitations": "API key missing",
+    "decision": "BLOCKED_FMP_API_KEY_MISSING"
+  },
+  {
+    "blocker_feature": "market_cap_bucket",
+    "available": false,
+    "pit_safe": "UNKNOWN",
+    "coverage": "UNKNOWN",
+    "usable_now": false,
+    "limitations": "API key missing",
+    "decision": "BLOCKED_FMP_API_KEY_MISSING"
+  },
+  {
+    "blocker_feature": "index_membership",
+    "available": false,
+    "pit_safe": "UNKNOWN",
+    "coverage": "UNKNOWN",
+    "usable_now": false,
+    "limitations": "API key missing",
+    "decision": "BLOCKED_FMP_API_KEY_MISSING"
+  }
+]

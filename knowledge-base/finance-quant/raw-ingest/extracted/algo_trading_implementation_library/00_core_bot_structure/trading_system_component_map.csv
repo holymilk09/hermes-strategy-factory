@@ -1,0 +1,11 @@
+component,input,output,core_tests
+data_ingestion,vendor payload,raw normalized market event,"schema validation, timestamp normalization, missing data flags"
+feature_store,normalized market events,point-in-time features,"no future timestamps, feature reproducibility, drift checks"
+signal_engine,features + config,signal score and horizon,"known input fixture, reason-code coverage, no portfolio mutation"
+portfolio_construction,signals + capital + holdings,target weights/positions,"position caps, cash constraints, correlation limits"
+risk_engine,targets + limits + state,approved/clipped/vetoed targets,"max loss, max size, max leverage, kill switch"
+execution_engine,approved target delta,orders,"order state transitions, duplicate prevention, cancel/replace"
+broker_adapter,orders/API responses,broker-normalized events,"auth error, rejected order, partial fill, stale API"
+ledger,"fills, fees, cash movements",positions/cash/pnl,"cash/position reconciliation, realized PnL calculation"
+metrics_engine,returns/trades/orders/logs,metric pack,"known returns fixtures, formula validation"
+review_loop,metric pack + logs + heatmaps,weak-point diagnosis,"review schema, promotion criteria, failure labels"

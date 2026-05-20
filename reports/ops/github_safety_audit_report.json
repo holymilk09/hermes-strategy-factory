@@ -1,0 +1,36 @@
+{
+  "timestamp": "2026-05-20T00:37:24.534759+00:00",
+  "secret_patterns_checked": [
+    "FMP_API_KEY",
+    "ALPACA_API_KEY",
+    "ALPACA_SECRET_KEY",
+    "OPENAI_API_KEY",
+    "SECRET",
+    "TOKEN",
+    "PASSWORD"
+  ],
+  "potential_secret_files": [
+    "/opt/data/ml_strategy.py (CODE_REFERENCE_ONLY \u2014 getenv patterns)",
+    "/opt/data/ml_backtest_engine.py (CODE_REFERENCE_ONLY)",
+    "/opt/data/ml_train.py (CODE_REFERENCE_ONLY)",
+    "/opt/data/ml_epoch_backtest.py (CODE_REFERENCE_ONLY)",
+    "/opt/data/models_dev_cache.json (CODE_REFERENCE_ONLY)",
+    "/opt/data/factor_residual_bt.py (CODE_REFERENCE_ONLY)"
+  ],
+  "real_keys_found": 0,
+  "hardcoded_keys": 0,
+  "large_files": [
+    "/opt/data/hermes-backup-2026-05-19-094450.zip (backup)",
+    "/opt/data/state.db (session DB)",
+    "/opt/data/hermes-safe-backup/ (backup dir)"
+  ],
+  "cache_paths": [
+    "/opt/data/cache/",
+    "/opt/data/data/cache/",
+    "/opt/data/logs/"
+  ],
+  "gitignore_existed": false,
+  "gitignore_created": true,
+  "blocked_files": [],
+  "status": "GITHUB_SAFE_AFTER_GITIGNORE_UPDATE"
+}

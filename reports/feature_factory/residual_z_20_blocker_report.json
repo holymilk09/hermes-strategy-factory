@@ -1,0 +1,19 @@
+{
+  "requested_feature": "residual_z_20",
+  "exists_in_registry": false,
+  "exists_in_store": false,
+  "correct_feature_name": "residual_z",
+  "available_residual_features": [
+    "residual_z",
+    "residual_beta",
+    "residual_alpha",
+    "cumulative_residual",
+    "residual_half_life",
+    "residual_r2",
+    "residual_return"
+  ],
+  "correction": "residual_z_20 -> residual_z",
+  "note": "Feature is residual_z (the zscore_window=20 is a configuration parameter, not part of the feature name). The feature exists and is computed for all symbols.",
+  "action_required": "Use 'residual_z' instead of 'residual_z_20' in strategy code and Phase 5/6 tests.",
+  "status": "FEATURE_NAME_MISMATCH \u2014 easily fixed"
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "strategy": "mean_reversion",
+    "variant": "D8_D10",
+    "segment": "full_period",
+    "n_trades": 321,
+    "status": "INCONCLUSIVE",
+    "note": "Prototype universe (76 stocks, 2.3 years). Not segmented by year/regime due to simulation numerical issues."
+  },
+  {
+    "strategy": "structural_mr",
+    "variant": "D8_D10",
+    "segment": "full_period",
+    "n_trades": 275,
+    "status": "INCONCLUSIVE",
+    "note": "Same limitation. Full segmentation requires clean simulation numbers."
+  }
+]

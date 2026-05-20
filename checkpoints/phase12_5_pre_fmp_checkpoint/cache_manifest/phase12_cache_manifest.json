@@ -1,0 +1,26 @@
+{
+  "cache_path": "/opt/data/cache/phase12_etf_inclusive_features",
+  "exists": true,
+  "symbols": 76,
+  "features": [
+    "residual_z",
+    "residual_r2",
+    "residual_beta",
+    "residual_alpha",
+    "residual_half_life",
+    "rsi_2",
+    "hurst_100",
+    "regime_score"
+  ],
+  "labels": [
+    "forward_return_5d",
+    "forward_return_10d",
+    "forward_return_20d"
+  ],
+  "created_at": "20260518_123708",
+  "reusable": true,
+  "estimated_size": "76 NPZ files",
+  "copy_performed": false,
+  "reason_if_not_copied": "Cache is large (76 NPZ files). Metadata-only snapshot. Cache remains in place.",
+  "sha256_if_available": null
+}

@@ -1,0 +1,458 @@
+[
+  {
+    "symbol": "COST",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "WMT",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "HD",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "MCD",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "SBUX",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "NKE",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "TGT",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "LOW",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "TJX",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "DG",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "JPM",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "GS",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "MS",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "BAC",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "WFC",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "AXP",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "BLK",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "SCHW",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "C",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "V",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "LLY",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "ABBV",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "JNJ",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "UNH",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "PFE",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "MRK",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "BMY",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "AMGN",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "GILD",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "REGN",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "CAT",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "DE",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "HON",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "UNP",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "RTX",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "LMT",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "GD",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "NOC",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "BA",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "GE",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "AAPL",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "MSFT",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "GOOGL",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "META",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "AMZN",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "NFLX",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "CRM",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "ADBE",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "NOW",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "ORCL",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "FSLR",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "ENPH",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "SEDG",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "RUN",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "ALB",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "LAC",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "IONQ",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "RGTI",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "QBTS",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "ARQQ",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "AMD",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "NVDA",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "AVGO",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "QCOM",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "MU",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "TSM",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "ASML",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "ARM",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "MRVL",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "ON",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "DDOG",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "SNOW",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "PLTR",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "CRWD",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "NET",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  },
+  {
+    "symbol": "WOLF",
+    "fit_classification": "BLOCKED_RESIDUAL_FIT",
+    "reason": "insufficient R\u00b2 obs",
+    "mean_r2": 0
+  }
+]

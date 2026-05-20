@@ -1,0 +1,38 @@
+[
+  {
+    "strategy": "mean_reversion",
+    "base": 20755,
+    "d8d10": 8143,
+    "d9d10": 5634,
+    "d10": 3008,
+    "avoid_d1d3": 16495,
+    "d10_subset_d9": true,
+    "d9_subset_d8": true,
+    "d8_subset_base": true,
+    "status": "PASS_PURE_FILTER"
+  },
+  {
+    "strategy": "structural_mr",
+    "base": 7039,
+    "d8d10": 2828,
+    "d9d10": 2060,
+    "d10": 1165,
+    "avoid_d1d3": 5326,
+    "d10_subset_d9": true,
+    "d9_subset_d8": true,
+    "d8_subset_base": true,
+    "status": "PASS_PURE_FILTER"
+  },
+  {
+    "strategy": "qullamaggie",
+    "base": 21585,
+    "d8d10": 55,
+    "d9d10": 4,
+    "d10": 0,
+    "avoid_d1d3": 6784,
+    "d10_subset_d9": true,
+    "d9_subset_d8": true,
+    "d8_subset_base": true,
+    "status": "PASS_PURE_FILTER"
+  }
+]

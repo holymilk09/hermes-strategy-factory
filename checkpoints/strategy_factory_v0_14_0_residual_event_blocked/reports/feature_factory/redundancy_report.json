@@ -1,0 +1,357 @@
+{
+  "clusters": [
+    {
+      "cluster_id": "cluster_general_000",
+      "theme": "general",
+      "representative_feature": "vwap_deviation",
+      "selection_reason": "ic_stability_missing_aware",
+      "previous_representative": "cum_signed_volume",
+      "redundant_features": [
+        "cum_signed_volume",
+        "sma_5",
+        "sma_10",
+        "sma_20",
+        "sma_50",
+        "sma_200",
+        "ema_10",
+        "ema_20",
+        "bb_upper",
+        "bb_lower",
+        "swing_low_5d",
+        "swing_high_5d",
+        "donchian_high_20",
+        "donchian_low_20",
+        "donchian_high_50",
+        "donchian_low_50",
+        "vwap_proxy"
+      ],
+      "feature_ic_scores": {
+        "cum_signed_volume": -0.0016,
+        "sma_5": 0.0045,
+        "sma_10": 0.0007,
+        "sma_20": -0.0033,
+        "sma_50": 0.0102,
+        "sma_200": 0.0168,
+        "ema_10": -0.0018,
+        "ema_20": -0.0031,
+        "bb_upper": -0.0048,
+        "bb_lower": 0.0052,
+        "swing_low_5d": 0.0039,
+        "swing_high_5d": -0.0005,
+        "donchian_high_20": -0.0084,
+        "donchian_low_20": -0.0027,
+        "donchian_high_50": 0.0126,
+        "donchian_low_50": 0.0184,
+        "vwap_proxy": -0.0087,
+        "vwap_deviation": 0.0135
+      }
+    },
+    {
+      "cluster_id": "cluster_general_001",
+      "theme": "general",
+      "representative_feature": "mom_sma_5",
+      "selection_reason": "ic_stability_missing_aware",
+      "previous_representative": "mom_sma_5",
+      "redundant_features": [
+        "sma_5_slope"
+      ],
+      "feature_ic_scores": {
+        "mom_sma_5": 0.0087,
+        "sma_5_slope": 0.0087
+      }
+    },
+    {
+      "cluster_id": "cluster_general_002",
+      "theme": "general",
+      "representative_feature": "mom_5d",
+      "selection_reason": "ic_stability_missing_aware",
+      "previous_representative": "mom_5d",
+      "redundant_features": [
+        "dist_sma_10"
+      ],
+      "feature_ic_scores": {
+        "mom_5d": 0.041,
+        "dist_sma_10": 0.0151
+      }
+    },
+    {
+      "cluster_id": "cluster_general_003",
+      "theme": "general",
+      "representative_feature": "sma_10_slope",
+      "selection_reason": "ic_stability_missing_aware",
+      "previous_representative": "sma_10_slope",
+      "redundant_features": [
+        "mom_sma_10"
+      ],
+      "feature_ic_scores": {
+        "sma_10_slope": 0.0377,
+        "mom_sma_10": 0.0377
+      }
+    },
+    {
+      "cluster_id": "cluster_general_004",
+      "theme": "general",
+      "representative_feature": "mom_10d",
+      "selection_reason": "ic_stability_missing_aware",
+      "previous_representative": "rsi_7",
+      "redundant_features": [
+        "rsi_7",
+        "dist_sma_20"
+      ],
+      "feature_ic_scores": {
+        "rsi_7": 0.0248,
+        "dist_sma_20": 0.0222,
+        "mom_10d": 0.0281
+      }
+    },
+    {
+      "cluster_id": "cluster_general_005",
+      "theme": "general",
+      "representative_feature": "mom_20d",
+      "selection_reason": "ic_stability_missing_aware",
+      "previous_representative": "macd",
+      "redundant_features": [
+        "macd",
+        "sma_20_slope",
+        "ema_cross",
+        "mom_sma_20"
+      ],
+      "feature_ic_scores": {
+        "macd": 0.0027,
+        "sma_20_slope": 0.0491,
+        "ema_cross": 0.0236,
+        "mom_20d": 0.0618,
+        "mom_sma_20": 0.0491
+      }
+    },
+    {
+      "cluster_id": "cluster_general_006",
+      "theme": "general",
+      "representative_feature": "zscore_50d",
+      "selection_reason": "ic_stability_missing_aware",
+      "previous_representative": "zscore_50d",
+      "redundant_features": [
+        "dist_sma_50",
+        "donchian_pos_50"
+      ],
+      "feature_ic_scores": {
+        "zscore_50d": 0.0053,
+        "dist_sma_50": -0.003,
+        "donchian_pos_50": -0.002
+      }
+    },
+    {
+      "cluster_id": "cluster_general_007",
+      "theme": "general",
+      "representative_feature": "mom_50d",
+      "selection_reason": "ic_stability_missing_aware",
+      "previous_representative": "mom_50d",
+      "redundant_features": [
+        "sma_50_slope",
+        "mom_sma_50",
+        "trend_strength"
+      ],
+      "feature_ic_scores": {
+        "mom_50d": -0.0491,
+        "sma_50_slope": -0.0481,
+        "mom_sma_50": -0.0481,
+        "trend_strength": -0.0479
+      }
+    },
+    {
+      "cluster_id": "cluster_general_008",
+      "theme": "general",
+      "representative_feature": "range_20d",
+      "selection_reason": "ic_stability_missing_aware",
+      "previous_representative": "bb_width",
+      "redundant_features": [
+        "bb_width"
+      ],
+      "feature_ic_scores": {
+        "bb_width": -0.0322,
+        "range_20d": -0.0433
+      }
+    },
+    {
+      "cluster_id": "cluster_general_009",
+      "theme": "general",
+      "representative_feature": "donchian_pos_20",
+      "selection_reason": "ic_stability_missing_aware",
+      "previous_representative": "zscore_20d",
+      "redundant_features": [
+        "zscore_20d",
+        "bb_position"
+      ],
+      "feature_ic_scores": {
+        "zscore_20d": 0.0319,
+        "bb_position": 0.0319,
+        "donchian_pos_20": 0.0463
+      }
+    },
+    {
+      "cluster_id": "cluster_atr_010",
+      "theme": "atr",
+      "representative_feature": "atr_7",
+      "selection_reason": "ic_stability_missing_aware",
+      "previous_representative": "atr_7",
+      "redundant_features": [
+        "atr_14"
+      ],
+      "feature_ic_scores": {
+        "atr_7": -0.0252,
+        "atr_14": -0.0214
+      }
+    },
+    {
+      "cluster_id": "cluster_general_011",
+      "theme": "general",
+      "representative_feature": "atr_7_pct",
+      "selection_reason": "ic_stability_missing_aware",
+      "previous_representative": "atr_7_pct",
+      "redundant_features": [
+        "atr_14_pct",
+        "spread_proxy_ma20"
+      ],
+      "feature_ic_scores": {
+        "atr_7_pct": -0.0336,
+        "atr_14_pct": -0.0291,
+        "spread_proxy_ma20": -0.0312
+      }
+    },
+    {
+      "cluster_id": "cluster_rvol_012",
+      "theme": "rvol",
+      "representative_feature": "rvol_5",
+      "selection_reason": "ic_stability_missing_aware",
+      "previous_representative": "rvol_10",
+      "redundant_features": [
+        "rvol_10"
+      ],
+      "feature_ic_scores": {
+        "rvol_10": -0.0289,
+        "rvol_5": -0.0609
+      }
+    },
+    {
+      "cluster_id": "cluster_general_013",
+      "theme": "general",
+      "representative_feature": "rvol_50",
+      "selection_reason": "ic_stability_missing_aware",
+      "previous_representative": "rvol_200",
+      "redundant_features": [
+        "rvol_200",
+        "rvol_20",
+        "volume_climax"
+      ],
+      "feature_ic_scores": {
+        "rvol_200": 0.0196,
+        "rvol_20": -0.0185,
+        "rvol_50": -0.0394,
+        "volume_climax": -0.0185
+      }
+    },
+    {
+      "cluster_id": "cluster_vol_014",
+      "theme": "vol",
+      "representative_feature": "vol_50d",
+      "selection_reason": "ic_stability_missing_aware",
+      "previous_representative": "vol_ma_50",
+      "redundant_features": [
+        "vol_ma_50"
+      ],
+      "feature_ic_scores": {
+        "vol_ma_50": -0.0255,
+        "vol_50d": -0.0336
+      }
+    },
+    {
+      "cluster_id": "cluster_vol_015",
+      "theme": "vol",
+      "representative_feature": "vol_ma_200",
+      "selection_reason": "ic_stability_missing_aware",
+      "previous_representative": "vol_ma_200",
+      "redundant_features": [
+        "vol_252d"
+      ],
+      "feature_ic_scores": {
+        "vol_ma_200": -0.079,
+        "vol_252d": -0.0565
+      }
+    },
+    {
+      "cluster_id": "cluster_mom_016",
+      "theme": "mom",
+      "representative_feature": "mom_100d",
+      "selection_reason": "ic_stability_missing_aware",
+      "previous_representative": "mom_100d",
+      "redundant_features": [
+        "mom_sma_100"
+      ],
+      "feature_ic_scores": {
+        "mom_100d": -0.008,
+        "mom_sma_100": -0.003
+      }
+    },
+    {
+      "cluster_id": "cluster_general_017",
+      "theme": "general",
+      "representative_feature": "dist_52w_low",
+      "selection_reason": "ic_stability_missing_aware",
+      "previous_representative": "mom_252d",
+      "redundant_features": [
+        "mom_252d",
+        "mom_sma_252"
+      ],
+      "feature_ic_scores": {
+        "mom_252d": -0.0116,
+        "mom_sma_252": -0.0086,
+        "dist_52w_low": -0.0361
+      }
+    },
+    {
+      "cluster_id": "cluster_general_018",
+      "theme": "general",
+      "representative_feature": "cumulative_residual",
+      "selection_reason": "ic_stability_missing_aware",
+      "previous_representative": "residual_z",
+      "redundant_features": [
+        "residual_z"
+      ],
+      "feature_ic_scores": {
+        "residual_z": 0.0626,
+        "cumulative_residual": 0.0747
+      }
+    },
+    {
+      "cluster_id": "cluster_general_019",
+      "theme": "general",
+      "representative_feature": "spread_proxy",
+      "selection_reason": "ic_stability_missing_aware",
+      "previous_representative": "spread_proxy",
+      "redundant_features": [
+        "intraday_range_pct"
+      ],
+      "feature_ic_scores": {
+        "spread_proxy": -0.0054,
+        "intraday_range_pct": -0.0054
+      }
+    },
+    {
+      "cluster_id": "cluster_general_020",
+      "theme": "general",
+      "representative_feature": "kyles_lambda",
+      "selection_reason": "ic_stability_missing_aware",
+      "previous_representative": "kyles_lambda",
+      "redundant_features": [
+        "amihud_ma20"
+      ],
+      "feature_ic_scores": {
+        "kyles_lambda": -0.0267,
+        "amihud_ma20": -0.0262
+      }
+    }
+  ],
+  "n_redundant": 49,
+  "n_representatives": 21,
+  "selection_method": "IC_STABILITY_MISSING_AWARE"
+}

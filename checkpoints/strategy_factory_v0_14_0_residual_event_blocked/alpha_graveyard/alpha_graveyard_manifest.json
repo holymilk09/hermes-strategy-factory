@@ -1,0 +1,16 @@
+{
+  "killed_signal": "trend_extension_reversal_set",
+  "classification": "REJECTED_FILTER",
+  "reason_rejected": "D10-D1 spread -0.19% on 76-stock universe. Backtrader random-pruning FAILED. Structural MR all filters REJECTED under retail constraints.",
+  "forbidden_rescue_rules": [
+    "DO NOT retune with D6-D10 or D7-D10 variants",
+    "DO NOT threshold-mine or seed-hunt",
+    "DO NOT stop-retune or label-shop",
+    "DO NOT rescue with new data window",
+    "DO NOT claim standalone alpha",
+    "Permanently archived in alpha_graveyard"
+  ],
+  "graveyard_file": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/alpha_graveyard/trend_extension_reversal_filter.md",
+  "sha256": "a632d97defdff7a03931a5c9a0782b22a519fb7e4c5f1a7f075454b1b77ed70d",
+  "status": "ARCHIVED_PERMANENTLY"
+}

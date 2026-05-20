@@ -1,0 +1,50 @@
+{
+  "title": "Signal",
+  "type": "object",
+  "required": [
+    "run_id",
+    "symbol",
+    "timestamp",
+    "strategy_id",
+    "score",
+    "horizon",
+    "reason_codes"
+  ],
+  "properties": {
+    "run_id": {
+      "type": "string"
+    },
+    "symbol": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "strategy_id": {
+      "type": "string"
+    },
+    "score": {
+      "type": "number"
+    },
+    "direction": {
+      "enum": [
+        "long",
+        "short",
+        "flat"
+      ]
+    },
+    "confidence": {
+      "type": "number"
+    },
+    "horizon": {
+      "type": "string"
+    },
+    "reason_codes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

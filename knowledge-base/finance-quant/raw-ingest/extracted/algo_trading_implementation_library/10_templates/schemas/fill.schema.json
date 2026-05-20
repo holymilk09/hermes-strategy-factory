@@ -1,0 +1,43 @@
+{
+  "title": "Fill",
+  "type": "object",
+  "required": [
+    "client_order_id",
+    "symbol",
+    "timestamp",
+    "side",
+    "quantity",
+    "fill_price",
+    "fees"
+  ],
+  "properties": {
+    "client_order_id": {
+      "type": "string"
+    },
+    "symbol": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "side": {
+      "enum": [
+        "buy",
+        "sell"
+      ]
+    },
+    "quantity": {
+      "type": "number"
+    },
+    "fill_price": {
+      "type": "number"
+    },
+    "fees": {
+      "type": "number"
+    },
+    "venue": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "strategy": "mean_reversion",
+    "variant": "AVOID_D1_D3",
+    "old_classification": "HIT_RATE_ONLY_FILTER",
+    "corrected_classification": "WEAK_RETURN_IMPROVEMENT",
+    "reason": "Hit rate unchanged (0.37 vs 0.37). Return improved +0.06% but minimal. Not hit-rate-only.",
+    "promotion_allowed": false
+  },
+  {
+    "strategy": "structural_mr",
+    "variant": "AVOID_D1_D3",
+    "old_classification": "RESEARCH_BACKTEST_CANDIDATE",
+    "corrected_classification": "WEAK_RETURN_IMPROVEMENT",
+    "reason": "Return +0.17% but from a low base (0.06%). Per-trade improvement insufficient without portfolio validation.",
+    "promotion_allowed": false
+  },
+  {
+    "strategy": "qullamaggie",
+    "variant": "AVOID_D1_D3",
+    "old_classification": "HIT_RATE_ONLY_FILTER",
+    "corrected_classification": "WEAK_RETURN_IMPROVEMENT",
+    "reason": "Return +0.06%, hit rate 0.39\u21920.41. Marginal improvement. Need portfolio validation.",
+    "promotion_allowed": false
+  }
+]

@@ -1,0 +1,69 @@
+{
+  "run_id": "20260517_val",
+  "n_symbols": 86,
+  "n_stocks": 76,
+  "date_range": [
+    "2023-01-03",
+    "2025-04-30"
+  ],
+  "labels_per_symbol": {
+    "COST": [
+      "excess_vs_spy_10d",
+      "excess_vs_spy_1d",
+      "excess_vs_spy_20d",
+      "excess_vs_spy_3d",
+      "excess_vs_spy_5d",
+      "forward_return_10d",
+      "forward_return_1d",
+      "forward_return_20d",
+      "forward_return_3d",
+      "forward_return_5d",
+      "log_forward_return_10d",
+      "log_forward_return_1d",
+      "log_forward_return_20d",
+      "log_forward_return_3d",
+      "log_forward_return_5d",
+      "triple_barrier"
+    ],
+    "WMT": [
+      "excess_vs_spy_10d",
+      "excess_vs_spy_1d",
+      "excess_vs_spy_20d",
+      "excess_vs_spy_3d",
+      "excess_vs_spy_5d",
+      "forward_return_10d",
+      "forward_return_1d",
+      "forward_return_20d",
+      "forward_return_3d",
+      "forward_return_5d",
+      "log_forward_return_10d",
+      "log_forward_return_1d",
+      "log_forward_return_20d",
+      "log_forward_return_3d",
+      "log_forward_return_5d",
+      "triple_barrier"
+    ],
+    "HD": [
+      "excess_vs_spy_10d",
+      "excess_vs_spy_1d",
+      "excess_vs_spy_20d",
+      "excess_vs_spy_3d",
+      "excess_vs_spy_5d",
+      "forward_return_10d",
+      "forward_return_1d",
+      "forward_return_20d",
+      "forward_return_3d",
+      "forward_return_5d",
+      "log_forward_return_10d",
+      "log_forward_return_1d",
+      "log_forward_return_20d",
+      "log_forward_return_3d",
+      "log_forward_return_5d",
+      "triple_barrier"
+    ]
+  },
+  "total_labels": 1426,
+  "blocked": {
+    "meta_label_take_or_skip": "BLOCKED_BASE_SIGNAL_REQUIRED"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "previous_status": "VALIDATION_RUNNING / PROTOTYPE_UNIVERSE_ONLY",
+  "corrected_status": "VALIDATION_RUNNING / PROTOTYPE_UNIVERSE_ONLY / BLOCKED_FEATURE_SET_DISCOVERY / BLOCKED_NULL_BASELINES / BLOCKED_REGIME_ANALYSIS",
+  "reason": "Phase 3 results included placeholder feature-set arrays. Alpha candidates are preliminary feature-level results only.",
+  "alpha_candidate_renamed_to": "PRELIMINARY_ALPHA_CANDIDATE",
+  "backtest_migration_allowed": false,
+  "research_claim_allowed": false,
+  "tradeable_claim_allowed": false,
+  "note": "The 20 alpha candidates from Phase 3 are preliminary and must pass null baselines, cost screens, and regime stability before promotion."
+}

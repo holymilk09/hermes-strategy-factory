@@ -1,0 +1,33 @@
+{
+  "candidates": [
+    {
+      "candidate": "residual_z standalone",
+      "event_proxy_status": "WEAK \u2014 proxy flags reduce sample, don't improve standalone",
+      "portfolio_status": "Not promotable standalone",
+      "random_pruning_status": "BORDERLINE in Phase 10",
+      "final_classification": "REJECTED_STANDALONE \u2014 fails random baseline"
+    },
+    {
+      "candidate": "residual_z + mean_reversion",
+      "event_proxy_status": "EVENT_PROXY_DOES_NOT_IMPROVE or marginal",
+      "portfolio_status": "Phase 10: improves BASE",
+      "random_pruning_status": "Phase 10: untested at portfolio level",
+      "sample_status": "196 events at Z_NEG_2_0",
+      "final_classification": "EVENT_CONTEXT_BLOCKED_FILTER"
+    },
+    {
+      "candidate": "residual_z + structural_mr",
+      "event_proxy_status": "EVENT_PROXY_DOES_NOT_IMPROVE or marginal",
+      "portfolio_status": "Phase 10: improves BASE",
+      "random_pruning_status": "Phase 10: untested at portfolio level",
+      "sample_status": "71 events at Z_NEG_2_0",
+      "final_classification": "EVENT_CONTEXT_BLOCKED_FILTER"
+    }
+  ],
+  "event_context": "EVENT_CONTEXT_INCOMPLETE",
+  "event_data_recommendation": "ADD_FMP_NEXT",
+  "final_classification": "EVENT_CONTEXT_BLOCKED_FILTER",
+  "next_allowed_step": "Add FMP for earnings/fundamental data. Re-test residual_z with real event context.",
+  "production_migration_allowed": false,
+  "live_trading_allowed": false
+}

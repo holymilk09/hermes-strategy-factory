@@ -1,0 +1,23 @@
+{
+  "included_strategies": [
+    "mean_reversion",
+    "structural_mr"
+  ],
+  "included_variants": [
+    "BASE",
+    "D8_D10"
+  ],
+  "excluded_strategies": [
+    "qullamaggie",
+    "momentum_swing",
+    "ml_enhanced",
+    "factor_residual_mr"
+  ],
+  "excluded_variants": [
+    "D9_D10",
+    "D10_ONLY",
+    "AVOID_D1_D3"
+  ],
+  "reason": "D8_D10 is the best balance of quality and trade count. D9/D10 are more selective and can be tested later only if D8_D10 passes. Qullamaggie D8_D10 sample-blocked.",
+  "status": "SCOPE_LOCKED"
+}

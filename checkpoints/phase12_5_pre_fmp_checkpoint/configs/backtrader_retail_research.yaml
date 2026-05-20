@@ -1,0 +1,43 @@
+costs:
+  commission_bps: 0
+  slippage_modes:
+    conservative_bps: 10
+    moderate_bps: 5
+    optimistic_liquid_bps: 2
+  use_spread_proxy_if_available: true
+  zero_commission_is_not_zero_cost: true
+execution:
+  entry_timing: next_bar_open
+  no_future_bar_execution: true
+  no_same_bar_entry_exit: true
+  reject_if_no_next_bar: true
+exit_models:
+- fixed_time_exit_10d
+- fixed_time_exit_20d
+- atr_stop_1_5
+- atr_stop_2_0
+- fixed_time_exit_20d_plus_atr_stop_2_0
+mode: controlled_research_backtest
+portfolio:
+  allow_margin: false
+  allow_shorting: false
+  cash_drag_included: true
+  max_position_pct: 0.125
+  max_positions: 8
+  max_sector_exposure_pct: 0.3
+  max_symbol_exposure_pct: 0.125
+  starting_cash: 100000
+position_sizing:
+  duplicate_symbol_entries_allowed: false
+  max_new_positions_per_day: 3
+  method: equal_weight_capped
+  same_symbol_cooldown_days: 10
+risk:
+  max_daily_loss_pct: 2
+  max_strategy_drawdown_pct: 10
+  stop_new_entries_on_drawdown: true
+validation:
+  compare_against_base: true
+  compare_against_random_pruning: true
+  require_cost_modes: true
+  require_mae_mfe: true

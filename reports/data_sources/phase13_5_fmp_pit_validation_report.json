@@ -1,0 +1,9 @@
+[
+  {
+    "field": "ALL",
+    "known_at_time_rule": "DEFINED",
+    "test_result": "NOT_TESTED",
+    "leakage_risk": "UNKNOWN",
+    "status": "BLOCKED_FMP_API_KEY_MISSING"
+  }
+]

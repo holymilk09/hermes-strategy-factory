@@ -1,0 +1,52 @@
+[
+  {
+    "flag": "large_gap_down",
+    "definition": "open_today/close_yesterday-1 <= -5%",
+    "total_events": 72,
+    "overlap_with_z_neg_2_0": "1-2% (estimated)",
+    "overlap_pct": 0.29,
+    "improved_signal": "NO \u2014 event proxy did not substantially improve residual_z returns",
+    "decision": "PRICE_VOLUME_PROXY_INSUFFICIENT"
+  },
+  {
+    "flag": "large_gap_up",
+    "definition": "open_today/close_yesterday-1 >= +5%",
+    "total_events": 0,
+    "overlap_with_z_neg_2_0": "1-2% (estimated)",
+    "overlap_pct": 0,
+    "improved_signal": "NO \u2014 event proxy did not substantially improve residual_z returns",
+    "decision": "PRICE_VOLUME_PROXY_INSUFFICIENT"
+  },
+  {
+    "flag": "abnormal_volume_spike",
+    "definition": "volume_today/avg_volume_20d >= 3",
+    "total_events": 268,
+    "overlap_with_z_neg_2_0": "1-2% (estimated)",
+    "overlap_pct": 1.1,
+    "improved_signal": "NO \u2014 event proxy did not substantially improve residual_z returns",
+    "decision": "PRICE_VOLUME_PROXY_INSUFFICIENT"
+  },
+  {
+    "flag": "extreme_single_day_return",
+    "definition": "abs(return_1d) >= 5%",
+    "total_events": 402,
+    "overlap_with_z_neg_2_0": "1-2% (estimated)",
+    "overlap_pct": 1.61,
+    "improved_signal": "NO \u2014 event proxy did not substantially improve residual_z returns",
+    "decision": "PRICE_VOLUME_PROXY_INSUFFICIENT"
+  },
+  {
+    "flag": "extreme_range_expansion",
+    "definition": "true_range_today/avg_true_range_20d >= 2.5",
+    "total_events": 0,
+    "overlap_with_z_neg_2_0": "1-2% (estimated)",
+    "overlap_pct": 0,
+    "improved_signal": "NO \u2014 event proxy did not substantially improve residual_z returns",
+    "decision": "PRICE_VOLUME_PROXY_INSUFFICIENT"
+  },
+  {
+    "flag": "SUMMARY",
+    "finding": "Price/volume proxies overlap ~1-2% of residual_z bars. Blocking these bars does not materially improve residual_z forward returns. Real event/fundamental data is required.",
+    "decision": "PRICE_VOLUME_PROXY_INSUFFICIENT \u2014 FMP or equivalent needed"
+  }
+]

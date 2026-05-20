@@ -1,0 +1,74 @@
+[
+  {
+    "strategy": "mean_reversion",
+    "filter": "AVOID_D1_D3",
+    "classification": "DRAWDOWN_FILTER",
+    "reason": "Reduces drawdown (-5.6% DD) but return not improved"
+  },
+  {
+    "strategy": "mean_reversion",
+    "filter": "REQUIRE_D8_D10",
+    "classification": "REJECTED_FILTER",
+    "reason": "No meaningful improvement"
+  },
+  {
+    "strategy": "mean_reversion",
+    "filter": "REQUIRE_D9_D10",
+    "classification": "REJECTED_FILTER",
+    "reason": "No meaningful improvement"
+  },
+  {
+    "strategy": "mean_reversion",
+    "filter": "REQUIRE_D10_ONLY",
+    "classification": "RESEARCH_BACKTEST_CANDIDATE",
+    "reason": "Meaningful return improvement (+0.42%) with adequate sample (1404 trades)"
+  },
+  {
+    "strategy": "structural_mr",
+    "filter": "AVOID_D1_D3",
+    "classification": "REJECTED_FILTER",
+    "reason": "No meaningful improvement"
+  },
+  {
+    "strategy": "structural_mr",
+    "filter": "REQUIRE_D8_D10",
+    "classification": "RESEARCH_BACKTEST_CANDIDATE",
+    "reason": "Meaningful return improvement (+0.43%) with adequate sample (1351 trades)"
+  },
+  {
+    "strategy": "structural_mr",
+    "filter": "REQUIRE_D9_D10",
+    "classification": "RESEARCH_BACKTEST_CANDIDATE",
+    "reason": "Meaningful return improvement (+0.47%) with adequate sample (1000 trades)"
+  },
+  {
+    "strategy": "structural_mr",
+    "filter": "REQUIRE_D10_ONLY",
+    "classification": "RESEARCH_BACKTEST_CANDIDATE",
+    "reason": "Meaningful return improvement (+0.49%) with adequate sample (569 trades)"
+  },
+  {
+    "strategy": "qullamaggie",
+    "filter": "AVOID_D1_D3",
+    "classification": "REJECTED_FILTER",
+    "reason": "No meaningful improvement"
+  },
+  {
+    "strategy": "qullamaggie",
+    "filter": "REQUIRE_D8_D10",
+    "classification": "SAMPLE_BLOCKED_FILTER",
+    "reason": "Insufficient trades (39)"
+  },
+  {
+    "strategy": "qullamaggie",
+    "filter": "REQUIRE_D9_D10",
+    "classification": "SAMPLE_BLOCKED_FILTER",
+    "reason": "Only 4 trades \u2014 insufficient for promotion"
+  },
+  {
+    "strategy": "qullamaggie",
+    "filter": "REQUIRE_D10_ONLY",
+    "classification": "SAMPLE_BLOCKED_FILTER",
+    "reason": "Only 0 trades \u2014 insufficient for promotion"
+  }
+]

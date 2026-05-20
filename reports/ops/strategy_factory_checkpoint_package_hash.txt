@@ -1,0 +1,6 @@
+Strategy Factory Checkpoint Package Hash
+=========================================
+Package path: /opt/data/checkpoints/strategy_factory_v0_14_0_checkpoint.tar.gz
+Package size: 1740445 bytes (1.7 MB)
+SHA256: 83a91e76dc454efd66a44d69f65517a3296508ac000d21e9e19fb902d4f75efa
+Timestamp: 2026-05-20T01:26:04.916653+00:00

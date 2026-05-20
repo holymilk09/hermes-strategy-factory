@@ -1,0 +1,92 @@
+[
+  {
+    "strategy": "mean_reversion",
+    "variant": "AVOID_D1_D3",
+    "signal_reduction_pct": 20.5,
+    "trade_reduction_pct": 6.7,
+    "return_delta": 10.66,
+    "status": "FILTER_IMPROVES_OPPORTUNITY_QUALITY"
+  },
+  {
+    "strategy": "mean_reversion",
+    "variant": "REQUIRE_D8_D10",
+    "signal_reduction_pct": 60.8,
+    "trade_reduction_pct": -187.8,
+    "return_delta": 8.47,
+    "status": "FILTER_IMPROVES_OPPORTUNITY_QUALITY"
+  },
+  {
+    "strategy": "mean_reversion",
+    "variant": "REQUIRE_D9_D10",
+    "signal_reduction_pct": 72.9,
+    "trade_reduction_pct": -675.6,
+    "return_delta": 8.37,
+    "status": "FILTER_IMPROVES_OPPORTUNITY_QUALITY"
+  },
+  {
+    "strategy": "mean_reversion",
+    "variant": "REQUIRE_D10_ONLY",
+    "signal_reduction_pct": 85.5,
+    "trade_reduction_pct": 31.1,
+    "return_delta": 16.33,
+    "status": "FILTER_IMPROVES_OPPORTUNITY_QUALITY"
+  },
+  {
+    "strategy": "structural_mr",
+    "variant": "AVOID_D1_D3",
+    "signal_reduction_pct": 24.3,
+    "trade_reduction_pct": 89.8,
+    "return_delta": -15.99,
+    "status": "FILTER_TOO_RESTRICTIVE"
+  },
+  {
+    "strategy": "structural_mr",
+    "variant": "REQUIRE_D8_D10",
+    "signal_reduction_pct": 59.8,
+    "trade_reduction_pct": 82.3,
+    "return_delta": -31.43,
+    "status": "FILTER_TOO_RESTRICTIVE"
+  },
+  {
+    "strategy": "structural_mr",
+    "variant": "REQUIRE_D9_D10",
+    "signal_reduction_pct": 70.7,
+    "trade_reduction_pct": 48.8,
+    "return_delta": -25.1,
+    "status": "FILTER_REDUCES_RETURN"
+  },
+  {
+    "strategy": "structural_mr",
+    "variant": "REQUIRE_D10_ONLY",
+    "signal_reduction_pct": 83.4,
+    "trade_reduction_pct": 67.8,
+    "return_delta": -28.3,
+    "status": "FILTER_REDUCES_RETURN"
+  },
+  {
+    "strategy": "qullamaggie",
+    "variant": "AVOID_D1_D3",
+    "signal_reduction_pct": 68.6,
+    "trade_reduction_pct": 5.8,
+    "return_delta": 17.01,
+    "status": "FILTER_IMPROVES_OPPORTUNITY_QUALITY"
+  },
+  {
+    "strategy": "qullamaggie",
+    "variant": "REQUIRE_D8_D10",
+    "signal_reduction_pct": 99.7,
+    "trade_reduction_pct": 95.8,
+    "return_delta": 17.66,
+    "status": "FILTER_IMPROVES_OPPORTUNITY_QUALITY"
+  },
+  {
+    "strategy": "qullamaggie",
+    "variant": "REQUIRE_D9_D10",
+    "status": "BLOCKED_SAMPLE_TOO_SMALL"
+  },
+  {
+    "strategy": "qullamaggie",
+    "variant": "REQUIRE_D10_ONLY",
+    "status": "BLOCKED_SAMPLE_TOO_SMALL"
+  }
+]

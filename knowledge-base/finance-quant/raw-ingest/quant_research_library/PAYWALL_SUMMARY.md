@@ -1,0 +1,64 @@
+# PAYWALL_SUMMARY
+
+Items flagged as `PAYWALLED` or `BOOK_SAMPLE` should be accessed through institutional library, publisher, author manuscript, or interlibrary loan. No circumvention sources are included.
+
+- Group A: Ralph S. J. Koijen, Robert J. Richmond, Motohiro Yogo (2024), *Which Investors Matter for Equity Valuations and Expected Returns?*, Review of Economic Studies. Access: OUP/institutional access likely required; search author pages for preprint..
+- Group B: Sun, Gong, Si (2023), *Transaction-Aware Inverse Reinforcement Learning for Trading in Stock Markets*, Applied Intelligence. Access: Springer/Applied Intelligence access likely required..
+- Group E: Terrance Odean (1998), *Are Investors Reluctant to Realize Their Losses?*, Journal of Finance. Access: Wiley/JSTOR or author PDF required..
+- Group E: Brad M. Barber, Terrance Odean (2001), *Boys Will Be Boys: Gender, Overconfidence, and Common Stock Investment*, Quarterly Journal of Economics. Access: OUP/institutional access likely required..
+- Group E: Pedro Bordalo, Nicola Gennaioli, Rafael La Porta, Andrei Shleifer (2019), *Diagnostic Expectations and Stock Returns*, Journal of Finance. Access: Wiley access likely required..
+- Group E: Paul C. Tetlock (2007), *Giving Content to Investor Sentiment: The Role of Media in the Stock Market*, Journal of Finance. Access: Wiley access likely required..
+- Group E: Nicholas Barberis, Lawrence Jin, Baolian Wang (2021), *Prospect Theory and Stock Market Anomalies*, Journal of Finance. Access: Wiley access likely required..
+- Group E: Brad M. Barber, Terrance Odean (2000), *Trading Is Hazardous to Your Wealth: The Common Stock Investment Performance of Individual Investors*, Journal of Finance. Access: Wiley/JSTOR or author PDF required..
+- Group E: Cary Frydman, Nicholas Barberis, Colin Camerer, Peter Bossaerts, Antonio Rangel (2014), *Using Neural Data to Test a Theory of Investor Behavior*, Journal of Finance. Access: Wiley access likely required..
+- Group G: Yue Deng et al. (2017), *Deep Direct Reinforcement Learning for Financial Signal Representation and Trading*, IEEE Transactions on Neural Networks and Learning Systems. Access: IEEE access likely required; search arXiv/author preprint..
+- Group G: John Moody, Matthew Saffell (2001), *Learning to Trade via Direct Reinforcement*, IEEE Transactions on Neural Networks. Access: IEEE access likely required..
+- Group G: Journal of Portfolio Management authors (2025), *Reinforcement Learning for Asset and Portfolio Management*, Journal of Portfolio Management. Access: PM Research/JPM institutional access likely required..
+- Group H: Rama Cont, Sasha Stoikov, Rishi Talreja (2010), *A Stochastic Model for Order Book Dynamics*, Operations Research. Access: INFORMS access likely required; preprints may exist..
+- Group H: Álvaro Cartea, Sebastian Jaimungal, José Penalva (2015), *Algorithmic and High-Frequency Trading*, Cambridge University Press book. Access: Book purchase/institutional access; sample chapters only..
+- Group H: Joel Hasbrouck (2007), *Empirical Market Microstructure*, Oxford University Press book. Access: Book purchase/institutional access; sample chapters only..
+- Group H: Marco Avellaneda, Sasha Stoikov (2008), *High-Frequency Trading in a Limit Order Book*, Quantitative Finance. Access: Taylor & Francis access likely required; author preprint often available online..
+- Group H: David Easley, Marcos Lopez de Prado, Maureen O'Hara, Zhibai Zhang (2020), *Microstructure in the Machine Age*, Review of Financial Studies. Access: OUP/institutional access likely required; author preprints may exist..
+- Group H: Olivier Guéant (2016), *The Financial Mathematics of Market Liquidity*, Chapman and Hall/CRC book. Access: Book purchase/institutional access; sample chapters only..
+- Group I: Edward O. Thorp (1969), *Optimal Gambling Systems for Favorable Games*, Review of the International Statistical Institute. Access: Institutional access likely required; author/archive sources may exist..
+- Group I: Gregory Zuckerman (2019), *The Man Who Solved the Market: How Jim Simons Launched the Quant Revolution*, Portfolio/Penguin book. Access: Do not download book. Use reviews, interviews, legal excerpts, or library access..
+- Group J: Andrew W. Lo (2017), *Adaptive Markets: Financial Evolution at the Speed of Thought*, Princeton University Press book. Access: Book purchase/library access; previews only..
+- Group J: Mila Getmansky, Andrew W. Lo, Igor Makarov (2004), *An Econometric Model of Serial Correlation and Illiquidity in Hedge Fund Returns*, Journal of Financial Economics. Access: Elsevier access likely required..
+- Group J: Andrew W. Lo, A. Craig MacKinlay (1988), *Stock Market Prices Do Not Follow Random Walks: Evidence from a Simple Specification Test*, Review of Financial Studies. Access: OUP/institutional access likely required..
+- Group J: Andrew W. Lo (2004), *The Adaptive Markets Hypothesis: Market Efficiency from an Evolutionary Perspective*, Journal of Portfolio Management. Access: JPM/PM Research access likely required; search SSRN/author PDF..
+- Group J: Andrew W. Lo, Ruixun Zhang (2024), *The Adaptive Markets Hypothesis: Mathematical Foundations*, Oxford University Press. Access: Book/institutional access likely required..
+- Group J: Andrew W. Lo (2002), *The Statistics of Sharpe Ratios*, Financial Analysts Journal. Access: FAJ/Taylor access likely required; author versions may exist..
+- Group K: Bryan Kelly, Seth Pruitt, Yinan Su (2019), *Characteristics Are Covariances: A Unified Model of Risk and Return*, Journal of Financial Economics. Access: Elsevier access; author preprint likely available..
+- Group K: Stefan Nagel (2021), *Machine Learning in Asset Pricing*, Princeton University Press. Access: Book purchase/library access..
+- Group L: Steven L. Heston (1993), *A Closed-Form Solution for Options with Stochastic Volatility with Applications to Bond and Currency Options*, Review of Financial Studies. Access: OUP access likely required..
+- Group L: Peter Carr, Dilip Madan (1999), *Option Valuation Using the Fast Fourier Transform*, Journal of Computational Finance. Access: Journal/paywall; author versions may exist..
+- Group L: Bruno Dupire (1994), *Pricing with a Smile*, Risk Magazine. Access: Risk.net access likely required..
+- Group L: Lorenzo Bergomi (2016), *Stochastic Volatility Modeling*, Chapman and Hall/CRC book. Access: Book purchase/library access..
+- Group L: Fischer Black, Myron Scholes (1973), *The Pricing of Options and Corporate Liabilities*, Journal of Political Economy. Access: JSTOR/Chicago access; many legal reprints exist..
+- Group L: Jim Gatheral (2006), *The Volatility Surface: A Practitioner's Guide*, Wiley Finance book. Access: Book purchase/library access..
+- Group L: Robert C. Merton (1973), *Theory of Rational Option Pricing*, Bell Journal of Economics and Management Science. Access: JSTOR/institutional access likely required..
+- Group M: Campbell R. Harvey, Yan Liu, Heqing Zhu (2016), *... and the Cross-Section of Expected Returns*, Review of Financial Studies. Access: OUP access likely required; author preprint may exist..
+- Group M: Marcos Lopez de Prado (2018), *Advances in Financial Machine Learning*, Wiley book. Access: Book purchase/library access; author papers are separately indexed..
+- Group M: Marcos Lopez de Prado (2020), *Machine Learning for Asset Managers*, Cambridge University Press book. Access: Book purchase/library access..
+- Group M: Alexander J. McNeil, Rudiger Frey, Paul Embrechts (2015), *Quantitative Risk Management: Concepts, Techniques and Tools*, Princeton University Press book. Access: Book purchase/library access..
+- Group N: Lawrence R. Glosten, Paul R. Milgrom (1985), *Bid, Ask and Transaction Prices in a Specialist Market with Heterogeneously Informed Traders*, Journal of Financial Economics. Access: Elsevier access likely required..
+- Group N: Albert S. Kyle (1985), *Continuous Auctions and Insider Trading*, Econometrica. Access: JSTOR/institutional access likely required..
+- Group N: Joel Hasbrouck (2007), *Empirical Market Microstructure*, Oxford University Press book. Access: Book purchase/library access..
+- Group N: David Easley, Marcos Lopez de Prado, Maureen O'Hara (2012), *Flow Toxicity and Liquidity in a High-Frequency World*, Review of Financial Studies / Journal of Finance family. Access: Institutional access likely required; preprints may exist..
+- Group N: David Easley, Nicholas M. Kiefer, Maureen O'Hara, Joseph B. Paperman (1996), *Liquidity, Information, and Infrequently Traded Stocks*, Journal of Finance. Access: Wiley access likely required..
+- Group O: Ryan Sullivan, Allan Timmermann, Halbert White (1999), *Data-Snooping, Technical Trading Rule Performance, and the Bootstrap*, Journal of Finance. Access: Wiley access likely required..
+- Group O: Andrew W. Lo, Harry Mamaysky, Jiang Wang (2000), *Foundations of Technical Analysis: Computational Algorithms, Statistical Inference, and Empirical Implementation*, Journal of Finance. Access: Wiley access likely required; author PDF may exist..
+- Group O: Christopher J. Neely, Paul Weller, Rob Dittmar (1997), *Is Technical Analysis in the Foreign Exchange Market Profitable?*, Journal of Financial and Quantitative Analysis. Access: Cambridge access likely required..
+- Group O: William Brock, Josef Lakonishok, Blake LeBaron (1992), *Simple Technical Trading Rules and the Stochastic Properties of Stock Returns*, Journal of Finance. Access: Wiley/JSTOR access likely required..
+- Group O: Tobias J. Moskowitz, Yao Hua Ooi, Lasse H. Pedersen (2012), *Time Series Momentum*, Journal of Financial Economics. Access: Elsevier access; author/AQR preprint often available..
+- Group O: Cheol-Ho Park, Scott H. Irwin (2007), *What Do We Know About the Profitability of Technical Analysis?*, Journal of Economic Surveys. Access: Wiley access likely required; author preprint may exist..
+- Group P: Charles F. Manski (2006), *Interpreting the Predictions of Prediction Markets*, Economics Letters. Access: Elsevier access likely required..
+- Group Q: William Fung, David A. Hsieh (2004), *Hedge Fund Benchmarks: A Risk-Based Approach*, Financial Analysts Journal. Access: FAJ/Taylor access likely required..
+- Group Q: Markus K. Brunnermeier, Stefan Nagel (2004), *Hedge Funds and the Technology Bubble*, Journal of Finance. Access: Wiley access likely required..
+- Group Q: Vikas Agarwal, Narayan Y. Naik (2004), *Risks and Portfolio Decisions Involving Hedge Funds*, Review of Financial Studies. Access: OUP access likely required..
+- Group Q: Vikas Agarwal, Naveen D. Daniel, Narayan Y. Naik (2009), *Role of Managerial Incentives and Discretion in Hedge Fund Performance*, Journal of Finance. Access: Wiley access likely required..
+- Group Q: William Fung, David A. Hsieh (2001), *The Risk in Hedge Fund Strategies: Theory and Evidence from Trend Followers*, Review of Financial Studies. Access: OUP access likely required..
+- Group Q: Vikas Agarwal, Wei Jiang, Yuehua Tang, Baozhong Yang (2013), *Uncovering Hedge Fund Skill from the Portfolio Holdings They Hide*, Review of Financial Studies. Access: OUP access likely required; author preprint may exist..
+- Group R: Andrew W. Lo, Harry Mamaysky, Jiang Wang (2000), *Foundations of Technical Analysis*, Journal of Finance. Access: Wiley access likely required..
+- Group R: William A. Brock, Cars H. Hommes (1998), *Heterogeneous Beliefs and Routes to Chaos in a Simple Asset Pricing Model*, Journal of Economic Dynamics and Control. Access: Elsevier access likely required..
+- Group R: J. Doyne Farmer, Duncan Foley (2009), *The Economy Needs Agent-Based Modelling*, Nature. Access: Nature access likely required..

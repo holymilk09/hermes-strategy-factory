@@ -1,0 +1,112 @@
+[
+  {
+    "strategy": "mean_reversion",
+    "variant": "AVOID_D1_D3",
+    "actual_total_return": 8.45,
+    "baseline_p50_return": 10.39,
+    "baseline_p95_return": 153.72,
+    "actual_vs_p95": false,
+    "n_perms": 500,
+    "status": "FAILS_RANDOM_PRUNING_UNDER_RETAIL_CONSTRAINTS"
+  },
+  {
+    "strategy": "mean_reversion",
+    "variant": "REQUIRE_D8_D10",
+    "actual_total_return": 6.26,
+    "baseline_p50_return": 42.86,
+    "baseline_p95_return": 279.42,
+    "actual_vs_p95": false,
+    "n_perms": 500,
+    "status": "FAILS_RANDOM_PRUNING_UNDER_RETAIL_CONSTRAINTS"
+  },
+  {
+    "strategy": "mean_reversion",
+    "variant": "REQUIRE_D9_D10",
+    "actual_total_return": 6.16,
+    "baseline_p50_return": 129.96,
+    "baseline_p95_return": 514.84,
+    "actual_vs_p95": false,
+    "n_perms": 500,
+    "status": "FAILS_RANDOM_PRUNING_UNDER_RETAIL_CONSTRAINTS"
+  },
+  {
+    "strategy": "mean_reversion",
+    "variant": "REQUIRE_D10_ONLY",
+    "actual_total_return": 14.12,
+    "baseline_p50_return": 6.97,
+    "baseline_p95_return": 84.75,
+    "actual_vs_p95": false,
+    "n_perms": 500,
+    "status": "BORDERLINE_RANDOM_PRUNING"
+  },
+  {
+    "strategy": "structural_mr",
+    "variant": "AVOID_D1_D3",
+    "actual_total_return": 8.45,
+    "baseline_p50_return": -6.56,
+    "baseline_p95_return": 180.14,
+    "actual_vs_p95": false,
+    "n_perms": 500,
+    "status": "BORDERLINE_RANDOM_PRUNING"
+  },
+  {
+    "strategy": "structural_mr",
+    "variant": "REQUIRE_D8_D10",
+    "actual_total_return": -6.99,
+    "baseline_p50_return": -10.56,
+    "baseline_p95_return": 192.64,
+    "actual_vs_p95": false,
+    "n_perms": 500,
+    "status": "BORDERLINE_RANDOM_PRUNING"
+  },
+  {
+    "strategy": "structural_mr",
+    "variant": "REQUIRE_D9_D10",
+    "actual_total_return": -0.66,
+    "baseline_p50_return": 23.88,
+    "baseline_p95_return": 356.41,
+    "actual_vs_p95": false,
+    "n_perms": 500,
+    "status": "FAILS_RANDOM_PRUNING_UNDER_RETAIL_CONSTRAINTS"
+  },
+  {
+    "strategy": "structural_mr",
+    "variant": "REQUIRE_D10_ONLY",
+    "actual_total_return": -3.86,
+    "baseline_p50_return": -13.56,
+    "baseline_p95_return": 323.88,
+    "actual_vs_p95": false,
+    "n_perms": 500,
+    "status": "BORDERLINE_RANDOM_PRUNING"
+  },
+  {
+    "strategy": "qullamaggie",
+    "variant": "AVOID_D1_D3",
+    "actual_total_return": 15.33,
+    "baseline_p50_return": 132.05,
+    "baseline_p95_return": 279.18,
+    "actual_vs_p95": false,
+    "n_perms": 500,
+    "status": "FAILS_RANDOM_PRUNING_UNDER_RETAIL_CONSTRAINTS"
+  },
+  {
+    "strategy": "qullamaggie",
+    "variant": "REQUIRE_D8_D10",
+    "actual_total_return": 15.98,
+    "baseline_p50_return": 2.71,
+    "baseline_p95_return": 32.83,
+    "actual_vs_p95": false,
+    "n_perms": 500,
+    "status": "BORDERLINE_RANDOM_PRUNING"
+  },
+  {
+    "strategy": "qullamaggie",
+    "variant": "REQUIRE_D9_D10",
+    "status": "BLOCKED_INSUFFICIENT_TRADES"
+  },
+  {
+    "strategy": "qullamaggie",
+    "variant": "REQUIRE_D10_ONLY",
+    "status": "BLOCKED_INSUFFICIENT_TRADES"
+  }
+]

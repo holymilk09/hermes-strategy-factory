@@ -1,0 +1,34 @@
+# Source Registry
+
+| Category | Name | URL | Note |
+|---|---|---|---|
+| official_docs | QuantConnect LEAN Engine | https://www.quantconnect.com/docs/v2/lean-engine/getting-started | Open-source engine for research, backtesting, and live trading. |
+| official_docs | QuantConnect Algorithm Framework | https://www.quantconnect.com/docs/v2/writing-algorithms/algorithm-framework/overview | Modular strategy structure: universe, alpha, portfolio construction, risk, execution. |
+| official_docs | QuantConnect LEAN CLI | https://www.quantconnect.com/docs/v2/lean-cli | Local/cloud notebooks, backtesting, optimization, live trading. |
+| official_docs | QuantConnect local backtesting deployment | https://www.quantconnect.com/docs/v2/lean-cli/backtesting/deployment | Local LEAN backtests through Docker and project outputs. |
+| official_docs | QuantConnect Research Environment | https://www.quantconnect.com/docs/v2/research-environment | Notebook/QuantBook research workflow. |
+| official_docs | QuantConnect look-ahead bias docs | https://www.quantconnect.com/docs/v2/research-environment/datasets/key-concepts | Research-vs-backtest timing distinction. |
+| official_docs | QuantConnect Backtest Reports | https://www.quantconnect.com/docs/v2/cloud-platform/backtesting/report | Report charts and performance statistics. |
+| official_docs | NautilusTrader Backtesting | https://nautilustrader.io/docs/latest/concepts/backtesting/ | Event-driven backtest engine components and metrics. |
+| official_docs | NautilusTrader Live Trading | https://nautilustrader.io/docs/latest/concepts/live/ | Live trading, reconciliation, execution state. |
+| official_docs | NautilusTrader Concepts | https://nautilustrader.io/docs/latest/concepts/ | Architecture, cache, message bus, portfolio, logging, visualization. |
+| official_docs | vectorbt docs | https://vectorbt.dev/ | Vectorized pandas/NumPy/Numba research framework. |
+| official_docs | Backtrader docs | https://www.backtrader.com/ | Python backtesting/trading framework for reusable strategies, indicators, analyzers. |
+| official_docs | Zipline Reloaded docs | https://zipline.ml4trading.io/ | Pythonic event-driven backtesting framework lineage from Quantopian. |
+| official_docs | Databento Historical API | https://databento.com/docs/api-reference-historical | Historical market data via HTTP and official client libraries. |
+| official_docs | Databento Reference API | https://databento.com/docs/api-reference-reference | Corporate actions, price adjustment factors, security master. |
+| official_docs | OpenBB ODP Python docs | https://docs.openbb.co/odp/python | Financial data connectors and standardized data models. |
+| official_docs | OpenBB data sources | https://docs.openbb.co/odp/cli/data-sources | Data provider configuration. |
+| official_docs | Alpaca Orders | https://docs.alpaca.markets/docs/orders-at-alpaca | Order monitoring, placement, cancellation, IDs, status. |
+| official_docs | Alpaca Trading API | https://docs.alpaca.markets/us/docs/trading-api | Order types, fractional trading, API-first brokerage access. |
+| official_docs | IBKR TWS API order submission | https://interactivebrokers.github.io/tws-api/order_submission.html | Order status messages and client IDs. |
+| official_docs | IBKR TWS API open orders | https://interactivebrokers.github.io/tws-api/open_orders.html | Active order retrieval and order binding. |
+| official_docs | CCXT docs | https://docs.ccxt.com/ | Crypto exchange classes and unified exchange API concepts. |
+| paper_pdf | Bailey & Lopez de Prado - The Deflated Sharpe Ratio | https://www.davidhbailey.com/dhbpapers/deflated-sharpe.pdf | Selection bias, multiple testing, non-normality correction. |
+| paper_pdf | Bailey et al. - Backtest overfitting in financial markets | https://www.davidhbailey.com/dhbpapers/overfit-tools-at.pdf | Why strategy discovery through repeated trials inflates performance. |
+| paper_pdf | Bailey et al. - The Probability of Backtest Overfitting | https://www.davidhbailey.com/dhbpapers/backtest-prob.pdf | Combinatorially symmetric cross-validation and PBO. |
+| paper_pdf | Harvey, Liu & Zhu - ... and the Cross-Section of Expected Returns | https://www.nber.org/system/files/working_papers/w20592/w20592.pdf | Multiple-testing hurdle for factor discovery. |
+| paper_pdf | Cont - Empirical Properties of Asset Returns | https://finance.martinsewell.com/stylized-facts/dependence/Cont2001.pdf | Stylized facts and statistical issues in financial returns. |
+| paper_pdf | Lo, Mamaysky & Wang - Foundations of Technical Analysis | https://www.cis.upenn.edu/~mkearns/teaching/cis700/lo.pdf | Academic treatment of chart patterns and nonparametric inference. |
+| paper_pdf | Brock, Lakonishok & LeBaron - Simple Technical Trading Rules | https://www.finance.martinsewell.com/stylized-facts/dependence/BrockLakonishokLeBaron1992.pdf | Classic moving-average/trading-range-rule study. |
+| paper_pdf | Lopez de Prado - Tactical Investment Algorithms | https://caia.org/sites/default/files/tactical.pdf | Profit taking, stop losses, OU processes, strategy path-dependence. |

@@ -1,0 +1,50 @@
+[
+  {
+    "strategy": "mean_reversion",
+    "fit": "ALL",
+    "permutations": 250,
+    "n_events": 196,
+    "actual_mean_return_pct": 2.5811,
+    "baseline_p50": 0.881,
+    "baseline_p95": 10.4891,
+    "baseline_p99": 18.874,
+    "actual_vs_p95": false,
+    "status": "BORDERLINE"
+  },
+  {
+    "strategy": "mean_reversion",
+    "fit": "GOOD",
+    "permutations": 250,
+    "n_events": 188,
+    "actual_mean_return_pct": 2.6474,
+    "baseline_p50": 0.554,
+    "baseline_p95": 2.2082,
+    "baseline_p99": 3.1588,
+    "actual_vs_p95": true,
+    "status": "BEATS_STRATEGY_RANDOM"
+  },
+  {
+    "strategy": "structural_mr",
+    "fit": "ALL",
+    "permutations": 250,
+    "n_events": 71,
+    "actual_mean_return_pct": 3.1869,
+    "baseline_p50": -0.9789,
+    "baseline_p95": 10.6198,
+    "baseline_p99": 21.4995,
+    "actual_vs_p95": false,
+    "status": "BORDERLINE"
+  },
+  {
+    "strategy": "structural_mr",
+    "fit": "GOOD",
+    "permutations": 250,
+    "n_events": 67,
+    "actual_mean_return_pct": 3.2607,
+    "baseline_p50": -1.3748,
+    "baseline_p95": 1.4065,
+    "baseline_p99": 2.0667,
+    "actual_vs_p95": true,
+    "status": "BEATS_STRATEGY_RANDOM"
+  }
+]

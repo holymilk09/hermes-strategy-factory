@@ -1,0 +1,67 @@
+phase8_retail_constrained:
+  status: PLAN_ONLY / PRODUCTION_MIGRATION_BLOCKED
+  controlled_research_backtest_unlocked: true
+  production_migration_unlocked: false
+  live_trading_unlocked: false
+  phase8_results:
+    mean_reversion:
+      best_variant: D9_D10 (698 trades, +6.2% return, hit 0.53)
+      filter_type: PURE_FILTER_CONFIRMED
+      retail_portfolio_status: IMPROVES_BASE
+      structural_mr_outcome: "ALL_FILTERS_REJECTED \u2014 filter harms structural\
+        \ MR under retail constraints"
+      production_migration: BLOCKED
+      controlled_backtest: PROVISIONAL
+      next_step: Backtrader simulation with D8-D10/D9-D10 filter for mean_reversion
+        only
+    structural_mr:
+      best_variant: "NONE \u2014 all filters worsen return"
+      filter_type: PURE_FILTER_CONFIRMED
+      retail_portfolio_status: "FAILS_BASE \u2014 all filtered variants negative vs\
+        \ BASE +24.4%"
+      production_migration: BLOCKED
+      controlled_backtest: NOT_ELIGIBLE
+      next_step: Keep strategy unfiltered. Filter not beneficial for structural MR.
+    qullamaggie:
+      best_variant: AVOID_D1_D3 (hit rate improvement only)
+      retail_portfolio_status: MARGINAL
+      production_migration: BLOCKED
+      controlled_backtest: NOT_ELIGIBLE
+      next_step: Hit-rate-only improvement. Wait for compressed sample growth.
+  critical_finding: "structural_mr ALL filters REJECTED under retail constraints.\
+    \ Filter reduces return by -16% to -31%. Structural MR's Hurst+regime gating is\
+    \ sufficient \u2014 extension filter is redundant and harmful."
+phase8_updated: '20260518_073610'
+phase9_backtrader_research:
+  status: PLAN_ONLY / PRODUCTION_MIGRATION_BLOCKED
+  phase9_finding: Both D8_D10 variants FAIL or BORDERLINE under Backtrader random-pruning
+    baseline. Filter does not add statistically significant value beyond random trade
+    selection.
+  controlled_research_integration_unlocked: false
+  production_migration_unlocked: false
+  live_trading_unlocked: false
+  strategies:
+    mean_reversion:
+      phase9_status: REJECTED_BACKTRADER_VALIDATION
+      random_pruning: FAILED
+      next_step: Reassess whether trend-extension filter adds value for MR strategies.
+    structural_mr:
+      phase9_status: WEAK_BACKTRADER_FILTER
+      random_pruning: BORDERLINE
+      next_step: Consider simplified MR strategy without extension filter.
+  simulation_caveat: Backtrader simulation has numerical issues producing inflated
+    absolute returns. Random pruning comparison (same framework) is the valid comparison.
+    D8_D10 does not beat random same-count selection.
+phase9_updated: '20260518_085623'
+residual_reversion_set:
+  phase12_5_status: CONTROLLED_RESEARCH_CANDIDATE_EVENT_BLOCKED
+  strategy_conditioned_random: mean_reversion/GOOD BEATS, structural_mr/GOOD BEATS,
+    ALL variants BORDERLINE
+  portfolio_random: mean_reversion/GOOD BEATS, structural_mr/GOOD BEATS
+  event_context: "INCOMPLETE \u2014 FMP needed"
+  production_migration_status: BLOCKED
+  live_trading_status: BLOCKED
+phase10_updated: '20260518_101905'
+phase11_updated: '20260518_105146'
+phase12_updated: '20260518_114915'
+phase12_5_updated: '20260518_121415'

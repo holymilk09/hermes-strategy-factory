@@ -1,0 +1,22 @@
+{
+  "run_id": "bt_YYYYMMDD_HHMMSS_strategy_hash",
+  "strategy_id": "",
+  "code_version": "git_commit_hash",
+  "config_hash": "",
+  "data_version": "",
+  "feature_version": "",
+  "model_version": null,
+  "start_date": "",
+  "end_date": "",
+  "universe": "",
+  "cost_model": "",
+  "slippage_model": "",
+  "random_seed": 42,
+  "environment": "backtest|paper|live",
+  "outputs": {
+    "equity_curve": "",
+    "trade_ledger": "",
+    "metric_pack": "",
+    "review_report": ""
+  }
+}

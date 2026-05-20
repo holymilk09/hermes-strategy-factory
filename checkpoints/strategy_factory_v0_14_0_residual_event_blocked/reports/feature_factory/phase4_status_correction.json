@@ -1,0 +1,9 @@
+{
+  "previous_classification": "ALPHA_CANDIDATE_SET",
+  "corrected_classification": "PRELIMINARY_SIGNAL_CANDIDATE",
+  "reason": "Large IC (0.38) requires sanity audit, full baselines, cost validation, and concentration review before alpha promotion.",
+  "tradeable_claim_allowed": false,
+  "research_claim_allowed": false,
+  "backtest_migration_allowed": false,
+  "corrected_status": "VALIDATION_RUNNING / PROTOTYPE_UNIVERSE_ONLY / SANITY_AUDIT_REQUIRED / COST_BLOCKED / BACKTEST_INTEGRATION_BLOCKED"
+}

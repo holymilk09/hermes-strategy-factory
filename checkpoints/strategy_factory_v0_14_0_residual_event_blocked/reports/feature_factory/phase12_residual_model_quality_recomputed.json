@@ -1,0 +1,534 @@
+[
+  {
+    "symbol": "AAPL",
+    "median_r2": 0.5863,
+    "beta_mean": 0.8,
+    "half_life_median": 5.5,
+    "fit": "GOOD"
+  },
+  {
+    "symbol": "ABBV",
+    "median_r2": 0.3159,
+    "beta_mean": 0.889,
+    "half_life_median": 6.6,
+    "fit": "ACCEPTABLE"
+  },
+  {
+    "symbol": "ADBE",
+    "median_r2": 0.5413,
+    "beta_mean": 1.036,
+    "half_life_median": 6.7,
+    "fit": "GOOD"
+  },
+  {
+    "symbol": "ALB",
+    "median_r2": 0.2861,
+    "beta_mean": 0.71,
+    "half_life_median": 6.4,
+    "fit": "ACCEPTABLE"
+  },
+  {
+    "symbol": "AMD",
+    "median_r2": 0.5531,
+    "beta_mean": 1.582,
+    "half_life_median": 6.4,
+    "fit": "GOOD"
+  },
+  {
+    "symbol": "AMGN",
+    "median_r2": 0.2916,
+    "beta_mean": 0.95,
+    "half_life_median": 6.6,
+    "fit": "ACCEPTABLE"
+  },
+  {
+    "symbol": "AMZN",
+    "median_r2": 0.4517,
+    "beta_mean": 1.002,
+    "half_life_median": 5.7,
+    "fit": "GOOD"
+  },
+  {
+    "symbol": "ARM",
+    "median_r2": 0.0085,
+    "beta_mean": 0.072,
+    "half_life_median": 7.1,
+    "fit": "BLOCKED"
+  },
+  {
+    "symbol": "ARQQ",
+    "median_r2": 0.0358,
+    "beta_mean": 1.241,
+    "half_life_median": 6.1,
+    "fit": "BLOCKED"
+  },
+  {
+    "symbol": "ASML",
+    "median_r2": 0.6098,
+    "beta_mean": 1.316,
+    "half_life_median": 5.0,
+    "fit": "GOOD"
+  },
+  {
+    "symbol": "AVGO",
+    "median_r2": 0.6013,
+    "beta_mean": 1.357,
+    "half_life_median": 7.0,
+    "fit": "GOOD"
+  },
+  {
+    "symbol": "AXP",
+    "median_r2": 0.6284,
+    "beta_mean": 1.217,
+    "half_life_median": 6.0,
+    "fit": "GOOD"
+  },
+  {
+    "symbol": "BA",
+    "median_r2": 0.3333,
+    "beta_mean": 1.087,
+    "half_life_median": 6.4,
+    "fit": "ACCEPTABLE"
+  },
+  {
+    "symbol": "BAC",
+    "median_r2": 0.7038,
+    "beta_mean": 1.317,
+    "half_life_median": 5.6,
+    "fit": "GOOD"
+  },
+  {
+    "symbol": "BLK",
+    "median_r2": 0.5977,
+    "beta_mean": 1.101,
+    "half_life_median": 6.6,
+    "fit": "GOOD"
+  },
+  {
+    "symbol": "BMY",
+    "median_r2": 0.2605,
+    "beta_mean": 0.798,
+    "half_life_median": 5.3,
+    "fit": "ACCEPTABLE"
+  },
+  {
+    "symbol": "C",
+    "median_r2": 0.6161,
+    "beta_mean": 1.286,
+    "half_life_median": 5.9,
+    "fit": "GOOD"
+  },
+  {
+    "symbol": "CAT",
+    "median_r2": 0.5246,
+    "beta_mean": 1.292,
+    "half_life_median": 6.5,
+    "fit": "GOOD"
+  },
+  {
+    "symbol": "COST",
+    "median_r2": 0.2656,
+    "beta_mean": 0.509,
+    "half_life_median": 6.5,
+    "fit": "ACCEPTABLE"
+  },
+  {
+    "symbol": "CRM",
+    "median_r2": 0.3776,
+    "beta_mean": 0.928,
+    "half_life_median": 5.7,
+    "fit": "GOOD"
+  },
+  {
+    "symbol": "CRWD",
+    "median_r2": 0.3845,
+    "beta_mean": 1.271,
+    "half_life_median": 6.2,
+    "fit": "GOOD"
+  },
+  {
+    "symbol": "DDOG",
+    "median_r2": 0.3383,
+    "beta_mean": 1.297,
+    "half_life_median": 6.2,
+    "fit": "ACCEPTABLE"
+  },
+  {
+    "symbol": "DE",
+    "median_r2": 0.3596,
+    "beta_mean": 1.029,
+    "half_life_median": 5.8,
+    "fit": "GOOD"
+  },
+  {
+    "symbol": "DG",
+    "median_r2": 0.0282,
+    "beta_mean": 0.266,
+    "half_life_median": 5.6,
+    "fit": "BLOCKED"
+  },
+  {
+    "symbol": "ENPH",
+    "median_r2": 0.6648,
+    "beta_mean": 1.336,
+    "half_life_median": 6.2,
+    "fit": "GOOD"
+  },
+  {
+    "symbol": "FSLR",
+    "median_r2": 0.6062,
+    "beta_mean": 1.012,
+    "half_life_median": 6.7,
+    "fit": "GOOD"
+  },
+  {
+    "symbol": "GD",
+    "median_r2": 0.3986,
+    "beta_mean": 0.698,
+    "half_life_median": 6.0,
+    "fit": "GOOD"
+  },
+  {
+    "symbol": "GE",
+    "median_r2": 0.404,
+    "beta_mean": 1.189,
+    "half_life_median": 4.4,
+    "fit": "GOOD"
+  },
+  {
+    "symbol": "GILD",
+    "median_r2": 0.2928,
+    "beta_mean": 0.826,
+    "half_life_median": 5.9,
+    "fit": "ACCEPTABLE"
+  },
+  {
+    "symbol": "GOOGL",
+    "median_r2": 0.3365,
+    "beta_mean": 0.888,
+    "half_life_median": 6.5,
+    "fit": "ACCEPTABLE"
+  },
+  {
+    "symbol": "GS",
+    "median_r2": 0.6462,
+    "beta_mean": 1.239,
+    "half_life_median": 6.5,
+    "fit": "GOOD"
+  },
+  {
+    "symbol": "HD",
+    "median_r2": 0.405,
+    "beta_mean": 0.639,
+    "half_life_median": 6.0,
+    "fit": "GOOD"
+  },
+  {
+    "symbol": "HON",
+    "median_r2": 0.5561,
+    "beta_mean": 0.822,
+    "half_life_median": 7.1,
+    "fit": "GOOD"
+  },
+  {
+    "symbol": "IONQ",
+    "median_r2": 0.2409,
+    "beta_mean": 1.801,
+    "half_life_median": 5.8,
+    "fit": "ACCEPTABLE"
+  },
+  {
+    "symbol": "JNJ",
+    "median_r2": 0.371,
+    "beta_mean": 0.734,
+    "half_life_median": 4.7,
+    "fit": "GOOD"
+  },
+  {
+    "symbol": "JPM",
+    "median_r2": 0.687,
+    "beta_mean": 1.137,
+    "half_life_median": 6.7,
+    "fit": "GOOD"
+  },
+  {
+    "symbol": "LAC",
+    "median_r2": 0.2723,
+    "beta_mean": 0.892,
+    "half_life_median": 7.3,
+    "fit": "ACCEPTABLE"
+  },
+  {
+    "symbol": "LLY",
+    "median_r2": 0.305,
+    "beta_mean": 1.174,
+    "half_life_median": 7.7,
+    "fit": "ACCEPTABLE"
+  },
+  {
+    "symbol": "LMT",
+    "median_r2": 0.1222,
+    "beta_mean": 0.413,
+    "half_life_median": 6.9,
+    "fit": "LOW"
+  },
+  {
+    "symbol": "LOW",
+    "median_r2": 0.3736,
+    "beta_mean": 0.669,
+    "half_life_median": 5.8,
+    "fit": "GOOD"
+  },
+  {
+    "symbol": "MCD",
+    "median_r2": 0.1162,
+    "beta_mean": 0.257,
+    "half_life_median": 5.6,
+    "fit": "LOW"
+  },
+  {
+    "symbol": "META",
+    "median_r2": 0.3675,
+    "beta_mean": 1.095,
+    "half_life_median": 5.6,
+    "fit": "GOOD"
+  },
+  {
+    "symbol": "MRK",
+    "median_r2": 0.3152,
+    "beta_mean": 0.797,
+    "half_life_median": 7.6,
+    "fit": "ACCEPTABLE"
+  },
+  {
+    "symbol": "MRVL",
+    "median_r2": 0.5291,
+    "beta_mean": 1.79,
+    "half_life_median": 5.2,
+    "fit": "GOOD"
+  },
+  {
+    "symbol": "MS",
+    "median_r2": 0.6434,
+    "beta_mean": 1.273,
+    "half_life_median": 6.7,
+    "fit": "GOOD"
+  },
+  {
+    "symbol": "MSFT",
+    "median_r2": 0.651,
+    "beta_mean": 0.907,
+    "half_life_median": 6.2,
+    "fit": "GOOD"
+  },
+  {
+    "symbol": "MU",
+    "median_r2": 0.4165,
+    "beta_mean": 1.257,
+    "half_life_median": 6.4,
+    "fit": "GOOD"
+  },
+  {
+    "symbol": "NET",
+    "median_r2": 0.3522,
+    "beta_mean": 1.622,
+    "half_life_median": 5.4,
+    "fit": "GOOD"
+  },
+  {
+    "symbol": "NFLX",
+    "median_r2": 0.3167,
+    "beta_mean": 0.953,
+    "half_life_median": 5.6,
+    "fit": "ACCEPTABLE"
+  },
+  {
+    "symbol": "NKE",
+    "median_r2": 0.2011,
+    "beta_mean": 0.731,
+    "half_life_median": 7.3,
+    "fit": "ACCEPTABLE"
+  },
+  {
+    "symbol": "NOC",
+    "median_r2": 0.0819,
+    "beta_mean": 0.435,
+    "half_life_median": 6.1,
+    "fit": "BLOCKED"
+  },
+  {
+    "symbol": "NOW",
+    "median_r2": 0.5434,
+    "beta_mean": 1.113,
+    "half_life_median": 5.2,
+    "fit": "GOOD"
+  },
+  {
+    "symbol": "NVDA",
+    "median_r2": 0.6111,
+    "beta_mean": 1.816,
+    "half_life_median": 6.0,
+    "fit": "GOOD"
+  },
+  {
+    "symbol": "ON",
+    "median_r2": 0.4838,
+    "beta_mean": 1.339,
+    "half_life_median": 6.6,
+    "fit": "GOOD"
+  },
+  {
+    "symbol": "ORCL",
+    "median_r2": 0.3932,
+    "beta_mean": 0.866,
+    "half_life_median": 7.7,
+    "fit": "GOOD"
+  },
+  {
+    "symbol": "PFE",
+    "median_r2": 0.268,
+    "beta_mean": 0.899,
+    "half_life_median": 6.8,
+    "fit": "ACCEPTABLE"
+  },
+  {
+    "symbol": "PLTR",
+    "median_r2": 0.3448,
+    "beta_mean": 1.566,
+    "half_life_median": 6.3,
+    "fit": "ACCEPTABLE"
+  },
+  {
+    "symbol": "QBTS",
+    "median_r2": 0.0382,
+    "beta_mean": 1.443,
+    "half_life_median": 6.0,
+    "fit": "BLOCKED"
+  },
+  {
+    "symbol": "QCOM",
+    "median_r2": 0.5298,
+    "beta_mean": 1.14,
+    "half_life_median": 5.4,
+    "fit": "GOOD"
+  },
+  {
+    "symbol": "REGN",
+    "median_r2": 0.2915,
+    "beta_mean": 1.001,
+    "half_life_median": 6.3,
+    "fit": "ACCEPTABLE"
+  },
+  {
+    "symbol": "RGTI",
+    "median_r2": 0.12,
+    "beta_mean": 1.813,
+    "half_life_median": 6.5,
+    "fit": "LOW"
+  },
+  {
+    "symbol": "RTX",
+    "median_r2": 0.3236,
+    "beta_mean": 0.684,
+    "half_life_median": 6.5,
+    "fit": "ACCEPTABLE"
+  },
+  {
+    "symbol": "RUN",
+    "median_r2": 0.7341,
+    "beta_mean": 1.831,
+    "half_life_median": 5.1,
+    "fit": "GOOD"
+  },
+  {
+    "symbol": "SBUX",
+    "median_r2": 0.2198,
+    "beta_mean": 0.61,
+    "half_life_median": 6.8,
+    "fit": "ACCEPTABLE"
+  },
+  {
+    "symbol": "SCHW",
+    "median_r2": 0.4337,
+    "beta_mean": 1.192,
+    "half_life_median": 5.8,
+    "fit": "GOOD"
+  },
+  {
+    "symbol": "SEDG",
+    "median_r2": 0.6583,
+    "beta_mean": 1.55,
+    "half_life_median": 6.0,
+    "fit": "GOOD"
+  },
+  {
+    "symbol": "SNOW",
+    "median_r2": 0.3291,
+    "beta_mean": 1.315,
+    "half_life_median": 6.0,
+    "fit": "ACCEPTABLE"
+  },
+  {
+    "symbol": "TGT",
+    "median_r2": 0.2271,
+    "beta_mean": 0.62,
+    "half_life_median": 4.5,
+    "fit": "ACCEPTABLE"
+  },
+  {
+    "symbol": "TJX",
+    "median_r2": 0.2616,
+    "beta_mean": 0.462,
+    "half_life_median": 5.7,
+    "fit": "ACCEPTABLE"
+  },
+  {
+    "symbol": "TSM",
+    "median_r2": 0.4842,
+    "beta_mean": 1.11,
+    "half_life_median": 4.6,
+    "fit": "GOOD"
+  },
+  {
+    "symbol": "UNH",
+    "median_r2": 0.2864,
+    "beta_mean": 1.022,
+    "half_life_median": 5.8,
+    "fit": "ACCEPTABLE"
+  },
+  {
+    "symbol": "UNP",
+    "median_r2": 0.4588,
+    "beta_mean": 0.912,
+    "half_life_median": 5.2,
+    "fit": "GOOD"
+  },
+  {
+    "symbol": "V",
+    "median_r2": 0.4393,
+    "beta_mean": 0.749,
+    "half_life_median": 5.5,
+    "fit": "GOOD"
+  },
+  {
+    "symbol": "WFC",
+    "median_r2": 0.624,
+    "beta_mean": 1.349,
+    "half_life_median": 6.0,
+    "fit": "GOOD"
+  },
+  {
+    "symbol": "WMT",
+    "median_r2": 0.086,
+    "beta_mean": 0.249,
+    "half_life_median": 6.6,
+    "fit": "BLOCKED"
+  },
+  {
+    "symbol": "WOLF",
+    "median_r2": 0.2277,
+    "beta_mean": 1.601,
+    "half_life_median": 5.9,
+    "fit": "ACCEPTABLE"
+  }
+]

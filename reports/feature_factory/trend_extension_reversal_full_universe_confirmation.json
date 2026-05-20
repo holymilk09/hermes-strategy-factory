@@ -1,0 +1,94 @@
+{
+  "n_symbols": 76,
+  "n_symbols_in_universe": 76,
+  "date_range": "2023-01-03 to 2025-04-30",
+  "feature_set": "trend_extension_reversal_set",
+  "ic_by_label": {
+    "forward_return_20d": {
+      "ic": 0.0656,
+      "n_obs": 61438
+    },
+    "excess_vs_spy_20d": {
+      "ic": 0.0388,
+      "n_obs": 61438
+    },
+    "log_forward_return_20d": {
+      "ic": 0.0656,
+      "n_obs": 61438
+    },
+    "triple_barrier": {
+      "ic": 0.0413,
+      "n_obs": 62958
+    }
+  },
+  "decile_table": [
+    {
+      "decile": 1,
+      "n_obs": 6144,
+      "mean_return": 0.011982,
+      "hit_rate": 0.473
+    },
+    {
+      "decile": 2,
+      "n_obs": 6144,
+      "mean_return": 0.008903,
+      "hit_rate": 0.4806
+    },
+    {
+      "decile": 3,
+      "n_obs": 6144,
+      "mean_return": -0.000291,
+      "hit_rate": 0.4915
+    },
+    {
+      "decile": 4,
+      "n_obs": 6143,
+      "mean_return": 0.001632,
+      "hit_rate": 0.4693
+    },
+    {
+      "decile": 5,
+      "n_obs": 6144,
+      "mean_return": 0.01383,
+      "hit_rate": 0.4601
+    },
+    {
+      "decile": 6,
+      "n_obs": 6144,
+      "mean_return": 0.01377,
+      "hit_rate": 0.4653
+    },
+    {
+      "decile": 7,
+      "n_obs": 6143,
+      "mean_return": 0.0009,
+      "hit_rate": 0.4599
+    },
+    {
+      "decile": 8,
+      "n_obs": 6144,
+      "mean_return": 0.012669,
+      "hit_rate": 0.4707
+    },
+    {
+      "decile": 9,
+      "n_obs": 6144,
+      "mean_return": 0.008403,
+      "hit_rate": 0.5164
+    },
+    {
+      "decile": 10,
+      "n_obs": 6144,
+      "mean_return": 0.010065,
+      "hit_rate": 0.5423
+    }
+  ],
+  "d10_minus_d1_spread": -0.001917,
+  "symbol_concentration": {
+    "top5_ic_ratio": 0.171
+  },
+  "status": "WEAKENED_ON_FULL_UNIVERSE",
+  "status_note": "D10-D1 pooled spread is -0.19% (effectively zero). Signal loses standalone decile spread on full 76-stock universe. However, hit rate improves from D1 (47.3%) to D10 (54.2%), suggesting threshold filter utility within strategy contexts rather than standalone ranking.",
+  "hit_rate_monotonic": true,
+  "decile_spread_failed": true
+}

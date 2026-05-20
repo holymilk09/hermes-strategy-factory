@@ -1,0 +1,1752 @@
+features:
+  sma_5:
+    category: technical
+    subcategory: moving_average
+    formula: mean(close[t-4:t+1])
+    input_data:
+    - close
+    lookback: 5
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: fill NaN until 5 bars available
+    version: 1.0.0
+    expected_use: short-term trend anchor, pullback reference
+    risk_notes: "lagging \u2014 do not use for entry timing; use as fair-value anchor"
+  sma_10:
+    category: technical
+    subcategory: moving_average
+    formula: mean(close[t-9:t+1])
+    input_data:
+    - close
+    lookback: 10
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: fill NaN until 10 bars available
+    version: 1.0.0
+    expected_use: short-term trend
+    risk_notes: lagging
+  sma_20:
+    category: technical
+    subcategory: moving_average
+    formula: mean(close[t-19:t+1])
+    input_data:
+    - close
+    lookback: 20
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: fill NaN until 20 bars available
+    version: 1.0.0
+    expected_use: intermediate trend, BB centerline
+    risk_notes: common retail anchor; pair with residual for professional use
+  sma_50:
+    category: technical
+    subcategory: moving_average
+    formula: mean(close[t-49:t+1])
+    input_data:
+    - close
+    lookback: 50
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: fill NaN until 50 bars available
+    version: 1.0.0
+    expected_use: trend filter, regime anchor
+    risk_notes: significant lag in fast-moving markets
+  sma_200:
+    category: technical
+    subcategory: moving_average
+    formula: mean(close[t-199:t+1])
+    input_data:
+    - close
+    lookback: 200
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: fill NaN until 200 bars available
+    version: 1.0.0
+    expected_use: long-term trend anchor, regime filter
+    risk_notes: very lagging; fails during rapid regime changes (Q1 2025 selloff)
+  dist_sma_5:
+    category: technical
+    subcategory: moving_average_distance
+    formula: (close[t] - sma_5[t]) / sma_5[t]
+    input_data:
+    - close
+    lookback: 5
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: fill NaN until 5 bars available
+    version: 1.0.0
+    expected_use: short-term stretch from fair value
+    risk_notes: raw-price-based; does not account for sector/regime movement
+  dist_sma_10:
+    category: technical
+    subcategory: moving_average_distance
+    formula: (close[t] - sma_10[t]) / sma_10[t]
+    input_data:
+    - close
+    lookback: 10
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: fill NaN until 10 bars available
+    version: 1.0.0
+    expected_use: pullback depth
+    risk_notes: raw-price-based
+  dist_sma_20:
+    category: technical
+    subcategory: moving_average_distance
+    formula: (close[t] - sma_20[t]) / sma_20[t]
+    input_data:
+    - close
+    lookback: 20
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: fill NaN until 20 bars available
+    version: 1.0.0
+    expected_use: mean-reversion stretch from 20-day fair value
+    risk_notes: raw-price-based
+  dist_sma_50:
+    category: technical
+    subcategory: moving_average_distance
+    formula: (close[t] - sma_50[t]) / sma_50[t]
+    input_data:
+    - close
+    lookback: 50
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: fill NaN until 50 bars available
+    version: 1.0.0
+    expected_use: medium-term dislocation
+    risk_notes: raw-price-based
+  dist_sma_200:
+    category: technical
+    subcategory: moving_average_distance
+    formula: (close[t] - sma_200[t]) / sma_200[t]
+    input_data:
+    - close
+    lookback: 200
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: fill NaN until 200 bars available
+    version: 1.0.0
+    expected_use: long-term dislocation; crash filter
+    risk_notes: raw-price-based; significant lag
+  sma_5_slope:
+    category: technical
+    subcategory: moving_average_slope
+    formula: (sma_5[t] - sma_5[t-5]) / sma_5[t-5]
+    input_data:
+    - close
+    lookback: 10
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: fill NaN until 10 bars available
+    version: 1.0.0
+    expected_use: trend acceleration detection
+    risk_notes: lagging derivative of lagging indicator
+  sma_10_slope:
+    category: technical
+    subcategory: moving_average_slope
+    formula: (sma_10[t] - sma_10[t-5]) / sma_10[t-5]
+    input_data:
+    - close
+    lookback: 15
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: fill NaN until 15 bars available
+    version: 1.0.0
+    expected_use: trend strength
+    risk_notes: derivative of lagging
+  sma_20_slope:
+    category: technical
+    subcategory: moving_average_slope
+    formula: (sma_20[t] - sma_20[t-5]) / sma_20[t-5]
+    input_data:
+    - close
+    lookback: 25
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: fill NaN until 25 bars available
+    version: 1.0.0
+    expected_use: trend direction confirmation
+    risk_notes: derivative of lagging
+  sma_50_slope:
+    category: technical
+    subcategory: moving_average_slope
+    formula: (sma_50[t] - sma_50[t-5]) / sma_50[t-5]
+    input_data:
+    - close
+    lookback: 55
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: fill NaN until 55 bars available
+    version: 1.0.0
+    expected_use: medium-term trend strength
+    risk_notes: very lagging
+  sma_200_slope:
+    category: technical
+    subcategory: moving_average_slope
+    formula: (sma_200[t] - sma_200[t-5]) / sma_200[t-5]
+    input_data:
+    - close
+    lookback: 205
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: fill NaN until 205 bars available
+    version: 1.0.0
+    expected_use: secular trend direction
+    risk_notes: extremely lagging; useless for timing
+  ema_10:
+    category: technical
+    subcategory: exponential_moving_average
+    formula: alpha * close[t] + (1-alpha) * ema[t-1]; alpha=2/11
+    input_data:
+    - close
+    lookback: 10
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: seed with SMA(10), NaN until 10 bars
+    version: 1.0.0
+    expected_use: faster trend anchor than SMA
+    risk_notes: "recursive \u2014 errors propagate"
+  ema_20:
+    category: technical
+    subcategory: exponential_moving_average
+    formula: alpha * close[t] + (1-alpha) * ema[t-1]; alpha=2/21
+    input_data:
+    - close
+    lookback: 20
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: seed with SMA(20), NaN until 20 bars
+    version: 1.0.0
+    expected_use: trend pullback reference
+    risk_notes: recursive
+  ema_cross:
+    category: technical
+    subcategory: moving_average_crossover
+    formula: (ema_10[t] - ema_20[t]) / ema_20[t]
+    input_data:
+    - close
+    lookback: 20
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until both EMAs available
+    version: 1.0.0
+    expected_use: trend direction signal
+    risk_notes: whipsaws in sideways markets
+  rsi_2:
+    category: technical
+    subcategory: momentum_oscillator
+    formula: 100 - 100/(1+avg_gain_2/avg_loss_2); Wilder smoothing
+    input_data:
+    - close
+    lookback: 2
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 3 bars available
+    version: 1.0.0
+    expected_use: short-term mean-reversion entry signal
+    risk_notes: rank-based; does not normalize for vol or regime; cited as cookie-cutter
+      in Pillar 19
+  rsi_7:
+    category: technical
+    subcategory: momentum_oscillator
+    formula: 100 - 100/(1+avg_gain_7/avg_loss_7); Wilder smoothing
+    input_data:
+    - close
+    lookback: 7
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 8 bars available
+    version: 1.0.0
+    expected_use: medium-term overbought/oversold
+    risk_notes: less noisy than RSI(2) but slower to signal
+  rsi_14:
+    category: technical
+    subcategory: momentum_oscillator
+    formula: 100 - 100/(1+avg_gain_14/avg_loss_14); Wilder smoothing
+    input_data:
+    - close
+    lookback: 14
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 15 bars available
+    version: 1.0.0
+    expected_use: standard oscillator; regime context
+    risk_notes: classic RSI; overbought/oversold thresholds need regime adjustment
+  bb_upper:
+    category: technical
+    subcategory: volatility_envelope
+    formula: sma_20[t] + 2.0 * std_20[t]
+    input_data:
+    - close
+    lookback: 20
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 20 bars
+    version: 1.0.0
+    expected_use: overbought boundary; breakout confirmation
+    risk_notes: assumes normal distribution; 2 std captures ~95% in theory, less in
+      fat-tailed markets
+  bb_lower:
+    category: technical
+    subcategory: volatility_envelope
+    formula: sma_20[t] - 2.0 * std_20[t]
+    input_data:
+    - close
+    lookback: 20
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 20 bars
+    version: 1.0.0
+    expected_use: oversold boundary; mean-reversion trigger
+    risk_notes: cookie-cutter signal; combine with residual z for edge
+  bb_width:
+    category: technical
+    subcategory: volatility_envelope
+    formula: (bb_upper[t] - bb_lower[t]) / sma_20[t]
+    input_data:
+    - close
+    lookback: 20
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 20 bars
+    version: 1.0.0
+    expected_use: volatility expansion/contraction signal
+    risk_notes: narrowing bands precede expansion but direction unknown
+  bb_position:
+    category: technical
+    subcategory: volatility_envelope
+    formula: (close[t] - bb_lower[t]) / (bb_upper[t] - bb_lower[t])
+    input_data:
+    - close
+    lookback: 20
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 20 bars
+    version: 1.0.0
+    expected_use: normalized position within volatility envelope
+    risk_notes: 0 = at lower band, 1 = at upper band; RANGE-BASED not vol-normalized
+  atr_7:
+    category: technical
+    subcategory: volatility_measure
+    formula: Wilder-smoothed true range over 7 periods
+    input_data:
+    - high
+    - low
+    - close
+    lookback: 7
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 8 bars
+    version: 1.0.0
+    expected_use: short-term volatility, stop placement
+    risk_notes: absolute dollar measure; not comparable across stocks without normalization
+  atr_7_pct:
+    category: technical
+    subcategory: volatility_measure
+    formula: atr_7[t] / close[t]
+    input_data:
+    - high
+    - low
+    - close
+    lookback: 7
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 8 bars
+    version: 1.0.0
+    expected_use: normalized volatility for cross-asset comparison
+    risk_notes: vol-normalized; more useful than raw ATR
+  atr_14:
+    category: technical
+    subcategory: volatility_measure
+    formula: Wilder-smoothed true range over 14 periods
+    input_data:
+    - high
+    - low
+    - close
+    lookback: 14
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 15 bars
+    version: 1.0.0
+    expected_use: standard volatility; stop multiplier base
+    risk_notes: standard; combine with regime filter
+  atr_14_pct:
+    category: technical
+    subcategory: volatility_measure
+    formula: atr_14[t] / close[t]
+    input_data:
+    - high
+    - low
+    - close
+    lookback: 14
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 15 bars
+    version: 1.0.0
+    expected_use: cross-asset volatility ranking
+    risk_notes: pct-based; good for filtering
+  vol_ma_5:
+    category: technical
+    subcategory: volume
+    formula: mean(volume[t-4:t+1])
+    input_data:
+    - volume
+    lookback: 5
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 5 bars
+    version: 1.0.0
+    expected_use: baseline volume
+    risk_notes: crude; better to normalize vs sector
+  vol_ma_10:
+    category: technical
+    subcategory: volume
+    formula: mean(volume[t-9:t+1])
+    input_data:
+    - volume
+    lookback: 10
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 10 bars
+    version: 1.0.0
+    expected_use: volume baseline
+    risk_notes: crude
+  vol_ma_20:
+    category: technical
+    subcategory: volume
+    formula: mean(volume[t-19:t+1])
+    input_data:
+    - volume
+    lookback: 20
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 20 bars
+    version: 1.0.0
+    expected_use: standard volume baseline
+    risk_notes: monthly average volume
+  vol_ma_50:
+    category: technical
+    subcategory: volume
+    formula: mean(volume[t-49:t+1])
+    input_data:
+    - volume
+    lookback: 50
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 50 bars
+    version: 1.0.0
+    expected_use: long-term volume baseline
+    risk_notes: slow to adapt
+  vol_ma_200:
+    category: technical
+    subcategory: volume
+    formula: mean(volume[t-199:t+1])
+    input_data:
+    - volume
+    lookback: 200
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 200 bars
+    version: 1.0.0
+    expected_use: secular volume baseline
+    risk_notes: very slow
+  rvol_5:
+    category: technical
+    subcategory: relative_volume
+    formula: volume[t] / vol_ma_5[t]
+    input_data:
+    - volume
+    lookback: 5
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 5 bars
+    version: 1.0.0
+    expected_use: very short-term volume spike
+    risk_notes: noisy on 5-day window
+  rvol_10:
+    category: technical
+    subcategory: relative_volume
+    formula: volume[t] / vol_ma_10[t]
+    input_data:
+    - volume
+    lookback: 10
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 10 bars
+    version: 1.0.0
+    expected_use: short-term volume anomaly
+    risk_notes: moderate noise
+  rvol_20:
+    category: technical
+    subcategory: relative_volume
+    formula: volume[t] / vol_ma_20[t]
+    input_data:
+    - volume
+    lookback: 20
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 20 bars
+    version: 1.0.0
+    expected_use: volume climax detection; rvol > 1.5 = significant
+    risk_notes: standard relative volume
+  rvol_50:
+    category: technical
+    subcategory: relative_volume
+    formula: volume[t] / vol_ma_50[t]
+    input_data:
+    - volume
+    lookback: 50
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 50 bars
+    version: 1.0.0
+    expected_use: volume anomaly vs quarterly average
+    risk_notes: slow baseline
+  rvol_200:
+    category: technical
+    subcategory: relative_volume
+    formula: volume[t] / vol_ma_200[t]
+    input_data:
+    - volume
+    lookback: 200
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 200 bars
+    version: 1.0.0
+    expected_use: volume anomaly vs annual average
+    risk_notes: very slow baseline
+  macd:
+    category: technical
+    subcategory: momentum_oscillator
+    formula: ema(close,12) - ema(close,26)
+    input_data:
+    - close
+    lookback: 26
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 26 bars
+    version: 1.0.0
+    expected_use: trend following; divergence
+    risk_notes: classic indicator; lagging crossover
+  macd_signal:
+    category: technical
+    subcategory: momentum_oscillator
+    formula: ema(macd_line, 9)
+    input_data:
+    - close
+    lookback: 35
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 35 bars
+    version: 1.0.0
+    expected_use: MACD signal line for crossover
+    risk_notes: derivative of derivative; significant lag
+  macd_histogram:
+    category: technical
+    subcategory: momentum_oscillator
+    formula: macd[t] - macd_signal[t]
+    input_data:
+    - close
+    lookback: 35
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 35 bars
+    version: 1.0.0
+    expected_use: momentum acceleration/deceleration
+    risk_notes: popular but heavily exploited; use as context, not trigger
+  swing_low_5d:
+    category: technical
+    subcategory: support_resistance
+    formula: min(low[t-4:t+1])
+    input_data:
+    - low
+    lookback: 5
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 5 bars
+    version: 1.0.0
+    expected_use: structural stop placement
+    risk_notes: used for sweep detection and stop anchoring
+  swing_high_5d:
+    category: technical
+    subcategory: support_resistance
+    formula: max(high[t-4:t+1])
+    input_data:
+    - high
+    lookback: 5
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 5 bars
+    version: 1.0.0
+    expected_use: resistance level; breakout reference
+    risk_notes: basic reference level
+  donchian_high_20:
+    category: technical
+    subcategory: donchian_channel
+    formula: max(high[t-19:t+1])
+    input_data:
+    - high
+    lookback: 20
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 20 bars
+    version: 1.0.0
+    expected_use: breakout level (Turtle-style)
+    risk_notes: entry/exit reference; raw price level
+  donchian_low_20:
+    category: technical
+    subcategory: donchian_channel
+    formula: min(low[t-19:t+1])
+    input_data:
+    - low
+    lookback: 20
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 20 bars
+    version: 1.0.0
+    expected_use: trailing stop reference
+    risk_notes: raw price level
+  donchian_pos_20:
+    category: technical
+    subcategory: donchian_channel
+    formula: (close[t] - donchian_low_20[t]) / (donchian_high_20[t] - donchian_low_20[t])
+    input_data:
+    - high
+    - low
+    - close
+    lookback: 20
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 20 bars
+    version: 1.0.0
+    expected_use: position within 20-day range
+    risk_notes: 0 = at 20d low; 1 = at 20d high
+  donchian_high_50:
+    category: technical
+    subcategory: donchian_channel
+    formula: max(high[t-49:t+1])
+    input_data:
+    - high
+    lookback: 50
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 50 bars
+    version: 1.0.0
+    expected_use: medium-term breakout
+    risk_notes: raw price level
+  donchian_low_50:
+    category: technical
+    subcategory: donchian_channel
+    formula: min(low[t-49:t+1])
+    input_data:
+    - low
+    lookback: 50
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 50 bars
+    version: 1.0.0
+    expected_use: medium-term support
+    risk_notes: raw price level
+  donchian_pos_50:
+    category: technical
+    subcategory: donchian_channel
+    formula: (close[t] - donchian_low_50[t]) / (donchian_high_50[t] - donchian_low_50[t])
+    input_data:
+    - high
+    - low
+    - close
+    lookback: 50
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 50 bars
+    version: 1.0.0
+    expected_use: position within quarterly range
+    risk_notes: 0 = at 50d low; 1 = at 50d high
+  hurst_100:
+    category: technical
+    subcategory: fractal
+    formula: rescaled range analysis on log returns; H < 0.5 = mean-reverting
+    input_data:
+    - close
+    lookback: 100
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 100 bars; return 0.5 (random walk) if insufficient data
+    version: 1.0.0
+    expected_use: structural mean-reversion filter
+    risk_notes: R/S method has known bias; use as directional filter only, not precision
+      tool
+  mom_5d:
+    category: statistical
+    subcategory: momentum
+    formula: close[t] / close[t-5] - 1
+    input_data:
+    - close
+    lookback: 5
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 5 bars
+    version: 1.0.0
+    expected_use: 1-week momentum
+    risk_notes: short horizon; noisy on daily bars
+  mom_10d:
+    category: statistical
+    subcategory: momentum
+    formula: close[t] / close[t-10] - 1
+    input_data:
+    - close
+    lookback: 10
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 10 bars
+    version: 1.0.0
+    expected_use: 2-week momentum
+    risk_notes: short-term trend
+  mom_20d:
+    category: statistical
+    subcategory: momentum
+    formula: close[t] / close[t-20] - 1
+    input_data:
+    - close
+    lookback: 20
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 20 bars
+    version: 1.0.0
+    expected_use: 1-month momentum
+    risk_notes: standard momentum factor
+  mom_50d:
+    category: statistical
+    subcategory: momentum
+    formula: close[t] / close[t-50] - 1
+    input_data:
+    - close
+    lookback: 50
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 50 bars
+    version: 1.0.0
+    expected_use: quarterly momentum
+    risk_notes: medium horizon
+  mom_100d:
+    category: statistical
+    subcategory: momentum
+    formula: close[t] / close[t-100] - 1
+    input_data:
+    - close
+    lookback: 100
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 100 bars
+    version: 1.0.0
+    expected_use: 6-month momentum
+    risk_notes: long horizon; less noisy
+  mom_sma_5:
+    category: statistical
+    subcategory: smoothed_momentum
+    formula: (sma_5[t] / sma_5[t-5]) - 1
+    input_data:
+    - close
+    lookback: 10
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 10 bars
+    version: 1.0.0
+    expected_use: smoothed momentum
+    risk_notes: derivative of derivative
+  mom_sma_10:
+    category: statistical
+    subcategory: smoothed_momentum
+    formula: (sma_10[t] / sma_10[t-5]) - 1
+    input_data:
+    - close
+    lookback: 15
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 15 bars
+    version: 1.0.0
+    expected_use: smoothed momentum
+    risk_notes: smoothed
+  mom_sma_20:
+    category: statistical
+    subcategory: smoothed_momentum
+    formula: (sma_20[t] / sma_20[t-5]) - 1
+    input_data:
+    - close
+    lookback: 25
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 25 bars
+    version: 1.0.0
+    expected_use: smoothed monthly momentum
+    risk_notes: very smoothed; significant lag
+  mom_sma_50:
+    category: statistical
+    subcategory: smoothed_momentum
+    formula: (sma_50[t] / sma_50[t-5]) - 1
+    input_data:
+    - close
+    lookback: 55
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 55 bars
+    version: 1.0.0
+    expected_use: smoothed quarterly momentum
+    risk_notes: extremely lagging
+  mom_sma_100:
+    category: statistical
+    subcategory: smoothed_momentum
+    formula: (sma_100[t] / sma_100[t-5]) - 1
+    input_data:
+    - close
+    lookback: 105
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 105 bars
+    version: 1.0.0
+    expected_use: secular trend momentum
+    risk_notes: useless for timing; directional context only
+  vol_5d:
+    category: statistical
+    subcategory: volatility
+    formula: std(returns[t-4:t+1])
+    input_data:
+    - close
+    lookback: 5
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 5 bars
+    version: 1.0.0
+    expected_use: 1-week realized vol
+    risk_notes: noisy; use for short-term risk
+  vol_10d:
+    category: statistical
+    subcategory: volatility
+    formula: std(returns[t-9:t+1])
+    input_data:
+    - close
+    lookback: 10
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 10 bars
+    version: 1.0.0
+    expected_use: 2-week vol
+    risk_notes: moderate noise
+  vol_20d:
+    category: statistical
+    subcategory: volatility
+    formula: std(returns[t-19:t+1])
+    input_data:
+    - close
+    lookback: 20
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 20 bars
+    version: 1.0.0
+    expected_use: 1-month vol; regime classification
+    risk_notes: standard; used in regime score
+  vol_50d:
+    category: statistical
+    subcategory: volatility
+    formula: std(returns[t-49:t+1])
+    input_data:
+    - close
+    lookback: 50
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 50 bars
+    version: 1.0.0
+    expected_use: quarterly vol baseline
+    risk_notes: slower to adapt to vol spikes
+  vol_100d:
+    category: statistical
+    subcategory: volatility
+    formula: std(returns[t-99:t+1])
+    input_data:
+    - close
+    lookback: 100
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 100 bars
+    version: 1.0.0
+    expected_use: 6-month vol baseline
+    risk_notes: slow; useful for anomaly detection
+  zscore_20d:
+    category: statistical
+    subcategory: z_score
+    formula: (close[t] - sma_20[t]) / std_20[t]
+    input_data:
+    - close
+    lookback: 20
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 20 bars
+    version: 1.0.0
+    expected_use: short-term dislocation from fair value
+    risk_notes: raw-price z-score; not factor-adjusted
+  zscore_50d:
+    category: statistical
+    subcategory: z_score
+    formula: (close[t] - sma_50[t]) / std_50[t]
+    input_data:
+    - close
+    lookback: 50
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 50 bars
+    version: 1.0.0
+    expected_use: medium-term dislocation
+    risk_notes: raw-price z-score; not factor-adjusted
+  dd_20d:
+    category: statistical
+    subcategory: drawdown
+    formula: (close[t] - max(close[t-19:t+1])) / max(close[t-19:t+1])
+    input_data:
+    - close
+    lookback: 20
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 20 bars
+    version: 1.0.0
+    expected_use: 1-month drawdown
+    risk_notes: negative values; closer to 0 = closer to high
+  dd_100d:
+    category: statistical
+    subcategory: drawdown
+    formula: (close[t] - max(close[t-99:t+1])) / max(close[t-99:t+1])
+    input_data:
+    - close
+    lookback: 100
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 100 bars
+    version: 1.0.0
+    expected_use: 6-month drawdown; oversold filter
+    risk_notes: large DD may signal structural weakness, not opportunity
+  range_20d:
+    category: statistical
+    subcategory: range
+    formula: (max(high[t-19:t+1]) - min(low[t-19:t+1])) / min(low[t-19:t+1])
+    input_data:
+    - high
+    - low
+    lookback: 20
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 20 bars
+    version: 1.0.0
+    expected_use: range expansion/contraction
+    risk_notes: raw range; normalize by ATR for better signal
+  range_100d:
+    category: statistical
+    subcategory: range
+    formula: (max(high[t-99:t+1]) - min(low[t-99:t+1])) / min(low[t-99:t+1])
+    input_data:
+    - high
+    - low
+    lookback: 100
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 100 bars
+    version: 1.0.0
+    expected_use: long-term range context
+    risk_notes: raw measure
+  skew_20d:
+    category: statistical
+    subcategory: distribution
+    formula: skewness of returns[t-19:t+1]
+    input_data:
+    - close
+    lookback: 20
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 20 bars
+    version: 1.0.0
+    expected_use: downside tail risk proxy
+    risk_notes: negative skew = more extreme negative returns
+  skew_50d:
+    category: statistical
+    subcategory: distribution
+    formula: skewness of returns[t-49:t+1]
+    input_data:
+    - close
+    lookback: 50
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 50 bars
+    version: 1.0.0
+    expected_use: medium-term return asymmetry
+    risk_notes: slow to change
+  kurtosis_20d:
+    category: statistical
+    subcategory: distribution
+    formula: kurtosis of returns[t-19:t+1]
+    input_data:
+    - close
+    lookback: 20
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 20 bars
+    version: 1.0.0
+    expected_use: fat-tail detection
+    risk_notes: high kurtosis = more extreme events
+  kurtosis_50d:
+    category: statistical
+    subcategory: distribution
+    formula: kurtosis of returns[t-49:t+1]
+    input_data:
+    - close
+    lookback: 50
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 50 bars
+    version: 1.0.0
+    expected_use: medium-term tail risk
+    risk_notes: slow
+  consec_up:
+    category: statistical
+    subcategory: persistence
+    formula: count consecutive positive daily returns
+    input_data:
+    - close
+    lookback: null
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN at start
+    version: 1.0.0
+    expected_use: momentum exhaustion detection
+    risk_notes: simple; combine with magnitude
+    expected_warmup_bars: 20
+    allow_initial_nan: true
+    cumulative_feature: true
+    max_nan_after_warmup: 0.05
+  consec_down:
+    category: statistical
+    subcategory: persistence
+    formula: count consecutive negative daily returns
+    input_data:
+    - close
+    lookback: null
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN at start
+    version: 1.0.0
+    expected_use: mean-reversion exhaustion detection
+    risk_notes: simple counter; combine with residual z
+    expected_warmup_bars: 20
+    allow_initial_nan: true
+    cumulative_feature: true
+    max_nan_after_warmup: 0.05
+  daily_gap:
+    category: statistical
+    subcategory: overnight
+    formula: close[t] / close[t-1] - 1
+    input_data:
+    - close
+    lookback: 1
+    known_at_time: end of day bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN at t=0
+    version: 1.0.0
+    expected_use: daily return; gap detection
+    risk_notes: single-day return; position sizing input
+  eff_ratio_10d:
+    category: statistical
+    subcategory: efficiency
+    formula: abs(close[t] - close[t-9]) / sum(abs(close[i] - close[i-1]))
+    input_data:
+    - close
+    lookback: 10
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 10 bars
+    version: 1.0.0
+    expected_use: trend efficiency (Kaufman); 1 = straight line, 0 = noise
+    risk_notes: identifies trending vs choppy periods
+  eff_ratio_20d:
+    category: statistical
+    subcategory: efficiency
+    formula: abs(close[t] - close[t-19]) / sum(abs(close[i] - close[i-1]))
+    input_data:
+    - close
+    lookback: 20
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 20 bars
+    version: 1.0.0
+    expected_use: monthly trend efficiency
+    risk_notes: smoother than 10d version
+  pv_corr_20d:
+    category: statistical
+    subcategory: price_volume
+    formula: correlation(close[t-19:t+1], volume[t-19:t+1])
+    input_data:
+    - close
+    - volume
+    lookback: 20
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 20 bars
+    version: 1.0.0
+    expected_use: 'confirmation: rising price + rising volume = healthy'
+    risk_notes: correlation unstable; check significance
+  pv_corr_50d:
+    category: statistical
+    subcategory: price_volume
+    formula: correlation(close[t-49:t+1], volume[t-49:t+1])
+    input_data:
+    - close
+    - volume
+    lookback: 50
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 50 bars
+    version: 1.0.0
+    expected_use: medium-term price-volume relationship
+    risk_notes: slower; less useful for timing
+  sma20_50_alignment:
+    category: regime
+    subcategory: trend_alignment
+    formula: 3 if sma20 > sma50 > sma200 and close > sma20; 0-3 scale
+    input_data:
+    - close
+    lookback: 200
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 200 bars
+    version: 1.0.0
+    expected_use: trend alignment signal; 3 = strong bull, 0 = bear
+    risk_notes: lagging; fails in rapid regime changes
+  trend_strength:
+    category: regime
+    subcategory: trend_strength
+    formula: (sma_50[t] - sma_50[t-10]) / sma_50[t-10]
+    input_data:
+    - close
+    lookback: 60
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 60 bars
+    version: 1.0.0
+    expected_use: slope of 50-day trend
+    risk_notes: lagging derivative; good for regime, bad for timing
+  regime_score:
+    category: regime
+    subcategory: composite_regime
+    formula: f1(close > sma50) + f2(close > sma200) + f3(vol_20d < 0.025)
+    input_data:
+    - close
+    lookback: 200
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 200 bars
+    version: 1.0.0
+    expected_use: multi-factor regime gate; min score=2 to trade
+    risk_notes: used in factor_residual_mr_strategy; replaces binary SMA200
+  vol_regime:
+    category: regime
+    subcategory: volatility_regime
+    formula: 'categorical: low (<1%), normal (1-2.5%), high (2.5-4%), crash (>4%)'
+    input_data:
+    - close
+    lookback: 20
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 20 bars
+    version: 1.0.0
+    expected_use: vol-based strategy gating
+    risk_notes: string feature; convert to numeric for models
+  breadth_sma20:
+    category: regime
+    subcategory: breadth
+    formula: count of days close > sma20 in last 10 days
+    input_data:
+    - close
+    lookback: 30
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 30 bars
+    version: 1.0.0
+    expected_use: breadth proxy; 10/10 = strong trend
+    risk_notes: single-stock breadth; not market breadth
+  hh_ll_20d:
+    category: regime
+    subcategory: trend_quality
+    formula: higher-high + higher-low score (-2 to +2)
+    input_data:
+    - high
+    - low
+    lookback: 20
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 20 bars
+    version: 1.0.0
+    expected_use: 'trend quality: +2 = strong uptrend, -2 = strong downtrend'
+    risk_notes: simple but effective directional signal
+  adx_proxy_14:
+    category: regime
+    subcategory: trend_strength
+    formula: simplified ADX using Wilder smoothing; measures trend strength 0-100
+    input_data:
+    - high
+    - low
+    - close
+    lookback: 14
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 15 bars
+    version: 1.0.0
+    expected_use: trend strength; >25 = trending, <20 = ranging
+    risk_notes: measures strength, not direction
+  vol_expansion:
+    category: regime
+    subcategory: volatility_change
+    formula: vol_20d[t] / mean(vol_20d[t-59:t+1])
+    input_data:
+    - close
+    lookback: 80
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 80 bars
+    version: 1.0.0
+    expected_use: vol expansion > 1.5x 3-month average = regime shift
+    risk_notes: key crash detection feature
+  dist_52w_high:
+    category: regime
+    subcategory: position
+    formula: close[t] / max(high[t-251:t+1])
+    input_data:
+    - high
+    - close
+    lookback: 252
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 252 bars
+    version: 1.0.0
+    expected_use: proximity to 52-week high; <0.7 = significant drawdown
+    risk_notes: 'anchoring bias risk: traders buy near highs, sell near lows'
+  dist_52w_low:
+    category: regime
+    subcategory: position
+    formula: close[t] / min(low[t-251:t+1])
+    input_data:
+    - low
+    - close
+    lookback: 252
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 252 bars
+    version: 1.0.0
+    expected_use: distance from 52-week low; >2.0 = strong recovery
+    risk_notes: extreme values may indicate bubble, not strength
+  residual_z:
+    category: residual
+    subcategory: dislocation
+    formula: (cum_residual - mean_res * N) / (std_res * sqrt(N)); rolling 60d regression
+      on sector ETF
+    input_data:
+    - close
+    - sector_etf_close
+    lookback: 60
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 60 bars; NaN if no sector ETF
+    version: 1.0.0
+    expected_use: primary mean-reversion entry signal; replaces raw RSI
+    risk_notes: depends on stable sector ETF relationship; unstable beta degrades
+      signal
+    residual_model:
+      benchmark_type: sector
+      regression_method: ols
+      rolling_window: 60
+      beta_estimation_method: ordinary_least_squares
+      residual_vol_method: rolling_standard_deviation
+      half_life_method: ou_least_squares
+      min_r2_threshold: 0.2
+  residual_beta:
+    category: residual
+    subcategory: factor_exposure
+    formula: cov(stock_ret_60d, etf_ret_60d) / var(etf_ret_60d)
+    input_data:
+    - close
+    - sector_etf_close
+    lookback: 60
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 60 bars
+    version: 1.0.0
+    expected_use: sector sensitivity; unstable beta = LOW_CONFIDENCE residual
+    risk_notes: beta instability invalidates residual z; monitor rolling stability
+    residual_model:
+      benchmark_type: sector
+      regression_method: ols
+      rolling_window: 60
+      beta_estimation_method: ordinary_least_squares
+  residual_alpha:
+    category: residual
+    subcategory: factor_exposure
+    formula: mean(stock_ret_60d) - beta * mean(etf_ret_60d)
+    input_data:
+    - close
+    - sector_etf_close
+    lookback: 60
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 60 bars
+    version: 1.0.0
+    expected_use: stock-specific drift; persistent alpha = structural edge
+    risk_notes: alpha decay monitoring
+  cumulative_residual:
+    category: residual
+    subcategory: dislocation
+    formula: sum of residual returns over last 20 days
+    input_data:
+    - close
+    - sector_etf_close
+    lookback: 60
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 60 bars
+    version: 1.0.0
+    expected_use: cumulative idiosyncratic drift; feeds residual_z
+    risk_notes: cumulative; can accumulate large values without reversion
+  residual_half_life:
+    category: residual
+    subcategory: mean_reversion_speed
+    formula: -ln(2) / b where b from regression of diff(residuals) on residuals
+    input_data:
+    - close
+    - sector_etf_close
+    lookback: 60
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN if b >= 0 (not mean-reverting); inf mapped to large number
+    version: 1.0.0
+    expected_use: time stop calibration; HL > 20d = not trading
+    risk_notes: OU model is an approximation; real residuals may not follow OU
+    residual_model:
+      benchmark_type: sector
+      half_life_method: ou_least_squares
+  residual_r2:
+    category: residual
+    subcategory: model_fit
+    formula: 1 - ss_residual / ss_total for rolling regression
+    input_data:
+    - close
+    - sector_etf_close
+    lookback: 60
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 60 bars
+    version: 1.0.0
+    expected_use: model quality; R2 < 0.2 = LOW_CONFIDENCE residual
+    risk_notes: "low R2 means stock moves independently of sector \u2014 residual\
+      \ may be noise"
+    residual_model:
+      benchmark_type: sector
+      regression_method: ols
+  residual_return:
+    category: residual
+    subcategory: dislocation
+    formula: stock_return[t] - (alpha + beta * etf_return[t])
+    input_data:
+    - close
+    - sector_etf_close
+    lookback: 60
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 60 bars
+    version: 1.0.0
+    expected_use: daily idiosyncratic return; feeds cumulative and z-score
+    risk_notes: single-day; noisy; use cumulative for signals
+  signed_volume:
+    category: microstructure_liquidity_proxy
+    subcategory: order_flow_proxy
+    formula: volume[t] * sign(close[t] - close[t-1])
+    input_data:
+    - close
+    - volume
+    lookback: 1
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: 0 if close unchanged
+    version: 1.0.0
+    expected_use: tick-rule volume approximation
+    risk_notes: "PROXY \u2014 real signed volume requires trade-level data; daily\
+      \ approximation is crude"
+  cum_signed_volume:
+    category: microstructure_liquidity_proxy
+    subcategory: order_flow_proxy
+    formula: cumulative sum of signed_volume
+    input_data:
+    - close
+    - volume
+    lookback: null
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: cumulative over all bars
+    version: 1.0.0
+    expected_use: cumulative order flow imbalance
+    risk_notes: "PROXY \u2014 cumulative measure; divergence from price may signal\
+      \ reversal"
+    expected_warmup_bars: 20
+    allow_initial_nan: true
+    cumulative_feature: true
+    max_nan_after_warmup: 0.05
+  ofi_5d:
+    category: microstructure_liquidity_proxy
+    subcategory: order_flow_proxy
+    formula: mean(signed_volume[t-4:t+1]) / mean(volume[t-4:t+1])
+    input_data:
+    - close
+    - volume
+    lookback: 5
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 5 bars
+    version: 1.0.0
+    expected_use: order flow imbalance proxy; OFI > 0 = net buying
+    risk_notes: "PROXY \u2014 Cont-Kukanov-Stoikov style but on daily bars"
+  ofi_10d:
+    category: microstructure_liquidity_proxy
+    subcategory: order_flow_proxy
+    formula: mean(signed_volume[t-9:t+1]) / mean(volume[t-9:t+1])
+    input_data:
+    - close
+    - volume
+    lookback: 10
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 10 bars
+    version: 1.0.0
+    expected_use: 2-week order flow imbalance
+    risk_notes: "PROXY \u2014 smoother than 5d"
+  ofi_20d:
+    category: microstructure_liquidity_proxy
+    subcategory: order_flow_proxy
+    formula: mean(signed_volume[t-19:t+1]) / mean(volume[t-19:t+1])
+    input_data:
+    - close
+    - volume
+    lookback: 20
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 20 bars
+    version: 1.0.0
+    expected_use: monthly order flow trend
+    risk_notes: "PROXY \u2014 slow; less useful for timing"
+  vwap_proxy:
+    category: microstructure_liquidity_proxy
+    subcategory: execution_proxy
+    formula: cumulative(typical_price * volume) / cumulative(volume); typical = (H+L+C)/3
+    input_data:
+    - high
+    - low
+    - close
+    - volume
+    lookback: null
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN if cumulative volume = 0
+    version: 1.0.0
+    expected_use: fair-value anchor for intraday-style strategies
+    risk_notes: "PROXY \u2014 real VWAP resets daily; cumulative VWAP is a different\
+      \ concept"
+    expected_warmup_bars: 20
+    allow_initial_nan: true
+    cumulative_feature: true
+    max_nan_after_warmup: 0.05
+  vwap_deviation:
+    category: microstructure_liquidity_proxy
+    subcategory: execution_proxy
+    formula: (close[t] - vwap_proxy[t]) / vwap_proxy[t]
+    input_data:
+    - high
+    - low
+    - close
+    - volume
+    lookback: null
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN if vwap_proxy is NaN
+    version: 1.0.0
+    expected_use: deviation from VWAP; reversal signal
+    risk_notes: "PROXY \u2014 cumulative VWAP; different behavior from daily-reset\
+      \ VWAP"
+    expected_warmup_bars: 20
+    allow_initial_nan: true
+    cumulative_feature: true
+    max_nan_after_warmup: 0.05
+  spread_proxy:
+    category: microstructure_liquidity_proxy
+    subcategory: liquidity_proxy
+    formula: (high[t] - low[t]) / close[t]
+    input_data:
+    - high
+    - low
+    - close
+    lookback: 1
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN at t=0
+    version: 1.0.0
+    expected_use: daily range as spread proxy; wide spread = illiquid
+    risk_notes: "PROXY \u2014 real spread is bid-ask; this is daily range, a different\
+      \ measure"
+  spread_proxy_ma20:
+    category: microstructure_liquidity_proxy
+    subcategory: liquidity_proxy
+    formula: mean(spread_proxy[t-19:t+1])
+    input_data:
+    - high
+    - low
+    - close
+    lookback: 20
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 20 bars
+    version: 1.0.0
+    expected_use: average liquidity condition
+    risk_notes: "PROXY \u2014 smoothed; slow to detect liquidity shocks"
+  close_location:
+    category: microstructure_liquidity_proxy
+    subcategory: bar_analysis
+    formula: (close[t] - low[t]) / (high[t] - low[t])
+    input_data:
+    - high
+    - low
+    - close
+    lookback: 1
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN if high=low
+    version: 1.0.0
+    expected_use: closing strength; close at high = bullish, at low = bearish
+    risk_notes: single bar; noisy; aggregate for signal
+  amihud_illiquidity:
+    category: microstructure_liquidity_proxy
+    subcategory: price_impact
+    formula: abs(return[t]) / (volume[t] * close[t])
+    input_data:
+    - close
+    - volume
+    lookback: 1
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN if volume=0
+    version: 1.0.0
+    expected_use: illiquidity measure; high Amihud = high price impact
+    risk_notes: "PROXY \u2014 single day; extremely noisy; use rolling average"
+  amihud_ma20:
+    category: microstructure_liquidity_proxy
+    subcategory: price_impact
+    formula: mean(amihud_illiquidity[t-19:t+1])
+    input_data:
+    - close
+    - volume
+    lookback: 20
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 20 bars
+    version: 1.0.0
+    expected_use: average illiquidity; cost filter
+    risk_notes: "PROXY \u2014 useful for filtering illiquid names"
+  volume_climax:
+    category: microstructure_liquidity_proxy
+    subcategory: volume_analysis
+    formula: volume[t] / mean(volume[t-19:t+1])
+    input_data:
+    - volume
+    lookback: 20
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 20 bars
+    version: 1.0.0
+    expected_use: exhaustion confirmation; >1.5x avg = potential climax
+    risk_notes: "PROXY \u2014 used in exhaustion confirmation for mean reversion"
+  intraday_range_pct:
+    category: microstructure_liquidity_proxy
+    subcategory: volatility_proxy
+    formula: (high[t] - low[t]) / close[t]
+    input_data:
+    - high
+    - low
+    - close
+    lookback: 1
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN at t=0
+    version: 1.0.0
+    expected_use: same as spread_proxy; duplicated concept
+    risk_notes: "PROXY \u2014 REDUNDANT with spread_proxy; mark for redundancy analysis"
+  up_down_vol_ratio:
+    category: microstructure_liquidity_proxy
+    subcategory: volume_analysis
+    formula: mean(up_volume[t-9:t+1]) / mean(down_volume[t-9:t+1])
+    input_data:
+    - close
+    - volume
+    lookback: 10
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 10 bars
+    version: 1.0.0
+    expected_use: buying vs selling pressure; ratio > 1 = more buying
+    risk_notes: "PROXY \u2014 based on daily close direction, not true up/down volume"
+  kyles_lambda:
+    category: microstructure_liquidity_proxy
+    subcategory: price_impact
+    formula: mean(abs(return) / (volume * close)) over 20 days
+    input_data:
+    - close
+    - volume
+    lookback: 20
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN until 20 bars
+    version: 1.0.0
+    expected_use: price impact proxy; high lambda = inelastic
+    risk_notes: "PROXY \u2014 real Kyle's Lambda uses tick-level data; daily proxy\
+      \ has scaling issues"
+  downward_pressure:
+    category: microstructure_liquidity_proxy
+    subcategory: selling_pressure
+    formula: 1 if close < prev_close and volume > vol_ma_20; else 0
+    input_data:
+    - close
+    - volume
+    lookback: 20
+    known_at_time: end of bar t
+    lag_required: 0
+    point_in_time_safe: true
+    missing_policy: NaN at t=0
+    version: 1.0.0
+    expected_use: selling pressure flag; high confidence when combined with residual_z
+    risk_notes: "PROXY \u2014 binary; low information content alone"
+registry_version: 1.0.0
+generated_at: '2026-05-17'
+status: REGISTRY_MATCHES_GENERATED
+total_features: 117
+categories:
+  technical: 51
+  statistical: 32
+  regime: 10
+  residual: 7
+  microstructure_liquidity_proxy: 17

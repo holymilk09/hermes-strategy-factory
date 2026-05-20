@@ -1,0 +1,15 @@
+{
+  "timestamp": "2026-05-20T00:38:43.689396+00:00",
+  "git_available": false,
+  "repo_status": "/opt/data is not a git repository. /opt/data/hermes-agent is the Hermes source repo (not strategy factory).",
+  "github_safe_status": "GITHUB_SAFE_AFTER_GITIGNORE_UPDATE",
+  "secret_audit_status": "CLEAN \u2014 0 hardcoded keys found",
+  "large_file_status": "CLEAN \u2014 backups and .local/ excluded via .gitignore",
+  "production_blocked": true,
+  "live_blocked": true,
+  "docs_created": true,
+  "checkpoint_created": true,
+  "package_created": "strategy_factory_v0_14_0_checkpoint.tar.gz",
+  "gate_status": "GITHUB_PACKAGE_READY",
+  "packaged_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_checkpoint.tar.gz"
+}

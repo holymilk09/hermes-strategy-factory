@@ -1,0 +1,90 @@
+category,metric,formula_or_definition,primary_use,common_failure_or_warning
+performance,Total Return,ending_equity / starting_equity - 1,Overall strategy return.,Meaningless without period and risk.
+performance,CAGR,(ending_equity / starting_equity) ** (1/years) - 1,Annualized geometric growth.,Can hide deep drawdowns.
+performance,Annualized Return,mean(period_returns) * annualization_factor,Average annualized arithmetic return.,Not same as CAGR.
+performance,Annualized Volatility,std(period_returns) * sqrt(annualization_factor),Return variability.,Assumes stable distribution.
+performance,Sharpe Ratio,annualized_excess_return / annualized_volatility,Return per unit volatility.,Inflated by non-normality and selection bias.
+performance,Sortino Ratio,annualized_excess_return / downside_deviation,Return per unit downside volatility.,Sensitive to downside threshold.
+performance,Calmar Ratio,CAGR / abs(max_drawdown),Growth per unit max drawdown.,Unstable for short samples.
+performance,MAR Ratio,CAGR / abs(max_drawdown),CTA-style return/drawdown ratio.,Same issue as Calmar.
+performance,Omega Ratio,sum(gains over threshold) / abs(sum(losses below threshold)),Full distribution gain/loss view.,Threshold choice matters.
+performance,Information Ratio,active_return / tracking_error,Active return vs benchmark active risk.,Benchmark choice can distort.
+performance,Tracking Error,std(strategy_returns - benchmark_returns) * sqrt(AF),Deviation from benchmark.,Not a risk measure for absolute-return systems.
+performance,Alpha,intercept from factor/benchmark regression,Residual return not explained by benchmark/factors.,Regression model can be wrong.
+performance,Beta,"cov(strategy, benchmark)/var(benchmark)",Market exposure estimate.,Regime-dependent.
+performance,Treynor Ratio,excess_return / beta,Return per unit market beta.,Invalid if beta near zero or unstable.
+drawdown,Max Drawdown,min(equity / running_max(equity) - 1),Worst peak-to-trough loss.,One sample path only.
+drawdown,Average Drawdown,mean(drawdown episodes),Typical drawdown severity.,Episode definition matters.
+drawdown,Drawdown Duration,time from peak to recovery,Capital lock-up/time pain.,Often ignored by Sharpe-only systems.
+drawdown,Time Under Water,percent time equity below prior high,Psychological and capital efficiency cost.,High TUW can kill deployability.
+drawdown,Ulcer Index,sqrt(mean(drawdown_pct^2)),Depth and duration of drawdowns.,Less common; compare within same horizon.
+drawdown,Pain Index,mean(abs(drawdowns)),Average drawdown pain.,Can underweight rare crashes.
+drawdown,Pain Ratio,excess_return / pain_index,Return per unit drawdown pain.,Sensitive to return annualization.
+drawdown,Recovery Factor,net_profit / abs(max_drawdown),Profit relative to worst drawdown.,Can be gamed by long samples.
+risk,VaR,"quantile(losses, confidence_level)",Loss threshold estimate.,Does not show tail beyond threshold.
+risk,Expected Shortfall / CVaR,mean(losses beyond VaR),Average tail loss.,Needs enough tail observations.
+risk,Skewness,third standardized moment,Asymmetry of return distribution.,Short-vol strategies often have negative skew.
+risk,Excess Kurtosis,fourth standardized moment - 3,Fat-tail estimate.,Sample estimates unstable.
+risk,Tail Ratio,abs(percentile_95 / percentile_5),Upside-tail vs downside-tail balance.,Percentile choice matters.
+risk,Gain/Loss Ratio,average_gain / abs(average_loss),Payoff asymmetry.,High win rate can hide poor ratio.
+risk,Risk of Ruin,probability capital falls below ruin threshold,Survival probability under repeated bets.,Requires assumptions about distribution.
+risk,Kelly Fraction,edge / odds or generalized expected log growth,Theoretical growth-optimal sizing.,Full Kelly is usually too aggressive.
+risk,Stress Loss,portfolio loss under scenario shock,Scenario risk assessment.,Scenario design subjective.
+risk,Exposure Concentration,sum(weight_i^2) or Herfindahl index,Concentration risk.,Weights must include hidden factor exposure.
+risk,Gross Exposure,sum(abs(position_values))/equity,Total leverage footprint.,Does not show net directional risk.
+risk,Net Exposure,sum(position_values)/equity,Directional market exposure.,Market beta may differ from net exposure.
+trade,Trade Count,number of closed trades,Sample size.,Low count invalidates statistics.
+trade,Hit Rate,winning_trades / total_trades,Win percentage.,Useless without payoff ratio.
+trade,Average Win,mean(winning trade pnl),Win size.,Outliers can dominate.
+trade,Average Loss,mean(losing trade pnl),Loss size.,Stop policy changes distribution.
+trade,Profit Factor,gross_profit / abs(gross_loss),Gross payoff balance.,Can be inflated by few losses.
+trade,Expectancy,hit_rate*avg_win - loss_rate*avg_loss,Expected PnL per trade.,Must include costs.
+trade,Median Trade PnL,median(trade pnl),Robust central trade outcome.,May ignore tail.
+trade,MAE,maximum adverse excursion per trade,How far trades go against you.,Requires intratrade data.
+trade,MFE,maximum favorable excursion per trade,How far trades go in favor.,Requires intratrade data.
+trade,MFE Capture,realized_pnl / MFE,Exit efficiency.,Can punish trend-following exits oddly.
+trade,Holding Period,exit_time - entry_time,Capital duration.,Distribution matters more than mean.
+trade,Turnover,sum(abs(trade_notional))/portfolio_value,Trading intensity.,High turnover eats edge.
+trade,Capacity Proxy,strategy_notional / market_dollar_volume,Scalability approximation.,Crude without impact model.
+execution,Average Slippage,fill_price - arrival_price signed by side,Execution quality.,Needs correct arrival price.
+execution,Implementation Shortfall,decision_price vs realized execution price including fees,Actual cost of execution.,Must include cancellations/partials.
+execution,Fill Rate,filled_qty / submitted_qty,Liquidity/access quality.,Market orders can trivially fill with high slippage.
+execution,Partial Fill Rate,orders partially filled / total orders,Order completion quality.,Strategy may need partial handling.
+execution,Cancel Rate,cancelled_orders / submitted_orders,Order management behavior.,High rate may trigger broker/venue issues.
+execution,Reject Rate,rejected_orders / submitted_orders,Broker/API/order validity health.,Any live reject needs review.
+execution,Latency,broker_ack_time - decision_time,System execution delay.,Clock sync required.
+execution,Spread Paid,effective spread around fill,Cost vs quote midpoint.,Needs quote data.
+execution,Market Impact Proxy,post_trade_price_move signed by side,Adverse impact estimate.,Confounded by alpha if measured wrong.
+execution,Queue Position Proxy,limit_order_fill_rank or fill probability,Limit order realism.,Hard without LOB data.
+model_signal,Signal IC,"corr(signal_score_t, future_return_t+h)",Signal predictive quality.,Must align horizon exactly.
+model_signal,Rank IC,"spearman_rank_corr(signal_score, future_return)",Cross-sectional signal quality.,Weak with small universe.
+model_signal,ICIR,mean(IC)/std(IC),Stability of predictive signal.,Can be inflated by overlapping windows.
+model_signal,Hit Rate by Score Bucket,win rate grouped by signal decile,Calibration of signal strength.,Buckets require enough observations.
+model_signal,Feature Drift PSI,population stability index,Feature distribution drift.,Thresholds are heuristics.
+model_signal,Prediction Calibration,predicted probability vs realized frequency,Probabilistic model honesty.,Needs many observations.
+model_signal,Brier Score,mean((probability - outcome)^2),Probability forecast error.,Class imbalance matters.
+model_signal,Precision,TP/(TP+FP),Signal accuracy among positives.,Not PnL-aware.
+model_signal,Recall,TP/(TP+FN),Capture rate of opportunities.,Not PnL-aware.
+model_signal,F1,2*precision*recall/(precision+recall),Classification balance.,Not trading-objective-aware.
+model_signal,ROC-AUC,ranking quality across thresholds,Classifier threshold-free ranking.,Misleading with rare events.
+model_signal,Profit-Weighted Precision,profitable positive signal notional or pnl / total positive signal exposure,Trading-aware precision.,Needs careful cost inclusion.
+overfit_validation,Probabilistic Sharpe Ratio,P(true_SR > benchmark_SR) adjusted for sample length/skew/kurtosis,Confidence in observed Sharpe.,Requires distribution moment estimates.
+overfit_validation,Deflated Sharpe Ratio,Sharpe adjusted for multiple testing and non-normality,Selection-bias correction.,Requires number/correlation of trials.
+overfit_validation,PBO,Probability of Backtest Overfitting from CSCV,Overfit probability.,Requires careful combinatorial splits.
+overfit_validation,Minimum Track Record Length,required sample length to reject SR threshold,How long record must be.,Depends on assumed SR and moments.
+overfit_validation,t-stat,estimate / standard_error,Statistical significance.,Financial returns violate IID assumptions.
+overfit_validation,Newey-West t-stat,t-stat with autocorrelation/heteroskedasticity correction,Robust factor/significance testing.,Lag choice matters.
+overfit_validation,Bootstrap CI,resampled confidence interval,Uncertainty without closed-form assumptions.,Resampling scheme must respect time dependence.
+overfit_validation,Parameter Stability Score,performance variance across nearby parameter grid,Fragility detection.,Requires sensible parameter neighborhood.
+overfit_validation,OOS Decay,OOS_metric / IS_metric,Edge decay from in-sample to out-of-sample.,Can be noisy for short OOS.
+overfit_validation,Multiple Testing Count,number of tried variants or effective trials,Selection bias control.,Often undercounted in manual research.
+regime_microstructure,Realized Volatility,std(returns_window)*sqrt(AF),Volatility regime.,Window length changes result.
+regime_microstructure,ATR,average true range,Range/stop sizing.,Not normalized unless divided by price.
+regime_microstructure,Autocorrelation,"corr(r_t, r_t-k)",Serial dependence.,Regime-dependent.
+regime_microstructure,Hurst Exponent,scaling of variance with lag,Trend vs mean-reversion clue.,Unstable on short samples.
+regime_microstructure,Half-life,-ln(2)/ln(phi) for AR(1)-style process,Mean-reversion speed.,Assumes model form.
+regime_microstructure,Market Breadth,% symbols above moving average or advancing,Participation/regime filter.,Universe selection matters.
+regime_microstructure,Order Flow Imbalance,buy_pressure - sell_pressure or book imbalance,Microstructure pressure.,Needs trade classification or LOB data.
+regime_microstructure,Relative Volume,current_volume / rolling_avg_volume,Liquidity/event confirmation.,Opening/closing seasonality matters.
+regime_microstructure,Spread,ask - bid; or spread/mid,Trading cost/liquidity.,Quote source and timestamps matter.
+regime_microstructure,VPIN-style Toxicity,volume-synchronized imbalance proxy,Flow toxicity estimate.,Controversial and implementation-sensitive.

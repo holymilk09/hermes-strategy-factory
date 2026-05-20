@@ -1,0 +1,11 @@
+{
+  "timestamp": "20260518_112647",
+  "current_classification": "EVENT_CONTEXT_BLOCKED_FILTER",
+  "standalone_alpha": false,
+  "filter_candidate": true,
+  "phase10_r2_status": "STALE_ZERO_R2",
+  "valid_residual_observations": 58398,
+  "stocks_with_valid_residuals": 76,
+  "production_migration_status": "BLOCKED",
+  "live_trading_status": "BLOCKED"
+}

@@ -1,0 +1,24 @@
+{
+  "standalone_alpha_status": "REJECTED_STANDALONE_ALPHA",
+  "filter_status": "PRELIMINARY_FILTER_CANDIDATE",
+  "reason": [
+    "full universe D10-D1 spread failed (-0.19%, effectively zero)",
+    "hit rate improved (47.3% -> 54.2%) but mean return did not",
+    "strategy-conditioned tests favored mean-reversion variants only",
+    "standalone use blocked permanently"
+  ],
+  "usable_for": [
+    "mean_reversion_filter",
+    "structural_mean_reversion_filter",
+    "avoid_chasing_filter"
+  ],
+  "not_usable_for": [
+    "standalone_alpha",
+    "automatic_short_signal",
+    "momentum_swing_alpha",
+    "live_trading_signal"
+  ],
+  "tradeable_claim_allowed": false,
+  "backtest_migration_allowed": false,
+  "next_required_step": "strategy-level research backtest simulation"
+}

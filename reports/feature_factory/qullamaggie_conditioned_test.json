@@ -1,0 +1,24 @@
+[
+  {
+    "condition": "leader_extended",
+    "n_events": 14727,
+    "mean_20d_return": 0.011358,
+    "hit_rate": 0.4963,
+    "status": "QULLAMAGGIE_FILTER_CONFIRMED"
+  },
+  {
+    "condition": "leader_neutral",
+    "n_events": 6682,
+    "mean_20d_return": 0.018612,
+    "hit_rate": 0.5458,
+    "status": "QULLAMAGGIE_FILTER_CONFIRMED"
+  },
+  {
+    "condition": "leader_compressed",
+    "n_events": 51,
+    "mean_20d_return": 0.017378,
+    "hit_rate": 0.6667,
+    "status": "BLOCKED_INSUFFICIENT_SAMPLE",
+    "note": "Only 51 events in D8-D10 for strong leaders \u2014 sample too small for conclusion"
+  }
+]

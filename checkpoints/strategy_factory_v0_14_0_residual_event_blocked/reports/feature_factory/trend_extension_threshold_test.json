@@ -1,0 +1,8 @@
+[
+  {
+    "threshold_rule": "Summary",
+    "n_meaningful_thresholds": 0,
+    "overall_status": "NO_THRESHOLD_EDGE \u2014 decile spread failed on full universe",
+    "note": "30-symbol audit gave +1.86% spread. 76-symbol pooled analysis shows -0.19%. Signal is sample-dependent and fails standalone decile ranking on full universe."
+  }
+]

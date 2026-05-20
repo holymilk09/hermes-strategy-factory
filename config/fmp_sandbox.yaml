@@ -1,0 +1,33 @@
+allowed_use:
+- earnings_event_blocker
+- post_earnings_blocker
+- earnings_surprise_context
+- sector_industry_metadata
+- market_cap_bucket
+- index_membership_if_available
+- analyst_downgrade_context_if_available
+- news_context_if_available
+api:
+  api_key_env_var: FMP_API_KEY
+  cache_required: true
+  call_api_without_key_allowed: false
+  hardcode_api_key_allowed: false
+  rate_limit_guard_required: true
+blocked_use:
+- standalone_alpha
+- automatic_trade_signal
+- production_strategy_trigger
+- live_trading_trigger
+- alpaca_replacement
+fmp:
+  core_dependency_allowed: false
+  live_trading_allowed: false
+  production_dependency_allowed: false
+  replace_alpaca: false
+  status: SANDBOX_EVALUATION_ONLY
+known_at_time_policy:
+  analyst_rating_change: usable_only_after_timestamp
+  earnings_actual_eps: usable_only_after_report_date
+  earnings_calendar_date: usable_before_event_if_available
+  earnings_surprise: usable_only_after_report_date
+  news: usable_only_after_timestamp

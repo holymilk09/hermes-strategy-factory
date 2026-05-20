@@ -1,0 +1,122 @@
+[
+  {
+    "strategy": "mean_reversion",
+    "variant": "AVOID_D1_D3",
+    "base_trades": 728,
+    "filtered_trades": 665,
+    "trade_reduction_pct": 8.7,
+    "total_return_base": 0.77,
+    "total_return_filtered": -39.79,
+    "return_delta": -40.56,
+    "status": "FILTER_TOO_RESTRICTIVE"
+  },
+  {
+    "strategy": "mean_reversion",
+    "variant": "REQUIRE_D8_D10",
+    "base_trades": 728,
+    "filtered_trades": 891,
+    "trade_reduction_pct": -22.4,
+    "total_return_base": 0.77,
+    "total_return_filtered": 203.08,
+    "return_delta": 202.31,
+    "status": "FILTER_IMPROVES_OPPORTUNITY_QUALITY"
+  },
+  {
+    "strategy": "mean_reversion",
+    "variant": "REQUIRE_D9_D10",
+    "base_trades": 728,
+    "filtered_trades": 836,
+    "trade_reduction_pct": -14.8,
+    "total_return_base": 0.77,
+    "total_return_filtered": 17.95,
+    "return_delta": 17.18,
+    "status": "FILTER_IMPROVES_OPPORTUNITY_QUALITY"
+  },
+  {
+    "strategy": "mean_reversion",
+    "variant": "REQUIRE_D10_ONLY",
+    "base_trades": 728,
+    "filtered_trades": 696,
+    "trade_reduction_pct": 4.4,
+    "total_return_base": 0.77,
+    "total_return_filtered": 4.08,
+    "return_delta": 3.31,
+    "status": "FILTER_IMPROVES_OPPORTUNITY_QUALITY"
+  },
+  {
+    "strategy": "structural_mr",
+    "variant": "AVOID_D1_D3",
+    "base_trades": 753,
+    "filtered_trades": 597,
+    "trade_reduction_pct": 20.7,
+    "total_return_base": 110.08,
+    "total_return_filtered": -45.98,
+    "return_delta": -156.06,
+    "status": "FILTER_TOO_RESTRICTIVE"
+  },
+  {
+    "strategy": "structural_mr",
+    "variant": "REQUIRE_D8_D10",
+    "base_trades": 753,
+    "filtered_trades": 733,
+    "trade_reduction_pct": 2.7,
+    "total_return_base": 110.08,
+    "total_return_filtered": 177.7,
+    "return_delta": 67.62,
+    "status": "FILTER_IMPROVES_OPPORTUNITY_QUALITY"
+  },
+  {
+    "strategy": "structural_mr",
+    "variant": "REQUIRE_D9_D10",
+    "base_trades": 753,
+    "filtered_trades": 634,
+    "trade_reduction_pct": 15.8,
+    "total_return_base": 110.08,
+    "total_return_filtered": 12.22,
+    "return_delta": -97.86,
+    "status": "FILTER_TOO_RESTRICTIVE"
+  },
+  {
+    "strategy": "structural_mr",
+    "variant": "REQUIRE_D10_ONLY",
+    "base_trades": 753,
+    "filtered_trades": 453,
+    "trade_reduction_pct": 39.8,
+    "total_return_base": 110.08,
+    "total_return_filtered": 8.61,
+    "return_delta": -101.47,
+    "status": "FILTER_TOO_RESTRICTIVE"
+  },
+  {
+    "strategy": "qullamaggie",
+    "variant": "AVOID_D1_D3",
+    "base_trades": 827,
+    "filtered_trades": 768,
+    "trade_reduction_pct": 7.1,
+    "total_return_base": 13.01,
+    "total_return_filtered": 17.81,
+    "return_delta": 4.8,
+    "status": "FILTER_IMPROVES_OPPORTUNITY_QUALITY"
+  },
+  {
+    "strategy": "qullamaggie",
+    "variant": "REQUIRE_D8_D10",
+    "base_trades": 827,
+    "filtered_trades": 55,
+    "trade_reduction_pct": 93.3,
+    "total_return_base": 13.01,
+    "total_return_filtered": 30.75,
+    "return_delta": 17.74,
+    "status": "FILTER_IMPROVES_OPPORTUNITY_QUALITY"
+  },
+  {
+    "strategy": "qullamaggie",
+    "variant": "REQUIRE_D9_D10",
+    "status": "BLOCKED_SAMPLE_TOO_SMALL"
+  },
+  {
+    "strategy": "qullamaggie",
+    "variant": "REQUIRE_D10_ONLY",
+    "status": "BLOCKED_SAMPLE_TOO_SMALL"
+  }
+]

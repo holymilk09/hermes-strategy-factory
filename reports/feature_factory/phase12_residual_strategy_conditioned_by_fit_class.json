@@ -1,0 +1,42 @@
+[
+  {
+    "strategy": "mean_reversion",
+    "fit": "ALL",
+    "n_base": 20313,
+    "n_filtered": 196,
+    "base_mean": 1.8633,
+    "filtered_mean": 2.5811,
+    "improvement": 0.7178,
+    "status": "IMPROVES"
+  },
+  {
+    "strategy": "structural_mr",
+    "fit": "ALL",
+    "n_base": 6903,
+    "n_filtered": 71,
+    "base_mean": 1.1398,
+    "filtered_mean": 3.1869,
+    "improvement": 2.0472,
+    "status": "IMPROVES"
+  },
+  {
+    "strategy": "mean_reversion",
+    "fit": "GOOD_ACCEPTABLE",
+    "n_base": 17959,
+    "n_filtered": 188,
+    "base_mean": 0.5676,
+    "filtered_mean": 2.6474,
+    "improvement": 2.0798,
+    "status": "IMPROVES"
+  },
+  {
+    "strategy": "structural_mr",
+    "fit": "GOOD_ACCEPTABLE",
+    "n_base": 6142,
+    "n_filtered": 67,
+    "base_mean": -1.3811,
+    "filtered_mean": 3.2607,
+    "improvement": 4.6419,
+    "status": "IMPROVES"
+  }
+]

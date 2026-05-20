@@ -1,0 +1,19 @@
+{
+  "timestamp": "2026-05-20T00:32:41.298580+00:00",
+  "gateway_pid_before": 36340,
+  "gateway_pid_after": 36340,
+  "gateway_pid_file_before": "37682 (stale)",
+  "gateway_pid_file_after": "36340",
+  "watchdog_status_before": "LOOPING \u2014 stale PID caused duplicate gateway starts every 30s",
+  "watchdog_status_after": "RECOVERED",
+  "watchdog_pid_before": 36735,
+  "watchdog_pid_after": 37780,
+  "zombie_pids_cleaned": "32249, 32683, 36735 \u2014 harmless zombies, init will reap",
+  "restart_method": "Killed looping watchdog (SIGKILL), fixed gateway.pid to 36340, started fresh watchdog",
+  "gateway_interrupted": false,
+  "health_check_result": "Gateway runtime lock intact, memory monitor active, runtime 10.9h+",
+  "logs_checked": "/opt/data/logs/gateway.log",
+  "loops_stopped": "Verified \u2014 no restart attempt in 35s post-fix",
+  "errors": [],
+  "status": "WATCHDOG_RECOVERED"
+}

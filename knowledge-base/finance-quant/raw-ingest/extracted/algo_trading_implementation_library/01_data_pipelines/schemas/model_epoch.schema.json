@@ -1,0 +1,50 @@
+{
+  "title": "ModelEpoch",
+  "type": "object",
+  "required": [
+    "epoch_id",
+    "train_start",
+    "train_end",
+    "validation_start",
+    "validation_end",
+    "test_start",
+    "test_end",
+    "promotion_decision"
+  ],
+  "properties": {
+    "epoch_id": {
+      "type": "string"
+    },
+    "train_start": {
+      "type": "string",
+      "format": "date"
+    },
+    "train_end": {
+      "type": "string",
+      "format": "date"
+    },
+    "validation_start": {
+      "type": "string",
+      "format": "date"
+    },
+    "validation_end": {
+      "type": "string",
+      "format": "date"
+    },
+    "test_start": {
+      "type": "string",
+      "format": "date"
+    },
+    "test_end": {
+      "type": "string",
+      "format": "date"
+    },
+    "promotion_decision": {
+      "enum": [
+        "promote",
+        "reject",
+        "hold"
+      ]
+    }
+  }
+}

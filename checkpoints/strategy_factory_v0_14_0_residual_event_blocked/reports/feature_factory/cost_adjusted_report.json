@@ -1,0 +1,14 @@
+{
+  "method": "horizon_aware",
+  "freq_map": {
+    "1": 252,
+    "3": 84,
+    "5": 50,
+    "10": 25,
+    "20": 12
+  },
+  "slippage_bps": 10,
+  "survive_count": 155,
+  "fail_count": 0,
+  "filter_only_count": 0
+}

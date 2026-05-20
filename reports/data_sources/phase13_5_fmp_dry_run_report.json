@@ -1,0 +1,12 @@
+{
+  "symbols_tested": [],
+  "endpoints_tested": [],
+  "records_returned": 0,
+  "missing_fields": [],
+  "endpoint_blocks": [
+    "ALL_BLOCKED_NO_KEY"
+  ],
+  "errors": [],
+  "cache_written": false,
+  "status": "BLOCKED_FMP_API_KEY_MISSING"
+}

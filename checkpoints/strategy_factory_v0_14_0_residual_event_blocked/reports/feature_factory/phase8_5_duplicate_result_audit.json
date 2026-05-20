@@ -1,0 +1,25 @@
+{
+  "pattern": "AVOID_D1_D3 across strategies",
+  "values": [
+    {
+      "strategy": "mean_reversion",
+      "trades": 921,
+      "pf": 0.68,
+      "signals": 16495
+    },
+    {
+      "strategy": "structural_mr",
+      "trades": 767,
+      "pf": 1.22,
+      "signals": 5326
+    },
+    {
+      "strategy": "qullamaggie",
+      "trades": 836,
+      "pf": 0.72,
+      "signals": 6784
+    }
+  ],
+  "exact_duplicates": false,
+  "status": "PASS_DUPLICATE_VALUES_LEGITIMATE"
+}

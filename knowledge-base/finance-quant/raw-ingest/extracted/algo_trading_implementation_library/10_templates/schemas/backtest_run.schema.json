@@ -1,0 +1,38 @@
+{
+  "title": "BacktestRun",
+  "type": "object",
+  "required": [
+    "run_id",
+    "strategy_id",
+    "config_hash",
+    "data_version",
+    "start",
+    "end",
+    "metrics"
+  ],
+  "properties": {
+    "run_id": {
+      "type": "string"
+    },
+    "strategy_id": {
+      "type": "string"
+    },
+    "config_hash": {
+      "type": "string"
+    },
+    "data_version": {
+      "type": "string"
+    },
+    "start": {
+      "type": "string",
+      "format": "date"
+    },
+    "end": {
+      "type": "string",
+      "format": "date"
+    },
+    "metrics": {
+      "type": "object"
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "checkpoint_time": "2026-05-20T00:35:04.308537+00:00",
+  "configs": [
+    {
+      "file": "feature_registry.yaml",
+      "exists": true,
+      "source_path": "/opt/data/config/feature_registry.yaml",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/configs/feature_registry.yaml",
+      "sha256": "516d2d9ad7d10f1098de033dd05d38f463d246a5ae4c07a1d8731e7dca344713",
+      "modified_time": "2026-05-18T01:27:15.763794+00:00",
+      "notes": "snapshot copied"
+    },
+    {
+      "file": "backtest_integration_plan.yaml",
+      "exists": true,
+      "source_path": "/opt/data/config/backtest_integration_plan.yaml",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/configs/backtest_integration_plan.yaml",
+      "sha256": "1d91cd8f99311e42553abd29d9e5c963e25726d2c1c3e8b6a55e3be2700d3d82",
+      "modified_time": "2026-05-18T13:26:04.941370+00:00",
+      "notes": "snapshot copied"
+    },
+    {
+      "file": "sector_etf_map.yaml",
+      "exists": true,
+      "source_path": "/opt/data/config/sector_etf_map.yaml",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/configs/sector_etf_map.yaml",
+      "sha256": "4e738a4355991a84cdd413b8d9971106ec5dff3626ac2f0e07da9a7eb2cc050b",
+      "modified_time": "2026-05-18T01:04:14.840012+00:00",
+      "notes": "snapshot copied"
+    },
+    {
+      "file": "retail_portfolio_constraints.yaml",
+      "exists": true,
+      "source_path": "/opt/data/config/retail_portfolio_constraints.yaml",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/configs/retail_portfolio_constraints.yaml",
+      "sha256": "6cc13340c9367b1a1ed6884545d925f5abc08f192ea8be961d0eac494d44cad9",
+      "modified_time": "2026-05-18T07:26:42.492585+00:00",
+      "notes": "snapshot copied"
+    },
+    {
+      "file": "fmp_sandbox.yaml",
+      "exists": true,
+      "source_path": "/opt/data/config/fmp_sandbox.yaml",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/configs/fmp_sandbox.yaml",
+      "sha256": "603fa4e079b73431accdcdf016b8892486166582cdb430efd0fcb35b1c08ff40",
+      "modified_time": "2026-05-18T12:40:38.281094+00:00",
+      "notes": "snapshot copied"
+    },
+    {
+      "file": "fmp_event_features.yaml",
+      "exists": true,
+      "source_path": "/opt/data/config/fmp_event_features.yaml",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/configs/fmp_event_features.yaml",
+      "sha256": "4d776da84e81a22e2a24e7e74254475b9e6326f3bcec670a4e5d0e4de3b63413",
+      "modified_time": "2026-05-18T12:40:38.284094+00:00",
+      "notes": "snapshot copied"
+    },
+    {
+      "file": "event_risk_blocker.yaml",
+      "exists": true,
+      "source_path": "/opt/data/config/event_risk_blocker.yaml",
+      "checkpoint_path": "/opt/data/checkpoints/strategy_factory_v0_14_0_residual_event_blocked/configs/event_risk_blocker.yaml",
+      "sha256": "ee933f46233d37d353d3b32dd628ec2aa9ef49468681719fb26979872a53116d",
+      "modified_time": "2026-05-18T10:43:07.969343+00:00",
+      "notes": "extra config found and copied"
+    }
+  ]
+}

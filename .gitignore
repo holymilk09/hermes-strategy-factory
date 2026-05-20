@@ -1,0 +1,56 @@
+# Environment and secrets
+.env
+*.env
+secrets/
+credentials/
+*.pem
+*.key
+
+# Caches and large data
+data/cache/
+cache/
+*.parquet
+*.npz
+*.h5
+*.hdf5
+*.zip
+
+# Logs
+logs/
+*.log
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Session and state DB
+state.db
+*.db-journal
+*.db-wal
+
+# Backups
+hermes-backup-*/
+hermes-safe-backup/
+
+# Node
+node_modules/
+.npm/
+
+# Local python envs
+.local/
+venv/

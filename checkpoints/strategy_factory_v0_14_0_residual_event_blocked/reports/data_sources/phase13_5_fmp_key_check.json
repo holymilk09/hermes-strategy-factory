@@ -1,0 +1,6 @@
+{
+  "api_key_env_var": "FMP_API_KEY",
+  "api_key_present": false,
+  "key_logged": false,
+  "status": "BLOCKED_FMP_API_KEY_MISSING"
+}

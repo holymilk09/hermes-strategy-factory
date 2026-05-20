@@ -1,0 +1,20 @@
+{
+  "requested_feature": "residual_z_20",
+  "actual_feature": "residual_z",
+  "lookback": 20,
+  "lookback_source": "feature_config.yaml: residual.zscore_window=20",
+  "store_match": true,
+  "available_residual_features": [
+    "residual_z",
+    "residual_beta",
+    "residual_alpha",
+    "cumulative_residual",
+    "residual_half_life",
+    "residual_r2",
+    "residual_return"
+  ],
+  "alias_created": false,
+  "strategy_update_required": true,
+  "fix_instruction": "Replace residual_z_20 with residual_z in strategy code and tests. Lookback (20) is config, not feature name.",
+  "status": "RESOLVED_STRATEGY_SHOULD_USE_RESIDUAL_Z"
+}

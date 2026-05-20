@@ -1,0 +1,37 @@
+{
+  "candidate": "residual_z <= -2.0 + GOOD/ACCEPTABLE residual fit",
+  "classification": "CONTROLLED_RESEARCH_CANDIDATE_EVENT_BLOCKED",
+  "standalone_alpha": false,
+  "strategy_filter_candidate": true,
+  "event_context_complete": false,
+  "fmp_justified": true,
+  "fmp_role": "event_risk_blocker_only",
+  "production_migration_allowed": false,
+  "live_trading_allowed": false,
+  "residual_quality": {
+    "median_r2": 0.3723,
+    "good_fit_symbols": 42,
+    "acceptable_fit_symbols": 25,
+    "low_fit_symbols": 3,
+    "blocked_symbols": 6,
+    "usable_symbols": 67
+  },
+  "standalone_result": {
+    "status": "RANDOM_PRUNING_FAILED_STANDALONE",
+    "z_neg_2_0_20d_mean": 2.49,
+    "z_neg_2_0_20d_hit_rate": 57.1
+  },
+  "strategy_conditioned_result": {
+    "mean_reversion_good_fit_status": "PASSED_STRATEGY_RANDOM_PRUNING",
+    "structural_mr_good_fit_status": "PASSED_STRATEGY_RANDOM_PRUNING"
+  },
+  "current_blockers": [
+    "event_context_missing",
+    "earnings_calendar_missing",
+    "earnings_surprise_missing",
+    "fundamental_repricing_detection_missing",
+    "production_migration_blocked",
+    "live_trading_blocked"
+  ],
+  "next_allowed_step": "FMP_SANDBOX_EVALUATION_ONLY"
+}

@@ -1,0 +1,41 @@
+analyst_downgrade_recent:
+  known_at_time: after_timestamp_only
+  type: repricing_risk
+  use: block_or_warn
+earnings_day:
+  type: hard_blocker
+  use: no_residual_reversion_entry
+earnings_within_10d:
+  type: pre_event_warning
+  use: caution_or_reduce_size
+earnings_within_5d:
+  known_at_time: before_event_if_calendar_available
+  type: pre_event_blocker
+  use: block_or_reduce_residual_reversion
+eps_surprise:
+  known_at_time: after_report_only
+  type: post_event_context
+  use: classify_event_severity
+index_membership:
+  type: metadata-segmentation
+  use: universe_segmentation
+industry:
+  type: metadata
+  use: industry_segmentation
+market_cap_bucket:
+  type: segmentation
+  use: liquidity_behavior_segmentation
+news_event_recent:
+  known_at_time: after_timestamp_only
+  type: repricing_risk
+  use: warn_only_until_validated
+post_earnings_2d:
+  type: post_event_blocker
+  use: avoid_fading_immediate_repricing
+revenue_surprise:
+  known_at_time: after_report_only
+  type: post_event_context
+  use: classify_event_severity
+sector:
+  type: metadata
+  use: sector_residual_validation

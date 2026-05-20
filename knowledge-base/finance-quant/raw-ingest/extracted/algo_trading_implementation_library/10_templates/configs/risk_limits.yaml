@@ -1,0 +1,13 @@
+max_gross_exposure: 1.00
+max_net_exposure: 0.75
+max_position_pct: 0.05
+max_symbol_notional: 25000
+max_daily_loss_pct: 0.02
+max_drawdown_pct: 0.10
+max_order_notional: 10000
+max_orders_per_day: 50
+max_leverage: 1.0
+kill_switch:
+  enabled: true
+  cancel_open_orders_on_trigger: true
+  block_new_entries_on_data_stale: true

@@ -1,0 +1,75 @@
+# Sector ETF Mapping — stock sector → benchmark ETF
+# Used by residual feature computation for factor decomposition.
+# Status: ACTIVE — used by feature_factory/residual.py and __init__.py
+#
+# Confidence rules for residual features:
+#   - If sector ETF is in universe and data available: SECTOR_RESIDUAL_USED
+#   - If sector ETF not in universe: MARKET_ONLY_RESIDUAL_USED (use SPY)
+#   - If no benchmark at all: BLOCKED_RESIDUAL_NAN_RATE
+#   - If rolling R2 < min_r2_threshold: LOW_CONFIDENCE
+
+min_r2_threshold: 0.2
+
+sectors:
+  technology:
+    etf: XLK
+    stocks: [AAPL, MSFT, GOOGL, META, AMZN, NFLX, CRM, ADBE, NOW, ORCL,
+             AMD, NVDA, AVGO, QCOM, MU, TSM, ASML, ARM, MRVL, ON,
+             DDOG, SNOW, PLTR, CRWD, NET, WOLF]
+  semiconductors:
+    etf: XLK
+    stocks: [AMD, NVDA, AVGO, QCOM, MU, TSM, ASML, ARM, MRVL, ON]
+  large_cap_tech:
+    etf: XLK
+    stocks: [AAPL, MSFT, GOOGL, META, AMZN, NFLX, CRM, ADBE, NOW, ORCL]
+  quantum:
+    etf: XLK
+    stocks: [IONQ, RGTI, QBTS, ARQQ]
+
+  finance:
+    etf: XLF
+    stocks: [JPM, GS, MS, BAC, WFC, AXP, BLK, SCHW, C, V]
+  large_cap_finance:
+    etf: XLF
+    stocks: [JPM, GS, MS, BAC, WFC, AXP, BLK, SCHW, C, V]
+
+  healthcare:
+    etf: XLV
+    stocks: [LLY, ABBV, JNJ, UNH, PFE, MRK, BMY, AMGN, GILD, REGN]
+  large_cap_healthcare:
+    etf: XLV
+    stocks: [LLY, ABBV, JNJ, UNH, PFE, MRK, BMY, AMGN, GILD, REGN]
+
+  industrial:
+    etf: XLI
+    stocks: [CAT, DE, HON, UNP, RTX, LMT, GD, NOC, BA, GE]
+  large_cap_industrial:
+    etf: XLI
+    stocks: [CAT, DE, HON, UNP, RTX, LMT, GD, NOC, BA, GE]
+
+  consumer:
+    etf: XLY
+    stocks: [COST, WMT, HD, MCD, SBUX, NKE, TGT, LOW, TJX, DG]
+  large_cap_consumer:
+    etf: XLY
+    stocks: [COST, WMT, HD, MCD, SBUX, NKE, TGT, LOW, TJX, DG]
+
+  energy:
+    etf: XLE
+  materials:
+    etf: XLB
+    stocks: [FSLR, ENPH, SEDG, RUN, ALB, LAC]
+  metals:
+    etf: XLB
+    stocks: [FSLR, ENPH, SEDG, RUN, ALB, LAC]
+
+  real_estate:
+    etf: XLRE
+
+  staples:
+    etf: XLP
+
+fallback:
+  if_no_sector_etf: MARKET_ONLY_RESIDUAL_USED
+  market_benchmark: SPY
+  note: "If stock has no sector ETF, regression is done against SPY only. Residual features are marked accordingly."

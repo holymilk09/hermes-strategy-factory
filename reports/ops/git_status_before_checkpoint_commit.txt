@@ -1,0 +1,8 @@
+Git Status at /opt/data
+=======================
+/opt/data: NOT a git repository
+/opt/data/hermes-agent: git repo (main branch, commit 39c41d0f2, clean working tree)
+
+Strategy factory files are in /opt/data/ which is not under version control.
+A package has been created for GitHub upload:
+  /opt/data/checkpoints/strategy_factory_v0_14_0_checkpoint.tar.gz

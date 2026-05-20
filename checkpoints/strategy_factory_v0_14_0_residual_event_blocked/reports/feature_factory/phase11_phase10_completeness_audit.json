@@ -1,0 +1,74 @@
+[
+  {
+    "file": "phase10_pre_residual_snapshot.json",
+    "exists": true,
+    "size": 559,
+    "status": "PASS_COMPLETE"
+  },
+  {
+    "file": "phase10_residual_integrity_audit.json",
+    "exists": true,
+    "size": 1439,
+    "status": "PASS_COMPLETE"
+  },
+  {
+    "file": "phase10_residual_model_quality_report.json",
+    "exists": true,
+    "size": 10585,
+    "status": "PASS_COMPLETE"
+  },
+  {
+    "file": "phase10_residual_signal_definitions.json",
+    "exists": true,
+    "size": 2564,
+    "status": "PASS_COMPLETE"
+  },
+  {
+    "file": "phase10_residual_standalone_event_study.json",
+    "exists": true,
+    "size": 2143,
+    "status": "PASS_COMPLETE"
+  },
+  {
+    "file": "phase10_residual_random_baseline_report.json",
+    "exists": true,
+    "size": 453,
+    "status": "PASS_COMPLETE"
+  },
+  {
+    "file": "phase10_residual_strategy_conditioned_report.json",
+    "exists": true,
+    "size": 1198,
+    "status": "PASS_COMPLETE"
+  },
+  {
+    "file": "phase10_residual_retail_portfolio_report.json",
+    "exists": true,
+    "size": 737,
+    "status": "PASS_COMPLETE"
+  },
+  {
+    "file": "phase10_residual_portfolio_random_pruning_report.json",
+    "exists": false,
+    "size": 0,
+    "status": "BLOCKED_MISSING"
+  },
+  {
+    "file": "phase10_event_risk_limitation_note.md",
+    "exists": true,
+    "size": 881,
+    "status": "PASS_COMPLETE"
+  },
+  {
+    "file": "phase10_residual_decision_gate.json",
+    "exists": true,
+    "size": 1130,
+    "status": "PASS_COMPLETE"
+  },
+  {
+    "file": "FEATURE_FACTORY_VALIDATION_PHASE_10_SUMMARY.md",
+    "exists": true,
+    "size": 3020,
+    "status": "PASS_COMPLETE"
+  }
+]

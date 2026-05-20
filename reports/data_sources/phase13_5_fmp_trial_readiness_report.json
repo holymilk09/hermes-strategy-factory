@@ -1,0 +1,5 @@
+{
+  "status": "FMP_TRIAL_BLOCKED_KEY_MISSING",
+  "reason": "FMP_API_KEY not set in environment. Add the key to ~/.hermes/.env or environment variables to enable dry run and trial.",
+  "required_action": "Set FMP_API_KEY=<your_key> in environment"
+}

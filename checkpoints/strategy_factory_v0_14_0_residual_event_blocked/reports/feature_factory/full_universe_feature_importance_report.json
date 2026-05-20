@@ -1,0 +1,323 @@
+{
+  "run_id": "20260518_014901",
+  "universe_size": 76,
+  "date_range": [
+    "2023-01-03",
+    "2025-04-30"
+  ],
+  "n_features": 117,
+  "n_labels": 21,
+  "n_pairs_scored": 2457,
+  "purged_cv_used": true,
+  "classification": {
+    "DEAD": 178,
+    "UNSTABLE_SIGNAL": 1714,
+    "COST_FAILED": 266,
+    "RAW_SIGNAL": 208,
+    "ALPHA_CANDIDATE": 20,
+    "RISK_CANDIDATE": 22,
+    "FILTER_CANDIDATE": 49
+  },
+  "details": [
+    {
+      "feature": "sma_5",
+      "label": "forward_return_1d",
+      "ic": 0.0045,
+      "classification": "DEAD"
+    },
+    {
+      "feature": "sma_5",
+      "label": "log_forward_return_1d",
+      "ic": 0.0045,
+      "classification": "DEAD"
+    },
+    {
+      "feature": "sma_5",
+      "label": "forward_return_3d",
+      "ic": -0.0169,
+      "classification": "UNSTABLE_SIGNAL"
+    },
+    {
+      "feature": "sma_5",
+      "label": "log_forward_return_3d",
+      "ic": -0.0169,
+      "classification": "UNSTABLE_SIGNAL"
+    },
+    {
+      "feature": "sma_5",
+      "label": "forward_return_5d",
+      "ic": -0.0273,
+      "classification": "UNSTABLE_SIGNAL"
+    },
+    {
+      "feature": "sma_5",
+      "label": "log_forward_return_5d",
+      "ic": -0.0273,
+      "classification": "UNSTABLE_SIGNAL"
+    },
+    {
+      "feature": "sma_5",
+      "label": "forward_return_10d",
+      "ic": -0.0675,
+      "classification": "UNSTABLE_SIGNAL"
+    },
+    {
+      "feature": "sma_5",
+      "label": "log_forward_return_10d",
+      "ic": -0.0675,
+      "classification": "UNSTABLE_SIGNAL"
+    },
+    {
+      "feature": "sma_5",
+      "label": "forward_return_20d",
+      "ic": -0.106,
+      "classification": "COST_FAILED"
+    },
+    {
+      "feature": "sma_5",
+      "label": "log_forward_return_20d",
+      "ic": -0.106,
+      "classification": "COST_FAILED"
+    },
+    {
+      "feature": "sma_5",
+      "label": "excess_vs_spy_1d",
+      "ic": 0.017,
+      "classification": "UNSTABLE_SIGNAL"
+    },
+    {
+      "feature": "sma_5",
+      "label": "excess_vs_spy_3d",
+      "ic": -0.0102,
+      "classification": "UNSTABLE_SIGNAL"
+    },
+    {
+      "feature": "sma_5",
+      "label": "excess_vs_spy_5d",
+      "ic": -0.0318,
+      "classification": "UNSTABLE_SIGNAL"
+    },
+    {
+      "feature": "sma_5",
+      "label": "excess_vs_spy_10d",
+      "ic": -0.0519,
+      "classification": "UNSTABLE_SIGNAL"
+    },
+    {
+      "feature": "sma_5",
+      "label": "excess_vs_spy_20d",
+      "ic": -0.0418,
+      "classification": "UNSTABLE_SIGNAL"
+    },
+    {
+      "feature": "sma_5",
+      "label": "excess_vs_sector_1d",
+      "ic": 0.0035,
+      "classification": "DEAD"
+    },
+    {
+      "feature": "sma_5",
+      "label": "excess_vs_sector_3d",
+      "ic": -0.0252,
+      "classification": "UNSTABLE_SIGNAL"
+    },
+    {
+      "feature": "sma_5",
+      "label": "excess_vs_sector_5d",
+      "ic": -0.0442,
+      "classification": "UNSTABLE_SIGNAL"
+    },
+    {
+      "feature": "sma_5",
+      "label": "excess_vs_sector_10d",
+      "ic": -0.0444,
+      "classification": "UNSTABLE_SIGNAL"
+    },
+    {
+      "feature": "sma_5",
+      "label": "excess_vs_sector_20d",
+      "ic": -0.0186,
+      "classification": "UNSTABLE_SIGNAL"
+    },
+    {
+      "feature": "sma_5",
+      "label": "triple_barrier",
+      "ic": 0.0425,
+      "classification": "UNSTABLE_SIGNAL"
+    },
+    {
+      "feature": "dist_sma_5",
+      "label": "forward_return_1d",
+      "ic": -0.0077,
+      "classification": "RAW_SIGNAL"
+    },
+    {
+      "feature": "dist_sma_5",
+      "label": "log_forward_return_1d",
+      "ic": -0.0077,
+      "classification": "RAW_SIGNAL"
+    },
+    {
+      "feature": "dist_sma_5",
+      "label": "forward_return_3d",
+      "ic": 0.0125,
+      "classification": "UNSTABLE_SIGNAL"
+    },
+    {
+      "feature": "dist_sma_5",
+      "label": "log_forward_return_3d",
+      "ic": 0.0125,
+      "classification": "UNSTABLE_SIGNAL"
+    },
+    {
+      "feature": "dist_sma_5",
+      "label": "forward_return_5d",
+      "ic": 0.0234,
+      "classification": "UNSTABLE_SIGNAL"
+    },
+    {
+      "feature": "dist_sma_5",
+      "label": "log_forward_return_5d",
+      "ic": 0.0234,
+      "classification": "UNSTABLE_SIGNAL"
+    },
+    {
+      "feature": "dist_sma_5",
+      "label": "forward_return_10d",
+      "ic": 0.0222,
+      "classification": "UNSTABLE_SIGNAL"
+    },
+    {
+      "feature": "dist_sma_5",
+      "label": "log_forward_return_10d",
+      "ic": 0.0222,
+      "classification": "UNSTABLE_SIGNAL"
+    },
+    {
+      "feature": "dist_sma_5",
+      "label": "forward_return_20d",
+      "ic": 0.0376,
+      "classification": "UNSTABLE_SIGNAL"
+    },
+    {
+      "feature": "dist_sma_5",
+      "label": "log_forward_return_20d",
+      "ic": 0.0376,
+      "classification": "UNSTABLE_SIGNAL"
+    },
+    {
+      "feature": "dist_sma_5",
+      "label": "excess_vs_spy_1d",
+      "ic": 0.0075,
+      "classification": "RAW_SIGNAL"
+    },
+    {
+      "feature": "dist_sma_5",
+      "label": "excess_vs_spy_3d",
+      "ic": 0.0093,
+      "classification": "RAW_SIGNAL"
+    },
+    {
+      "feature": "dist_sma_5",
+      "label": "excess_vs_spy_5d",
+      "ic": -0.0032,
+      "classification": "DEAD"
+    },
+    {
+      "feature": "dist_sma_5",
+      "label": "excess_vs_spy_10d",
+      "ic": -0.0036,
+      "classification": "DEAD"
+    },
+    {
+      "feature": "dist_sma_5",
+      "label": "excess_vs_spy_20d",
+      "ic": 0.0114,
+      "classification": "UNSTABLE_SIGNAL"
+    },
+    {
+      "feature": "dist_sma_5",
+      "label": "excess_vs_sector_1d",
+      "ic": -0.0153,
+      "classification": "UNSTABLE_SIGNAL"
+    },
+    {
+      "feature": "dist_sma_5",
+      "label": "excess_vs_sector_3d",
+      "ic": -0.0313,
+      "classification": "UNSTABLE_SIGNAL"
+    },
+    {
+      "feature": "dist_sma_5",
+      "label": "excess_vs_sector_5d",
+      "ic": -0.0313,
+      "classification": "UNSTABLE_SIGNAL"
+    },
+    {
+      "feature": "dist_sma_5",
+      "label": "excess_vs_sector_10d",
+      "ic": -0.0456,
+      "classification": "UNSTABLE_SIGNAL"
+    },
+    {
+      "feature": "dist_sma_5",
+      "label": "excess_vs_sector_20d",
+      "ic": -0.0281,
+      "classification": "UNSTABLE_SIGNAL"
+    },
+    {
+      "feature": "dist_sma_5",
+      "label": "triple_barrier",
+      "ic": 0.06,
+      "classification": "UNSTABLE_SIGNAL"
+    },
+    {
+      "feature": "sma_5_slope",
+      "label": "forward_return_1d",
+      "ic": 0.0087,
+      "classification": "RAW_SIGNAL"
+    },
+    {
+      "feature": "sma_5_slope",
+      "label": "log_forward_return_1d",
+      "ic": 0.0087,
+      "classification": "RAW_SIGNAL"
+    },
+    {
+      "feature": "sma_5_slope",
+      "label": "forward_return_3d",
+      "ic": 0.0051,
+      "classification": "RAW_SIGNAL"
+    },
+    {
+      "feature": "sma_5_slope",
+      "label": "log_forward_return_3d",
+      "ic": 0.0051,
+      "classification": "RAW_SIGNAL"
+    },
+    {
+      "feature": "sma_5_slope",
+      "label": "forward_return_5d",
+      "ic": 0.0177,
+      "classification": "UNSTABLE_SIGNAL"
+    },
+    {
+      "feature": "sma_5_slope",
+      "label": "log_forward_return_5d",
+      "ic": 0.0177,
+      "classification": "UNSTABLE_SIGNAL"
+    },
+    {
+      "feature": "sma_5_slope",
+      "label": "forward_return_10d",
+      "ic": 0.0476,
+      "classification": "UNSTABLE_SIGNAL"
+    },
+    {
+      "feature": "sma_5_slope",
+      "label": "log_forward_return_10d",
+      "ic": 0.0476,
+      "classification": "UNSTABLE_SIGNAL"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "condition": "raw_mr",
+    "n_events": 20313,
+    "mean_forward_return": 0.018633,
+    "hit_rate": 0.5057,
+    "improvement_vs_base": 0,
+    "status": "MR_FILTER_WEAK"
+  },
+  {
+    "condition": "mr_D8-D10",
+    "n_events": 7774,
+    "mean_forward_return": 0.024441,
+    "hit_rate": 0.5491,
+    "improvement_vs_base": 0.005808,
+    "status": "MR_FILTER_CONFIRMED"
+  }
+]

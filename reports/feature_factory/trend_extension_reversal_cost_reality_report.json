@@ -1,0 +1,152 @@
+{
+  "horizon_1d": {
+    "rebalance_freq": 252,
+    "raw_spread_bps": 186.5,
+    "modes": {
+      "conservative": {
+        "round_trip_bps": 10,
+        "annual_cost_bps": 2520,
+        "cost_adjusted_bps": -2333.4,
+        "survives": false
+      },
+      "moderate": {
+        "round_trip_bps": 5,
+        "annual_cost_bps": 1260,
+        "cost_adjusted_bps": -1073.5,
+        "survives": false
+      },
+      "optimistic": {
+        "round_trip_bps": 2,
+        "annual_cost_bps": 504,
+        "cost_adjusted_bps": -317.5,
+        "survives": false
+      }
+    },
+    "status": "COST_FAILED"
+  },
+  "horizon_3d": {
+    "rebalance_freq": 84,
+    "raw_spread_bps": 186.5,
+    "modes": {
+      "conservative": {
+        "round_trip_bps": 10,
+        "annual_cost_bps": 840,
+        "cost_adjusted_bps": -653.5,
+        "survives": false
+      },
+      "moderate": {
+        "round_trip_bps": 5,
+        "annual_cost_bps": 420,
+        "cost_adjusted_bps": -233.5,
+        "survives": false
+      },
+      "optimistic": {
+        "round_trip_bps": 2,
+        "annual_cost_bps": 168,
+        "cost_adjusted_bps": 18.5,
+        "survives": true
+      }
+    },
+    "status": "COST_SURVIVES_OPTIMISTIC_ONLY"
+  },
+  "horizon_5d": {
+    "rebalance_freq": 50,
+    "raw_spread_bps": 186.5,
+    "modes": {
+      "conservative": {
+        "round_trip_bps": 10,
+        "annual_cost_bps": 500,
+        "cost_adjusted_bps": -313.5,
+        "survives": false
+      },
+      "moderate": {
+        "round_trip_bps": 5,
+        "annual_cost_bps": 250,
+        "cost_adjusted_bps": -63.5,
+        "survives": false
+      },
+      "optimistic": {
+        "round_trip_bps": 2,
+        "annual_cost_bps": 100,
+        "cost_adjusted_bps": 86.5,
+        "survives": true
+      }
+    },
+    "status": "COST_SURVIVES_OPTIMISTIC_ONLY"
+  },
+  "horizon_10d": {
+    "rebalance_freq": 25,
+    "raw_spread_bps": 186.5,
+    "modes": {
+      "conservative": {
+        "round_trip_bps": 10,
+        "annual_cost_bps": 250,
+        "cost_adjusted_bps": -63.5,
+        "survives": false
+      },
+      "moderate": {
+        "round_trip_bps": 5,
+        "annual_cost_bps": 125,
+        "cost_adjusted_bps": 61.5,
+        "survives": true
+      },
+      "optimistic": {
+        "round_trip_bps": 2,
+        "annual_cost_bps": 50,
+        "cost_adjusted_bps": 136.5,
+        "survives": true
+      }
+    },
+    "status": "COST_SURVIVES_MODERATE"
+  },
+  "horizon_20d": {
+    "rebalance_freq": 12,
+    "raw_spread_bps": 186.5,
+    "modes": {
+      "conservative": {
+        "round_trip_bps": 10,
+        "annual_cost_bps": 120,
+        "cost_adjusted_bps": 66.5,
+        "survives": true
+      },
+      "moderate": {
+        "round_trip_bps": 5,
+        "annual_cost_bps": 60,
+        "cost_adjusted_bps": 126.5,
+        "survives": true
+      },
+      "optimistic": {
+        "round_trip_bps": 2,
+        "annual_cost_bps": 24,
+        "cost_adjusted_bps": 162.5,
+        "survives": true
+      }
+    },
+    "status": "COST_SURVIVES_CONSERVATIVE"
+  },
+  "horizon_40d": {
+    "rebalance_freq": 6,
+    "raw_spread_bps": 186.5,
+    "modes": {
+      "conservative": {
+        "round_trip_bps": 10,
+        "annual_cost_bps": 60,
+        "cost_adjusted_bps": 126.5,
+        "survives": true
+      },
+      "moderate": {
+        "round_trip_bps": 5,
+        "annual_cost_bps": 30,
+        "cost_adjusted_bps": 156.5,
+        "survives": true
+      },
+      "optimistic": {
+        "round_trip_bps": 2,
+        "annual_cost_bps": 12,
+        "cost_adjusted_bps": 174.5,
+        "survives": true
+      }
+    },
+    "status": "COST_SURVIVES_CONSERVATIVE"
+  }
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "fit": "ALL",
+    "n_events": 338,
+    "mean_return_pct": 2.4868,
+    "hit_rate": 0.571
+  },
+  {
+    "fit": "GOOD_ACCEPTABLE",
+    "n_events": 321,
+    "mean_return_pct": 2.5215,
+    "hit_rate": 0.5514
+  }
+]

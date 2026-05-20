@@ -1,0 +1,27 @@
+event_risk_blocker:
+  blocked_event_types:
+  - earnings_within_5d
+  - earnings_within_10d
+  - earnings_day
+  - post_earnings_2d
+  - guidance_cut
+  - major_downgrade
+  - fraud_or_accounting_issue
+  - dilution_or_offering
+  - merger_or_takeover_news
+  - sector_shock
+  - macro_shock
+  - trading_halt
+  - abnormal_gap_with_news
+  default_action_if_event_unknown: CAUTION_NOT_BLOCK
+  fallback_without_event_api:
+    block_abnormal_volume_spike: true
+    block_extreme_single_day_move: true
+    block_large_gap_down: true
+    mark_event_context_incomplete: true
+    use_price_volume_proxy: true
+  residual_filter_policy:
+    event_context_missing_status: EVENT_CONTEXT_INCOMPLETE
+    residual_z_neg_2_0_requires_event_check: true
+    residual_z_neg_2_5_requires_event_check: true
+  status: SPEC_DEFINED_DATA_PENDING

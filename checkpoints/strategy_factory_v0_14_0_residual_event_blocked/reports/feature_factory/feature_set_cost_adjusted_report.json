@@ -1,0 +1,10 @@
+{
+  "trend_extension_set": "FAILS_COST_PROXY",
+  "trend_extension_reversal_set": "SURVIVES_COST_PROXY",
+  "mean_reversion_set": "FAILS_COST_PROXY",
+  "volatility_compression_set": "FILTER_ONLY_NOT_STANDALONE_ALPHA",
+  "residual_reversion_set": "SURVIVES_COST_PROXY",
+  "liquidity_stress_set": "RISK_ONLY_NOT_STANDALONE_ALPHA",
+  "regime_filter_set": "FILTER_ONLY_NOT_STANDALONE_ALPHA",
+  "qullamaggie_watchlist_set": "FILTER_ONLY_NOT_STANDALONE_ALPHA"
+}

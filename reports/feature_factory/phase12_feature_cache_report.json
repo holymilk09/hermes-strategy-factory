@@ -1,0 +1,23 @@
+{
+  "cache_path": "/opt/data/cache/phase12_etf_inclusive_features",
+  "symbols_cached": 76,
+  "etfs_included": [
+    "XLK",
+    "TAN",
+    "XLY",
+    "XLI",
+    "XLV",
+    "XLF"
+  ],
+  "total_rows": 62958,
+  "features_per_symbol": 8,
+  "labels": [
+    "forward_return_5d",
+    "forward_return_10d",
+    "forward_return_20d"
+  ],
+  "generation_time_seconds": 216.1,
+  "cache_reusable": true,
+  "cache_id": "20260518_112647",
+  "status": "CACHE_READY"
+}

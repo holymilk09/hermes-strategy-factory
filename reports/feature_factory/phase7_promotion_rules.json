@@ -1,0 +1,74 @@
+[
+  {
+    "strategy": "mean_reversion",
+    "variant": "AVOID_D1_D3",
+    "classification": "REJECTED_FILTER",
+    "reason": "Worsens portfolio return (-40.6% vs base +0.8%). Fails random pruning."
+  },
+  {
+    "strategy": "mean_reversion",
+    "variant": "REQUIRE_D8_D10",
+    "classification": "CONTROLLED_RESEARCH_BACKTEST_CANDIDATE",
+    "reason": "Strongest portfolio improvement. Beats random pruning decisively. Hit rate improves (0.47\u21920.53)."
+  },
+  {
+    "strategy": "mean_reversion",
+    "variant": "REQUIRE_D9_D10",
+    "classification": "CONTROLLED_RESEARCH_BACKTEST_CANDIDATE",
+    "reason": "Beats base and random pruning. Return +17.9% vs base +0.8%. Hit rate +0.06."
+  },
+  {
+    "strategy": "mean_reversion",
+    "variant": "REQUIRE_D10_ONLY",
+    "classification": "WEAK_FILTER",
+    "reason": "Beats base (+4.1%) but borderline random pruning (actual=4.1% vs p95=3.4%). Sample reduction risk."
+  },
+  {
+    "strategy": "structural_mr",
+    "variant": "AVOID_D1_D3",
+    "classification": "REJECTED_FILTER",
+    "reason": "Worsens portfolio return (-46.0% vs base +110%). Fails random pruning."
+  },
+  {
+    "strategy": "structural_mr",
+    "variant": "REQUIRE_D8_D10",
+    "classification": "CONTROLLED_RESEARCH_BACKTEST_CANDIDATE",
+    "reason": "Beats base (+177.7% vs +110%). Beats random pruning. Hit rate improves (0.44\u21920.49)."
+  },
+  {
+    "strategy": "structural_mr",
+    "variant": "REQUIRE_D9_D10",
+    "classification": "CONTROLLED_RESEARCH_BACKTEST_CANDIDATE",
+    "reason": "Beats base (+12.2%). Beats random pruning. Hit rate +0.05."
+  },
+  {
+    "strategy": "structural_mr",
+    "variant": "REQUIRE_D10_ONLY",
+    "classification": "WEAK_FILTER",
+    "reason": "Beats base (+8.6%) and random pruning. However trade count drops 40%. Per-trade improvement but reduced opportunity."
+  },
+  {
+    "strategy": "qullamaggie",
+    "variant": "AVOID_D1_D3",
+    "classification": "HIT_RATE_ONLY_FILTER",
+    "reason": "Hit rate improves (0.39\u21920.41). Return +4.8% vs base. Beats random pruning. Marginal improvement."
+  },
+  {
+    "strategy": "qullamaggie",
+    "variant": "REQUIRE_D8_D10",
+    "classification": "SAMPLE_BLOCKED_FILTER",
+    "reason": "Only 55 trades. Too few for reliable conclusion."
+  },
+  {
+    "strategy": "qullamaggie",
+    "variant": "REQUIRE_D9_D10",
+    "classification": "SAMPLE_BLOCKED_FILTER",
+    "reason": "Only 4 trades."
+  },
+  {
+    "strategy": "qullamaggie",
+    "variant": "REQUIRE_D10_ONLY",
+    "classification": "SAMPLE_BLOCKED_FILTER",
+    "reason": "Zero trades. Leader pool too narrow for extreme compression filter."
+  }
+]
