@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Phase 30H — Feature Factory Operator Dashboard (~/status)
+set -euo pipefail
+cd /opt/data
+export PYTHONPATH=.
+exec .venv/bin/python scripts/show_feature_factory_status.py "$@"

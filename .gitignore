@@ -54,3 +54,42 @@ node_modules/
 # Local python envs
 .local/
 venv/
+.venv/
+
+# Generated data and artifacts
+data/paper_observation/
+data/research/
+backups/
+*.tar.gz
+*.pkl
+*.db
+*.db-shm
+*.db-wal
+kanban.db
+
+# Config and state
+config.yaml
+feature_config.yaml
+strategy_config.yaml
+gateway_state.json
+gateway.pid
+gateway.lock
+gateway-watchdog.pid
+processes.json
+*.lock
+*.pid
+
+# Generated reports (run artifacts)
+reports/event_tracker/
+reports/data_sources/
+
+# Sandboxes and workspaces
+sandboxes/
+workspace/
+state-snapshots/
+
+# Caches
+.cache/
+feature_store/
+pairing/
+lsp/

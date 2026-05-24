@@ -1,0 +1,79 @@
+{
+  "required_scripts_present": 8,
+  "required_scripts_total": 8,
+  "missing_scripts": [],
+  "ledgers": {
+    "relative_strength_continuation_observation_ledger.csv": {
+      "status": "PASS",
+      "rows": 6
+    },
+    "relative_strength_continuation_outcome_ledger.csv": {
+      "status": "PASS",
+      "rows": 6
+    },
+    "hypothesis_registry.csv": {
+      "status": "PASS",
+      "rows": 7
+    }
+  },
+  "observation_invariants": {
+    "observations_total": 6,
+    "pending": 6,
+    "resolved": 0,
+    "symbols_match": true,
+    "symbols_found": [
+      "AMD",
+      "ARM",
+      "CRWD",
+      "DDOG",
+      "MRVL",
+      "SEDG"
+    ],
+    "symbols_expected": [
+      "AMD",
+      "ARM",
+      "CRWD",
+      "DDOG",
+      "MRVL",
+      "SEDG"
+    ],
+    "total_ids": 6,
+    "unique_ids": 6,
+    "duplicate_count": 0,
+    "sent_to_broker_any": true,
+    "sent_to_broker_violations": [],
+    "broker_order_id_populated": true,
+    "broker_order_id_violations": []
+  },
+  "observation_invariants_pass": true,
+  "hard_blocks": {
+    "production_blocked": true,
+    "live_blocked": true,
+    "broker_execution_disabled": true,
+    "shadow_disabled": true
+  },
+  "all_hard_blocks_active": true,
+  "backup": {
+    "path": "backups/feature_factory_state_20260524_014249.tar.gz",
+    "size_bytes": 30570747,
+    "ok": true
+  },
+  "smoke_tests": {
+    "status": {
+      "exit_code": 0,
+      "pass": true
+    },
+    "maturity_watchdog": {
+      "exit_code": 0,
+      "pass": true
+    },
+    "no_trading_leakage": {
+      "exit_code": 0,
+      "pass": true
+    }
+  },
+  "smoke_tests_all_pass": true,
+  "timestamp": "2026-05-24T05:13:14.217942+00:00",
+  "decision": "HEALTHCHECK_PASS_CONTINUE_WAITING",
+  "all_pass": true
+}
