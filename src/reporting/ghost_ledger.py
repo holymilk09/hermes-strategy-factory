@@ -366,3 +366,134 @@ def ghost_summary(ghost_path: Path = GHOST_LEDGER_PATH) -> dict[str, Any]:
             set(e["rejection_reason"] for e in unexpected_winners)
         ),
     }
+
+
+# ──────────────────────────────────────────────
+# Observation pipeline rejection recording
+# ──────────────────────────────────────────────
+
+import hashlib
+from typing import Callable
+
+import pandas as pd
+
+
+def _ghost_id_for_rejection(symbol: str, signal_date: str, setup_type: str, failed_gate: str, rejection_reason: str) -> str:
+    """Deterministic ghost ID from rejection metadata. Not a random UUID."""
+    raw = f"{symbol}|{signal_date}|{setup_type}|{failed_gate}|{rejection_reason}"
+    return hashlib.sha256(raw.encode("utf-8")).hexdigest()[:24]
+
+
+def _resolve_first_failed_gate(
+    row: dict[str, Any],
+    gates: list[tuple[str, Callable[[Any], bool], str, str]],
+) -> tuple[str, str, str] | None:
+    """Check gates in priority order. Returns (failed_gate_name, rejection_reason, score_str) or None if all pass."""
+    for col_name, check_fn, gate_name, reason in gates:
+        val = row.get(col_name)
+        if val is None:
+            # Column missing — can't determine
+            continue
+        try:
+            fval = float(val)
+        except (ValueError, TypeError):
+            fval = float(bool(val))
+        if not check_fn(fval):
+            return gate_name, reason, str(val)
+    return None
+
+
+def record_observation_rejections(
+    universe_df: pd.DataFrame,
+    root: Path,
+    strategy_id: str,
+    setup_type: str,
+    gates: list[tuple[str, Callable[[Any], bool], str, str]],
+    ghost_path: Path = GHOST_LEDGER_PATH,
+) -> int:
+    """Append GhostRecord rows for non-selected symbols at the latest universe timestamp.
+
+    This is a pure side-effect function. It does NOT modify the universe DataFrame,
+    does NOT change which rows are selected, and does NOT affect observation generation.
+
+    Parameters:
+        universe_df: DataFrame with 'selected' column and per-timestamp signal data.
+        root: Project root for GhostRecord creation.
+        strategy_id: e.g. 'relative_strength_continuation'.
+        setup_type: e.g. 'swing'.
+        gates: Priority-ordered list of (column_name, pass_check_fn, gate_name, rejection_reason).
+        ghost_path: Path to ghost ledger CSV.
+
+    Returns:
+        Number of new ghost records appended.
+    """
+    if universe_df.empty or "selected" not in universe_df.columns:
+        return 0
+
+    df = universe_df.copy()
+    ts_col = None
+    for c in ["timestamp", "signal_timestamp", "date", "datetime", "time"]:
+        if c in df.columns:
+            ts_col = c
+            break
+    if ts_col is None:
+        return 0
+
+    # Find latest timestamp
+    try:
+        ts = pd.to_datetime(df[ts_col], utc=True, errors="coerce")
+        latest_ts = ts.max()
+        if pd.isna(latest_ts):
+            return 0
+    except Exception:
+        return 0
+
+    latest = df[ts == latest_ts].copy()
+    non_selected = latest[~latest["selected"].astype(bool)]
+
+    if non_selected.empty:
+        return 0
+
+    records: list[GhostRecord] = []
+    signal_date_str = str(latest_ts)
+
+    for _, row in non_selected.iterrows():
+        symbol = str(row.get("symbol", "")).upper()
+        if not symbol:
+            continue
+
+        close_val = row.get("close")
+        try:
+            price = float(close_val) if close_val is not None else 0.0
+        except (ValueError, TypeError):
+            price = 0.0
+
+        gate_result = _resolve_first_failed_gate(dict(row), gates)
+        if gate_result is None:
+            # Shouldn't happen since row is non-selected, but handle gracefully
+            failed_gate = "unknown_gate"
+            rejection_reason = "unknown_rejection"
+            score_str = ""
+        else:
+            failed_gate, rejection_reason, score_str = gate_result
+
+        ghost_id = _ghost_id_for_rejection(
+            symbol, signal_date_str, setup_type, failed_gate, rejection_reason
+        )
+
+        record = build_ghost_record(
+            ghost_id=ghost_id,
+            source_observation_id="",
+            symbol=symbol,
+            strategy_id=strategy_id,
+            setup_type=setup_type,
+            signal_date=signal_date_str,
+            rejection_reason=rejection_reason,
+            failed_gate=failed_gate,
+            score_if_available=score_str,
+            price_at_signal=price,
+            market_weather="",
+        )
+        records.append(record)
+
+    return append_ghost_records(records, path=ghost_path)
