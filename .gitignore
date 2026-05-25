@@ -1,51 +1,31 @@
 # Environment and secrets
 .env
+.env.*
 *.env
 secrets/
 credentials/
 *.pem
 *.key
+auth.json
+.git-credentials
+.gitconfig
 
-# Caches and large data
-data/cache/
-cache/
-*.parquet
-*.npz
-*.h5
-*.hdf5
-*.zip
-
-# Logs
-logs/
-*.log
-
-# Python
+# Caches and local runtime
 __pycache__/
 *.pyc
 *.pyo
+.pytest_cache/
+.cache/
+.hermes/
+.hermes_history
+sessions/
+logs/
+
+# Python packaging/build
 *.egg-info/
 dist/
 build/
 .eggs/
-
-# OS
-.DS_Store
-Thumbs.db
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# Session and state DB
-state.db
-*.db-journal
-*.db-wal
-
-# Backups
-hermes-backup-*/
-hermes-safe-backup/
 
 # Node
 node_modules/
@@ -56,40 +36,69 @@ node_modules/
 venv/
 .venv/
 
-# Generated data and artifacts
-data/paper_observation/
-data/research/
-backups/
-*.tar.gz
-*.pkl
+# OS/IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Generic logs/state
+*.log
+state.db
 *.db
+*.db-journal
 *.db-shm
 *.db-wal
-kanban.db
+*.lock
+*.pid
 
-# Config and state
-config.yaml
-feature_config.yaml
-strategy_config.yaml
+# Runtime/generated data
+cache/
+data/cache/
+feature_store/
+pairing/
+lsp/
+backups/
+*.tar.gz
+*.parquet
+*.npz
+*.h5
+*.hdf5
+*.pkl
+
+# Local process/runtime markers
 gateway_state.json
 gateway.pid
 gateway.lock
 gateway-watchdog.pid
 processes.json
-*.lock
-*.pid
+channel_directory.json
+context_length_cache.yaml
+.install_method
+.update_check
+.restart_last_processed.json
+.zshrc
 
-# Generated reports (run artifacts)
+# Reports usually runtime-generated
 reports/event_tracker/
 reports/data_sources/
+checkpoints/.last_prune
 
-# Sandboxes and workspaces
+# Edge sheet dated runtime artifacts (keep curated preview separately)
+reports/edge_sheet/*_edge_sheet.md
+reports/edge_sheet/*_edge_sheet.json
+reports/edge_sheet/*_scoreboard.md
+reports/edge_sheet/*_scoreboard.json
+reports/edge_sheet/*_edge_sheet.html
+reports/edge_sheet/*_scoreboard.html
+reports/edge_sheet/*_email_preview.html
+
+# Keep curated, public-safe preview tracked
+!reports/edge_sheet/commercial_preview_page.html
+
+# Sandboxes/workspaces
 sandboxes/
 workspace/
 state-snapshots/
-
-# Caches
-.cache/
-feature_store/
-pairing/
-lsp/

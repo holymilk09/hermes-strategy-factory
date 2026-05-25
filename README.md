@@ -1,48 +1,101 @@
 # Hermes Strategy Factory
 
-**Status: RESEARCH-ONLY — Not production-ready. Not live-trading-ready.**
+Research-first quantitative workflow with strict safety boundaries and a customer-facing output layer.
 
-A multi-phase quantitative strategy research and validation framework built with Hermes Agent.
-Validates alpha signals through escalating statistical gates before any strategy migration.
+## Strategy Factory Edge Sheet
 
-## Current State
-- **16 validation phases complete** (Phase 2 → 12.5)
-- **Active candidate:** Residual reversion (residual_z <= -2.0 + GOOD/ACCEPTABLE R²)
-- **Classification:** CONTROLLED_RESEARCH_CANDIDATE_EVENT_BLOCKED
-- **Production migration:** BLOCKED
-- **Live trading:** BLOCKED
+**Product direction:** Strategy Factory Edge Sheet — Founding Access  
+**Price target:** $5/month  
+**Core hook:** *The 60-second stock setup sheet.*  
+**Marketing hook:** *See what’s strong, weak, and too risky before you chase it.*
 
-## Core Components
-- `feature_factory/` — 16 Python modules for feature computation, validation, and store management
-- `reports/feature_factory/` — Phase-by-phase validation reports (Phase 2-12.5)
-- `config/` — Strategy configs, feature registry, backtest integration plan
-- `alpha_graveyard/` — Permanently rejected signals with forbidden rescue rules
-- `knowledge-base/` — Quant doctrine, mean reversion docs, research notes
+## What this is
 
-## Active Research Track
-Residual reversion (factor-residual MR, Avellaneda & Lee approach):
-- Sector ETF regression computes idiosyncratic residual returns
-- Residual_z <= -2.0 flags extreme deviations
-- GOOD/ACCEPTABLE fit filter (R² >= 0.20) required — without it, BORDERLINE at best
-- Passes strategy-conditioned random pruning (250 perms) for mean_reversion and structural_mr
-- **Blocked:** Event context incomplete — needs FMP earnings calendar for event-risk blocking
+A weekly **research-only** setup sheet that translates Strategy Factory observations into plain-English setup views.
 
-## Rejected Tracks
-- **Trend Extension Reversal:** FAILED standalone decile ranking on 76-stock universe. 
-  Backtrader random-pruning FAILED. Permanently archived. Do not rescue.
+## What this is not
 
-## Running Health Checks
+- Not a trading bot
+- Not broker execution
+- Not buy/sell alerts
+- Not personalized financial advice
+- Not proven performance claims
+
+## Current build state
+
+- Research engine: frozen for this release track
+- Forward-observation/maturity phase: active (`PENDING_MATURITY`)
+- Edge Sheet output layer: complete
+- Retail wording mapper: complete
+- Maturity scoreboard: complete
+- HTML/email preview renderer: complete
+- Commercial packaging docs: complete
+
+## Architecture layers
+
+### 1) Truth Layer
+- Research engine
+- Forward observation
+- Maturity tracking
+- Ledgers
+- Health checks
+
+### 2) Artifact Layer
+- Markdown report
+- JSON report
+- Scoreboard
+- HTML/email preview
+
+### 3) Commercial Packaging Layer
+- Product copy
+- FAQ
+- Compliance language
+- Manual Shopify checklist
+
+### 4) External Manual Layer
+- Shopify setup later on your own computer
+- No Shopify integration inside Hermes yet
+
+## Operator commands
+
+Generate reports:
+
 ```bash
-# Gateway health
-ps aux | grep 'hermes gateway run'
-
-# Watchdog
-cat /opt/data/gateway.pid
-cat /opt/data/gateway-watchdog.pid
-
-# Checkpoint verification
-ls checkpoints/strategy_factory_v0_14_0_residual_event_blocked/
+PYTHONPATH=/opt/data /opt/data/.venv/bin/python /opt/data/scripts/generate_edge_sheet.py
+PYTHONPATH=/opt/data /opt/data/.venv/bin/python /opt/data/scripts/render_edge_sheet_html.py
 ```
 
-## Blocked Actions
-See `docs/BLOCKED_ACTIONS.md` for full list.
+Run focused tests:
+
+```bash
+PYTHONPATH=/opt/data /opt/data/.venv/bin/pytest -q tests/reporting tests/feature_factory
+```
+
+Run health check:
+
+```bash
+PYTHONPATH=/opt/data /opt/data/.venv/bin/python /opt/data/scripts/run_feature_factory_healthcheck.py
+```
+
+## Environment notes
+
+- Use `/opt/data/.venv/bin/python` and `/opt/data/.venv/bin/pytest`
+- Raw `python` / `pytest` may not exist in PATH
+
+## Test-scope caveat
+
+Full monorepo `pytest` may fail on unrelated `hermes-agent` dependency trees due to missing external dependencies.  
+Release target is focused Strategy Factory suites (`tests/reporting`, `tests/feature_factory`).
+
+## Safety boundaries
+
+Do not change in packaging/reporting phases:
+- Strategy logic
+- Thresholds
+- Scoring
+- Maturity logic
+- Broker/live/shadow behavior
+
+## Research-only disclaimer
+
+Research-only: This project output is for research tracking and education only. It is not investment advice. No live trading. No broker execution. No production activation.
