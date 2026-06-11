@@ -16,6 +16,32 @@ SCRIPTS_DIR = ROOT / "scripts"
 OBS_DIR = ROOT / "data/paper_observation"
 BACKUP_DIR = ROOT / "backups"
 
+# ─── Approved observation cohort manifest ────────────────────
+# Phase 6K: First cohort (6 resolved) + new cohort (1 pending, MRVL).
+# Update this manifest only after an approved intentional observation cycle.
+
+APPROVED_MANIFEST = {
+    "total_observations": 7,
+    "original_cohort": {
+        "count": 6,
+        "status": "RESOLVED",
+        "observation_ids": [
+            "6e506d15369deef3ea4d82ec",  # AMD
+            "d17b6c30f3bd58a0746592a5",  # ARM
+            "1eaba1549790ef85879bd98a",  # CRWD
+            "17fd3fa4ae84027e82b8b2fd",  # DDOG
+            "6c2f1eb80f83da084c393fb0",  # MRVL
+            "e9e478ad4f2034c2ad27d6e4",  # SEDG
+        ],
+    },
+    "new_cohort": {
+        "count": 1,
+        "status": "PENDING",
+        "observation_id": "f6fda996fae00a3e35ed61c6",
+        "symbol": "MRVL",
+        "signal_date": "2026-06-05",
+    },
+}
 EXPECTED_SYMBOLS = {"AMD", "ARM", "CRWD", "DDOG", "MRVL", "SEDG"}
 OUTCOME_WINDOW = 10
 
@@ -196,16 +222,70 @@ def main():
 
     inv_ok = True
 
-    print(f"  observations_total={inv['observations_total']} {'PASS' if inv['observations_total'] == 6 else 'FAIL'}")
-    if inv['observations_total'] != 6:
+    # Load outcome ledger for status verification
+    outcome_path = ROOT / "data/paper_observation/relative_strength_continuation_outcome_ledger.csv"
+    outcome_rows = parse_ledger(outcome_path)
+    outcome_pending = sum(1 for r in outcome_rows if r.get("outcome_status", "").strip().upper() == "PENDING") if outcome_rows else -1
+    outcome_resolved = sum(1 for r in outcome_rows if r.get("outcome_status", "").strip().upper() == "RESOLVED") if outcome_rows else -1
+
+    m = APPROVED_MANIFEST
+    expected_total = m["total_observations"]
+    expected_pending = m["new_cohort"]["count"]
+    expected_resolved = m["original_cohort"]["count"]
+    approved_obs_ids = set(m["original_cohort"]["observation_ids"] + [m["new_cohort"]["observation_id"]])
+    all_obs_ids = set(r.get("observation_id", "").strip() for r in obs_rows if r.get("observation_id", "").strip())
+
+    # Check total count
+    obs_total_pass = inv['observations_total'] == expected_total
+    print(f"  observations_total={inv['observations_total']} {'PASS' if obs_total_pass else 'FAIL'} (expected {expected_total})")
+    if not obs_total_pass:
         inv_ok = False
 
-    print(f"  pending={inv['pending']} {'PASS' if inv['pending'] == 6 else 'FAIL'}")
-    if inv['pending'] != 6:
+    # Check pending (from observation ledger — all pre-allocation markers)
+    # Resolution status is verified from the outcome ledger below
+    # But we do verify that exactly NEW_COHORT_COUNT rows have the approved new obs ID pending
+    pending_ids = set(r.get("observation_id", "").strip() for r in obs_rows if r.get("outcome_status", "").strip().upper() == "PENDING")
+    new_cohort_id = m["new_cohort"]["observation_id"]
+
+    # Check the outcome ledger for resolved/pending status
+    outcome_pending_pass = outcome_pending == expected_pending
+    outcome_resolved_pass = outcome_resolved == expected_resolved
+    print(f"  outcome_ledger_pending={outcome_pending} {'PASS' if outcome_pending_pass else 'FAIL'} (expected {expected_pending})")
+    if not outcome_pending_pass:
+        inv_ok = False
+    print(f"  outcome_ledger_resolved={outcome_resolved} {'PASS' if outcome_resolved_pass else 'FAIL'} (expected {expected_resolved})")
+    if not outcome_resolved_pass:
         inv_ok = False
 
-    print(f"  resolved={inv['resolved']} {'PASS' if inv['resolved'] == 0 else 'FAIL'}")
-    if inv['resolved'] != 0:
+    # Verify the only pending observation ID is the approved new cohort observation
+    # This checks the OUTCOME ledger since that's where resolution status lives
+    pending_approved = False
+    if outcome_rows:
+        only_pending_ids = set(r.get("observation_id", "").strip() for r in outcome_rows if r.get("outcome_status", "").strip().upper() == "PENDING")
+        pending_approved = (only_pending_ids == {new_cohort_id})
+        print(f"  approved_pending_obs_id_only={'YES' if pending_approved else 'NO'} {'PASS' if pending_approved else 'FAIL'}")
+        if not pending_approved:
+            print(f"    Found pending IDs: {only_pending_ids}")
+            inv_ok = False
+    else:
+        print(f"  outcome_ledger: UNAVAILABLE")
+        inv_ok = False
+
+    # Verify all approved observation IDs are present
+    all_ids_present = all_obs_ids == approved_obs_ids
+    print(f"  all_approved_ids_present={'YES' if all_ids_present else 'NO'} {'PASS' if all_ids_present else 'FAIL'}")
+    if not all_ids_present:
+        extra = all_obs_ids - approved_obs_ids
+        missing = approved_obs_ids - all_obs_ids
+        if extra: print(f"    Unapproved IDs: {extra}")
+        if missing: print(f"    Missing IDs: {missing}")
+        inv_ok = False
+
+    # Original 6 IDs present
+    orig_ids = set(m["original_cohort"]["observation_ids"])
+    orig_all_present = orig_ids.issubset(all_obs_ids)
+    print(f"  original_6_ids_present={'YES' if orig_all_present else 'NO'} {'PASS' if orig_all_present else 'FAIL'}")
+    if not orig_all_present:
         inv_ok = False
 
     print(f"  symbols_match={'YES' if inv['symbols_match'] else 'NO'} "
@@ -345,9 +425,11 @@ def main():
         md_lines.append(f"| {key} | {'PASS' if ok else 'FAIL'} |")
 
     md_lines.append(f"\n## Observation Invariants")
-    md_lines.append(f"\n- Total: {inv['observations_total']} (expected 6)")
-    md_lines.append(f"- Pending: {inv['pending']} (expected 6)")
-    md_lines.append(f"- Resolved: {inv['resolved']} (expected 0)")
+    md_lines.append(f"\n- Total: {inv['observations_total']} (approved: {APPROVED_MANIFEST['total_observations']})")
+    md_lines.append(f"- Outcome ledger pending: {outcome_pending} (approved: {APPROVED_MANIFEST['new_cohort']['count']})")
+    md_lines.append(f"- Outcome ledger resolved: {outcome_resolved} (approved: {APPROVED_MANIFEST['original_cohort']['count']})")
+    md_lines.append(f"- Approved pending obs ID only: {'YES' if pending_approved else 'NO'}")
+    md_lines.append(f"- All approved IDs present: {'YES' if all_ids_present else 'NO'}")
     md_lines.append(f"- Symbols match: {'YES' if inv['symbols_match'] else 'NO'}")
     md_lines.append(f"- Duplicate IDs: {inv['duplicate_count']} (expected 0)")
     md_lines.append(f"- sent_to_broker_any: {'false (PASS)' if inv['sent_to_broker_any'] else 'true (FAIL)'}")

@@ -26,9 +26,30 @@ def test_observation_ledger_exists():
     assert OBS_LEDGER.exists(), f"Observation ledger not found: {OBS_LEDGER}"
 
 
-def test_observation_ledger_exactly_6_rows():
+# ─── Approved observation cohort manifest ────────────────────
+# Phase 6K: First cohort (6 resolved) + new cohort (1 pending, MRVL).
+# Must stay in sync with scripts/run_feature_factory_healthcheck.py.
+APPROVED_OBSERVATION_IDS = [
+    "6e506d15369deef3ea4d82ec",  # AMD, cohort 1
+    "d17b6c30f3bd58a0746592a5",  # ARM, cohort 1
+    "1eaba1549790ef85879bd98a",  # CRWD, cohort 1
+    "17fd3fa4ae84027e82b8b2fd",  # DDOG, cohort 1
+    "6c2f1eb80f83da084c393fb0",  # MRVL, cohort 1
+    "e9e478ad4f2034c2ad27d6e4",  # SEDG, cohort 1
+    "f6fda996fae00a3e35ed61c6",  # MRVL, cohort 2 (approved Phase 6K)
+]
+
+
+def test_observation_ledger_exactly_matching_manifest():
+    """Verify observation ledger contains exactly the approved cohort IDs."""
     rows = _load_ledger(OBS_LEDGER)
-    assert len(rows) == 6, f"Expected 6 observations, got {len(rows)}"
+    actual_ids = set(r["observation_id"].strip() for r in rows)
+    expected_ids = set(APPROVED_OBSERVATION_IDS)
+    assert actual_ids == expected_ids, (
+        f"Observation IDs mismatch: extra={actual_ids - expected_ids}, "
+        f"missing={expected_ids - actual_ids}, "
+        f"expected total={len(expected_ids)}, actual total={len(actual_ids)}"
+    )
 
 
 def test_observation_ledger_symbols_match():
