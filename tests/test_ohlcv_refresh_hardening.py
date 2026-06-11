@@ -13,6 +13,11 @@ Hard constraints:
 - No thresholds/scoring/maturity rules changed
 - No ledgers mutated
 - Observation cycle never invoked
+
+Marker policy:
+  @pytest.mark.requires_data       — needs production ledger CSVs
+  @pytest.mark.requires_network    — makes live Alpaca API call
+  (no marker)                      — pure unit/mock test, passes on fresh clone
 """
 
 from __future__ import annotations
@@ -21,6 +26,8 @@ import hashlib
 import os
 from datetime import date, datetime, time, timezone, timedelta
 from pathlib import Path
+
+import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -143,6 +150,7 @@ def test_current_day_excluded_before_close():
 # ── 5. Ledger immutability ────────────────────────────────────────────────────
 
 
+@pytest.mark.requires_data
 def test_ledger_hashes_unchanged_after_refresh():
     """Running the refresh module should NOT mutate observer/outcome/ghost ledgers.
 
@@ -179,27 +187,19 @@ def test_ledger_hashes_unchanged_after_refresh():
 def test_observation_cycle_not_invoked_via_import():
     """Verify that importing the refresh module does NOT import observation cycle."""
     import sys as _sys
-    loaded = [m for m in _sys.modules.keys()
-              if "observation_cycle" in m.lower() and "calendar" not in m.lower()]
-    # The observation_cycle module might be pre-loaded from conftest or other tests.
-    # We check that the refresh module specifically did NOT trigger it.
-    # If it was already loaded, that's from another test — acceptable.
-    # But if the refresh module imported it, that's an issue.
-    from scripts import refresh_stale_ohlcv as rso
-    _ = rso
+    # Only match src.paper.* observation-cycle modules, not test files whose
+    # names happen to contain "observation_cycle".
+    _src_obs_cycle = lambda m: "observation_cycle" in m.lower() and m.startswith("src.")
 
-    # After importing refresh, check that no NEW observation_cycle modules appeared
-    # (beyond what was already loaded before this test)
-    loaded_after = [m for m in _sys.modules.keys()
-                    if "observation_cycle" in m.lower() and "calendar" not in m.lower()]
-    # The refresh module imports calendar_freshness, which has a test
-    # that observation_cycle is not invoked. The refresh module itself
-    # should not import anything with "observation_cycle" in its name.
-    assert len(loaded_after) == 0 or all(
-        "observation_cycle" not in str(getattr(_sys.modules[m], "__file__", ""))
-        for m in loaded_after
-    ), (
-        f"Observation cycle module loaded via refresh import: {loaded_after}"
+    loaded_before = [m for m in _sys.modules.keys() if _src_obs_cycle(m)]
+    from scripts import refresh_stale_ohlcv as rso
+    _ = rso  # suppress unused warning
+
+    # After importing refresh, check that no NEW src.* observation_cycle modules appeared
+    loaded_after = [m for m in _sys.modules.keys() if _src_obs_cycle(m)]
+    new_modules = [m for m in loaded_after if m not in loaded_before]
+    assert len(new_modules) == 0, (
+        f"Observation cycle src module loaded via refresh import: {new_modules}"
     )
 
 

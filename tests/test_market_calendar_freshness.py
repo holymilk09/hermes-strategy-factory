@@ -14,6 +14,11 @@ Hard constraints:
 - No thresholds/scoring/maturity rules changed
 - No ledgers mutated
 - Observation cycle never invoked
+
+Marker policy:
+  @pytest.mark.requires_data   — needs production ledger CSVs
+  @pytest.mark.requires_network — makes live Alpaca API call
+  (no marker) — pure unit test, passes on fresh clone
 """
 
 from __future__ import annotations
@@ -24,6 +29,8 @@ import os
 import tempfile
 from datetime import date, datetime, time, timezone, timedelta
 from pathlib import Path
+
+import pytest
 
 # We import from the module under test
 from src.reporting.market_calendar_freshness import (
@@ -140,6 +147,8 @@ def test_latest_completed_session_weekend_monday():
 # ── 3. Real-world freshness check (against actual local cache) ─────────────────
 
 
+@pytest.mark.requires_ohlcv
+@pytest.mark.requires_network
 def test_freshness_real_local_cache():
     """Actual freshness check against real local OHLCV cache.
 
@@ -169,6 +178,7 @@ def test_freshness_real_local_cache():
 # ── 4. Integrity ────────────────────────────────────────────────────────────────
 
 
+@pytest.mark.requires_data
 def test_no_ledger_mutation_by_freshness_check():
     """Freshness check must NOT mutate observation/outcome/ghost ledgers."""
     ledgers = [
@@ -194,6 +204,7 @@ def test_no_ledger_mutation_by_freshness_check():
         )
 
 
+@pytest.mark.requires_data
 def test_assert_no_ledger_mutation_passes():
     """assert_no_ledger_mutation should pass without error."""
     assert_no_ledger_mutation(root=ROOT)
@@ -202,8 +213,13 @@ def test_assert_no_ledger_mutation_passes():
 def test_observation_cycle_not_invoked_via_import():
     """Verify that importing freshness module does NOT import observation cycle."""
     import sys as _sys
-    # Check that observation_cycle modules are not in the loaded modules
-    loaded = [m for m in _sys.modules.keys() if "observation_cycle" in m.lower()]
+    # Only match src.paper.* observation-cycle modules, not test files whose
+    # names happen to contain "observation_cycle".
+    loaded = [
+        m for m in _sys.modules.keys()
+        if "observation_cycle" in m.lower()
+        and m.startswith("src.")
+    ]
     assert len(loaded) == 0, (
         f"Observation cycle module loaded via freshness import: {loaded}"
     )
@@ -227,6 +243,8 @@ def test_cache_path_mismatch(tmp_path):
     assert result.status == "CACHE_PATH_MISMATCH"
 
 
+@pytest.mark.requires_ohlcv
+@pytest.mark.requires_network
 def test_symbol_latest_dates_are_consistent():
     """All required 6 symbols should have same latest date (same trading day)."""
     result = check_data_freshness(root=ROOT)

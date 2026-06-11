@@ -1,9 +1,16 @@
 """Phase 30K — Feature Factory Invariant Tests
 Tests check integrity of observation ledgers, hypothesis registry, and backup state.
 No strategy behavior is changed — reads only.
+
+All tests in this file require production data (ledger CSVs, backups).
+They are marked ``requires_data`` so a fresh clone can skip them:
+  pytest -m "not requires_data"
 """
 import csv
 from pathlib import Path
+import pytest
+
+pytestmark = pytest.mark.requires_data  # all tests need production ledger CSVs + backups
 
 ROOT = Path(__file__).resolve().parents[1]  # /opt/data
 EXPECTED_SYMBOLS = {"AMD", "ARM", "CRWD", "DDOG", "MRVL", "SEDG"}

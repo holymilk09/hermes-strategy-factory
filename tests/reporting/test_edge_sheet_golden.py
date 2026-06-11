@@ -4,8 +4,12 @@ import json
 from datetime import datetime, timezone
 from pathlib import Path
 
+import pytest
+
 ROOT = Path(__file__).resolve().parents[2]
 EDGE_DIR = ROOT / "reports" / "edge_sheet"
+
+pytestmark = pytest.mark.requires_reports  # needs reports/edge_sheet/*.json/.md
 FIXTURE_DIR = ROOT / "tests" / "fixtures" / "edge_sheet"
 
 REQUIRED_SECTIONS = [

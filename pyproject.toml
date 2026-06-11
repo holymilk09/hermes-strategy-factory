@@ -1,7 +1,27 @@
 [tool.pytest.ini_options]
-# Allow `python -m pytest` from repo root without setting PYTHONPATH manually.
-# Adds the project root to sys.path so all `src.*` and top-level imports resolve.
+# Adds project root to sys.path so `src.*` and top-level imports resolve
+# without setting PYTHONPATH manually.
 pythonpath = ["."]
 testpaths = ["tests"]
-# Ignore tests that require optional feature_registry YAML (needs extra data fixtures)
+
+# Exclude tests that require optional feature_registry YAML data fixtures.
+# These two tests import yaml at module level and fail without the data file.
 addopts = "--ignore=tests/features/test_feature_registry_complete.py --ignore=tests/features/test_feature_registry_matches_generated_features.py"
+
+# ── Marker definitions ──────────────────────────────────────────────────────
+# Markers split the suite by data/environment requirements:
+#
+#   Source-only (fresh clone / CI):
+#     pytest -m "not requires_data and not requires_ohlcv and not requires_reports and not requires_venv"
+#
+#   Full VPS (all production data present):
+#     pytest tests/
+#
+#   See docs/testing.md for full policy.
+markers = [
+    "requires_data: Test requires production ledger files (observation/outcome/ghost CSVs, hypothesis_registry, backups)",
+    "requires_ohlcv: Test requires local OHLCV cache in data/cache/ohlcv_1d/",
+    "requires_reports: Test requires generated report files (reports/edge_sheet/, reports/strategy_factory/)",
+    "requires_venv: Test invokes subprocess using ROOT/.venv/bin/python — only works on VPS with venv installed",
+    "requires_network: Test makes live outbound network calls (Alpaca API, GitHub, etc.)",
+]

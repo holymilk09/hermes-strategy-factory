@@ -3,7 +3,12 @@ from __future__ import annotations
 import subprocess
 from pathlib import Path
 
+import pytest
+
 ROOT = Path(__file__).resolve().parents[2]
+
+# Reads commercial preview HTML + calls .venv/bin/python for healthcheck
+pytestmark = [pytest.mark.requires_reports, pytest.mark.requires_venv]
 
 DOCS = [
     ROOT / "docs/commercial/FOUNDING_ACCESS_PAGE.md",

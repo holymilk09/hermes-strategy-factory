@@ -13,6 +13,8 @@ from src.reporting.maturity_scoreboard import (
     classify_maturity,
 )
 
+import pytest
+
 ROOT = Path(__file__).resolve().parents[1]
 EDGE_DIR = ROOT / "reports" / "edge_sheet"
 SCRIPT = ROOT / "scripts" / "generate_edge_sheet.py"
@@ -81,6 +83,7 @@ def _load_scoreboard_json() -> dict:
     return json.loads(path.read_text())
 
 
+@pytest.mark.requires_reports
 def test_edge_sheet_generator_runs_and_creates_artifacts():
     result = _run([str(ROOT / ".venv/bin/python"), str(SCRIPT)])
     assert result.returncode == 0, result.stderr or result.stdout
@@ -97,6 +100,7 @@ def test_edge_sheet_generator_runs_and_creates_artifacts():
     assert scoreboard_json_path.exists(), f"Missing scoreboard JSON: {scoreboard_json_path}"
 
 
+@pytest.mark.requires_reports
 def test_edge_sheet_contains_required_sections_and_disclaimer():
     date_prefix = _today_stamp()
     md_path = EDGE_DIR / f"{date_prefix}_edge_sheet.md"
@@ -125,6 +129,7 @@ def test_edge_sheet_contains_required_sections_and_disclaimer():
     assert "no broker execution" in text.lower()
 
 
+@pytest.mark.requires_reports
 def test_forbidden_retail_words_absent_from_customer_output():
     date_prefix = _today_stamp()
     md_path = EDGE_DIR / f"{date_prefix}_edge_sheet.md"
@@ -158,6 +163,7 @@ def test_retail_wording_mapper_is_deterministic_and_uses_required_labels():
     assert card1.time_range in ALLOWED_TIME_RANGES
 
 
+@pytest.mark.requires_reports
 def test_every_ticker_card_has_time_range_next_step_and_disclaimer():
     date_prefix = _today_stamp()
     json_path = EDGE_DIR / f"{date_prefix}_edge_sheet.json"
@@ -173,6 +179,7 @@ def test_every_ticker_card_has_time_range_next_step_and_disclaimer():
     assert "Research-only" in payload.get("disclaimer", "")
 
 
+@pytest.mark.requires_reports
 def test_raw_ledgers_remain_unchanged_after_report_generation():
     obs = ROOT / "data/paper_observation/relative_strength_continuation_observation_ledger.csv"
     out = ROOT / "data/paper_observation/relative_strength_continuation_outcome_ledger.csv"
@@ -189,6 +196,7 @@ def test_raw_ledgers_remain_unchanged_after_report_generation():
     assert before_out == after_out
 
 
+@pytest.mark.requires_reports
 def test_scoreboard_immature_rows_marked_still_maturing_when_under_5_days():
     payload = _load_scoreboard_json()
     assert payload["rows"], "Expected scoreboard rows"
@@ -200,6 +208,7 @@ def test_scoreboard_immature_rows_marked_still_maturing_when_under_5_days():
             assert row["result_20_day"] is None
 
 
+@pytest.mark.requires_reports
 def test_5_10_20_day_results_gated_by_elapsed_days():
     payload = _load_scoreboard_json()
     for row in payload["rows"]:
@@ -248,6 +257,7 @@ def test_setup_broke_trigger_produces_setup_broke_status_in_row_builder():
     assert row.maturity_status == "Setup Broke"
 
 
+@pytest.mark.requires_reports
 def test_no_fake_win_rate_claims_appear():
     payload = _load_scoreboard_json()
     text = json.dumps(payload).lower()
@@ -256,6 +266,8 @@ def test_no_fake_win_rate_claims_appear():
         assert token not in text
 
 
+@pytest.mark.requires_reports
+@pytest.mark.requires_venv
 def test_existing_healthcheck_still_passes_and_blocks_active():
     result = _run([str(ROOT / ".venv/bin/python"), str(HEALTHCHECK)])
     assert result.returncode == 0, result.stdout + result.stderr
@@ -268,6 +280,8 @@ def test_existing_healthcheck_still_passes_and_blocks_active():
     assert "shadow: blocked" in stdout
 
 
+@pytest.mark.requires_reports
+@pytest.mark.requires_venv
 def test_generator_does_not_modify_strategy_source_files():
     pre = _run(["git", "status", "--short", "src", "scripts", "tests"])
     pre_lines = set(pre.stdout.splitlines())

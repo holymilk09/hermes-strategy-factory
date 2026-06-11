@@ -3,10 +3,14 @@ from __future__ import annotations
 import subprocess
 from pathlib import Path
 
+import pytest
+
 ROOT = Path(__file__).resolve().parents[2]
 HEALTHCHECK = ROOT / "scripts" / "run_feature_factory_healthcheck.py"
 
 
+@pytest.mark.requires_data
+@pytest.mark.requires_venv
 def test_feature_factory_health_contract_remains_blocked_and_waiting():
     result = subprocess.run(
         [str(ROOT / ".venv/bin/python"), str(HEALTHCHECK)],

@@ -6,8 +6,13 @@ import subprocess
 from datetime import datetime, timezone
 from pathlib import Path
 
+import pytest
+
 ROOT = Path(__file__).resolve().parents[2]
 SCRIPT = ROOT / "scripts" / "generate_edge_sheet.py"
+
+# Calls .venv/bin/python + reads today's report output
+pytestmark = [pytest.mark.requires_reports, pytest.mark.requires_venv]
 EDGE_DIR = ROOT / "reports" / "edge_sheet"
 
 

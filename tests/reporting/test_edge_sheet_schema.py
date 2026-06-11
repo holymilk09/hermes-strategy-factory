@@ -4,8 +4,12 @@ import json
 from datetime import datetime, timezone
 from pathlib import Path
 
+import pytest
+
 ROOT = Path(__file__).resolve().parents[2]
 EDGE_DIR = ROOT / "reports" / "edge_sheet"
+
+pytestmark = pytest.mark.requires_reports  # reads today's reports/edge_sheet/*.json
 
 
 def _today() -> str:
