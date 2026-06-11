@@ -1,0 +1,7 @@
+[tool.pytest.ini_options]
+# Allow `python -m pytest` from repo root without setting PYTHONPATH manually.
+# Adds the project root to sys.path so all `src.*` and top-level imports resolve.
+pythonpath = ["."]
+testpaths = ["tests"]
+# Ignore tests that require optional feature_registry YAML (needs extra data fixtures)
+addopts = "--ignore=tests/features/test_feature_registry_complete.py --ignore=tests/features/test_feature_registry_matches_generated_features.py"
