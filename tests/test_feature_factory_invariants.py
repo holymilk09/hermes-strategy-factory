@@ -34,7 +34,7 @@ def test_observation_ledger_exists():
 
 
 # ─── Approved observation cohort manifest ────────────────────
-# Phase 6K: First cohort (6 resolved) + new cohort (1 pending, MRVL).
+# Phase 6L: All 7 observations resolved (6 original + MRVL Phase 6K matured).
 # Must stay in sync with scripts/run_feature_factory_healthcheck.py.
 APPROVED_OBSERVATION_IDS = [
     "6e506d15369deef3ea4d82ec",  # AMD, cohort 1
