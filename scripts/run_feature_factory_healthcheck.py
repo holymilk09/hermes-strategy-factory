@@ -5,6 +5,7 @@ No strategy behavior is changed.
 """
 import csv
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -163,7 +164,7 @@ def run_command(cmd_parts, description):
             cmd_parts,
             capture_output=True, text=True, timeout=60,
             cwd=str(ROOT),
-            env={"PYTHONPATH": str(ROOT)},
+            env={**os.environ, "PYTHONPATH": str(ROOT)},
         )
         return result.returncode, result.stdout
     except subprocess.TimeoutExpired:
@@ -202,6 +203,9 @@ def main():
         name = rel.split("/")[-1]
         results["ledgers"][name] = {"status": status, "rows": count}
         print(f"  {status}  {name} ({count} rows)")
+
+    ledger_parse_ok = all(v[0] == "PASS" for v in ledgers.values())
+    results["ledgers_parse_pass"] = ledger_parse_ok
     print()
 
     # 3. Observation invariants
@@ -385,12 +389,13 @@ def main():
         and backup_ok
         and all_blocked
         and present == len(REQUIRED_SCRIPTS)
+        and ledger_parse_ok
     )
 
     print("=== HEALTHCHECK SUMMARY ===")
     for key, ok in [
         ("Scripts present", present == len(REQUIRED_SCRIPTS)),
-        ("Ledgers parse", all(v[0] == "PASS" for v in ledgers.values())),
+        ("Ledgers parse", ledger_parse_ok),
         ("Observation invariants", inv_ok),
         ("Hard blocks active", all_blocked),
         ("Backup exists", backup_ok),
@@ -423,7 +428,7 @@ def main():
     md_lines.append(f"|-------|--------|")
     for key, ok in [
         ("Scripts present", present == len(REQUIRED_SCRIPTS)),
-        ("Ledgers parse", all(v[0] == "PASS" for v in ledgers.values())),
+        ("Ledgers parse", ledger_parse_ok),
         ("Observation invariants", inv_ok),
         ("Hard blocks active", all_blocked),
         ("Backup exists", backup_ok),
