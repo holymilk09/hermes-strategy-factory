@@ -72,6 +72,7 @@ class RejectionReasonStats:
 
 
 def _parse_pct(s: str) -> float | None:
+    """Parse a percentage string like '+2.34%' or '-1.5%' to float (in pp)."""
     if not s or s.strip() == "":
         return None
     try:
@@ -89,6 +90,36 @@ def _parse_float(s: str) -> float | None:
         return None
 
 
+def _normalize_return(raw: str) -> float | None:
+    """Parse any return representation to **percentage points**.
+
+    Handles two source formats:
+      - Percentage strings (ghost ledger): '+4.88%' → 4.88, '-1.5%' → -1.5
+      - Fractional floats (outcome ledger): '0.16895' → 16.895, '-0.05' → -5.0
+
+    Heuristic: if the string contains '%', strip and return as-is (already pp).
+    If no '%', check magnitude: |val| < 1 → fractional, multiply by 100.
+    |val| >= 1 → already in percentage points. This is safe because:
+      - Ghost outcome fields always use '%' suffix.
+      - Outcome ledger outcome_return is always fractional (returns < 100%).
+      - A fractional return of exactly ±1.0 (±100%) is ambiguous but
+        astronomically rare for daily/weekly bars.
+    """
+    if not raw or raw.strip() == "":
+        return None
+    s = raw.strip()
+    has_pct = "%" in s
+    try:
+        val = float(s.replace("%", "").replace("+", ""))
+    except (ValueError, TypeError):
+        return None
+    if has_pct:
+        return val  # already in percentage points
+    if abs(val) < 1.0:
+        return val * 100.0  # fractional → percentage points
+    return val  # already in percentage points
+
+
 # ─── Core audit functions ─────────────────────────────────────
 
 
@@ -101,11 +132,17 @@ def compute_accepted_vs_rejected_lift(
 
     Positive lift means filters are selecting better candidates.
     Near-zero or negative lift means filters are not adding value.
+
+    Both accepted and rejected returns are normalized to percentage points
+    before comparison (Phase 7C audit normalization). The accepted
+    ``outcome_return`` is fractional (0.169 = 16.9%); ghost ``outcome_10d``
+    is already in percentage form ('+4.88%'). ``_normalize_return``
+    handles both.
     """
     accepted_returns: list[float] = []
     for obs in accepted_observations:
         raw = obs.get(return_key) or obs.get("outcome_10d", "") or ""
-        v = _parse_pct(raw)
+        v = _normalize_return(raw)
         if v is not None:
             accepted_returns.append(v)
 
@@ -114,7 +151,7 @@ def compute_accepted_vs_rejected_lift(
         if ghost.get("data_status", "").upper() != "MATURE":
             continue
         raw = ghost.get("outcome_10d", "") or ""
-        v = _parse_pct(raw)
+        v = _normalize_return(raw)
         if v is not None:
             rejected_returns.append(v)
 
@@ -154,7 +191,7 @@ def assess_score_bucket_monotonicity(
         if score is None:
             continue
         ret_raw = obs.get(return_key) or obs.get("outcome_10d", "") or ""
-        ret = _parse_pct(ret_raw)
+        ret = _normalize_return(ret_raw)
         if ret is None:
             continue
 
@@ -233,13 +270,14 @@ def compute_ghost_baseline_return(
     """Compute the mean return of all matured ghost records.
 
     This represents the baseline return of rejected/filtered-out setups.
+    Returns value in percentage points.
     """
     returns: list[float] = []
     for ghost in ghost_records:
         if ghost.get("data_status", "").upper() != "MATURE":
             continue
         raw = ghost.get(return_key, "") or ""
-        v = _parse_pct(raw)
+        v = _normalize_return(raw)
         if v is not None:
             returns.append(v)
 
@@ -272,11 +310,11 @@ def compute_filter_quality(
     # Accepted vs rejected lift
     lift = compute_accepted_vs_rejected_lift(accepted_observations, ghost_records)
 
-    # Mean returns
+    # Mean returns (normalized to percentage points — Phase 7C)
     accepted_returns: list[float] = []
     for obs in accepted_observations:
         raw = obs.get("outcome_return") or obs.get("outcome_10d", "") or ""
-        v = _parse_pct(raw)
+        v = _normalize_return(raw)
         if v is not None:
             accepted_returns.append(v)
     accepted_mean = round(sum(accepted_returns) / len(accepted_returns), 4) if accepted_returns else None
@@ -286,7 +324,7 @@ def compute_filter_quality(
         if ghost.get("data_status", "").upper() != "MATURE":
             continue
         raw = ghost.get("outcome_10d", "") or ""
-        v = _parse_pct(raw)
+        v = _normalize_return(raw)
         if v is not None:
             rejected_returns.append(v)
     rejected_mean = round(sum(rejected_returns) / len(rejected_returns), 4) if rejected_returns else None
