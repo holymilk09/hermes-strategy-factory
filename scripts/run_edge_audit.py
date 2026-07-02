@@ -100,6 +100,19 @@ def run_edge_audit() -> dict[str, Any]:
     ghost_records = _load_ghost_ledger()
     sector_map = _load_sector_etf_map()
 
+    # Sector ETF freshness (Phase 7C) — required for full Independent Strength
+    from src.reporting.drift_attribution import validate_sector_freshness
+    sector_freshness = validate_sector_freshness(ROOT)
+
+    # Ghost status counts (Phase 7C)
+    ghost_status_counts = {"PENDING": 0, "MATURE": 0, "INSUFFICIENT_DATA": 0}
+    for g in ghost_records:
+        s = g.get("data_status", "").upper()
+        if s in ghost_status_counts:
+            ghost_status_counts[s] += 1
+        else:
+            ghost_status_counts[s or "UNKNOWN"] = ghost_status_counts.get(s or "UNKNOWN", 0) + 1
+
     # 1. Economic sanity
     sanity_report = compute_batch_sanity(observations, ROOT)
     sanity_dict = sanity_to_dict(sanity_report)
@@ -115,9 +128,22 @@ def run_edge_audit() -> dict[str, Any]:
         s = obs.get("strategy", obs.get("_source_system", "unknown"))
         strategies.add(s)
 
+    # Merge outcome_return from outcome ledger into observation rows so
+    # filter quality audit can compute accepted_vs_rejected_lift.
+    # The observation ledger stores outcome_return as empty; the outcome
+    # ledger has the resolved values. (Phase 7C audit-repair.)
+    outcome_by_id = {o.get("observation_id", ""): o for o in outcomes}
+
     filter_quality_results: dict[str, Any] = {}
     for strat in sorted(strategies):
         strat_obs = [o for o in observations if o.get("strategy", o.get("_source_system", "")) == strat]
+        # Enrich with outcome_return from the outcome ledger
+        for o in strat_obs:
+            oid = o.get("observation_id", "")
+            if oid in outcome_by_id:
+                ret = outcome_by_id[oid].get("outcome_return", "")
+                if ret and not o.get("outcome_return"):
+                    o["outcome_return"] = ret
         # Ghosts are system-wide; filter quality looks at accepted vs rejected across all
         # For strategy-specific audit, filter ghosts by strategy
         strat_ghosts = [g for g in ghost_records if g.get("strategy_id", "") == strat]
@@ -132,12 +158,15 @@ def run_edge_audit() -> dict[str, Any]:
             "total_observations": len(observations),
             "total_outcomes": len(outcomes),
             "total_ghost_records": len(ghost_records),
+            "ghost_status_counts": ghost_status_counts,
             "strategies_audited": len(strategies),
         },
+        "sector_etf_freshness": sector_freshness,
         "economic_sanity": sanity_dict,
         "drift_attribution": drift_dict,
         "filter_quality": filter_quality_results,
-        "warnings": _collect_warnings(sanity_dict, drift_dict, filter_quality_results),
+        "warnings": _collect_warnings(sanity_dict, drift_dict, filter_quality_results,
+                                      sector_freshness=sector_freshness),
     }
 
     return result
@@ -147,9 +176,20 @@ def _collect_warnings(
     sanity: dict[str, Any],
     drift: dict[str, Any],
     filter_quality: dict[str, Any],
+    sector_freshness: dict[str, Any] | None = None,
 ) -> list[str]:
     """Collect warning flags across all audit modules."""
     warnings: list[str] = []
+
+    # Sector freshness warnings (Phase 7C)
+    if sector_freshness:
+        for etf, info in sector_freshness.items():
+            if not info.get("fresh"):
+                warnings.append(
+                    f"Sector ETF {etf} data missing/stale "
+                    f"(latest={info.get('latest_date')}) — "
+                    f"full Independent Strength labels are blocked for symbols mapped to {etf}"
+                )
 
     # Sanity warnings
     if sanity.get("cost_fragile_count", 0) > 0:
@@ -233,13 +273,34 @@ def _render_markdown(result: dict[str, Any]) -> str:
     lines.append("### Label Counts")
     lines.append("")
     label_counts = drift.get("label_counts", {})
-    for label in ["Independent Strength", "Market Helped Setup", "Sector Drift",
+    for label in ["Independent Strength",
+                    "Independent Strength vs SPY/QQQ; sector verification pending",
+                    "Market Helped Setup", "Sector Drift",
                     "Beta Drift", "Ticker Drift", "No Confirmed Edge",
                     "Failed Edge", "Compounding Risk", "Cost Fragile",
                     "Insufficient Data"]:
         count = label_counts.get(label, 0)
         lines.append(f"- **{label}:** {count}")
     lines.append("")
+
+    # Sector ETF freshness (Phase 7C)
+    sector_freshness = result.get("sector_etf_freshness", {})
+    if sector_freshness:
+        lines.append("### Sector ETF Freshness")
+        lines.append("")
+        for etf, info in sector_freshness.items():
+            status = "FRESH" if info.get("fresh") else "STALE/MISSING"
+            lines.append(f"- **{etf}:** {status} (latest={info.get('latest_date')})")
+        lines.append("")
+
+    # Ghost status counts (Phase 7C)
+    gsc = result["summary"].get("ghost_status_counts", {})
+    if gsc:
+        lines.append("### Ghost Ledger Status")
+        lines.append("")
+        for k in ["PENDING", "MATURE", "INSUFFICIENT_DATA"]:
+            lines.append(f"- **{k}:** {gsc.get(k, 0)}")
+        lines.append("")
 
     # Filter quality
     lines.append("## Filter Quality Audit")

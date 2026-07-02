@@ -231,8 +231,11 @@ Before any production deployment, every item below must be **confirmed true**. T
 | F24 | Multi-cohort evidence (3+ independent signal dates) | ⚠️ 2 dates so far | **YES** |
 | F25 | 30+ independent observations across 10+ dates | ❌ 7 observations, 2 dates | **YES** |
 | F26 | Legal review of disclaimers and terms | ❌ Not started | **YES** |
+| F27 | Full-universe data refresh executed (≥50 fresh symbols; 6-symbol refresh is invalid for ranking) | ⚠️ Phase 7C code complete; refresh run required | **YES** |
+| F28 | Sector ETFs (SMH/IGV/TAN) fresh — required for full "Independent Strength" labels | ⚠️ SMH cached; IGV/TAN pending first full refresh | **YES** |
+| F29 | Ghost outcomes resolved (`update_ghost_outcomes.py --write`); ghost baseline + accepted-vs-rejected lift populated | ⚠️ Resolver available; controlled run required | **YES** |
 
-**Production remains BLOCKED until F18–F26 are resolved.**
+**Production remains BLOCKED until F18–F29 are resolved.**
 
 ---
 

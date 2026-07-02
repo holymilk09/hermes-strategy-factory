@@ -40,6 +40,18 @@ SMH, IBB, ARKK
 
 **Current effective universe (as of 2026-06-30):** AMD, ARM, CRWD, DDOG, MRVL, SEDG
 
+> **Phase 7C warning — this collapsed universe is INVALID for ranking.**
+> The 2026-06-30 cross-section contained only the 6 symbols whose CSVs had
+> been refreshed. Percentile ranks (`ret_20d_rank`, `ret_60d_rank`) computed
+> over 6 symbols are meaningless — "top 15%" of 6 symbols is "best 1 of 6".
+> The full research universe (≥ 50 fresh symbols) MUST be refreshed before
+> any future observation cycle. See
+> `docs/strategy_factory/DATA_SCOPE_CONTRACT.md` for the universe source,
+> the 50-symbol fail-closed freshness floor, and required sector ETFs
+> (SMH/IGV/TAN). Ghost baselines from resolved ghost outcomes are required
+> for any filter-quality claim; missing sector/ghost data lowers confidence
+> and must be visible in reports — never hidden.
+
 There is no hardcoded symbol list for the tradable universe — it expands automatically when new OHLCV CSVs appear.
 
 ### 2.2 Feature Computation (per symbol, per bar)

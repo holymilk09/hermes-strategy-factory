@@ -4,6 +4,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
+import pytest
+
 from src.reporting.filter_quality_audit import (
     LABEL_FILTER_LIFT_STRONG,
     LABEL_FILTER_LIFT_WEAK,
@@ -278,3 +280,87 @@ def test_no_strategy_logic_import() -> None:
     mod_names = list(sys.modules.keys())
     strategy_modules = [m for m in mod_names if "research.momentum" in m or "research.price_volume" in m]
     assert len(strategy_modules) == 0, f"Unexpected imports: {strategy_modules}"
+
+
+# ─── Phase 7C: Unit normalization regression tests ────────────
+
+
+def test_normalize_return_fractional():
+    """Fractional returns (0.169) are converted to percentage points (16.9)."""
+    from src.reporting.filter_quality_audit import _normalize_return
+
+    assert _normalize_return("0.16895") == pytest.approx(16.895)
+    assert _normalize_return("-0.05") == pytest.approx(-5.0)
+    assert _normalize_return("0.0") == 0.0
+
+
+def test_normalize_return_percentage_string():
+    """Percentage strings ('+4.88%') stay as percentage points (4.88)."""
+    from src.reporting.filter_quality_audit import _normalize_return
+
+    assert _normalize_return("+4.88%") == pytest.approx(4.88)
+    assert _normalize_return("-1.5%") == pytest.approx(-1.5)
+    assert _normalize_return("0%") == 0.0
+
+
+def test_normalize_return_empty():
+    from src.reporting.filter_quality_audit import _normalize_return
+
+    assert _normalize_return("") is None
+    assert _normalize_return(None) is None  # type: ignore
+    assert _normalize_return("  ") is None
+
+
+def test_lift_mixed_units_accepted_fractional_rejected_pct():
+    """Accepted (fractional 0.30) vs rejected (pp 6.97) must normalize.
+
+    Before Phase 7C this produced -6.66pp (wrong sign). After
+    normalization: accepted mean = 30.0pp, rejected mean = 6.97pp,
+    lift = +23.03pp (positive — filters ARE adding value).
+    """
+    accepted = [{"outcome_return": "0.30"} for _ in range(5)]
+    rejected = [{"data_status": "MATURE", "outcome_10d": "+6.97%"} for _ in range(5)]
+    lift = compute_accepted_vs_rejected_lift(accepted, rejected)
+    assert lift is not None
+    assert lift > 0, f"Lift should be positive after normalization, got {lift}"
+    assert lift == pytest.approx(23.03, abs=0.5)
+
+
+def test_lift_sign_positive_after_normalization():
+    """Production scenario: outcome_return fractional vs ghost percentage.
+
+    Accepted mean (0.3027 fractional = 30.27pp) vs rejected mean (6.97pp)
+    → lift ≈ +23.3pp, NOT -6.66pp.
+    """
+    accepted_frac = ["0.16895", "0.53250", "0.10611", "0.14776", "0.69395"]
+    accepted = [{"outcome_return": v} for v in accepted_frac]
+    rejected = [{"data_status": "MATURE", "outcome_10d": "+6.97%"} for _ in range(5)]
+    lift = compute_accepted_vs_rejected_lift(accepted, rejected)
+    assert lift is not None
+    assert lift > 0, f"Lift must be positive after normalization, got {lift}"
+
+
+def test_filter_quality_normalized_means_match_pp():
+    """compute_filter_quality accepted_mean_return is in pp after normalization."""
+    accepted = [{"outcome_return": "0.20"} for _ in range(5)]  # 20%
+    rejected = [{"data_status": "MATURE", "outcome_10d": "+5.0%"} for _ in range(5)]
+    quality = compute_filter_quality("test_strat", accepted, rejected)
+    assert quality.accepted_mean_return == pytest.approx(20.0)
+    assert quality.rejected_mean_return == pytest.approx(5.0)
+    assert quality.accepted_vs_rejected_lift == pytest.approx(15.0)
+    assert quality.filter_lift_assessment == LABEL_FILTER_LIFT_STRONG
+
+
+def test_no_filter_lift_weak_on_normalized_positive_lift():
+    """Filter Lift Weak must NOT fire when lift is positive after normalization."""
+    accepted = [{"outcome_return": "0.25"} for _ in range(5)]  # 25%
+    rejected = [{"data_status": "MATURE", "outcome_10d": "+5.0%"} for _ in range(5)]
+    quality = compute_filter_quality("test_strat", accepted, rejected)
+    assert quality.filter_lift_assessment != LABEL_FILTER_LIFT_WEAK
+
+
+def test_ghost_baseline_uses_normalize_return():
+    """Ghost baseline is unchanged (already pp via '%' suffix) but uses normalize."""
+    ghosts = [{"data_status": "MATURE", "outcome_10d": "+4.0%"} for _ in range(5)]
+    baseline = compute_ghost_baseline_return(ghosts)
+    assert baseline == 4.0
