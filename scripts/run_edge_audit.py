@@ -128,9 +128,22 @@ def run_edge_audit() -> dict[str, Any]:
         s = obs.get("strategy", obs.get("_source_system", "unknown"))
         strategies.add(s)
 
+    # Merge outcome_return from outcome ledger into observation rows so
+    # filter quality audit can compute accepted_vs_rejected_lift.
+    # The observation ledger stores outcome_return as empty; the outcome
+    # ledger has the resolved values. (Phase 7C audit-repair.)
+    outcome_by_id = {o.get("observation_id", ""): o for o in outcomes}
+
     filter_quality_results: dict[str, Any] = {}
     for strat in sorted(strategies):
         strat_obs = [o for o in observations if o.get("strategy", o.get("_source_system", "")) == strat]
+        # Enrich with outcome_return from the outcome ledger
+        for o in strat_obs:
+            oid = o.get("observation_id", "")
+            if oid in outcome_by_id:
+                ret = outcome_by_id[oid].get("outcome_return", "")
+                if ret and not o.get("outcome_return"):
+                    o["outcome_return"] = ret
         # Ghosts are system-wide; filter quality looks at accepted vs rejected across all
         # For strategy-specific audit, filter ghosts by strategy
         strat_ghosts = [g for g in ghost_records if g.get("strategy_id", "") == strat]
