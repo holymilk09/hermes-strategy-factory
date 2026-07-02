@@ -109,6 +109,19 @@ One JSON object per line. Each line has `table` and `data` keys.
 {"table": "system_runs", "data": {"run_id": "20260701_120000_abc12345", "status": "completed", ...}}
 ```
 
+> **Phase 7C field note — `drift_label` values.** In addition to the original
+> label set, `drift_label` may now carry the conservative value
+> `"Independent Strength vs SPY/QQQ; sector verification pending"`. It is
+> emitted when a symbol beats SPY/QQQ but its mapped sector ETF (SMH/IGV/TAN)
+> has missing/stale data, so full sector-verified Independent Strength cannot
+> be claimed. Downstream consumers must treat it as LOWER confidence than
+> "Independent Strength" — never coalesce the two. Ghost ledger rows may also
+> now carry `data_status` of `MATURE` / `INSUFFICIENT_DATA` (not only
+> `PENDING`) once controlled ghost resolution
+> (`scripts/update_ghost_outcomes.py --write`) has been run; filter-quality
+> fields `ghost_baseline_return` and `accepted_vs_rejected_lift` populate only
+> when mature ghost outcomes exist.
+
 ### 5.2 SQL
 
 Valid PostgreSQL with `BEGIN/COMMIT`, `INSERT ... ON CONFLICT DO NOTHING`. Safe to pipe to `psql` or paste into Supabase SQL Editor.

@@ -160,11 +160,26 @@ def resolve_ghost_outcomes(
     root: Path,
     ghost_path: Path = GHOST_LEDGER_PATH,
     ohlcv_dir: Path = Path("data/cache/ohlcv_1d"),
+    dry_run: bool = False,
 ) -> int:
     """Compute outcome fields for PENDING ghost records where sufficient bars exist.
 
     Reuses checkpoint_result logic from maturity_scoreboard.
-    Returns number of records updated.
+
+    Updates ONLY ghost ledger outcome/status fields. Never touches the
+    observation or outcome ledgers, never creates observations, never adds
+    or removes ghost rows.
+
+    Status transitions:
+      PENDING → MATURE            when >= 5 forward bars exist
+      PENDING → INSUFFICIENT_DATA when resolution is impossible
+                                  (missing symbol data, bad signal date,
+                                  missing signal price)
+      PENDING stays PENDING       when < 5 forward bars so far
+
+    When ``dry_run`` is True, computes and returns the number of records
+    that WOULD be updated without writing anything.
+    Returns number of records updated (or would-be updated in dry-run).
     """
     from src.reporting.maturity_scoreboard import checkpoint_result, load_ohlcv_rows
 
@@ -256,7 +271,11 @@ def resolve_ghost_outcomes(
         rec["data_status"] = "MATURE" if days_elapsed >= 5 else "PENDING"
         updated += 1
 
-    # Rewrite entire ledger with updated rows
+    # Rewrite entire ledger with updated rows.
+    # Dry-run never writes; zero updates never rewrites (no-op safety).
+    if dry_run or updated == 0:
+        return updated
+
     _ensure_dir(ghost_path)
     with ghost_path.open("w", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=GHOST_FIELDS)

@@ -50,6 +50,8 @@ REQUIRED_SCRIPTS = [
     "verify_no_trading_leakage.py",
     "snapshot_feature_factory_state.py",
     "backup_feature_factory_state.sh",
+    "update_ghost_outcomes.py",
+    "refresh_stale_ohlcv.py",
 ]
 
 REQUIRED_LEDGERS = [
@@ -57,6 +59,100 @@ REQUIRED_LEDGERS = [
     "data/paper_observation/relative_strength_continuation_outcome_ledger.csv",
     "reports/strategy_factory/hypothesis_registry.csv",
 ]
+
+# ─── Phase 7C: universe freshness + ghost ledger invariants ───
+
+GHOST_LEDGER_REL = "data/trust_calibration/ghost_ledger.csv"
+OHLCV_CACHE_REL = "data/cache/ohlcv_1d"
+MIN_FRESH_UNIVERSE = 50
+SECTOR_ETFS = ["SMH", "IGV", "TAN"]
+
+
+def check_universe_freshness():
+    """Universe freshness floor (Phase 7C).
+
+    Reads latest bar date per symbol from the OHLCV cache and requires
+    >= MIN_FRESH_UNIVERSE symbols at the latest cross-section date.
+    Fails closed when the cross-section collapses — do NOT weaken this
+    to get a green check.
+    """
+    cache = ROOT / OHLCV_CACHE_REL
+    result = {
+        "cache_exists": cache.is_dir(),
+        "universe_size": 0,
+        "latest_session": None,
+        "fresh_count": 0,
+        "stale_count": 0,
+        "min_fresh_universe": MIN_FRESH_UNIVERSE,
+        "sector_etf_freshness": {},
+        "floor_pass": False,
+    }
+    if not cache.is_dir():
+        return result
+
+    latest_by_symbol = {}
+    for p in sorted(cache.glob("*.csv")):
+        sym = p.stem.upper().replace("_1D", "").replace("_1d", "")
+        try:
+            with open(p, "rb") as f:
+                try:
+                    f.seek(-4096, 2)
+                except OSError:
+                    f.seek(0)
+                tail = f.read().decode(errors="replace").strip().splitlines()
+            last_line = tail[-1] if tail else ""
+            date_str = last_line.split(",")[0][:10]
+            if len(date_str) == 10 and date_str[4] == "-":
+                latest_by_symbol[sym] = date_str
+        except Exception:
+            continue
+
+    result["universe_size"] = len(latest_by_symbol)
+    if not latest_by_symbol:
+        return result
+
+    latest_session = max(latest_by_symbol.values())
+    fresh = [s for s, d in latest_by_symbol.items() if d >= latest_session]
+    result["latest_session"] = latest_session
+    result["fresh_count"] = len(fresh)
+    result["stale_count"] = len(latest_by_symbol) - len(fresh)
+    result["floor_pass"] = len(fresh) >= MIN_FRESH_UNIVERSE
+
+    for etf in SECTOR_ETFS:
+        d = latest_by_symbol.get(etf)
+        result["sector_etf_freshness"][etf] = {
+            "latest_date": d,
+            "fresh": bool(d and d >= latest_session),
+        }
+
+    return result
+
+
+def check_ghost_ledger():
+    """Ghost ledger existence + status counts (Phase 7C).
+
+    Read-only reporting. Verifies the ghost ledger exists, parses, and
+    reports PENDING / MATURE / INSUFFICIENT_DATA counts. Never mutates.
+    """
+    path = ROOT / GHOST_LEDGER_REL
+    result = {
+        "exists": path.exists(),
+        "rows": 0,
+        "status_counts": {"PENDING": 0, "MATURE": 0, "INSUFFICIENT_DATA": 0},
+        "parse_ok": False,
+    }
+    if not path.exists():
+        return result
+    rows = parse_ledger(path)
+    if rows is None:
+        return result
+    result["parse_ok"] = True
+    result["rows"] = len(rows)
+    for r in rows:
+        s = (r.get("data_status", "") or "").strip().upper()
+        if s in result["status_counts"]:
+            result["status_counts"][s] += 1
+    return result
 
 
 def check_scripts():
@@ -339,6 +435,37 @@ def main():
     print(f"  -> {'ALL BLOCKED' if all_blocked else 'WARNING: BLOCK NOT ACTIVE'}")
     print()
 
+    # 4b. Universe freshness floor (Phase 7C)
+    print("--- Universe Freshness (Phase 7C) ---")
+    uf = check_universe_freshness()
+    results["universe_freshness"] = uf
+    print(f"  universe_size={uf['universe_size']}")
+    print(f"  latest_session={uf['latest_session']}")
+    print(f"  fresh_count={uf['fresh_count']} (floor={uf['min_fresh_universe']})")
+    print(f"  stale_count={uf['stale_count']}")
+    for etf, info in uf["sector_etf_freshness"].items():
+        print(f"  sector_etf {etf}: latest={info['latest_date']} "
+              f"{'FRESH' if info['fresh'] else 'STALE/MISSING'}")
+    universe_floor_ok = uf["floor_pass"]
+    results["universe_floor_pass"] = universe_floor_ok
+    print(f"  -> {'PASS' if universe_floor_ok else 'FAIL (universe collapsed below floor — fail closed)'}")
+    print()
+
+    # 4c. Ghost ledger (Phase 7C)
+    print("--- Ghost Ledger (Phase 7C) ---")
+    gl = check_ghost_ledger()
+    results["ghost_ledger"] = gl
+    ghost_ok = gl["exists"] and gl["parse_ok"]
+    print(f"  exists={'YES' if gl['exists'] else 'NO'}")
+    print(f"  parse_ok={'YES' if gl['parse_ok'] else 'NO'}")
+    print(f"  rows={gl['rows']}")
+    sc = gl["status_counts"]
+    print(f"  status: PENDING={sc['PENDING']} MATURE={sc['MATURE']} "
+          f"INSUFFICIENT_DATA={sc['INSUFFICIENT_DATA']}")
+    results["ghost_ledger_pass"] = ghost_ok
+    print(f"  -> {'PASS' if ghost_ok else 'FAIL'}")
+    print()
+
     # 5. Backup
     print("--- Backup ---")
     backup_path, backup_size = check_backup()
@@ -390,6 +517,8 @@ def main():
         and all_blocked
         and present == len(REQUIRED_SCRIPTS)
         and ledger_parse_ok
+        and universe_floor_ok
+        and ghost_ok
     )
 
     print("=== HEALTHCHECK SUMMARY ===")
@@ -398,6 +527,8 @@ def main():
         ("Ledgers parse", ledger_parse_ok),
         ("Observation invariants", inv_ok),
         ("Hard blocks active", all_blocked),
+        ("Universe freshness floor", universe_floor_ok),
+        ("Ghost ledger", ghost_ok),
         ("Backup exists", backup_ok),
         ("Smoke tests pass", all_smoke_pass),
     ]:
@@ -431,10 +562,27 @@ def main():
         ("Ledgers parse", ledger_parse_ok),
         ("Observation invariants", inv_ok),
         ("Hard blocks active", all_blocked),
+        ("Universe freshness floor", universe_floor_ok),
+        ("Ghost ledger", ghost_ok),
         ("Backup exists", backup_ok),
         ("Smoke tests pass", all_smoke_pass),
     ]:
         md_lines.append(f"| {key} | {'PASS' if ok else 'FAIL'} |")
+
+    md_lines.append(f"\n## Universe Freshness (Phase 7C)")
+    md_lines.append(f"\n- Universe size: {uf['universe_size']}")
+    md_lines.append(f"- Latest session: {uf['latest_session']}")
+    md_lines.append(f"- Fresh at latest session: {uf['fresh_count']} (floor: {uf['min_fresh_universe']})")
+    md_lines.append(f"- Stale: {uf['stale_count']}")
+    for etf, info in uf["sector_etf_freshness"].items():
+        md_lines.append(f"- Sector ETF {etf}: latest={info['latest_date']} {'FRESH' if info['fresh'] else 'STALE/MISSING'}")
+
+    md_lines.append(f"\n## Ghost Ledger (Phase 7C)")
+    md_lines.append(f"\n- Exists: {'YES' if gl['exists'] else 'NO'}")
+    md_lines.append(f"- Rows: {gl['rows']}")
+    md_lines.append(f"- PENDING: {sc['PENDING']}")
+    md_lines.append(f"- MATURE: {sc['MATURE']}")
+    md_lines.append(f"- INSUFFICIENT_DATA: {sc['INSUFFICIENT_DATA']}")
 
     md_lines.append(f"\n## Observation Invariants")
     md_lines.append(f"\n- Total: {inv['observations_total']} (approved: {APPROVED_MANIFEST['total_observations']})")

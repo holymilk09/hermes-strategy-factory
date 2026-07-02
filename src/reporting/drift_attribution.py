@@ -16,6 +16,9 @@ from typing import Any
 # ─── Labels ───────────────────────────────────────────────────
 
 LABEL_INDEPENDENT_STRENGTH = "Independent Strength"
+LABEL_INDEPENDENT_STRENGTH_SECTOR_PENDING = (
+    "Independent Strength vs SPY/QQQ; sector verification pending"
+)
 LABEL_MARKET_HELPED_SETUP = "Market Helped Setup"
 LABEL_SECTOR_DRIFT = "Sector Drift"
 LABEL_BETA_DRIFT = "Beta Drift"
@@ -28,6 +31,7 @@ LABEL_INSUFFICIENT_DATA = "Insufficient Data"
 
 ALL_LABELS = [
     LABEL_INDEPENDENT_STRENGTH,
+    LABEL_INDEPENDENT_STRENGTH_SECTOR_PENDING,
     LABEL_MARKET_HELPED_SETUP,
     LABEL_SECTOR_DRIFT,
     LABEL_BETA_DRIFT,
@@ -179,6 +183,57 @@ DEFAULT_SECTOR_ETFS: dict[str, str] = {
 DEFAULT_SECTOR_ETFS["NVDA"] = "SMH"
 DEFAULT_SECTOR_ETFS["AMD"] = "SMH"
 
+# Phase 7C: approved observation cohort sector mappings
+#   AMD / MRVL / ARM → SMH (semiconductors)
+#   CRWD / DDOG → IGV (software/cloud)
+#   SEDG → TAN (solar/clean energy)
+DEFAULT_SECTOR_ETFS["ARM"] = "SMH"
+DEFAULT_SECTOR_ETFS["SEDG"] = "TAN"
+DEFAULT_SECTOR_ETFS["ENPH"] = "TAN"
+DEFAULT_SECTOR_ETFS["FSLR"] = "TAN"
+DEFAULT_SECTOR_ETFS["RUN"] = "TAN"
+
+
+# ─── Sector data freshness validation (Phase 7C) ──────────────
+
+
+def validate_sector_freshness(
+    root: Path,
+    sector_etfs: list[str] | None = None,
+    ohlcv_dir: Path = Path("data/cache/ohlcv_1d"),
+    max_stale_calendar_days: int = 5,
+    now: datetime | None = None,
+) -> dict[str, dict[str, Any]]:
+    """Report freshness of each required sector ETF's OHLCV data.
+
+    Returns {etf: {"exists": bool, "latest_date": str|None, "age_days":
+    float|None, "fresh": bool}}. An ETF is fresh when its latest bar is
+    within ``max_stale_calendar_days`` of ``now``. Missing files are
+    reported as not fresh — never silently skipped.
+    """
+    if sector_etfs is None:
+        sector_etfs = ["SMH", "IGV", "TAN"]
+    if now is None:
+        now = datetime.now().astimezone()
+
+    out: dict[str, dict[str, Any]] = {}
+    for etf in sector_etfs:
+        path = root / ohlcv_dir / f"{etf}_1D.csv"
+        rows = load_ohlcv_rows(path)
+        if not rows:
+            out[etf] = {"exists": path.exists(), "latest_date": None,
+                        "age_days": None, "fresh": False}
+            continue
+        latest_dt = rows[-1]["dt"]
+        age_days = (now - latest_dt).total_seconds() / 86400.0
+        out[etf] = {
+            "exists": True,
+            "latest_date": latest_dt.isoformat(),
+            "age_days": round(age_days, 2),
+            "fresh": age_days <= max_stale_calendar_days,
+        }
+    return out
+
 
 # ─── Helpers ──────────────────────────────────────────────────
 
@@ -254,6 +309,7 @@ def classify_drift(
     spy_return: float | None,
     qqq_return: float | None,
     sector_return: float | None,
+    sector_expected: bool = False,
 ) -> str:
     """Classify a single observation's return into a drift label.
 
@@ -267,6 +323,13 @@ def classify_drift(
     6. If sector available and stock > SPY but not > sector → Sector Drift
     7. If stock > SPY but not > QQQ → check if it's a tech name, if sector not avail → Beta Drift
     8. If stock > 0 and no benchmark beats it → Independent Strength
+
+    Phase 7C overclaim guard: when ``sector_expected`` is True (a sector ETF
+    mapping exists for the symbol) but ``sector_return`` is None (sector data
+    missing or stale), the full "Independent Strength" label is NOT allowed.
+    The conservative label "Independent Strength vs SPY/QQQ; sector
+    verification pending" is used instead. When no sector mapping exists at
+    all (sector_expected=False), the original behavior is preserved.
     """
     if stock_return is None:
         return LABEL_INSUFFICIENT_DATA
@@ -301,7 +364,11 @@ def classify_drift(
                 return LABEL_INDEPENDENT_STRENGTH
             else:
                 return LABEL_SECTOR_DRIFT
-        # No sector data and outperformed all benchmarks
+        # Sector mapping exists but sector data is missing/stale —
+        # do NOT allow full Independent Strength (Phase 7C overclaim guard)
+        if sector_expected:
+            return LABEL_INDEPENDENT_STRENGTH_SECTOR_PENDING
+        # No sector mapping at all and outperformed all benchmarks
         return LABEL_INDEPENDENT_STRENGTH
 
     # Stock did not outperform best benchmark — check factor exposure
@@ -331,6 +398,11 @@ def compute_drift_attribution(
     """Compute drift attribution for a single observation.
 
     Pure function — never modifies observation.
+
+    ``sector_etf`` marks that a sector mapping EXISTS for this symbol. If it
+    is set but sector data is missing/stale (no usable forward return), the
+    full Independent Strength label is downgraded to the conservative
+    "sector verification pending" variant (Phase 7C overclaim guard).
     """
     obs_id = observation.get("observation_id", "")
     symbol = (observation.get("symbol") or "").upper()
@@ -429,6 +501,11 @@ def compute_drift_attribution(
         sector_entry = sector_future[0]["close"] if sector_future else None
         sector_ret = compute_forward_return(sector_entry, sector_future, window) if sector_entry is not None else None
 
+    # Track missing/stale sector data when a sector mapping exists
+    sector_expected = sector_etf is not None
+    if sector_expected and sector_ret is None:
+        missing_keys.append(f"sector_etf:{sector_etf}")
+
     # Relative returns
     benchmark_vals = [v for v in [spy_ret, qqq_ret] if v is not None]
     best_benchmark = max(benchmark_vals) if benchmark_vals else None
@@ -436,7 +513,8 @@ def compute_drift_attribution(
     sector_relative = stock_ret - sector_ret if (stock_ret is not None and sector_ret is not None) else None
 
     # Classify
-    label = classify_drift(stock_ret, spy_ret, qqq_ret, sector_ret)
+    label = classify_drift(stock_ret, spy_ret, qqq_ret, sector_ret,
+                           sector_expected=sector_expected)
 
     return DriftMetrics(
         observation_id=obs_id,

@@ -118,7 +118,18 @@ def test_healthcheck_still_passes_and_blocks_active():
     result = _run_healthcheck()
     assert result.returncode == 0, result.stdout + result.stderr
     out = result.stdout.lower()
-    assert "decision: healthcheck_pass_continue_waiting" in out
+    # Phase 7C: a FAIL decision caused ONLY by the fail-closed universe
+    # freshness floor is correct behavior when OHLCV data is stale.
+    if "decision: healthcheck_pass_continue_waiting" not in out:
+        assert "decision: healthcheck_fail_fix_required" in out
+        fails = [
+            l.strip().lower()
+            for l in result.stdout.splitlines()
+            if l.strip().lower().startswith("fail")
+        ]
+        assert fails and all("universe freshness floor" in f for f in fails), (
+            f"Healthcheck failed for reasons other than the universe floor: {fails}"
+        )
     assert "production: blocked" in out
     assert "live: blocked" in out
     assert "broker: blocked" in out
