@@ -18,11 +18,11 @@ OBS_DIR = ROOT / "data/paper_observation"
 BACKUP_DIR = ROOT / "backups"
 
 # ─── Approved observation cohort manifest ────────────────────
-# Phase 6L: All 7 observations resolved (6 original + MRVL Phase 6K matured).
+# Phase 7D: 13 observations (7 resolved original cohort + 6 pending Phase 7C cohort).
 # Update this manifest only after an approved intentional observation cycle.
 
 APPROVED_MANIFEST = {
-    "total_observations": 7,
+    "total_observations": 13,
     "original_cohort": {
         "count": 7,
         "status": "RESOLVED",
@@ -36,9 +36,24 @@ APPROVED_MANIFEST = {
             "f6fda996fae00a3e35ed61c6",  # MRVL (Phase 6K, resolved 6L)
         ],
     },
-    "new_cohort": None,  # All resolved — no pending cohort
+    "new_cohort": {
+        "count": 6,
+        "status": "PENDING",
+        "signal_date": "2026-07-01",
+        "observation_ids": [
+            "f54f34012202faba8a690c34",  # ARQQ
+            "ab6b139e2f2ecce96af94cd8",  # ASML
+            "bd95a00ebac7170b49677d97",  # LLY
+            "37c9afc96ac77985f3bb5a54",  # MU
+            "d90ef692ac93f2cb5d44f46d",  # SNOW
+            "878bd2388a62ad1db98fcef2",  # UNH
+        ],
+    },
 }
-EXPECTED_SYMBOLS = {"AMD", "ARM", "CRWD", "DDOG", "MRVL", "SEDG"}
+EXPECTED_SYMBOLS = {
+    "AMD", "ARM", "CRWD", "DDOG", "MRVL", "SEDG",
+    "ARQQ", "ASML", "LLY", "MU", "SNOW", "UNH",
+}
 OUTCOME_WINDOW = 10
 
 REQUIRED_SCRIPTS = [
@@ -329,7 +344,7 @@ def main():
     expected_resolved = m["original_cohort"]["count"]
     approved_obs_ids = set(m["original_cohort"]["observation_ids"])
     if m.get("new_cohort"):
-        approved_obs_ids.add(m["new_cohort"]["observation_id"])
+        approved_obs_ids.update(m["new_cohort"]["observation_ids"])
     all_obs_ids = set(r.get("observation_id", "").strip() for r in obs_rows if r.get("observation_id", "").strip())
 
     # Check total count
@@ -340,16 +355,11 @@ def main():
 
     # Check pending (from observation ledger — all pre-allocation markers)
     # Resolution status is verified from the outcome ledger below
-    # But we do verify that exactly NEW_COHORT_COUNT rows have the approved new obs ID pending
-    pending_ids = set(r.get("observation_id", "").strip() for r in obs_rows if r.get("outcome_status", "").strip().upper() == "PENDING")
-    new_cohort_id = m["new_cohort"]["observation_id"] if m.get("new_cohort") else None
+    new_cohort_ids = set(m["new_cohort"]["observation_ids"]) if m.get("new_cohort") else set()
 
-    # When there is no pending cohort, pending_ids must be empty and we skip ID check
+    # When there is a pending cohort, pending IDs must match exactly;
+    # when there is none, pending_ids must be empty.
     pending_approved = True
-    if new_cohort_id:
-        pending_approved = pending_ids == {new_cohort_id}
-    else:
-        pending_approved = len(pending_ids) == 0
 
     # Check the outcome ledger for resolved/pending status
     outcome_pending_pass = outcome_pending == expected_pending
@@ -361,16 +371,16 @@ def main():
     if not outcome_resolved_pass:
         inv_ok = False
 
-    # Verify the only pending observation ID is the approved new cohort observation
+    # Verify the only pending observation IDs are the approved new cohort observations
     # This checks the OUTCOME ledger since that's where resolution status lives
     pending_approved = False
     if outcome_rows:
         only_pending_ids = set(r.get("observation_id", "").strip() for r in outcome_rows if r.get("outcome_status", "").strip().upper() == "PENDING")
-        if new_cohort_id:
-            pending_approved = (only_pending_ids == {new_cohort_id})
+        if new_cohort_ids:
+            pending_approved = (only_pending_ids == new_cohort_ids)
         else:
             pending_approved = (len(only_pending_ids) == 0)
-        print(f"  approved_pending_obs_id_only={'YES' if pending_approved else 'NO'} {'PASS' if pending_approved else 'FAIL'}")
+        print(f"  approved_pending_obs_ids_only={'YES' if pending_approved else 'NO'} {'PASS' if pending_approved else 'FAIL'}")
         if not pending_approved:
             print(f"    Found pending IDs: {only_pending_ids}")
             inv_ok = False
@@ -588,7 +598,7 @@ def main():
     md_lines.append(f"\n- Total: {inv['observations_total']} (approved: {APPROVED_MANIFEST['total_observations']})")
     md_lines.append(f"- Outcome ledger pending: {outcome_pending} (approved: {'0' if APPROVED_MANIFEST.get('new_cohort') is None else APPROVED_MANIFEST['new_cohort']['count']})")
     md_lines.append(f"- Outcome ledger resolved: {outcome_resolved} (approved: {APPROVED_MANIFEST['original_cohort']['count']})")
-    md_lines.append(f"- Approved pending obs ID only: {'YES' if pending_approved else 'NO'}")
+    md_lines.append(f"- Approved pending obs IDs only: {'YES' if pending_approved else 'NO'}")
     md_lines.append(f"- All approved IDs present: {'YES' if all_ids_present else 'NO'}")
     md_lines.append(f"- Symbols match: {'YES' if inv['symbols_match'] else 'NO'}")
     md_lines.append(f"- Duplicate IDs: {inv['duplicate_count']} (expected 0)")

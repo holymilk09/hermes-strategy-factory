@@ -86,16 +86,16 @@ class TestForbiddenFields:
 
 
 class TestExpectedCounts:
-    """Verify baseline approved counts match Phase 6L/6M state."""
+    """Verify baseline approved counts match Phase 7D state."""
 
     def test_expected_observation_count(self):
-        assert EXPECTED_OBSERVATION_COUNT == 7
+        assert EXPECTED_OBSERVATION_COUNT == 13
 
     def test_expected_resolved_count(self):
         assert EXPECTED_RESOLVED_COUNT == 7
 
     def test_expected_pending_count(self):
-        assert EXPECTED_PENDING_COUNT == 0
+        assert EXPECTED_PENDING_COUNT == 6
 
     def test_expected_ghost_min_count(self):
         assert EXPECTED_GHOST_MIN_COUNT >= 80
@@ -267,7 +267,7 @@ class TestSystemRun:
             run_id="test_run",
             run_type="export",
             status="completed",
-            observation_count=7,
+            observation_count=13,
             validation_passed=True,
             validation_errors=[],
         )

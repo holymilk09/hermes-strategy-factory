@@ -13,7 +13,10 @@ import pytest
 pytestmark = pytest.mark.requires_data  # all tests need production ledger CSVs + backups
 
 ROOT = Path(__file__).resolve().parents[1]  # /opt/data
-EXPECTED_SYMBOLS = {"AMD", "ARM", "CRWD", "DDOG", "MRVL", "SEDG"}
+EXPECTED_SYMBOLS = {
+    "AMD", "ARM", "CRWD", "DDOG", "MRVL", "SEDG",
+    "ARQQ", "ASML", "LLY", "MU", "SNOW", "UNH",
+}
 
 OBS_LEDGER = ROOT / "data/paper_observation/relative_strength_continuation_observation_ledger.csv"
 OUTCOME_LEDGER = ROOT / "data/paper_observation/relative_strength_continuation_outcome_ledger.csv"
@@ -34,7 +37,7 @@ def test_observation_ledger_exists():
 
 
 # ─── Approved observation cohort manifest ────────────────────
-# Phase 6L: All 7 observations resolved (6 original + MRVL Phase 6K matured).
+# Phase 7D: 13 observations (7 resolved original + 6 pending Phase 7C cohort).
 # Must stay in sync with scripts/run_feature_factory_healthcheck.py.
 APPROVED_OBSERVATION_IDS = [
     "6e506d15369deef3ea4d82ec",  # AMD, cohort 1
@@ -44,6 +47,13 @@ APPROVED_OBSERVATION_IDS = [
     "6c2f1eb80f83da084c393fb0",  # MRVL, cohort 1
     "e9e478ad4f2034c2ad27d6e4",  # SEDG, cohort 1
     "f6fda996fae00a3e35ed61c6",  # MRVL, cohort 2 (approved Phase 6K)
+    # Phase 7C cohort (pending, signal_date=2026-07-01)
+    "f54f34012202faba8a690c34",  # ARQQ
+    "ab6b139e2f2ecce96af94cd8",  # ASML
+    "bd95a00ebac7170b49677d97",  # LLY
+    "37c9afc96ac77985f3bb5a54",  # MU
+    "d90ef692ac93f2cb5d44f46d",  # SNOW
+    "878bd2388a62ad1db98fcef2",  # UNH
 ]
 
 

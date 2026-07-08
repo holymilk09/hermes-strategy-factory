@@ -176,75 +176,78 @@ class TestSafeConverters:
 
 class TestValidateLedgers:
     def test_valid_state_passes(self):
-        """7 resolved, 0 pending, no dupes, no broker flags."""
-        obs = [_make_obs_row(f"id{i:03d}", f"SYM{i}", outcome_status="PENDING") for i in range(7)]
-        out = [_make_out_row(f"id{i:03d}", f"SYM{i}", outcome_status="RESOLVED") for i in range(7)]
+        """13 observations (7 resolved, 6 pending), no dupes, no broker flags."""
+        obs = [_make_obs_row(f"id{i:03d}", f"SYM{i}", outcome_status="PENDING") for i in range(13)]
+        out = [_make_out_row(f"id{i:03d}", f"SYM{i}", outcome_status="RESOLVED") for i in range(7)] + \
+              [_make_out_row(f"id{i:03d}", f"SYM{i}", outcome_status="PENDING", outcome_close="", outcome_return="", outcome_ts="") for i in range(7, 13)]
         ghost = [_make_ghost_row(f"ghost{i:03d}") for i in range(81)]
         errors = validate_ledgers(obs, out, ghost)
         assert errors == []
 
     def test_wrong_observation_count_fails(self):
-        obs = [_make_obs_row(f"id{i:03d}", f"SYM{i}") for i in range(8)]
-        out = [_make_out_row(f"id{i:03d}", f"SYM{i}") for i in range(8)]
+        obs = [_make_obs_row(f"id{i:03d}", f"SYM{i}") for i in range(14)]
+        out = [_make_out_row(f"id{i:03d}", f"SYM{i}") for i in range(14)]
         ghost = [_make_ghost_row(f"ghost{i:03d}") for i in range(81)]
         errors = validate_ledgers(obs, out, ghost)
         assert any("count" in e.lower() for e in errors)
 
     def test_mismatched_outcome_rows_fails(self):
-        obs = [_make_obs_row(f"id{i:03d}", f"SYM{i}") for i in range(7)]
-        out = [_make_out_row(f"id{i:03d}", f"SYM{i}") for i in range(6)]  # missing one
+        obs = [_make_obs_row(f"id{i:03d}", f"SYM{i}") for i in range(13)]
+        out = [_make_out_row(f"id{i:03d}", f"SYM{i}") for i in range(12)]  # missing one
         ghost = [_make_ghost_row(f"ghost{i:03d}") for i in range(81)]
         errors = validate_ledgers(obs, out, ghost)
         assert any("outcome rows" in e.lower() for e in errors)
 
     def test_duplicate_observation_ids_fails(self):
-        obs = [_make_obs_row("same_id", f"SYM{i}") for i in range(7)]
-        out = [_make_out_row("same_id", f"SYM{i}") for i in range(7)]
+        obs = [_make_obs_row("same_id", f"SYM{i}") for i in range(13)]
+        out = [_make_out_row("same_id", f"SYM{i}") for i in range(13)]
         ghost = [_make_ghost_row(f"ghost{i:03d}") for i in range(81)]
         errors = validate_ledgers(obs, out, ghost)
         assert any("duplicate" in e.lower() for e in errors)
 
     def test_sent_to_broker_true_fails(self):
-        obs = [_make_obs_row(f"id{i:03d}", f"SYM{i}", sent_to_broker="True") for i in range(7)]
-        out = [_make_out_row(f"id{i:03d}", f"SYM{i}") for i in range(7)]
+        obs = [_make_obs_row(f"id{i:03d}", f"SYM{i}", sent_to_broker="True") for i in range(13)]
+        out = [_make_out_row(f"id{i:03d}", f"SYM{i}") for i in range(13)]
         ghost = [_make_ghost_row(f"ghost{i:03d}") for i in range(81)]
         errors = validate_ledgers(obs, out, ghost)
         assert any("sent_to_broker" in e.lower() for e in errors)
 
     def test_broker_order_id_populated_fails(self):
-        obs = [_make_obs_row(f"id{i:03d}", f"SYM{i}", broker_order_id="ord_12345") for i in range(7)]
-        out = [_make_out_row(f"id{i:03d}", f"SYM{i}") for i in range(7)]
+        obs = [_make_obs_row(f"id{i:03d}", f"SYM{i}", broker_order_id="ord_12345") for i in range(13)]
+        out = [_make_out_row(f"id{i:03d}", f"SYM{i}") for i in range(13)]
         ghost = [_make_ghost_row(f"ghost{i:03d}") for i in range(81)]
         errors = validate_ledgers(obs, out, ghost)
         assert any("broker_order_id" in e.lower() for e in errors)
 
     def test_observation_outcome_id_mismatch_fails(self):
-        obs = [_make_obs_row(f"id{i:03d}", f"SYM{i}") for i in range(7)]
-        out = [_make_out_row(f"different_id{i:03d}", f"SYM{i}") for i in range(7)]
+        obs = [_make_obs_row(f"id{i:03d}", f"SYM{i}") for i in range(13)]
+        out = [_make_out_row(f"different_id{i:03d}", f"SYM{i}") for i in range(13)]
         ghost = [_make_ghost_row(f"ghost{i:03d}") for i in range(81)]
         errors = validate_ledgers(obs, out, ghost)
         assert any("observation but not outcome" in e.lower() or "outcome but not observation" in e.lower() for e in errors)
 
     def test_ghost_rows_below_minimum_fails(self):
-        obs = [_make_obs_row(f"id{i:03d}", f"SYM{i}") for i in range(7)]
-        out = [_make_out_row(f"id{i:03d}", f"SYM{i}") for i in range(7)]
+        obs = [_make_obs_row(f"id{i:03d}", f"SYM{i}") for i in range(13)]
+        out = [_make_out_row(f"id{i:03d}", f"SYM{i}") for i in range(13)]
         ghost = [_make_ghost_row(f"ghost{i:03d}") for i in range(5)]  # only 5
         errors = validate_ledgers(obs, out, ghost)
         assert any("ghost" in e.lower() for e in errors)
 
-    def test_unresolved_rows_cause_pending_failure(self):
-        obs = [_make_obs_row(f"id{i:03d}", f"SYM{i}") for i in range(7)]
-        out = [_make_out_row(f"id{i:03d}", f"SYM{i}", outcome_status="PENDING") for i in range(7)]
+    def test_too_many_pending_fails(self):
+        """All 13 pending (0 resolved) should fail: expected 7 resolved, 6 pending."""
+        obs = [_make_obs_row(f"id{i:03d}", f"SYM{i}") for i in range(13)]
+        out = [_make_out_row(f"id{i:03d}", f"SYM{i}", outcome_status="PENDING") for i in range(13)]
         ghost = [_make_ghost_row(f"ghost{i:03d}") for i in range(81)]
         errors = validate_ledgers(obs, out, ghost)
+        assert any("resolved" in e.lower() for e in errors)
         assert any("pending" in e.lower() for e in errors)
 
 
 class TestBuildSetupCards:
-    def test_7_observations_produce_7_cards(self):
-        obs = [_make_obs_row(f"id{i:03d}", f"SYM{i}") for i in range(7)]
+    def test_13_observations_produce_13_cards(self):
+        obs = [_make_obs_row(f"id{i:03d}", f"SYM{i}") for i in range(13)]
         cards = build_setup_cards(obs)
-        assert len(cards) == 7
+        assert len(cards) == 13
 
     def test_card_has_correct_fields(self):
         obs = [_make_obs_row("abc123", "TEST")]
@@ -283,11 +286,11 @@ class TestBuildGhostRejections:
 
 
 class TestBuildMaturityResults:
-    def test_7_outcomes_produce_7_results(self):
-        out = [_make_out_row(f"id{i:03d}", f"SYM{i}") for i in range(7)]
+    def test_13_outcomes_produce_13_results(self):
+        out = [_make_out_row(f"id{i:03d}", f"SYM{i}") for i in range(13)]
         # Empty drift/econ maps — data comes from outcome ledger
         results = build_maturity_results(out, {}, {})
-        assert len(results) == 7
+        assert len(results) == 13
 
     def test_result_has_drift_data_when_available(self):
         out = [_make_out_row("abc123", "TEST")]
@@ -401,8 +404,8 @@ class TestFormatJsonl:
 class TestExportWithProductionLedgers:
     """Validate export against real production ledgers. Marked requires_data."""
 
-    def test_7_observation_export_produces_7_maturity_rows(self):
-        """End-to-end: export runs and produces 7 maturity rows."""
+    def test_13_observation_export_produces_13_maturity_rows(self):
+        """End-to-end: export runs and produces 13 maturity rows."""
         import subprocess
         root = Path(__file__).resolve().parents[2]
         result = subprocess.run(
@@ -419,9 +422,9 @@ class TestExportWithProductionLedgers:
         )
         assert result.returncode == 0, f"Export failed: {result.stderr[:500]}"
         lines = [l for l in result.stdout.strip().split("\n") if l.strip()]
-        # Should have: 7 cards + 7 results + 7 audits + N ghosts + 1 system_run
+        # Should have: 13 cards + 13 results + 13 audits + N ghosts + 1 system_run
         maturity_lines = [l for l in lines if '"table": "maturity_results"' in l]
-        assert len(maturity_lines) == 7
+        assert len(maturity_lines) == 13
 
     def test_export_has_no_duplicate_observation_ids(self):
         import subprocess

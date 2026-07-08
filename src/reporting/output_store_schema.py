@@ -285,7 +285,7 @@ REQUIRED_COLUMNS: dict[str, set[str]] = {
 FORBIDDEN_FIELDS = {"sent_to_broker", "broker_order_id"}
 
 # Expected approved counts (Phase 6L / Phase 6M baseline)
-EXPECTED_OBSERVATION_COUNT = 7
+EXPECTED_OBSERVATION_COUNT = 13
 EXPECTED_RESOLVED_COUNT = 7
-EXPECTED_PENDING_COUNT = 0
+EXPECTED_PENDING_COUNT = 6
 EXPECTED_GHOST_MIN_COUNT = 80  # floor — ghost ledger grows over time

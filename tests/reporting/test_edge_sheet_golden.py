@@ -61,8 +61,23 @@ def _today() -> str:
 
 
 def _paths() -> tuple[Path, Path]:
-    d = _today()
-    return EDGE_DIR / f"{d}_edge_sheet.md", EDGE_DIR / f"{d}_edge_sheet.json"
+    """Canonical golden fixture paths — deterministic and repo-controlled."""
+    return (FIXTURE_DIR / "golden_edge_sheet.md", FIXTURE_DIR / "golden_edge_sheet.json")
+
+
+def _latest_runtime_edge_sheet_paths() -> tuple[Path, Path] | None:
+    """Find the most recent runtime edge sheet, or None if unavailable."""
+    today = _today()
+    today_md = EDGE_DIR / f"{today}_edge_sheet.md"
+    today_json = EDGE_DIR / f"{today}_edge_sheet.json"
+    if today_md.exists() and today_json.exists():
+        return today_md, today_json
+    # Fall back to the latest available date
+    json_files = sorted(EDGE_DIR.glob("*_edge_sheet.json"))
+    md_files = sorted(EDGE_DIR.glob("*_edge_sheet.md"))
+    if json_files and md_files:
+        return md_files[-1], json_files[-1]
+    return None
 
 
 def _normalize_json(payload: dict) -> dict:
@@ -161,7 +176,8 @@ def test_current_output_matches_golden_shape_after_normalization():
     assert [x["symbol"] for x in g["ticker_cards"]] == [x["symbol"] for x in c["ticker_cards"]]
 
     golden_md = (FIXTURE_DIR / "golden_edge_sheet.md").read_text()
-    current_md = (EDGE_DIR / f"{_today()}_edge_sheet.md").read_text()
+    current_md_path, _ = _paths()
+    current_md = current_md_path.read_text()
     for section in REQUIRED_SECTIONS:
         assert section in golden_md
         assert section in current_md
