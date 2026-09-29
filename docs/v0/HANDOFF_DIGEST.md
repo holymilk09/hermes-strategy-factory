@@ -5,9 +5,14 @@
 - `trust-calibration-working` exists at `1f1a238eb8c17f2340699ed6d6a30017fe3eeb13` — matches handoff ✓
 - `main` @ `c149578` is the older packaging checkpoint — the earlier repo tour
   saw this, NOT the working branch. Corrected below.
-- Spot-checked on the working branch: `config/sector_etf_map.yaml` ✓
-  (sector→ETF map, `min_r2_threshold: 0.2`), `src/research/meta/hypothesis_registry.py` ✓,
-  `feature_factory/residual.py::compute_residual_features` ✓
+- **Full reconciliation complete — see `RECONCILIATION.md`.** Every
+  code-checkable handoff claim verified against the working branch (24 checks:
+  23 CODE VERIFIED, 1 not-verified — the "16 modules" claim; the repo has 15
+  `.py` files). No contradictions found. Extra findings: hardcoded 60-bar ETF
+  minimum in `residual.py`; `residual_z = 0.0` (not NaN) on zero residual std;
+  Phase 27A uses pandas sample-SD (ddof=1) vs original engine's NumPy ddof=0;
+  the outcome resolver writes atomically (tmp+replace) — only the ghost
+  resolver's direct mode-"w" write is non-atomic.
 
 ## 1. The correction that matters most: two lineages, not one
 
