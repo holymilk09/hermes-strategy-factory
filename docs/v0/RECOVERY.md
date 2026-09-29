@@ -149,7 +149,24 @@ requires Matt's own access or a key with that repo's scope.
    preservation of the 7 resolved, row-level diff) — separate runbook, only
    after the ledger state is canonical again.
 
-## 8. What this changes
+## 9. Independent corroboration of recovered values (2026-09-29)
+
+The most extreme recovered value was checked against public market data:
+
+- **MRVL outcome close 316.43 on 2026-06-04**: confirmed exactly by Barchart
+  ("6-month peak of $316.43 on June 4")【1†L24-L27】, and Macrotrends lists
+  MRVL's all-time-high close as 316.35 on June 04, 2026 (split/dividend
+  adjusted — 0.03% away)【272426959153933522†L11-L14】.
+- **Outcome date 2026-06-04**: independently recomputed as the 10th trading
+  bar after the 2026-05-20 signal (skipping Memorial Day 2026-05-25) — matches
+  the ledger date and the public all-time-high date exactly.
+- Signal close 186.80 is arithmetically implied (316.43 / 1.6940 = 186.78)
+  and internally consistent; it was not independently nailed to a public
+  quote (third-party venue data differs and is not authoritative for the
+  NASDAQ close).
+
+Net: the recovered outcome side is externally confirmed, not just internally
+consistent. Confidence that the table came from the real ledger is high.
 
 - Nothing about the v0 research-intelligence branch: it is built from git +
   the handoff and does not depend on the VPS.
