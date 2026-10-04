@@ -1,5 +1,10 @@
 # Controlled Resolution Runbook — the 6 pending July observations
 
+> **2026-10-04 CORRECTION — this runbook has been executed and is now historical.**
+> The July cohort was resolved on 2026-10-04 by Muse locally; see `RESOLUTION_2026-10-04.md` for the executed procedure and results (all 13 resolved, 0 pending).
+> Corrections to facts assumed below: pending observation IDs are **hex hashes**, not `RSC-20260701-…`; cache files are named `<SYM>_1D.csv`; the VPS cache has a Jul 11→Aug 26 gap plus a missing Jul 2, so "complete" cache must mean *expected-session* completeness — a missing session blocks resolution until real bars are backfilled (§6 of the QC record; available-bar counting is forbidden).
+> Do NOT re-run this runbook against the resolved ledger. For any future cohort, follow the guarded pattern in `tools/resolve_pending_guarded.py` and the QC gate in `HANDOFF_NEXT_OPERATOR.md` §3.
+
 Resolves the pending cohort (ARQQ, ASML, LLY, MU, SNOW, UNH — signal
 2026-07-01, IDs `RSC-20260701-007` … `RSC-20260701-012`) **without**
 recomputing or altering the 7 already-resolved rows.
