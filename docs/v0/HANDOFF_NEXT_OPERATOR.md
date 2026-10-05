@@ -66,7 +66,7 @@ Then, for any ledger-affecting work:
 - Resolver preservation contract in `src/paper/relative_strength_observation.py` — the guarded script is a workaround, not a src fix. A src fix needs its own preflight + regression test and Matt's approval (frozen scope).
 - Full test suite on a clean tree does not reproduce retained VPS counts (missing untracked scripts on VPS; environment-hardcoded paths). Documented, not repaired.
 - FMP event blocker still needs an FMP API key (not in git/chat).
-- Decision pending Matt: whether the July cohort result changes the lineage assessment, and whether to re-run the audit with matched windows (handoff §9.8 step 6).
+- Decision pending Matt: lineage assessment after the matched-window audit (`AUDIT_MATCHED_WINDOW_2026-10-05.md`: no consistent matched-window filter lift; July same-date accepted underperformed ghosts by 8.77pp). Options: watch-only, split off a new `ret_5d`+ma50 hypothesis, or kill. Do not edit the frozen lineage to implement option 2.
 
 ## 6. Standing principle
 

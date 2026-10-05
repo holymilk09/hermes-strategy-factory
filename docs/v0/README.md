@@ -39,6 +39,7 @@ offering. If not, this branch is deleted and mainline never knew.
 
 - **`HANDOFF_NEXT_OPERATOR.md` — START HERE (2026-10-04).** Canonical state (13/13 resolved), recovered-bundle hashes, QC gate, traps, open gaps. Any new operator/LLM begins here; Hermes/VPS is no longer required.
 - `RESOLUTION_2026-10-04.md` — July cohort resolution: procedure, per-name results, preservation diff, test counts.
+- `AUDIT_MATCHED_WINDOW_2026-10-05.md` — accepted vs ghost matched-window audit: no consistent filter lift; old +23.30pp lift claim retired; gate-level split (`ret_5d` useful-looking, `ret_20d_rank` non-separating). Script: `tools/matched_window_audit.py`.
 - `RECOVERY_2026-10-04.md` — how the ledgers/caches/backups were recovered and verified; what remains VPS-only.
 - `QC_CONTINUITY_2026-10-04.md` — ChatGPT QC continuity reference reconciled by Muse: rules, error catalogue, traps, gaps, and deviation log governing any ledger work. Standing guidance, not scripture — better verified evidence overrides it (see its §9).
 - `BUILD_DOC.md` — the full build document: components, interfaces, math,
