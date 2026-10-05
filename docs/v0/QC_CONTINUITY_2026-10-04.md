@@ -102,6 +102,7 @@ On the recovered VPS cache (2026-07-02 missing; 2026-07-11→2026-08-26 gap; onl
 Record here (date, rule/reference section, what was done differently, evidence, Matt approval if applicable) whenever a better method overrides this reference.
 
 - 2026-10-04 — §3 workaround adopted as standard practice for resolutions: guarded cohort script instead of the `src/` resolver, because the resolver is code-verified to shift windows on gapped caches. Evidence: `RESOLUTION_2026-10-04.md`; originals hash-unchanged; 6-line diff only.
+- 2026-10-05 — Feature-integrity addition (better evidence, not a rule change): the July 2026 accepted cohort's ledger `ret_5d`/rank features were computed on a gapped cache (files jump 2026-05-27→06-26), so those features are not true 5/20/60-day values (MU ret_5d ledger +15.23% vs true −1.55%). Resolved price-to-price outcomes are unaffected. New standard: any feature computed with `shift(N)` requires a session-completeness check first; missing sessions in the lookback = INSUFFICIENT_DATA. Implemented in `tools/momentum_ret5d_ma50_scanner.py` (60-bar gap guard). Evidence: `AUDIT_MATCHED_WINDOW_2026-10-05.md` build report in goal hidden_files.
 
 ## 10. Standing principle
 
