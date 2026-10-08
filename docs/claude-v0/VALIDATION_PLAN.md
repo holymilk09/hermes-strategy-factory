@@ -80,3 +80,10 @@ moves, dates) only need Phase 1–2.
 ## 7. Deviation log
 
 - (none at registration)
+- 2026-10-08, Phase 1e tooling (not a gate change): the first classifier run used a
+  "round-number close" data-error rule and all-cluster peers. Both were wrong (MU's real
+  1088.00 close tripped the first; the second linked ARM to NFLX). Replaced with the
+  corporate-action quarantine and primary-cluster peers; added NEW_LISTING. Gate unchanged.
+- 2026-10-08, product change from a Phase 1 finding: `data_quality.adjustment_audit` +
+  cache quarantine. HON's adjusted series is invalid 2025-10-30..2026-06-18 (159 sessions
+  quarantined). Phases 2-4 run on the quarantined cache.

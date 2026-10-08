@@ -91,8 +91,30 @@ class CacheStore:
     Price CSVs are never committed — repo rule #10.
     """
 
+    QUARANTINE_FILE = "quarantine.json"
+
     def __init__(self, root: str | pathlib.Path):
         self.root = pathlib.Path(root)
+        self._quarantine = None
+
+    def quarantine(self) -> dict[str, set[date]]:
+        """{symbol: dates} the corporate-action audit marked unusable. Those dates are
+        removed from the series, so they behave exactly like missing sessions."""
+        if self._quarantine is None:
+            qp = self.root / self.QUARANTINE_FILE
+            raw = json.loads(qp.read_text()) if qp.exists() else {}
+            self._quarantine = {k.upper(): {date.fromisoformat(d) for d in v.get("dates", [])}
+                                for k, v in raw.items()}
+        return self._quarantine
+
+    def write_quarantine(self, entries: Mapping[str, Mapping]) -> pathlib.Path:
+        self.root.mkdir(parents=True, exist_ok=True)
+        qp = self.root / self.QUARANTINE_FILE
+        cur = json.loads(qp.read_text()) if qp.exists() else {}
+        cur.update({k.upper(): dict(v) for k, v in entries.items()})
+        qp.write_text(json.dumps(cur, indent=1, sort_keys=True))
+        self._quarantine = None
+        return qp
 
     def path(self, symbol: str) -> pathlib.Path:
         return self.root / f"{symbol.upper()}_1D.csv"
@@ -113,7 +135,18 @@ class CacheStore:
             for r in reader:
                 rows.append((date.fromisoformat(r["date"][:10]), _finite(r.get("close"))))
                 meta_source = r.get("source") or meta_source
+        bad = self.quarantine().get(symbol.upper(), set())
+        if bad:
+            rows = [(d, c) for d, c in rows if d not in bad]
         return build_series(symbol, rows, meta_source)
+
+    def raw_series(self, symbol: str) -> Series:
+        """Unfiltered series (quarantine ignored) — for audits only."""
+        q, self._quarantine = self.quarantine(), {}
+        try:
+            return self.series(symbol)
+        finally:
+            self._quarantine = q
 
     def write(self, s: Series) -> pathlib.Path:
         """Write a whole series. Refuses to silently change existing settled history:
@@ -121,7 +154,7 @@ class CacheStore:
         self.root.mkdir(parents=True, exist_ok=True)
         p = self.path(s.symbol)
         if p.exists():
-            old = self.series(s.symbol).as_map()
+            old = self.raw_series(s.symbol).as_map()
             new = s.as_map()
             conflicts = [d for d in old.keys() & new.keys() if abs(old[d] - new[d]) > 1e-9]
             if conflicts:

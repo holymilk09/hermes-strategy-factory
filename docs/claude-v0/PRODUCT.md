@@ -1,7 +1,7 @@
 # Strategy Factory research-intel — product (claude/v0-build)
 
 Status 2026-10-08: **BUILT — UNDER VALIDATION** (see `VALIDATION_PLAN.md`). Not finished, not connected.
-no billing — those come after the product is accepted). Author: Claude (Anthropic).
+No MCP server, hosting or billing yet. Author: Claude (Anthropic).
 Evidence labels per `docs/v0/QC_CONTINUITY_2026-10-04.md`.
 
 ## The products (IMPLEMENTED — CODE VERIFIED; claims NOT yet validated)
