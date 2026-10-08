@@ -1,0 +1,16 @@
+{
+  "_note": "DEMO profile for testing the products. Not Matt's real book. Shares are illustrative.",
+  "holdings": [
+    {"symbol": "MU", "shares": 20},
+    {"symbol": "SKHY", "shares": 100},
+    {"symbol": "LLY", "shares": 10}
+  ],
+  "tickers": [
+    {"symbol": "NVDA", "weight": 0.9, "last_mentioned": "2026-10-06"},
+    {"symbol": "TSM", "weight": 0.7, "last_mentioned": "2026-10-01"},
+    {"symbol": "AMD", "weight": 0.6, "last_mentioned": "2026-09-20"}
+  ],
+  "sectors": [{"sector": "semiconductors", "weight": 0.8}],
+  "pins": ["JPM"],
+  "half_life_days": 14
+}

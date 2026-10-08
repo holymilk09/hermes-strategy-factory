@@ -260,6 +260,37 @@ def aligned_returns(
     return Window(OK, as_of, sessions, rets)
 
 
+def longest_complete_window(
+    provider: PriceProvider,
+    symbols: Sequence[str],
+    as_of: date,
+    cap: int,
+    floor: int,
+    reference: str = DEFAULT_REFERENCE,
+) -> Window:
+    """Largest n in [floor, cap] for which `aligned_returns` is OK, i.e. the longest
+    contiguous, gap-free window ending at `as_of`. Used for recent listings
+    (short history): the window shrinks, it is never padded, and a gap inside the
+    window still blocks. Returns the failing cap-window when nothing qualifies."""
+    w = aligned_returns(provider, symbols, as_of, cap, reference)
+    if w.status == OK or cap <= floor:
+        return w
+    syms = [s.upper() for s in symbols]
+    # The newest gap (or listing start) across all symbols bounds the window.
+    newest_gap = None
+    for sym, gaps in w.missing.items():
+        if gaps and (newest_gap is None or gaps[-1] > newest_gap):
+            newest_gap = gaps[-1]
+    if newest_gap is None:
+        return w
+    n = sum(1 for d in w.sessions if d > newest_gap) - 1
+    if n < floor:
+        return Window(INSUFFICIENT_DATA, as_of, w.sessions, w.returns, w.missing,
+                      reason=f"longest gap-free window is {max(n, 0)} returns (< {floor}); " + w.reason)
+    short = aligned_returns(provider, syms, as_of, n, reference)
+    return short
+
+
 # --------------------------------------------------------------------------- helpers
 
 def to_pp(fraction: float) -> float:

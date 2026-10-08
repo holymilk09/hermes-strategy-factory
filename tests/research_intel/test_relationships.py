@@ -211,3 +211,52 @@ def test_decouplings_scan_and_map_are_serializable(calendar, rng):
 def test_thresholds_are_reported():
     t = Thresholds()
     assert t.long_window == 120 and t.short_window == 20
+
+
+# ------------------------------------------------------------------ short history
+
+def _listing(calendar, rng, listed_bars):
+    m = _mkt(rng)
+    days = calendar[: N + 1]
+    spy = series_from_returns("SPY", days, m)
+    full = series_from_returns("OLD", days, m + rng.normal(0, 0.003, N))
+    new_days = days[-listed_bars:]
+    new = series_from_returns("NEW", new_days, (m + rng.normal(0, 0.003, N))[-(listed_bars - 1):])
+    return MemoryProvider([spy, full, new]), days
+
+
+def test_short_history_shrinks_window_and_labels_it(calendar, rng):
+    p, days = _listing(calendar, rng, 70)
+    assert pair_health(p, "NEW", "OLD", days[-1], allow_short=False).status == INSUFFICIENT_DATA
+    h = pair_health(p, "NEW", "OLD", days[-1])
+    assert h.sample == "SHORT_HISTORY"
+    assert h.n_long == 69 - 5
+    assert h.status == HEALTHY
+    assert any("SMALL SAMPLE" in e for e in h.evidence)
+
+
+def test_short_history_floor_blocks_tiny_samples(calendar, rng):
+    p, days = _listing(calendar, rng, 30)
+    h = pair_health(p, "NEW", "OLD", days[-1])
+    assert h.status == INSUFFICIENT_DATA
+    assert "longest gap-free window" in h.reason
+
+
+def test_full_history_pair_is_labelled_full(calendar, rng):
+    m = _mkt(rng)
+    p, days = _prov(calendar, SPY=m, AAA=m + rng.normal(0, 0.003, N), BBB=m + rng.normal(0, 0.003, N))
+    assert pair_health(p, "AAA", "BBB", days[-1]).sample == "FULL"
+
+
+def test_recent_gap_bounds_short_window(calendar, rng):
+    m = _mkt(rng)
+    days = calendar[: N + 1]
+    a = series_from_returns("AAA", days, m + rng.normal(0, 0.003, N))
+    gap = days[-60]
+    gapped = Series("AAA", tuple(d for d in a.dates if d != gap),
+                    tuple(c for d, c in zip(a.dates, a.closes) if d != gap), "t")
+    p = MemoryProvider([series_from_returns("SPY", days, m), gapped,
+                        series_from_returns("BBB", days, m + rng.normal(0, 0.003, N))])
+    h = pair_health(p, "AAA", "BBB", days[-1])
+    assert h.sample == "SHORT_HISTORY"
+    assert h.n_long == 58 - 5  # 59 closes after the gap -> 58 returns; the gap is never bridged

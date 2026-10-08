@@ -42,7 +42,11 @@ def test_short_history_listing_is_blocked_not_padded(p):
     assert s.dates[0] >= date(2026, 7, 10)
     assert beta(p, "SKHY", AS_OF, "SPY", 120).status == INSUFFICIENT_DATA
     assert beta(p, "SKHY", AS_OF, "SPY", 60).status == OK
-    assert pair_health(p, "MU", "SKHY", AS_OF).status == INSUFFICIENT_DATA
+    assert pair_health(p, "MU", "SKHY", AS_OF, allow_short=False).status == INSUFFICIENT_DATA
+    h = pair_health(p, "MU", "SKHY", AS_OF)
+    assert h.sample == "SHORT_HISTORY" and h.status != INSUFFICIENT_DATA
+    assert h.n_long == 62 - 5  # 63 bars -> 62 returns, minus the 5-day divergence window
+    assert any("SMALL SAMPLE" in e for e in h.evidence)
 
 
 def test_configured_cluster_reports_missing_member(p):

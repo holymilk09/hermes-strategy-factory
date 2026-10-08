@@ -1,0 +1,7 @@
+# research_intel cluster additions (claude/v0-build).
+# Loaded ON TOP OF config/sector_etf_map.yaml; that mainline file is not modified.
+# Membership here is an assertion to be CHECKED by cluster_cohesion / pair_health,
+# never treated as proof that names co-move.
+memory:
+  etf: SMH
+  stocks: [MU, SKHY]

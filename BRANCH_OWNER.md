@@ -29,4 +29,6 @@ frozen lineage untouched, evidence labels on every claim, exact test counts.
 
 - 2026-10-08 — Step 1 data layer + step 2 relationship engine (M2): IMPLEMENTED — CODE VERIFIED.
   Real-data sanity gate passed on Robinhood daily bars. See `docs/claude-v0/M2_SANITY_2026-10-08.md`.
-- Next: MCP server P1 (local stdio), then interest profile (M3), then hosting/metering.
+- 2026-10-08 — Products complete (M3–M6 + research record): daily brief, move alerts,
+  weekly relationship map, research record. IMPLEMENTED — CODE VERIFIED. See
+  `docs/claude-v0/PRODUCT.md`. Not connected: MCP server/hosting wait for Matt's acceptance.

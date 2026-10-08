@@ -27,7 +27,7 @@ from typing import Iterable, Mapping, Sequence
 
 import yaml
 
-from .data import INSUFFICIENT_DATA, OK, PriceProvider, aligned_returns
+from .data import INSUFFICIENT_DATA, OK, PriceProvider, aligned_returns, longest_complete_window
 
 NOT_LINKED = "NOT_LINKED"
 HEALTHY = "HEALTHY"
@@ -37,6 +37,10 @@ DIVERGENCE = "DIVERGENCE"
 EVIDENCE_COMPUTED = "COMPUTED — POINT-IN-TIME (settled daily closes)"
 EVIDENCE_CONFIGURED = "CONFIGURED — config/sector_etf_map.yaml (membership asserted, not measured)"
 EVIDENCE_HEURISTIC = "HEURISTIC — thresholds are documented defaults, not validated"
+EVIDENCE_SHORT = "SMALL SAMPLE — short history (recent listing or recent gap); window shrunk, not padded"
+
+FULL = "FULL"
+SHORT_HISTORY = "SHORT_HISTORY"
 
 DEFAULT_SECTOR_MAP = pathlib.Path(__file__).resolve().parents[2] / "config" / "sector_etf_map.yaml"
 
@@ -50,6 +54,7 @@ class Thresholds:
     long_window: int = 120
     short_window: int = 20
     divergence_days: int = 5
+    min_long_window: int = 40         # short-history floor; below this -> INSUFFICIENT_DATA
 
 
 # --------------------------------------------------------------------------- clusters
@@ -94,6 +99,11 @@ class ClusterMap:
 
     def members(self, cluster: str) -> tuple[str, ...]:
         return self._members.get(cluster, ())
+
+    def all_peers(self, ticker: str) -> tuple[str, ...]:
+        """Union of co-members across every cluster containing `ticker` (sorted)."""
+        t = ticker.upper()
+        return tuple(sorted({m for c in self.clusters_of(t) for m in self._members[c]} - {t}))
 
     def info(self, ticker: str) -> ClusterInfo:
         t = ticker.upper()
@@ -187,6 +197,7 @@ class PairHealth:
     direction: str = ""
     n_long: int = 0
     n_short: int = 0
+    sample: str = FULL
     reason: str = ""
     thresholds: dict = field(default_factory=dict)
     evidence: tuple[str, ...] = (EVIDENCE_COMPUTED, EVIDENCE_HEURISTIC)
@@ -198,7 +209,7 @@ class PairHealth:
 
 
 def pair_health(provider: PriceProvider, a: str, b: str, as_of: date,
-                th: Thresholds = Thresholds()) -> PairHealth:
+                th: Thresholds = Thresholds(), allow_short: bool = True) -> PairHealth:
     """Is the a/b relationship behaving like its own history as of `as_of`?
 
     Correlation breakdown: long-window vs short-window correlation, Fisher-z of the change
@@ -208,25 +219,34 @@ def pair_health(provider: PriceProvider, a: str, b: str, as_of: date,
     `divergence_days` sessions before as_of (so the move under test does not
     contaminate its own baseline); then the cumulative residual over the last
     `divergence_days` sessions is standardized by sd * sqrt(days).
+
+    Short history: if the full window is incomplete and `allow_short`, the long window
+    shrinks to the longest gap-free span (>= `min_long_window`). The result is labelled
+    sample=SHORT_HISTORY and carries the small-sample evidence label.
     """
     A, B = a.upper(), b.upper()
     tdict = asdict(th)
     k = th.divergence_days
+    sample, evidence = FULL, (EVIDENCE_COMPUTED, EVIDENCE_HEURISTIC)
     w = aligned_returns(provider, [A, B], as_of, th.long_window + k)
+    if w.status != OK and allow_short:
+        w = longest_complete_window(provider, [A, B], as_of, th.long_window + k, th.min_long_window + k)
+        sample, evidence = SHORT_HISTORY, (EVIDENCE_COMPUTED, EVIDENCE_HEURISTIC, EVIDENCE_SHORT)
     if w.status != OK:
         return PairHealth(A, B, as_of.isoformat(), INSUFFICIENT_DATA, reason=w.reason, thresholds=tdict)
+    L = w.n - k
 
     ra, rb = w.returns[A], w.returns[B]
     base_a, base_b = ra[:-k], rb[:-k]                 # long_window returns ending k sessions back
-    long_a, long_b = ra[-th.long_window:], rb[-th.long_window:]
+    long_a, long_b = ra[-L:], rb[-L:]
     short_a, short_b = ra[-th.short_window:], rb[-th.short_window:]
 
     c_long = _corr(long_a, long_b)
     c_short = _corr(short_a, short_b)
     if c_long is None or c_short is None:
         return PairHealth(A, B, as_of.isoformat(), INSUFFICIENT_DATA,
-                          reason="zero-variance returns in window", thresholds=tdict)
-    se = math.sqrt(1.0 / (th.short_window - 3) + 1.0 / (th.long_window - 3))
+                          reason="zero-variance returns in window", thresholds=tdict, sample=sample)
+    se = math.sqrt(1.0 / (th.short_window - 3) + 1.0 / (L - 3))
     z_change = (_fisher(c_short) - _fisher(c_long)) / se
 
     vb = _cov(base_b, base_b)
@@ -253,7 +273,7 @@ def pair_health(provider: PriceProvider, a: str, b: str, as_of: date,
         reason = f"cumulative {k}d residual z={z_resid:+.2f} (|z| >= {th.divergence_z})"
     elif z_change <= th.decouple_z and c_short <= c_long - th.decouple_drop:
         status = DECOUPLING
-        reason = (f"corr {th.short_window}d {c_short:.2f} vs {th.long_window}d {c_long:.2f}, "
+        reason = (f"corr {th.short_window}d {c_short:.2f} vs {L}d {c_long:.2f}, "
                   f"z={z_change:+.2f}")
 
     return PairHealth(
@@ -262,7 +282,8 @@ def pair_health(provider: PriceProvider, a: str, b: str, as_of: date,
         beta_a_on_b=beta_ab,
         recent_return_a_pp=cum_a * 100, recent_return_b_pp=cum_b * 100,
         residual_pp=cum_resid * 100, residual_z=z_resid, direction=direction,
-        n_long=th.long_window, n_short=th.short_window, reason=reason, thresholds=tdict,
+        n_long=L, n_short=th.short_window, sample=sample, reason=reason, thresholds=tdict,
+        evidence=evidence,
     )
 
 
