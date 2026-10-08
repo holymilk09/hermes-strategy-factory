@@ -76,23 +76,31 @@ def test_uncovered_calendar_never_rules_out_earnings(calendar, rng):
     assert EventCalendar.empty().reaction_to("AAA", days[-1], days[-2]) is NOT_COVERED
 
 
-def test_peer_context_messages(calendar, rng):
-    p, cm, days = _world(calendar, rng)
-    items = {i["symbol"]: i for i in build_brief(p, PROFILE, days[-1], clusters=cm)["items"]}
-    assert items["AAA"]["linked_peers"][0]["symbol"] == "BBB"
-    assert any("No price data cached" in g for g in items["FFF"]["guidance"])
-    # HHH's only configured peer has no data -> unchecked, not "doesn't co-move"
-    assert any("No price data cached" in g for g in items["HHH"]["guidance"])
-
-
-def test_upcoming_peer_earnings(calendar, rng):
+def test_removed_features_stay_removed(calendar, rng):
+    """Gates 3b (peer lists) and 3d (peer-earnings read-through) failed OOS validation.
+    These claims must not reappear in the brief or weekly map."""
     p, cm, days = _world(calendar, rng)
     future = date.fromordinal(days[-1].toordinal() + 3)
-    cal = EventCalendar([EarningsEvent("BBB", future, "am", False, False)], days[-1],
-                        [(days[-1], future)])
-    aaa = next(i for i in build_brief(p, PROFILE, days[-1], cal, clusters=cm)["items"] if i["symbol"] == "AAA")
-    line = next(g for g in aaa["guidance"] if g.startswith("Linked peer BBB"))
-    assert "tentative" in line
+    cal = EventCalendar([EarningsEvent("BBB", future, "am", True, False)], days[-1], [(days[-1], future)])
+    b = build_brief(p, PROFILE, days[-1], cal, clusters=cm)
+    md = render_brief_md(b)
+    assert "Moves most with" not in md and "Linked peer" not in md
+    assert all("linked_peers" not in i and "peer_events" not in i for i in b["items"])
+    assert "Linked:" not in render_weekly_md(weekly_map(p, PROFILE, days[-1], clusters=cm))
+
+
+def test_earnings_follow_through_label(calendar, rng):
+    p, cm, days = _world(calendar, rng, last=0.08)
+    ev = EarningsEvent("AAA", days[-3], "pm", True, True)     # reaction was days[-2]
+    cal = EventCalendar([ev], days[-1], [(days[-30], days[-1])])
+    b = build_brief(p, PROFILE, days[-1], cal, clusters=cm)
+    assert b["headline"][0].startswith("AAA: earnings follow-through")
+
+
+def test_low_fit_caveat(calendar, rng):
+    p, cm, days = _world(calendar, rng)
+    hhh = next(i for i in build_brief(p, PROFILE, days[-1], clusters=cm)["items"] if i["symbol"] == "HHH")
+    assert any("weak yardstick" in g for g in hhh["guidance"])   # HHH is pure noise vs the market
 
 
 def test_weekly_map_and_changes(calendar, rng):

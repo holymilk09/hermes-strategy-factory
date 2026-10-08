@@ -32,3 +32,6 @@ frozen lineage untouched, evidence labels on every claim, exact test counts.
 - 2026-10-08 — Products built (M3–M6 + research record): IMPLEMENTED — CODE VERIFIED, but
   the brief's claims are NOT validated. Status: BUILT — UNDER VALIDATION. Phased plan and
   frozen gates: `docs/claude-v0/VALIDATION_PLAN.md`. Not connected.
+- 2026-10-08 — Validation phases 1–4 run: VALIDATED WITH CHANGES. Data error found and
+  quarantined (HON); 2 features removed (failed gates 3b, 3d); alert-rate decision open for
+  Matt; Phase 5 dogfood pending. See `docs/claude-v0/VALIDATION_RESULTS.md`.

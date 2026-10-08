@@ -10,7 +10,7 @@ from __future__ import annotations
 from dataclasses import asdict, dataclass, field
 from datetime import date
 
-from .data import OK, PriceProvider
+from .data import OK, PriceProvider, longest_complete_window
 from .interest import Profile
 from .relationships import ClusterMap, beta
 
@@ -96,10 +96,11 @@ def book_context(provider: PriceProvider, clusters: ClusterMap, profile: Profile
         b = beta(provider, h.symbol, as_of, index, window)
         used_window = window
         if b.status != OK:
-            b = beta(provider, h.symbol, as_of, index, short_floor)
-            used_window = short_floor
-            if b.status == OK:
-                caveats.append(f"{h.symbol} beta uses a {short_floor}-session window (short history)")
+            w = longest_complete_window(provider, [h.symbol, index], as_of, window, short_floor)
+            if w.status == OK:
+                used_window = w.n
+                b = beta(provider, h.symbol, as_of, index, used_window)
+                caveats.append(f"{h.symbol} beta uses a {used_window}-session window (short history)")
         w = weights[h.symbol]
         if w is not None:
             cw[cl] = cw.get(cl, 0.0) + w

@@ -1,14 +1,15 @@
 # Strategy Factory research-intel — product (claude/v0-build)
 
-Status 2026-10-08: **BUILT — UNDER VALIDATION** (see `VALIDATION_PLAN.md`). Not finished, not connected.
+Status 2026-10-08: **VALIDATED WITH CHANGES** — see `VALIDATION_RESULTS.md`. Two features removed, one decision open, Phase 5 dogfood pending. Not connected.
 No MCP server, hosting or billing yet. Author: Claude (Anthropic).
 Evidence labels per `docs/v0/QC_CONTINUITY_2026-10-04.md`.
 
-## The products (IMPLEMENTED — CODE VERIFIED; claims NOT yet validated)
+## The products (IMPLEMENTED — CODE VERIFIED; claims validated OOS, see results)
 
 1. **Daily brief** (`brief.py`, M4). For each watched name, in interest order: last-session
-   move vs the move its beta implied, which peers it actually co-moves with, earnings for the
-   name and its linked peers, and plain-English guidance. A headline lists only what matters
+   move vs the move its beta implied, decoupling/divergence flags, the name's own earnings,
+   and plain-English guidance. (Peer lists and peer-earnings lines were removed after
+   failing validation gates 3b/3d.) A headline lists only what matters
    today, or says explicitly that nothing is unusual.
 2. **Move alerts** (`moves.py`, M5). Fire only when a move is unusual *for that name*
    (|residual z| >= 2.5 vs a baseline that excludes the judged day). Alerts that land on an

@@ -106,7 +106,8 @@ def render_weekly_md(m: dict) -> str:
             out.append(f"**{c}**: not enough clean history to measure (short or missing: {miss}).")
             out.append("")
             continue
-        line = f"**{c}**: members co-move at mean corr {co['mean_pairwise_corr']:.2f}."
+        line = (f"**{c}**: over the last 120 sessions, members co-moved at mean corr "
+                f"{co['mean_pairwise_corr']:.2f}.")
         if co["weak_members"]:
             line += f" Weak links: {', '.join(co['weak_members'])}."
         if co["unavailable"]:
@@ -121,9 +122,7 @@ def render_weekly_md(m: dict) -> str:
                    + ("n/a" if bq is None else f"{bq:.2f}") + " (60d).")
         ps = sorted(((k.split('/')[1], v) for k, v in m["pairs"].items() if k.startswith(s + "/")),
                     key=lambda kv: -kv[1]["corr_long"])
-        linked = [f"{p} {v['corr_long']:.2f}" for p, v in ps if v["status"] != "NOT_LINKED"]
-        if linked:
-            out.append(f"Linked: {', '.join(linked[:4])}.")
+        # "Linked" peer lists removed: failed validation gate 3b (links don't persist reliably).
         flagged = [f"{p} ({v['status'].lower()})" for p, v in ps if v["status"] in ("DECOUPLING", "DIVERGENCE")]
         if flagged:
             out.append(f"Flags: {', '.join(flagged)}.")

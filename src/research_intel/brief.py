@@ -33,6 +33,19 @@ from .relationships import (
 EXTRA_CLUSTERS = pathlib.Path(__file__).with_name("extra_clusters.yaml")
 
 NOTABLE_Z = 1.0
+LOW_FIT_R2 = 0.10
+FOLLOW_THROUGH_SESSIONS = 2
+
+
+def _follow_through(cal: EventCalendar, sym: str, ref_dates: Sequence[date]):
+    """A covered report whose reaction session was 1..FOLLOW_THROUGH_SESSIONS sessions ago."""
+    for k in range(1, FOLLOW_THROUGH_SESSIONS + 1):
+        if len(ref_dates) < k + 2:
+            break
+        rx = cal.reaction_to(sym, ref_dates[-1 - k], ref_dates[-2 - k])
+        if rx is not None and rx is not NOT_COVERED:
+            return rx
+    return None
 
 DISCLAIMER = ("Research only. Not investment advice, not a recommendation to buy or sell. "
               "No orders are placed by this system.")
@@ -45,11 +58,16 @@ def product_clusters() -> ClusterMap:
 
 
 def _pp(x: float | None, digits: int = 1) -> str:
-    return "n/a" if x is None else f"{x:+.{digits}f}%"
+    if x is None:
+        return "n/a"
+    if abs(x) < 0.5 * 10 ** -digits:      # never print "-0.0%"
+        return f"{0:.{digits}f}%"
+    return f"{x:+.{digits}f}%"
 
 
 def _item(provider: PriceProvider, clusters: ClusterMap, cal: EventCalendar, wi, as_of: date,
-          th: Thresholds, available: set[str], event_days: int, prev_session: date | None) -> dict:
+          th: Thresholds, available: set[str], event_days: int, ref_dates: Sequence[date]) -> dict:
+    prev_session = ref_dates[-2] if len(ref_dates) >= 2 else None
     sym = wi.symbol
     mc = move_context(provider, sym, as_of)
     info = clusters.info(sym)
@@ -59,12 +77,11 @@ def _item(provider: PriceProvider, clusters: ClusterMap, cal: EventCalendar, wi,
         h = pair_health(provider, sym, p, as_of, th)
         if h.status != INSUFFICIENT_DATA:
             peers.append(h)
-    linked = sorted([h for h in peers if h.status in (HEALTHY, DECOUPLING, DIVERGENCE)],
-                    key=lambda h: (-(h.corr_long or 0.0), h.b))
+    # Peer lists ("moves most with") and the peer-earnings line were REMOVED after failing
+    # validation gates 3b and 3d (docs/claude-v0/VALIDATION_RESULTS.md). Peers are still
+    # computed internally because decoupling/divergence flags (gate 3e passed) need them.
     flagged = [h for h in peers if h.status in (DECOUPLING, DIVERGENCE)]
     own_events = cal.upcoming([sym], as_of, event_days)
-    peer_events = [(e, next(h for h in linked if h.b == e.symbol))
-                   for e in cal.upcoming([h.b for h in linked], as_of, event_days)]
 
     g: list[str] = []
     quiet = False
@@ -81,6 +98,10 @@ def _item(provider: PriceProvider, clusters: ClusterMap, cal: EventCalendar, wi,
             g.append(f"{sym} moved {_pp(mc.move_pp)} vs {_pp(mc.implied_pp)} implied by {mc.benchmark} "
                      f"(z {mc.residual_z:+.1f}): an earnings reaction — it reported "
                      f"{rx.label()}. The report, not the market, explains most of this move.")
+        elif (fx := _follow_through(cal, sym, ref_dates)) is not None:
+            g.append(f"{sym} moved {_pp(mc.move_pp)} vs {_pp(mc.implied_pp)} implied by {mc.benchmark} "
+                     f"(z {mc.residual_z:+.1f}), in the sessions right after its report "
+                     f"({fx.label()}): likely earnings follow-through rather than new news.")
         else:
             g.append(f"{sym} moved {_pp(mc.move_pp)} when its {mc.benchmark} beta implied "
                      f"{_pp(mc.implied_pp)} (z {mc.residual_z:+.1f}). That is unusual for its own "
@@ -105,24 +126,17 @@ def _item(provider: PriceProvider, clusters: ClusterMap, cal: EventCalendar, wi,
                      f"{h.corr_long:.2f} over {h.n_long}. Treat {h.b} as a weaker guide to {sym} until it recovers.")
     for e in own_events:
         g.append(f"{sym} reports {e.label()}. Around the print, company news matters more than the beta.")
-    for e, h in peer_events:
-        g.append(f"Linked peer {e.symbol} reports {e.label()}; {sym} has tracked it at corr "
-                 f"{h.corr_long:.2f} over {h.n_long} sessions, so its result may move {sym} too.")
-    short_pairs = [h.b for h in linked if h.sample == SHORT_HISTORY]
+    if mc.status != INSUFFICIENT_DATA and mc.fit_r2 is not None and mc.fit_r2 < LOW_FIT_R2:
+        g.append(f"The market explains little of {sym}'s day-to-day moves (fit r2 {mc.fit_r2:.2f} "
+                 f"vs {mc.benchmark}), so the implied move is a weak yardstick for this name.")
+    short_pairs = [h for h in flagged if h.sample == SHORT_HISTORY]
     if mc.sample == SHORT_HISTORY:
         g.append(f"{sym}'s move baseline uses only {mc.baseline_n} sessions (short history): read loosely.")
-    if short_pairs:
-        g.append(f"The {sym}/{', '.join(short_pairs)} link is measured over a short history "
-                 f"({min(h.n_long for h in linked if h.sample == SHORT_HISTORY)} sessions): small sample.")
+    for h in short_pairs:
+        g.append(f"The {sym}/{h.b} flag is measured over a short history ({h.n_long} sessions): "
+                 f"small sample.")
     if quiet and len(g) == 1:
         g.append("No guidance today: nothing in the data stands out for this name.")
-    if info.primary and not candidates:
-        g.append(f"No price data cached for any of {sym}'s configured peers, so its group context "
-                 f"is unchecked.")
-    elif candidates and not linked:
-        checked = ", ".join(h.b for h in peers) or "none with enough history"
-        g.append(f"None of {sym}'s configured peers co-move with it above the {th.link_floor:.2f} "
-                 f"link floor (checked: {checked}) — the group label isn't telling you much.")
 
     return {
         "symbol": sym,
@@ -131,11 +145,8 @@ def _item(provider: PriceProvider, clusters: ClusterMap, cal: EventCalendar, wi,
         "held": wi.held,
         "cluster": info.primary,
         "move": mc.to_dict(),
-        "linked_peers": [{"symbol": h.b, "corr_long": round(h.corr_long, 4), "n": h.n_long,
-                          "status": h.status, "sample": h.sample} for h in linked[:5]],
         "flags": [h.to_dict() for h in flagged],
         "events": [e.to_dict() for e in own_events],
-        "peer_events": [e.to_dict() for e, _ in peer_events],
         "guidance": g,
     }
 
@@ -149,8 +160,7 @@ def build_brief(provider: PriceProvider, profile: Profile, as_of: date,
     available = set(provider.symbols())
     wl = ranked_watchlist(profile, as_of, clusters, limit)
     ref_dates = provider.series(DEFAULT_REFERENCE).upto(as_of).dates
-    prev_session = ref_dates[-2] if len(ref_dates) >= 2 else None
-    items = [_item(provider, clusters, cal, wi, as_of, th, available, event_days, prev_session)
+    items = [_item(provider, clusters, cal, wi, as_of, th, available, event_days, ref_dates)
              for wi in wl]
 
     headline = []
@@ -159,6 +169,7 @@ def build_brief(provider: PriceProvider, profile: Profile, as_of: date,
         if m["status"] == ALERT:
             g0 = it["guidance"][0]
             kind = ("earnings reaction" if "earnings reaction" in g0
+                    else "earnings follow-through" if "follow-through" in g0
                     else "unusual move (earnings not checked)" if "can't be ruled out" in g0
                     else "unexplained move")
             headline.append(f"{it['symbol']}: {kind} {_pp(m['move_pp'])} "
@@ -216,9 +227,6 @@ def render_brief_md(b: dict) -> str:
         if m["status"] != INSUFFICIENT_DATA:
             out.append(f"Last session {_pp(m['move_pp'])}, 5 sessions {_pp(m['move_5d_pp'])}. "
                        f"Beta {m['beta']:.2f} to {m['benchmark']} over {m['baseline_n']} sessions.")
-        if it["linked_peers"]:
-            ps = ", ".join(f"{p['symbol']} {p['corr_long']:.2f}" for p in it["linked_peers"][:3])
-            out.append(f"Moves most with: {ps}.")
         out.append("")
         out += [f"- {g}" for g in it["guidance"]]
         out.append("")
