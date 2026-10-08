@@ -81,7 +81,7 @@ Returns rule-based selections with features and the completeness guarantee. Ship
 ## 9. Build phases
 
 - **P0** — this spec. Done 2026-10-08.
-- **P1** — prototype MCP server (Python, `mcp` package): `brief`, `cohort_summary`, `relationship_map`, `hypothesis_status` backed by local research data. Local stdio first.
+- **P1** — prototype MCP server (Python, `mcp` package): `brief`, `cohort_summary`, `relationship_map`, `hypothesis_status` backed by local research data. Local stdio first. **Done 2026-10-08** — `docs/v0/tools/mcp_server/` (server, README, requirements pinning `mcp<2`); self-test passes against the live forward ledgers.
 - **P2** — hosted SSE + gateway: auth, rate limits, metering, usage dashboard.
 - **P3** — pilot integrations: one agent platform, dogfooded on Matt's own briefs first (the proactive-brief crons are the natural first consumer).
 
