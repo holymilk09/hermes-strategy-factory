@@ -25,4 +25,8 @@ Everything in `docs/v0/HANDOFF_NEXT_OPERATOR.md` and `QC_CONTINUITY_2026-10-04.m
 applies: research-only, no broker/live/shadow, no ledger or cache CSVs in git,
 frozen lineage untouched, evidence labels on every claim, exact test counts.
 
-Status: **BRANCH CREATED — build not started** (awaiting Matt's go).
+## Status
+
+- 2026-10-08 — Step 1 data layer + step 2 relationship engine (M2): IMPLEMENTED — CODE VERIFIED.
+  Real-data sanity gate passed on Robinhood daily bars. See `docs/claude-v0/M2_SANITY_2026-10-08.md`.
+- Next: MCP server P1 (local stdio), then interest profile (M3), then hosting/metering.
