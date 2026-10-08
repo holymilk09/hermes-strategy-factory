@@ -16,6 +16,9 @@ Rule (preregistered, see HYPOTHESIS_momentum_ret5d_ma50_v1.md):
 
 Data conventions:
   - One source per calculation, series-consistent (split-adjusted) closes.
+  - Partial/pre-market bars with NaN closes are dropped before any feature or
+    signal-date computation (2026-10-08 fix: a Yahoo Oct-7 pre-market bar with NaN
+    closes once produced a spurious zero-selection scan).
   - scan source: local cache dir of <SYM>.csv / <SYM>_1D.csv (Yahoo-format or date,close,...),
     or Yahoo Finance fetch with --fetch (auto_adjust=False).
   - Resolution: 10 completed trading bars after signal, signal excluded, raw return in pp.
@@ -53,8 +56,9 @@ def load_series(path: pathlib.Path):
     if not dkey or not ckey: raise ValueError(f"{path}: missing date/close columns")
     out = []
     for r in rows:
-        try: out.append((r[dkey][:10], float(r[ckey])))
-        except Exception: continue
+        f = _finite(r[ckey])
+        if f is not None:
+            out.append((r[dkey][:10], f))
     out.sort()
     # de-duplicate by date, keep last
     dedup = {}
@@ -67,10 +71,22 @@ def find_cache(cache_dir: pathlib.Path, symbol: str):
         if p.exists(): return p
     return None
 
+def _finite(v):
+    try:
+        f = float(v)
+    except Exception:
+        return None
+    return f if f == f else None  # drop NaN closes (partial/session bars)
+
 def fetch_series(symbol: str, start="2025-11-01", end=None):
     import yfinance as yf  # local import so cache-only use needs no yfinance
     h = yf.Ticker(symbol).history(start=start, end=end, auto_adjust=False)
-    return [(str(idx.date()), float(v)) for idx, v in zip(h.index, h['Close'])]
+    out = []
+    for idx, v in zip(h.index, h['Close']):
+        f = _finite(v)
+        if f is not None:
+            out.append((str(idx.date()), f))
+    return out
 
 def business_gap_check(series, idx, lookback=60):
     """Reject if the exchange-session spacing in the lookback looks gapped.
