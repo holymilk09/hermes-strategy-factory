@@ -41,6 +41,7 @@ offering. If not, this branch is deleted and mainline never knew.
 - `RESOLUTION_2026-10-04.md` — July cohort resolution: procedure, per-name results, preservation diff, test counts.
 - `AUDIT_MATCHED_WINDOW_2026-10-05.md` — accepted vs ghost matched-window audit: no consistent filter lift; old +23.30pp lift claim retired; gate-level split (`ret_5d` useful-looking, `ret_20d_rank` non-separating). Script: `tools/matched_window_audit.py`.
 - `HYPOTHESIS_momentum_ret5d_ma50_v1.md` — NEW preregistered hypothesis (simple `ret_5d>0` + close>ma50 rule), split off 2026-10-05 after the audit. Forward test only; scanner: `tools/momentum_ret5d_ma50_scanner.py`. Does not modify the frozen lineage.
+- `MCP_BUILD_SPEC.md` — MCP server build spec (2026-10-08): research-intel layer for personal agents, interest-adaptive ranking, product order (research now, signals gated on forward-test verdict), monetization sketch, build phases. Spec only, no code yet.
 - `RECOVERY_2026-10-04.md` — how the ledgers/caches/backups were recovered and verified; what remains VPS-only.
 - `QC_CONTINUITY_2026-10-04.md` — ChatGPT QC continuity reference reconciled by Muse: rules, error catalogue, traps, gaps, and deviation log governing any ledger work. Standing guidance, not scripture — better verified evidence overrides it (see its §9).
 - `BUILD_DOC.md` — the full build document: components, interfaces, math,
