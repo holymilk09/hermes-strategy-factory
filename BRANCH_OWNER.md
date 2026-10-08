@@ -29,6 +29,6 @@ frozen lineage untouched, evidence labels on every claim, exact test counts.
 
 - 2026-10-08 — Step 1 data layer + step 2 relationship engine (M2): IMPLEMENTED — CODE VERIFIED.
   Real-data sanity gate passed on Robinhood daily bars. See `docs/claude-v0/M2_SANITY_2026-10-08.md`.
-- 2026-10-08 — Products complete (M3–M6 + research record): daily brief, move alerts,
-  weekly relationship map, research record. IMPLEMENTED — CODE VERIFIED. See
-  `docs/claude-v0/PRODUCT.md`. Not connected: MCP server/hosting wait for Matt's acceptance.
+- 2026-10-08 — Products built (M3–M6 + research record): IMPLEMENTED — CODE VERIFIED, but
+  the brief's claims are NOT validated. Status: BUILT — UNDER VALIDATION. Phased plan and
+  frozen gates: `docs/claude-v0/VALIDATION_PLAN.md`. Not connected.
