@@ -1,0 +1,9 @@
+# Operator disclosure carried on every output that names securities.
+# Set `configured: true` and write the statement before any customer distribution.
+# Keep it truthful and current (Securities Act §17(b); SEC v. Park "scalping" theory).
+configured: false
+as_of: null
+statement: >-
+  The operator of this service may hold, or may buy or sell, positions in securities named in
+  these outputs. The operator receives no compensation from any issuer, underwriter or dealer
+  for mentioning any security. [EDIT THIS STATEMENT BEFORE DISTRIBUTION]

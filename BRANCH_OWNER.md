@@ -32,9 +32,13 @@ frozen lineage untouched, evidence labels on every claim, exact test counts.
 - 2026-10-08 — Products built (M3–M6 + research record): IMPLEMENTED — CODE VERIFIED, but
   the brief's claims are NOT validated. Status: BUILT — UNDER VALIDATION. Phased plan and
   frozen gates: `docs/claude-v0/VALIDATION_PLAN.md`. Not connected.
-- 2026-10-08 — Validation phases 1–4 run: VALIDATED WITH CHANGES. Data error found and
+- 2026-10-08 — Validation phases 1–4 run: GATES PASSED WITH CHANGES. Data error found and
   quarantined (HON); 2 features removed (failed gates 3b, 3d); alert-rate decision open for
   Matt; Phase 5 dogfood pending. See `docs/claude-v0/VALIDATION_RESULTS.md`.
 - 2026-10-09 — Independent review (14 findings, 11 confirmed) -> all confirmed fixed with
   regression tests; Amendment A registered before re-run; 3a re-gated vs naive model (PASS);
   HON spin window quarantined; first unseen session scored. 201 tests. See VALIDATION_RESULTS.md.
+- 2026-10-09 — Strategy/compliance pass: STRATEGY.md (goal, honest edge, product, model),
+  COMPLIANCE.md (sourced legal/data-licence basis, rules enforced in code). Built attribution,
+  risk panel, scoreboard, full report (md + HTML), compliance layer, MCP server (stdio).
+  Amendment B gates registered then passed. 238 tests.

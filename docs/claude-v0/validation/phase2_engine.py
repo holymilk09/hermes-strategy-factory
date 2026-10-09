@@ -15,6 +15,9 @@ from src.research_intel.data import MemoryProvider
 from src.research_intel.interest import Profile
 from src.research_intel.moves import move_context
 from src.research_intel.relationships import beta, pair_health
+from src.research_intel.attribution import attribute
+from src.research_intel.scoreboard import score
+from src.research_intel.risk import risk_panel
 from src.research_intel.weekly import weekly_map
 
 SEED = 20261008
@@ -37,10 +40,15 @@ def main():
         peers = [p for p in cm.all_peers(sym) if p in full] or ["QQQ"]
         peer = rng.choice(peers)
         trunc = MemoryProvider([s.upto(d) for s in full.values()])
+        prof2 = Profile.from_dict({"holdings": [{"symbol": sym, "weight": 0.6}, {"symbol": peer, "weight": 0.4}]})
         a = [move_context(st, sym, d).to_dict(), asdict(beta(st, sym, d, "QQQ", 60)),
-             asdict(beta(st, sym, d, "SPY", 120)), pair_health(st, sym, peer, d).to_dict()]
+             asdict(beta(st, sym, d, "SPY", 120)), pair_health(st, sym, peer, d).to_dict(),
+             attribute(st, sym, d, cm).to_dict(), score(st, sym, d).to_dict(),
+             risk_panel(st, cm, prof2, d).to_dict()]
         b = [move_context(trunc, sym, d).to_dict(), asdict(beta(trunc, sym, d, "QQQ", 60)),
-             asdict(beta(trunc, sym, d, "SPY", 120)), pair_health(trunc, sym, peer, d).to_dict()]
+             asdict(beta(trunc, sym, d, "SPY", 120)), pair_health(trunc, sym, peer, d).to_dict(),
+             attribute(trunc, sym, d, cm).to_dict(), score(trunc, sym, d).to_dict(),
+             risk_panel(trunc, cm, prof2, d).to_dict()]
         if a != b:
             mism.append((sym, d.isoformat(), peer))
     res["2a"] = {"cases": N_CASES, "mismatches": mism, "pass": not mism}
@@ -77,7 +85,11 @@ def main():
     b2 = json.dumps(build_brief(st, prof, d), sort_keys=True)
     w1 = json.dumps(weekly_map(st, prof, d), sort_keys=True)
     w2 = json.dumps(weekly_map(st, prof, d), sort_keys=True)
-    res["2c"] = {"brief_identical": b1 == b2, "weekly_identical": w1 == w2, "pass": b1 == b2 and w1 == w2}
+    from src.research_intel.report import build_report
+    r1 = json.dumps(build_report(st, prof, d), sort_keys=True)
+    r2 = json.dumps(build_report(st, prof, d), sort_keys=True)
+    res["2c"] = {"brief_identical": b1 == b2, "weekly_identical": w1 == w2, "report_identical": r1 == r2,
+                 "pass": b1 == b2 and w1 == w2 and r1 == r2}
 
     OUT.mkdir(parents=True, exist_ok=True)
     (OUT / "phase2.json").write_text(json.dumps(res, indent=1, default=str))

@@ -6,6 +6,7 @@
   python -m src.research_intel.cli alerts --profile P.json [--as-of D]
   python -m src.research_intel.cli weekly --profile P.json [--previous W.json] [--as-of D] [--out DIR]
   python -m src.research_intel.cli record [--ledger-frozen F.csv] [--ledger-hyp S.csv ...]
+  python -m src.research_intel.cli report --profile P.json [--events ...] [--out DIR]   # brief + attribution + risk + scoreboard, md + html
 
 --as-of defaults to the last settled SPY session in the cache.
 """
@@ -19,6 +20,7 @@ from dataclasses import asdict
 from datetime import date
 
 from .brief import build_brief, render_brief_md
+from .report import build_report, render_report_html, render_report_md
 from .data import DEFAULT_REFERENCE, CacheStore
 from .events import EventCalendar
 from .interest import Profile, ranked_watchlist
@@ -46,7 +48,7 @@ def _write(out_dir, stem, payload, md):
 
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(prog="research_intel")
-    ap.add_argument("cmd", choices=["brief", "alerts", "weekly", "record"])
+    ap.add_argument("cmd", choices=["brief", "alerts", "weekly", "record", "report"])
     ap.add_argument("--cache", default=DEFAULT_CACHE)
     ap.add_argument("--profile")
     ap.add_argument("--as-of", type=date.fromisoformat)
@@ -104,6 +106,22 @@ def main(argv=None) -> int:
         md = render_brief_md(b)
         if a.out:
             _write(a.out, f"brief_{as_of.isoformat()}", b, md)
+        else:
+            sys.stdout.write(md)
+        return 0
+    if a.cmd == "report":
+        cal = None
+        for spec in a.events or []:
+            fp, start, end = spec.rsplit(":", 2)
+            c = EventCalendar.load(fp, a.events_date or as_of, date.fromisoformat(start), date.fromisoformat(end))
+            cal = c if cal is None else cal.merged(c)
+        recs, _ = _records(a, as_of)
+        r = build_report(store, profile, as_of, cal, record=recs)
+        md = render_report_md(r)
+        if a.out:
+            _write(a.out, f"report_{as_of.isoformat()}", r, md)
+            pathlib.Path(a.out, f"report_{as_of.isoformat()}.html").write_text(render_report_html(r))
+            print(f"wrote {pathlib.Path(a.out, f'report_{as_of.isoformat()}.html')}")
         else:
             sys.stdout.write(md)
         return 0

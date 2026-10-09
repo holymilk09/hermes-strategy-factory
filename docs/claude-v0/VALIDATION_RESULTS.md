@@ -4,8 +4,9 @@ Branch `claude/v0-build` · Plan frozen in `VALIDATION_PLAN.md` (`c1e9e2b`, befo
 Amendment A registered `a5fe616` (2026-10-09) before the re-run. Scripts:
 `docs/claude-v0/validation/`. Raw outputs (gitignored, licensed data): `cache/research_intel/validation/`.
 
-**Status: VALIDATED WITH CHANGES, independently reviewed. Two features removed. One
-decision open for Matt (alert rate). Phase 5 (live dogfood on Matt's book) not started.**
+**Status: GATES PASSED with changes (repo rule: the word "validated" is not used as a claim).
+Independently reviewed. Two features removed. Flag threshold is now a profile setting.
+Phase 5 (live dogfood on Matt's book) not started.**
 
 ## How this was checked
 
@@ -86,8 +87,20 @@ placeholder the next morning; the official close came from the quotes endpoint (
 parser). Brief built cleanly. Engine mean error 0.88pp vs naive 1.74pp (21/28 closer). No
 alerts. One session is a smoke test; the log accumulates in `forward_log.jsonl`.
 
+## Amendment B — new analytics (registered `f63cbdb` before running; run 2026-10-09)
+
+- **B1 attribution: PASS.** Two-factor (market + orthogonalised sector ETF) residual MSE is
+  lower than market-only for 24/24 names with a cached sector ETF; pooled reduction 23.6%
+  (gate 5% and 60%). Largest gains: MU (17.4 → 8.8), LLY (5.4 → 2.9), JPM (1.4 → 0.8).
+- **B2 VaR coverage: PASS.** Equal-weight MU/NVDA/LLY/JPM/AAPL/MSFT, rolling 250-session
+  historical VaR from the prior session: 10 exceptions in 320 sessions at 95% (3.1%, band
+  2.5–8%; Kupiec LR 2.72, not rejected at 5%); 2 at 99% (0.6%).
+- **B3 scoreboard: PASS.** 186 random OOS rows recomputed with pandas, zero mismatches.
+- Phase 2 (no look-ahead, determinism) re-run including attribution, scoreboard, risk panel
+  and the full report: PASS, 200/200.
+
 ## Open decisions for Matt
 
-1. **Alert threshold.** Keep |z| >= 2.5 (about 3% of stock-days, about 1 alert a day on a
-   30-name watchlist) or register |z| >= 3.0 and re-test.
+1. **Flag threshold.** Now a profile setting `flag_z` (default 2.5 ≈ 3% of stock-days). The
+   registered band question is logged in the plan; nothing was retuned.
 2. **Phase 5:** 10 live sessions on your real book (needs your Robinhood account number).

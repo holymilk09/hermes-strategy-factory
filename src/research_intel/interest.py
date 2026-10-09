@@ -55,6 +55,7 @@ class Profile:
     sectors: Mapping[str, float] = field(default_factory=dict)
     pins: tuple[str, ...] = ()
     half_life_days: float = DEFAULT_HALF_LIFE
+    flag_z: float = 2.5          # abnormal-move threshold (|residual z|); user-settable, reported in output
 
     @classmethod
     def from_dict(cls, d: Mapping) -> "Profile":
@@ -80,7 +81,10 @@ class Profile:
         hl = float(d.get("half_life_days", DEFAULT_HALF_LIFE))
         if hl <= 0:
             raise ValueError("half_life_days must be > 0")
-        return cls(tuple(holdings), mentions, sectors, pins, hl)
+        fz = float(d.get("flag_z", 2.5))
+        if not 1.5 <= fz <= 5.0:
+            raise ValueError("flag_z must be between 1.5 and 5.0")
+        return cls(tuple(holdings), mentions, sectors, pins, hl, fz)
 
     @classmethod
     def load(cls, path: str | pathlib.Path) -> "Profile":

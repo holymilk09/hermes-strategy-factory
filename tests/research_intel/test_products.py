@@ -44,7 +44,7 @@ PROFILE = Profile.from_dict({"holdings": [{"symbol": "AAA", "shares": 10}, {"sym
 def test_quiet_day_says_nothing_unusual(calendar, rng):
     p, cm, days = _world(calendar, rng)
     b = build_brief(p, PROFILE, days[-1], clusters=cm)
-    assert b["headline"][0].startswith("Nothing unusual")
+    assert b["headline"][0].startswith("No flags across the watchlist")
     assert b["sent_to_broker"] is False and b["book"]["portfolio_beta"] is not None
     md = render_brief_md(b)
     assert "Not investment advice" in md
@@ -56,9 +56,9 @@ def test_unexplained_move_with_covered_calendar(calendar, rng):
     p, cm, days = _world(calendar, rng, last=0.08)
     cal = EventCalendar([], days[-1], [(days[-30], days[-1])])
     b = build_brief(p, PROFILE, days[-1], cal, clusters=cm)
-    assert b["headline"][0].startswith("AAA: unexplained move")
+    assert b["headline"][0].startswith("AAA: abnormal move, no scheduled earnings")
     aaa = next(i for i in b["items"] if i["symbol"] == "AAA")
-    assert "no scheduled earnings explain it" in aaa["guidance"][0]
+    assert "No scheduled earnings for AAA fall on this session" in aaa["notes"][0]
 
 
 def test_earnings_reaction_is_named(calendar, rng):
@@ -100,7 +100,7 @@ def test_earnings_follow_through_label(calendar, rng):
 def test_low_fit_caveat(calendar, rng):
     p, cm, days = _world(calendar, rng)
     hhh = next(i for i in build_brief(p, PROFILE, days[-1], clusters=cm)["items"] if i["symbol"] == "HHH")
-    assert any("weak yardstick" in g for g in hhh["guidance"])   # HHH is pure noise vs the market
+    assert any("weak yardstick" in g for g in hhh["notes"])   # HHH is pure noise vs the market
 
 
 def test_weekly_map_and_changes(calendar, rng):

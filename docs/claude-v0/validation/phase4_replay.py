@@ -99,7 +99,7 @@ def main():
             stats["items"] += 1
             vals = set(top_vals)
             numeric_leaves(it, vals)
-            for g in it["guidance"]:
+            for g in it["notes"]:
                 stats["guidance_lines"] += 1
                 check_text(g, vals, f"{d} {it['symbol']}", problems)
             stats["alerts"] += it["move"]["status"] == "ALERT"

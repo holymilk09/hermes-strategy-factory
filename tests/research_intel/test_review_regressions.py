@@ -33,7 +33,7 @@ def test_headline_does_not_claim_nothing_unusual_when_nothing_was_judged(calenda
     prof = Profile.from_dict({"pins": ["AAA"]})
     saturday = next(d for d in (days[-1] + timedelta(days=i) for i in range(1, 8)) if d.weekday() == 5)
     h = build_brief(p, prof, saturday)["headline"][0]
-    assert not h.startswith("Nothing unusual") and "could be judged" in h
+    assert not h.startswith("No flags across") and "could be judged" in h
     assert "empty" in build_brief(p, Profile(), days[-1])["headline"][0]
 
 

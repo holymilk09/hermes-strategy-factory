@@ -1,10 +1,10 @@
 # Strategy Factory research-intel — product (claude/v0-build)
 
-Status 2026-10-09: **VALIDATED WITH CHANGES, independently reviewed** — see `VALIDATION_RESULTS.md`. Two features removed, alert-rate decision open, Phase 5 dogfood pending. Not connected.
+Status 2026-10-09: **GATES PASSED (phases 1–4, amendments A and B), independently reviewed** — see `VALIDATION_RESULTS.md`, `STRATEGY.md`, `COMPLIANCE.md`. Delivery layer built (report + MCP server). Not hosted; Phase 5 dogfood pending.
 No MCP server, hosting or billing yet. Author: Claude (Anthropic).
 Evidence labels per `docs/v0/QC_CONTINUITY_2026-10-04.md`.
 
-## The products (IMPLEMENTED — CODE VERIFIED; claims validated OOS, see results)
+## The products (IMPLEMENTED — CODE VERIFIED; claims tested out of sample, see results)
 
 1. **Daily brief** (`brief.py`, M4). For each watched name, in interest order: last-session
    move vs the move its beta implied *given that day's index move* (a same-day decomposition,
@@ -23,6 +23,19 @@ Evidence labels per `docs/v0/QC_CONTINUITY_2026-10-04.md`.
 4. **Research record** (`research_record.py`). Cohort summaries for the frozen lineage and the
    preregistered `ret5d+ma50` hypothesis status with its success/kill bars. Reads ledgers
    read-only and hashes them before and after.
+5. **Attribution** (`attribution.py`). Each holding's and the book's session return split into
+   market, sector (orthogonalised sector ETF) and stock-specific. Same-day decomposition.
+6. **Risk panel** (`risk.py`). Pro-forma: realised vol, betas, HHI/effective names, average
+   pairwise correlation, diversification ratio, max drawdown, 1-day historical VaR/ES, risk
+   contribution. Holdings with less than 60 sessions of history are excluded and listed.
+7. **Scoreboard** (`scoreboard.py`). Trailing 20/60/120-session returns vs SPY, vol-regime
+   percentile, extension z-score, distance from the 120-session high, with the rules printed.
+8. **Report** (`report.py`) = 1 + 5 + 6 + 7 in one JSON, with markdown and self-contained HTML.
+9. **Compliance layer** (`compliance.py`). Lint on every rendered text, data-licence gate,
+   operator disclosure, provenance on every output. See `COMPLIANCE.md`.
+10. **MCP server** (`server.py`, stdio). Tools: brief, report, attribution, risk, scoreboard,
+    relationship_map, hypothesis_status, cohort_summary, data_status. Read-only; profiles are
+    transient; customer mode refuses personal-use data or a missing disclosure.
 
 Inputs: an interest profile (`interest.py`, M3) — holdings, pins, ticker mentions that decay
 (14-day half-life), sector interest that re-ranks but never adds names — and portfolio context
@@ -38,7 +51,15 @@ python -m src.research_intel.cli brief  --profile profile.json \
 python -m src.research_intel.cli alerts --profile profile.json
 python -m src.research_intel.cli weekly --profile profile.json --previous last_week.json --out reports_out/
 python -m src.research_intel.cli record --ledger-frozen F.csv --ledger-hyp S.csv --ledger-hyp-rejected R.csv
+python -m src.research_intel.cli report --profile profile.json --events cal.json:2026-10-08:2026-11-07 --out reports_out/
+SF_CACHE=cache/research_intel/ohlcv_v2 SF_MODE=self python -m src.research_intel.server      # MCP over stdio
 ```
+
+Agent configuration (any MCP client): command `python`, args `-m src.research_intel.server`,
+cwd = repo root, env `SF_CACHE`, `SF_MODE` (`self` until licensed data and a disclosure exist),
+optional `SF_EVENTS=FILE:START:END,...`, `SF_LEDGER_FROZEN`, `SF_LEDGER_HYP`, `SF_LEDGER_HYP_REJECTED`.
+Profile fields: `holdings` (shares or weights), `tickers` (with `last_mentioned`), `pins`,
+`sectors`, `half_life_days`, `flag_z` (abnormal-move threshold, default 2.5).
 
 Example profile: `docs/claude-v0/examples/demo_profile.json` (DEMO, not a real book).
 
@@ -53,8 +74,12 @@ Example profile: `docs/claude-v0/examples/demo_profile.json` (DEMO, not a real b
 
 ## Verification (2026-10-09, Python 3.13.16, pytest 9.1.1)
 
-- `tests/research_intel`: **201 passed** with the local cache (incl. 125 property/fuzz cases and
-  6 regression tests reproducing independent-review findings); clean tree: 4 real-data tests skip.
+- `tests/research_intel`: **238 passed** with the local cache (incl. 125 property/fuzz cases, 6
+  regression tests reproducing independent-review findings, 23 compliance tests and an MCP
+  client driving the server over stdio); clean tree: 4 real-data tests skip.
+- Amendment B (new analytics, OOS): sector factor cuts unexplained variance for 24/24 names
+  (−23.6% pooled); 95% VaR hit on 3.1% of sessions (Kupiec not rejected); 186 scoreboard rows
+  match a pandas recomputation exactly.
 - Validation phases 1–4 and Amendment A: see `VALIDATION_RESULTS.md`. Key numbers (OOS
   2025-07-01..2026-10-07): engine beats a naive beta=1 model on 23/27 stocks, 20% lower error;
   alerts fire on 3.17% of stock-days and mark genuinely abnormal periods (next-day ratio 1.37).
