@@ -62,8 +62,7 @@ def rank_by_profile(items, profile):
     """Rank items by interest-profile weights. Each item: {symbols:[...], sectors:[...]}."""
     tickers = {t["symbol"]: t.get("weight", 1.0) for t in profile.get("tickers", [])}
     sectors = {s["sector"]: s.get("weight", 1.0) for s in profile.get("sectors", [])}
-    holdings = {h["symbol"]: t_weight for h, t_weight in
-                ((h, h.get("weight", 1.0)) for h in profile.get("holdings", []))}
+    holdings = {h["symbol"]: h.get("weight", 1.0) for h in profile.get("holdings", [])}
     ranked = []
     for it in items:
         score, why = 0.0, []
