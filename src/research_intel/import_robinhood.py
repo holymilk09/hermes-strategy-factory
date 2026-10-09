@@ -22,7 +22,7 @@ def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("files", nargs="+")
     ap.add_argument("--settled-through", required=True, type=date.fromisoformat)
-    ap.add_argument("--cache", default="cache/research_intel/ohlcv")
+    ap.add_argument("--cache", default="cache/research_intel/ohlcv_v2")
     ap.add_argument("--raw", nargs="*", default=[],
                     help="saved responses fetched with adjustment_type=none, for the "
                          "corporate-action audit (strongly recommended)")

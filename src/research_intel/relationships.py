@@ -256,7 +256,10 @@ def pair_health(provider: PriceProvider, a: str, b: str, as_of: date,
     recent_a = ra[-k:]
     recent_b = rb[-k:]
     cum_resid = sum(x - beta_ab * y for x, y in zip(recent_a, recent_b))
-    z_resid = cum_resid / (sd * math.sqrt(k)) if sd > 0 else 0.0
+    if sd <= 0:
+        return PairHealth(A, B, as_of.isoformat(), INSUFFICIENT_DATA,
+                          reason="zero-variance residual baseline", thresholds=tdict, sample=sample)
+    z_resid = cum_resid / (sd * math.sqrt(k))
     cum_a = math.prod(1 + x for x in recent_a) - 1
     cum_b = math.prod(1 + x for x in recent_b) - 1
 

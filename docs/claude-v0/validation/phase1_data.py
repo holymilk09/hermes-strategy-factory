@@ -41,6 +41,8 @@ def main():
     for sym in split.symbols():
         s = split.series(sym).as_map()
         r = raw[sym].as_map()
+        q = split.quarantine().get(sym, set())
+        r = {d: v for d, v in r.items() if d not in q}
         common = sorted(s.keys() & r.keys())
         ratios = [(d, r[d] / s[d]) for d in common]
         steps = []
@@ -64,7 +66,10 @@ def main():
         ser = split.series(sym)
         first = ser.dates[0]
         have = set(ser.dates)
-        miss = [d.isoformat() for d in spy.dates if d >= first and d not in have]
+        known = split.quarantine().get(sym, set())
+        miss = [d.isoformat() for d in spy.dates if d >= first and d not in have and d not in known]
+        if known:
+            res.setdefault("1c_known_quarantine", {})[sym] = len([d for d in spy.dates if d in known])
         extra = [d.isoformat() for d in ser.dates if d not in set(spy.dates)]
         if miss or extra:
             gaps[sym] = {"missing": miss, "extra": extra}

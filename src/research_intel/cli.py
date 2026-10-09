@@ -26,7 +26,7 @@ from .moves import move_alerts
 from .research_record import FROZEN_LINEAGE, HYPOTHESIS_V1, hypothesis_status, summarize
 from .weekly import render_weekly_md, weekly_map
 
-DEFAULT_CACHE = "cache/research_intel/ohlcv"
+DEFAULT_CACHE = "cache/research_intel/ohlcv_v2"
 
 
 def _records(a, as_of):
@@ -62,7 +62,20 @@ def main(argv=None) -> int:
     a = ap.parse_args(argv)
 
     store = CacheStore(a.cache)
-    as_of = a.as_of or store.series(DEFAULT_REFERENCE).last_date
+    try:
+        ref = store.series(DEFAULT_REFERENCE)
+    except (FileNotFoundError, ValueError) as e:
+        ap.error(f"cache {a.cache!r} has no usable {DEFAULT_REFERENCE} series ({e}); import data first")
+    as_of = a.as_of or ref.last_date
+    if as_of not in set(ref.dates):
+        prior = ref.upto(as_of).last_date
+        ap.error(f"{as_of} is not a settled trading session in the cache"
+                 + (f"; the last one on or before it is {prior}" if prior else ""))
+    for spec in a.events or []:
+        if spec.count(":") < 2:
+            ap.error(f"--events expects FILE:START:END, got {spec!r}")
+    if a.profile and not pathlib.Path(a.profile).exists():
+        ap.error(f"profile file not found: {a.profile}")
 
     if a.cmd == "record":
         recs, hs = _records(a, as_of)

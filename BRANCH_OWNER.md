@@ -35,3 +35,6 @@ frozen lineage untouched, evidence labels on every claim, exact test counts.
 - 2026-10-08 — Validation phases 1–4 run: VALIDATED WITH CHANGES. Data error found and
   quarantined (HON); 2 features removed (failed gates 3b, 3d); alert-rate decision open for
   Matt; Phase 5 dogfood pending. See `docs/claude-v0/VALIDATION_RESULTS.md`.
+- 2026-10-09 — Independent review (14 findings, 11 confirmed) -> all confirmed fixed with
+  regression tests; Amendment A registered before re-run; 3a re-gated vs naive model (PASS);
+  HON spin window quarantined; first unseen session scored. 201 tests. See VALIDATION_RESULTS.md.

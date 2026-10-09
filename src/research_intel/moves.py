@@ -95,7 +95,10 @@ def move_context(provider: PriceProvider, symbol: str, as_of: date,
     bname, (b, r2, sd), bmove = best
     implied = b * bmove
     resid = today_y - implied
-    z = resid / sd if sd > 0 else 0.0
+    if sd <= 0:
+        return MoveContext(sym, as_of.isoformat(), INSUFFICIENT_DATA, alert_z=alert_z,
+                           reason="zero-variance baseline (stale or halted prices)")
+    z = resid / sd
     last5 = y[-5:] if len(y) >= 5 else y
     move5 = math.prod(1 + r for r in last5) - 1
     status = ALERT if abs(z) >= alert_z else NORMAL

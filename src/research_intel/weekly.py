@@ -61,7 +61,9 @@ def weekly_map(provider: PriceProvider, profile: Profile, as_of: date,
                 changes.append(f"{s} beta to QQQ (60d) moved {a:.2f} -> {b:.2f}.")
         for k, cur in pairs.items():
             old = previous.get("pairs", {}).get(k)
-            if old and old["status"] != cur["status"]:
+            flags = ("DECOUPLING", "DIVERGENCE")
+            # Link/unlink transitions removed (gate 3b failed); only flag changes are reported.
+            if old and old["status"] != cur["status"] and (cur["status"] in flags or old["status"] in flags):
                 changes.append(f"{k}: {old['status'].lower()} -> {cur['status'].lower()} "
                                f"(corr {old['corr_long']:.2f} -> {cur['corr_long']:.2f}).")
         for c, cur in cohesion.items():

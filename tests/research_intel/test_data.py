@@ -138,3 +138,18 @@ def test_point_in_time_ignores_future_bars(calendar):
     w = aligned_returns(p, ["AAA"], as_of, 10)
     assert w.status == OK
     assert max(w.sessions) == as_of
+
+
+def _quote(sym, d, price, adj=None, interp=False):
+    return {"quote": {"symbol": sym, "previous_close": str(price), "adjusted_previous_close": str(adj or price)},
+            "close": {"symbol": sym, "date": d, "price": str(price), "interpolated": interp}}
+
+
+def test_quotes_parser_accepts_only_clean_settled_closes():
+    from src.research_intel.data import parse_robinhood_quotes
+    ok = {"data": {"results": [_quote("SPY", "2026-10-08", 773.93)]}}
+    assert parse_robinhood_quotes(ok, date(2026, 10, 8)) == [("SPY", date(2026, 10, 8), 773.93)]
+    for bad in (_quote("SPY", "2026-10-07", 1.0), _quote("SPY", "2026-10-08", 1.0, adj=0.5),
+                _quote("SPY", "2026-10-08", 1.0, interp=True)):
+        with pytest.raises(ValueError):
+            parse_robinhood_quotes({"data": {"results": [bad]}}, date(2026, 10, 8))

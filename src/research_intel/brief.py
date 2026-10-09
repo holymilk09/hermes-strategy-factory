@@ -34,6 +34,7 @@ EXTRA_CLUSTERS = pathlib.Path(__file__).with_name("extra_clusters.yaml")
 
 NOTABLE_Z = 1.0
 LOW_FIT_R2 = 0.10
+HEADLINE_EVENT_DAYS = 7
 FOLLOW_THROUGH_SESSIONS = 2
 
 
@@ -177,11 +178,19 @@ def build_brief(provider: PriceProvider, profile: Profile, as_of: date,
         for f in it["flags"]:
             headline.append(f"{it['symbol']}/{f['b']}: {f['status'].lower()} — {f['reason']}.")
         for e in it["events"]:
-            if (date.fromisoformat(e["date"]) - as_of).days <= 7:
-                headline.append(f"{it['symbol']} reports earnings within 7 days.")
-    if not headline:
+            if (date.fromisoformat(e["date"]) - as_of).days <= HEADLINE_EVENT_DAYS:
+                headline.append(f"{it['symbol']} reports earnings within {HEADLINE_EVENT_DAYS} days.")
+    judged = [it for it in items if it["move"]["status"] != INSUFFICIENT_DATA]
+    if not headline and not items:
+        headline.append("Your watchlist is empty: add holdings, pins or tickers to the profile.")
+    elif not headline and not judged:
+        reason = items[0]["move"].get("reason", "") if items else ""
+        headline.append(f"No names could be judged for {as_of.isoformat()}: {reason or 'no clean data'}.")
+    elif not headline:
+        skipped = len(items) - len(judged)
         headline.append("Nothing unusual across your watchlist today: moves are explained by the market "
-                        "and no tracked relationships broke.")
+                        "and no tracked relationships broke"
+                        + (f" ({skipped} name(s) could not be judged)." if skipped else "."))
 
     book = book_context(provider, clusters, profile, as_of).to_dict() if profile.holdings else None
     ref = provider.series(DEFAULT_REFERENCE).upto(as_of)
@@ -194,7 +203,8 @@ def build_brief(provider: PriceProvider, profile: Profile, as_of: date,
         "book": book,
         "items": items,
         "record": list(record),
-        "thresholds": asdict(th),
+        "thresholds": asdict(th) | {"headline_event_days": HEADLINE_EVENT_DAYS,
+                                    "low_fit_r2": LOW_FIT_R2},
         "disclaimer": DISCLAIMER,
         "sent_to_broker": False,
     }
@@ -245,6 +255,8 @@ def render_brief_md(b: dict) -> str:
 def render_record_line(r: dict) -> str:
     if r.get("status") != "LOADED":
         return f"- {r['ledger']}: {r['status'].replace('_', ' ').lower()}."
+    if not r.get("n_resolved"):
+        return f"- {r['ledger']}: 0 resolved, {r.get('n_pending', 0)} pending. No results yet."
     return (f"- {r['ledger']}: {r['n_resolved']} resolved, {r['n_pending']} pending. "
             f"Mean {_pp(r['mean_pp'], 2)}, median {_pp(r['median_pp'], 2)}, hit rate "
             f"{r['hit_rate']:.0%} (n={r['n_resolved']}). Not a validated edge.")

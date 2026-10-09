@@ -83,6 +83,25 @@ def run(period, p, cal, cm, sessions_all, lo, hi, rng):
                  "pass": wins / len(per) >= 0.80 and pooled >= 0.30,
                  "worst": sorted(per.items(), key=lambda kv: kv[1]["skill"])[:4]}
 
+    # 3a-v2 (Amendment A): engine vs naive beta=1-to-SPY on the same stock-days
+    spy = p.series("SPY").as_map()
+    per2, se_e, se_n = {}, [], []
+    for s in stocks:
+        rows = [(d, mc[(s, d)]) for d in sess if (s, d) in mc]
+        if len(rows) < 30:
+            continue
+        e = [(m.move_pp - m.implied_pp) ** 2 for _, m in rows]
+        n = [(m.move_pp - (spy[d] / spy[sessions_all[idx[d] - 1]] - 1) * 100) ** 2 for d, m in rows]
+        per2[s] = {"mse_engine": round(statistics.fmean(e), 4), "mse_naive": round(statistics.fmean(n), 4)}
+        se_e += e
+        se_n += n
+    wins2 = sum(1 for v in per2.values() if v["mse_engine"] < v["mse_naive"])
+    impr = 1 - statistics.fmean(se_e) / statistics.fmean(se_n)
+    out["3a_v2"] = {"stocks": len(per2), "engine_beats_naive": wins2, "share": round(wins2 / len(per2), 4),
+                    "pooled_mse_improvement": round(impr, 4),
+                    "pass": impr >= 0.10 and wins2 / len(per2) >= 0.70,
+                    "losers": sorted([k for k, v in per2.items() if v["mse_engine"] >= v["mse_naive"]])}
+
     # pairs (unordered within any shared cluster)
     pairs = sorted({tuple(sorted((a, b))) for a in stocks for b in cm.all_peers(a) if b in stocks})
     sample_t = [d for d in sess[::5] if idx[d] + 60 < len(sessions_all)]
@@ -131,7 +150,7 @@ def run(period, p, cal, cm, sessions_all, lo, hi, rng):
                  "pass_rate": 0.005 <= rate <= 0.03, "pass_meaningful": est >= 1.20 and lo_ci > 1.0}
 
     # 3d peer earnings read-through
-    peer_days, other = [], []
+    peer_days, other, other_clean = [], [], []
     detail = []
     for f in stocks:
         own = {d for d in sess if cal.reaction_to(f, d, sessions_all[idx[d] - 1]) not in (None, NOT_COVERED)}
@@ -149,15 +168,22 @@ def run(period, p, cal, cm, sessions_all, lo, hi, rng):
                     pd_set.add(d)
                     detail.append((f, q, d.isoformat()))
                     break
+        follow = {sessions_all[idx[d] + k] for d in own for k in (1, 2) if idx[d] + k < len(sessions_all)}
         for d in sess:
             m = mc.get((f, d))
             if m is None:
                 continue
             (peer_days if d in pd_set else other).append(abs(m.residual_pp))
+            if d not in pd_set and d not in own and d not in follow:
+                other_clean.append(abs(m.residual_pp))
     est, lo_ci, hi_ci = boot_ratio(peer_days, other, rng)
     out["3d"] = {"peer_reaction_follower_days": len(peer_days), "other_days": len(other),
                  "ratio": round(est, 4), "ci95": [round(lo_ci, 4), round(hi_ci, 4)],
                  "pass": est >= 1.20 and lo_ci > 1.0, "examples": detail[:8]}
+    e2, l2, h2 = boot_ratio(peer_days, other_clean, rng)
+    out["3d_corrected"] = {"other_days_excl_own_earnings": len(other_clean), "ratio": round(e2, 4),
+                           "ci95": [round(l2, 4), round(h2, 4)],
+                           "would_reregister": e2 >= 1.20 and l2 > 1.0}
 
     # 3f divergence descriptive
     fwd5, fwd10, signs = [], [], []
@@ -223,7 +249,7 @@ def main():
     (OUT / "phase3.json").write_text(json.dumps({"OOS": oos, "IS": is_}, indent=1, default=str))
     for r in (oos, is_):
         print(f"== {r['period']} {r['first']}..{r['last']} ({r['sessions']} sessions)")
-        for k in ("3a", "3b", "3c", "3d", "3e", "3f", "3g"):
+        for k in ("3a", "3a_v2", "3b", "3c", "3d", "3d_corrected", "3e", "3f", "3g"):
             v = {x: y for x, y in r[k].items() if x not in ("worst", "examples", "spot_check_10",
                                                              "unlabelled_with_report_within_2_sessions")}
             print(" ", k, v)

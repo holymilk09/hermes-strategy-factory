@@ -53,7 +53,7 @@ class BookContext:
 def _last_close(provider: PriceProvider, sym: str, as_of: date) -> float | None:
     try:
         s = provider.series(sym).upto(as_of)
-    except FileNotFoundError:
+    except (FileNotFoundError, ValueError):
         return None
     return s.closes[-1] if s.closes else None
 

@@ -55,3 +55,17 @@ def test_quarantined_dates_block_windows(tmp_path, calendar):
     assert w.status == INSUFFICIENT_DATA and w.missing["X"] == (days[-5],)
     assert len(st.raw_series("X").dates) == 61       # audit view still sees everything
     st.write(series_from_returns("X", days, [0.002] * 60))  # rewrite with same data is allowed
+
+
+def test_sourced_corporate_action_quarantines_range(tmp_path, calendar, monkeypatch):
+    import src.research_intel.data as data
+    days = calendar[:61]
+    ca = tmp_path / "ca.yaml"
+    ca.write_text(f"- symbol: X\n  start: {days[-6]}\n  end: {days[-4]}\n  reason: test\n  source: test\n")
+    monkeypatch.setattr(data, "CORPORATE_ACTIONS", ca)
+    monkeypatch.setattr(data.known_corporate_action_dates, "__defaults__", (ca,))
+    st = CacheStore(tmp_path / "c")
+    st.write(series_from_returns("SPY", days, [0.001] * 60))
+    st.write(series_from_returns("X", days, [0.002] * 60))
+    w = aligned_returns(st, ["X"], days[-1], 20)
+    assert w.status == INSUFFICIENT_DATA and set(w.missing["X"]) == {days[-6], days[-5], days[-4]}

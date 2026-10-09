@@ -1,0 +1,12 @@
+# Known corporate actions whose price effect the adjusted-vs-raw audit cannot see (the
+# action is unadjusted identically in both series). Each range is quarantined: those dates
+# behave as missing sessions. Metadata only — no prices. Add entries with a source.
+- symbol: HON
+  start: 2026-06-19
+  end: 2026-07-07
+  reason: >-
+    Honeywell Aerospace spin-off and share-structure change (late June 2026). Post-spin
+    prints show repeated identical closes (06-24, 06-26) and +-10% days on flat markets.
+  source: >-
+    honeywell.com press release 2026-06 (Aerospace completes spin-off); QuiverQuant;
+    found by independent review 2026-10-09, confirmed against cached prints.

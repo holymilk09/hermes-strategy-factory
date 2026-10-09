@@ -1,13 +1,14 @@
 # Strategy Factory research-intel — product (claude/v0-build)
 
-Status 2026-10-08: **VALIDATED WITH CHANGES** — see `VALIDATION_RESULTS.md`. Two features removed, one decision open, Phase 5 dogfood pending. Not connected.
+Status 2026-10-09: **VALIDATED WITH CHANGES, independently reviewed** — see `VALIDATION_RESULTS.md`. Two features removed, alert-rate decision open, Phase 5 dogfood pending. Not connected.
 No MCP server, hosting or billing yet. Author: Claude (Anthropic).
 Evidence labels per `docs/v0/QC_CONTINUITY_2026-10-04.md`.
 
 ## The products (IMPLEMENTED — CODE VERIFIED; claims validated OOS, see results)
 
 1. **Daily brief** (`brief.py`, M4). For each watched name, in interest order: last-session
-   move vs the move its beta implied, decoupling/divergence flags, the name's own earnings,
+   move vs the move its beta implied *given that day's index move* (a same-day decomposition,
+   not a forecast), decoupling/divergence flags, the name's own earnings,
    and plain-English guidance. (Peer lists and peer-earnings lines were removed after
    failing validation gates 3b/3d.) A headline lists only what matters
    today, or says explicitly that nothing is unusual.
@@ -15,9 +16,10 @@ Evidence labels per `docs/v0/QC_CONTINUITY_2026-10-04.md`.
    (|residual z| >= 2.5 vs a baseline that excludes the judged day). Alerts that land on an
    earnings reaction are named as such; if the loaded calendar doesn't cover the date, the
    brief says earnings can't be ruled out instead of claiming "unexplained".
-3. **Weekly relationship map** (`weekly.py`, M6). Betas, linked pairs, group cohesion, and
-   the list of what changed since last week (beta shifts >= 0.30, pairs linking/unlinking,
-   groups tightening/loosening, names entering/leaving).
+3. **Weekly relationship map** (`weekly.py`, M6). Betas, group cohesion, and the list of what
+   changed since last week (beta shifts >= 0.30, decoupling/divergence flags starting or
+   ending, groups tightening/loosening, names entering/leaving). Link/unlink lines removed
+   (gate 3b failed).
 4. **Research record** (`research_record.py`). Cohort summaries for the frozen lineage and the
    preregistered `ret5d+ma50` hypothesis status with its success/kill bars. Reads ledgers
    read-only and hashes them before and after.
@@ -29,7 +31,8 @@ Inputs: an interest profile (`interest.py`, M3) — holdings, pins, ticker menti
 ## How to run
 
 ```bash
-python -m src.research_intel.import_robinhood --settled-through 2026-10-07 saved_response.json
+python -m src.research_intel.import_robinhood --settled-through 2026-10-07 \
+    saved_split_response.json --raw saved_unadjusted_response.json   # raw enables the action audit
 python -m src.research_intel.cli brief  --profile profile.json \
     --events cal.json:2026-10-08:2026-11-07 --out reports_out/
 python -m src.research_intel.cli alerts --profile profile.json
@@ -48,13 +51,15 @@ Example profile: `docs/claude-v0/examples/demo_profile.json` (DEMO, not a real b
 - An earnings calendar knows the dates it covers; absence of an event outside them proves nothing.
 - No buy/sell language (tested). `sent_to_broker` is False everywhere.
 
-## Verification (2026-10-08, Python 3.13.16, pytest 9.1.1)
+## Verification (2026-10-09, Python 3.13.16, pytest 9.1.1)
 
-- `tests/research_intel`: **62 passed** with the local cache; **58 passed, 4 skipped** without it.
-- Alert calibration on real data: 12 alerts in 982 name-days (1.2%) over 60 sessions — the
-  rate a 2.5-sigma rule should give. The three largest (MSFT +15.5% 2026-07-30, AAPL -7.4%
-  2026-07-31, NVDA +8.7% 2026-08-27) each fall on the session after an after-close report
-  (dates verified against Robinhood `get_earnings_results`), and the brief labels them so.
+- `tests/research_intel`: **201 passed** with the local cache (incl. 125 property/fuzz cases and
+  6 regression tests reproducing independent-review findings); clean tree: 4 real-data tests skip.
+- Validation phases 1–4 and Amendment A: see `VALIDATION_RESULTS.md`. Key numbers (OOS
+  2025-07-01..2026-10-07): engine beats a naive beta=1 model on 23/27 stocks, 20% lower error;
+  alerts fire on 3.17% of stock-days and mark genuinely abnormal periods (next-day ratio 1.37).
+- First unseen session (2026-10-08): brief built cleanly on fresh data; engine mean error 0.88pp
+  vs naive 1.74pp (21/28 stocks closer); no alerts. One session = smoke test, not evidence.
 - Pre-existing `tests/reporting tests/feature_factory`: 22 failed / 1 passed, identical on the
   untouched base `2c08108` (missing VPS-only artifacts). No regression.
 
@@ -65,5 +70,9 @@ Example profile: `docs/claude-v0/examples/demo_profile.json` (DEMO, not a real b
   61.54%) runs automatically when the 2026-10-04 resolved ledger is loaded.
 - The hypothesis "completeness failure > 10% of scans" kill bar needs scan logs; not evaluated.
 - Thresholds are HEURISTIC defaults, reported with every result.
+- Robinhood's historical endpoint can return the newest session as an interpolated placeholder
+  for hours after the close; the official close then comes from the quotes endpoint
+  (`parse_robinhood_quotes`, strict checks). Unadjusted corporate actions need a sourced entry
+  in `corporate_actions.yaml` (HON spin, June 2026).
 - Robinhood is the development data source only; a redistributable feed is required before
   anything is sold. Real-data outputs are therefore NOT committed to this public repo.

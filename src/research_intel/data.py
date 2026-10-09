@@ -77,6 +77,25 @@ def build_series(symbol: str, rows: Iterable[tuple[date, float]], source: str) -
     return Series(symbol.upper(), ds, tuple(seen[d] for d in ds), source)
 
 
+# --------------------------------------------------------------------------- corporate actions
+
+CORPORATE_ACTIONS = pathlib.Path(__file__).with_name("corporate_actions.yaml")
+
+
+def known_corporate_action_dates(path: pathlib.Path = CORPORATE_ACTIONS) -> dict[str, set[date]]:
+    """Calendar dates inside each sourced corporate-action range (see corporate_actions.yaml)."""
+    if not path.exists():
+        return {}
+    import yaml
+    from datetime import timedelta
+    out: dict[str, set[date]] = {}
+    for e in yaml.load(path.read_text(), Loader=yaml.BaseLoader) or []:
+        a, b = date.fromisoformat(e["start"]), date.fromisoformat(e["end"])
+        days = {a + timedelta(days=i) for i in range((b - a).days + 1)}
+        out.setdefault(e["symbol"].upper(), set()).update(days)
+    return out
+
+
 # --------------------------------------------------------------------------- provider
 
 class PriceProvider(Protocol):
@@ -105,6 +124,8 @@ class CacheStore:
             raw = json.loads(qp.read_text()) if qp.exists() else {}
             self._quarantine = {k.upper(): {date.fromisoformat(d) for d in v.get("dates", [])}
                                 for k, v in raw.items()}
+            for sym, days in known_corporate_action_dates().items():
+                self._quarantine.setdefault(sym, set()).update(days)
         return self._quarantine
 
     def write_quarantine(self, entries: Mapping[str, Mapping]) -> pathlib.Path:
@@ -223,6 +244,32 @@ def parse_robinhood_historicals(
     return out
 
 
+def parse_robinhood_quotes(payload: Mapping | str, session: date) -> list[tuple[str, date, float]]:
+    """Official settled closes from a `get_equity_quotes` response, for the latest session.
+
+    Needed because `get_equity_historicals` can return the newest completed session as an
+    `interpolated` placeholder for hours after the close (seen 2026-10-09 for 2026-10-08).
+    A close is accepted only if: not interpolated, dated `session`, and
+    adjusted_previous_close == previous_close (no corporate action pending, so the raw
+    close is also the split-adjusted close). Anything else raises — never guessed.
+    """
+    data = json.loads(payload) if isinstance(payload, str) else payload
+    out = []
+    for r in data.get("data", data).get("results", []):
+        q, c = r.get("quote") or {}, r.get("close")
+        sym = (c or q).get("symbol", "?")
+        if not c:
+            raise ValueError(f"{sym}: no official close in quote response")
+        if c.get("interpolated"):
+            raise ValueError(f"{sym}: official close is interpolated")
+        if date.fromisoformat(c["date"][:10]) != session:
+            raise ValueError(f"{sym}: close dated {c['date']}, expected {session}")
+        if q and _finite(q.get("adjusted_previous_close")) != _finite(q.get("previous_close")):
+            raise ValueError(f"{sym}: pending adjustment (adjusted_previous_close != previous_close)")
+        out.append((sym.upper(), session, float(c["price"])))
+    return out
+
+
 # --------------------------------------------------------------------------- completeness
 
 INSUFFICIENT_DATA = "INSUFFICIENT_DATA"
@@ -277,7 +324,7 @@ def aligned_returns(
     for sym in dict.fromkeys(s.upper() for s in symbols):
         try:
             m = provider.series(sym).as_map()
-        except FileNotFoundError:
+        except (FileNotFoundError, ValueError):   # missing or corrupt file -> that symbol only
             missing[sym] = sessions
             continue
         gaps = tuple(d for d in sessions if d not in m)

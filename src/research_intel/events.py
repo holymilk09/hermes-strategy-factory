@@ -107,5 +107,9 @@ class EventCalendar:
 
     def upcoming(self, symbols: Iterable[str], as_of: date, days: int = 14) -> list[EarningsEvent]:
         want = {s.upper() for s in symbols}
+        # "reported" reflects the fetch date, not as_of: an event dated on/after as_of is
+        # upcoming from as_of's point of view even if it had reported by fetch time
+        # (review finding: replays hid MU's 2026-09-30 report).
         return [e for e in self.events
-                if e.symbol in want and not e.reported and 0 <= (e.date - as_of).days <= days]
+                if e.symbol in want and 0 <= (e.date - as_of).days <= days
+                and (not e.reported or (self.fetched_on is not None and self.fetched_on > as_of))]
