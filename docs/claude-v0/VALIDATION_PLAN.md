@@ -87,3 +87,25 @@ moves, dates) only need Phase 1–2.
 - 2026-10-08, product change from a Phase 1 finding: `data_quality.adjustment_audit` +
   cache quarantine. HON's adjusted series is invalid 2025-10-30..2026-06-18 (159 sessions
   quarantined). Phases 2-4 run on the quarantined cache.
+
+## 8. Amendment A — registered 2026-10-09 BEFORE re-running (independent review findings)
+
+An independent reviewer showed gate 3a is too easy: the implied move uses the *same-day*
+benchmark return, so it is a decomposition, not a forecast, and a no-estimation model
+(beta = 1 to SPY for every stock) also passes 3a. 3a as run is kept and reported, but it
+no longer counts as evidence for the beta engine. New gate, frozen here:
+
+- **3a-v2 (engine vs naive).** OOS, same stock-days as 3a. Naive model: beta = 1 to SPY.
+  Gate: engine pooled MSE (move − implied) < naive pooled MSE by >= 10%, AND engine MSE <
+  naive MSE for >= 70% of stocks. Fail -> the brief stops quoting an "implied" move as a
+  calibrated yardstick (it may still show the raw benchmark move) and alerts are re-based on
+  the naive residual; this would be re-validated before shipping.
+- **3d (bias fix, reporting only).** Own-earnings reaction and follow-through days are
+  removed from the baseline as well as the peer set. Both versions reported; the gate and
+  the removal decision stand unless the corrected ratio's CI lower bound clears 1.0 AND the
+  point estimate clears 1.20 (it would then be re-registered as a new claim, not restored).
+- **Phase 4 re-run** after fixing reverse look-ahead in `EventCalendar.upcoming` (events
+  reported after the replay date were being hidden) and extending HON's quarantine over the
+  2026-06-25..06-30 Aerospace spin window.
+- The 3c alert band (0.5–3.0%) was set after seeing a 1.2% rate on Jul–Oct 2026 sessions,
+  which lie inside OOS. 3c-rate is therefore downgraded to INFORMATIVE, not a valid gate.
