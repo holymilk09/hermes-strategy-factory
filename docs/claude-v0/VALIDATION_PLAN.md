@@ -109,3 +109,28 @@ no longer counts as evidence for the beta engine. New gate, frozen here:
   2026-06-25..06-30 Aerospace spin window.
 - The 3c alert band (0.5–3.0%) was set after seeing a 1.2% rate on Jul–Oct 2026 sessions,
   which lie inside OOS. 3c-rate is therefore downgraded to INFORMATIVE, not a valid gate.
+
+## 9. Amendment B — registered 2026-10-09 BEFORE running (new analytics)
+
+Same data, universe and OOS window as §2. Gates frozen here; results go in VALIDATION_RESULTS.md.
+
+- **B1 Attribution: the sector factor must add explanatory power out of sample.** For every
+  OOS stock-day with a configured, cached sector ETF, compute the two-factor idiosyncratic
+  residual (`attribution.attribute`, baseline ending the prior session) and the market-only
+  (SPY) residual from the same baseline. Gate: pooled residual MSE reduction >= 5% AND the
+  two-factor residual MSE is lower for >= 60% of those stocks. Fail -> the brief shows the
+  market-only decomposition and the sector column is dropped.
+- **B2 Risk panel: historical VaR must be calibrated.** Fixed test book, equal-weight
+  MU, NVDA, LLY, JPM, AAPL, MSFT (full history, weights fixed for the whole test). For each
+  OOS session t, take the 95% and 99% one-day historical VaR from `risk.risk_panel` as of
+  t−1 (250-session window) and count an exception when the book's return on t is below −VaR.
+  Gate: 95% VaR exception rate within [2.5%, 8.0%] (≈ Kupiec 95% band for n≈320 at p=0.05).
+  99% VaR exception rate reported, informative only. Fail -> VaR/ES lines are removed from
+  the panel (vol, beta, concentration and drawdown stay; they are sample statistics, not
+  quantile estimates).
+- **B3 Scoreboard: descriptive, no gate.** Report the OOS distribution of labels and confirm
+  by independent recomputation (pandas) on 200 random stock-days that every printed number
+  matches to 1e-6. Any mismatch is a bug.
+- **Attribution and scoreboard outputs are same-day decompositions / trailing statistics.**
+  No claim of predictive value is made or tested for them; none will be added without a
+  separately registered hypothesis.
