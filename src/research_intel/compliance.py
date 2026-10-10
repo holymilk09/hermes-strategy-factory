@@ -23,6 +23,7 @@ from __future__ import annotations
 
 import pathlib
 import re
+import unicodedata
 from dataclasses import asdict, dataclass
 from datetime import date
 from typing import Iterable
@@ -38,40 +39,57 @@ METHODOLOGY_NOTE = (
     "own holdings, pins or mentions selected them. Nothing here takes account of any person's "
     "objectives, financial situation or needs, and nothing here is a forecast.")
 
-# Phrases that mark a recommendation, a performance claim, or a call to action.
-# Matched case-insensitively on user-facing text with the disclaimer removed.
-FORBIDDEN_PHRASES: tuple[str, ...] = (
+# Words and phrases that mark a recommendation, a performance claim, or a call to action.
+# Matched on NORMALISED text (see _normalise): case-folded, compatibility-mapped, zero-width and
+# soft-hyphen characters removed, Cyrillic/Greek look-alikes mapped to Latin, markup and
+# punctuation collapsed to single spaces, then matched on word boundaries. Each entry is a regex
+# fragment; add to this list when a new bypass is found, and add a test for it.
+FORBIDDEN_PATTERNS: tuple[str, ...] = (
     # recommendation / call to action
-    "buy ", "sell ", " hold ", "overweight", "underweight", "price target", "you should",
-    "we recommend", "recommend", "consider buying", "consider selling", "accumulate", "load up",
-    "take profit", "stop loss", "entry point", "exit point", "watch for", "look for", "watch whether",
-    "act now", "get in", "get out", "stand aside", "go long", "go short", "trade this", "trade idea",
+    r"buy", r"sell", r"hold", r"trim", r"reduce", r"add to", r"exit", r"avoid", r"accumulate",
+    r"load up", r"overweight", r"underweight", r"outperform", r"underperform", r"bullish", r"bearish",
+    r"price target", r"target", r"you should", r"we recommend", r"recommend", r"consider",
+    r"take profit", r"stop loss", r"entry point", r"exit point", r"entry", r"watch for", r"look for",
+    r"act now", r"get in", r"get out", r"stand aside", r"go long", r"go short", r"going long",
+    r"going short", r"long it", r"short it", r"trade this", r"trade idea",
     # performance / hype claims (docs/commercial/COMPLIANCE_LANGUAGE.md)
-    "guaranteed", "proven winner", "trade alert", "buy alert", "sell alert", "beat the market",
-    "risk-free", "risk free", "can't lose", "cannot lose", "prediction engine", "profitable",
-    "ready to trade", "high confidence", "validated", "edge confirmed",
+    r"guaranteed", r"proven winner", r"trade alert", r"buy alert", r"sell alert", r"beat the market",
+    r"risk free", r"can t lose", r"cannot lose", r"prediction engine", r"profitable",
+    r"ready to trade", r"high confidence", r"validated", r"edge confirmed",
     # advice framing
-    "personalized", "personalised", "tailored to you", "for your situation",
+    r"personalized", r"personalised", r"tailored to you", r"for your situation",
 )
 
-# Allowed despite containing a forbidden fragment (checked first, removed before linting).
-ALLOWLIST: tuple[str, ...] = (
-    "not a recommendation", "not investment advice", "sell or hold any security",
-    "buy, sell or hold", "buy or sell", "holdings", "household", "threshold", "withhold",
-    "stakeholder", "holds", "holding", "shareholder", "placeholder",
+# Look-alike characters that NFKC does not fold to Latin.
+_CONFUSABLES = str.maketrans({
+    "\u0430": "a", "\u0435": "e", "\u043e": "o", "\u0440": "p", "\u0441": "c", "\u0443": "y",
+    "\u0445": "x", "\u0456": "i", "\u0458": "j", "\u03bf": "o", "\u03b1": "a", "\u03c1": "p",
+})
+_FORBIDDEN_RE = re.compile(r"\b(?:" + "|".join(FORBIDDEN_PATTERNS) + r")\b")
+
+
+def _normalise(text: str) -> str:
+    t = unicodedata.normalize("NFKC", text).casefold().translate(_CONFUSABLES)
+    t = "".join(ch for ch in t if unicodedata.category(ch) != "Cf")      # zero-width, soft hyphen
+    t = re.sub(r"[^a-z0-9]+", " ", t)   # markup, punctuation, newlines, apostrophes -> space
+    return " ".join(t.split())
+
+
+# Exact sentences that name the forbidden words in order to disclaim them. Removed verbatim.
+EXACT_EXEMPTIONS: tuple[str, ...] = (
+    "Not a recommendation to buy, sell or hold any security.",
 )
 
-_FORBIDDEN_RE = re.compile("|".join(re.escape(p) for p in FORBIDDEN_PHRASES), re.IGNORECASE)
-_ALLOW_RE = re.compile("|".join(re.escape(p) for p in ALLOWLIST), re.IGNORECASE)
 
+def lint(text: str, *, strip: Iterable[str] = (DISCLAIMER, METHODOLOGY_NOTE) + EXACT_EXEMPTIONS) -> list[str]:
+    """Return the forbidden phrases found in `text` (empty list = clean).
 
-def lint(text: str, *, strip: Iterable[str] = (DISCLAIMER, METHODOLOGY_NOTE)) -> list[str]:
-    """Return the forbidden phrases found in `text` (empty list = clean)."""
+    The disclaimer and methodology note are removed exactly (before normalisation) so that their
+    own wording never trips the lint; nothing else is allowlisted."""
     t = text
     for s in strip:
         t = t.replace(s, " ")
-    t = _ALLOW_RE.sub(" ", t)
-    return sorted({m.group(0).strip().lower() for m in _FORBIDDEN_RE.finditer(t)})
+    return sorted({m.group(0) for m in _FORBIDDEN_RE.finditer(_normalise(t))})
 
 
 class ComplianceError(ValueError):

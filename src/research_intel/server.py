@@ -48,7 +48,7 @@ class Config:
     def __init__(self, env: dict[str, str] | None = None):
         e = env or os.environ
         self.cache = pathlib.Path(e.get("SF_CACHE", "cache/research_intel/ohlcv_v2"))
-        self.mode = e.get("SF_MODE", SELF)
+        self.mode = e.get("SF_MODE", CUSTOMER)  # restrictive default: must opt in to self
         self.events = [s for s in e.get("SF_EVENTS", "").split(",") if s]
         self.ledger_frozen = e.get("SF_LEDGER_FROZEN") or None
         self.ledger_hyp = e.get("SF_LEDGER_HYP") or None

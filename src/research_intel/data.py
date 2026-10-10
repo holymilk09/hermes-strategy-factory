@@ -151,11 +151,14 @@ class CacheStore:
             raise FileNotFoundError(f"no cached series for {symbol} at {p}")
         with open(p, newline="") as f:
             reader = csv.DictReader(f)
-            meta_source = "cache"
+            seen_sources: set[str] = set()
             rows = []
             for r in reader:
                 rows.append((date.fromisoformat(r["date"][:10]), _finite(r.get("close"))))
-                meta_source = r.get("source") or meta_source
+                seen_sources.add(r.get("source") or "cache")
+            # One source per file, or it is 'mixed' (licence class UNKNOWN, i.e. restrictive).
+            # Never the last row's label: that let a customer-blocked file read as clean.
+            meta_source = next(iter(seen_sources)) if len(seen_sources) == 1 else "mixed"
         bad = self.quarantine().get(symbol.upper(), set())
         if bad:
             rows = [(d, c) for d, c in rows if d not in bad]
