@@ -24,6 +24,9 @@ from __future__ import annotations
 import argparse, csv, json, pathlib, statistics, sys
 from datetime import datetime, timezone
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))  # local compliance module
+from compliance import DISCLAIMER, assert_clean
+
 HYPOTHESIS = "momentum_continuation_ret5d_ma50_v1"
 GATE_REASON = (
     "scan_setups is gated: hypothesis momentum_continuation_ret5d_ma50_v1 has not "
@@ -118,8 +121,11 @@ def make_server(store: ResearchStore):
     def brief(interest_profile: dict) -> dict:
         """Interest-ranked research brief. interest_profile: {tickers:[{symbol,weight}], sectors:[{sector,weight}], holdings:[{symbol,weight}]}. Ranking changes what is shown first, never what is true."""
         items = rank_by_profile(store.brief_items(), interest_profile or {})
+        for it in items:
+            assert_clean(it["headline"], "brief.headline")  # no calls to action, ever
         return {
             "as_of": datetime.now(timezone.utc).isoformat(),
+            "disclaimer": DISCLAIMER,
             "evidence_note": "All items carry evidence labels; rankings are explainable via why_shown.",
             "items": items[:25],
         }
@@ -129,6 +135,7 @@ def make_server(store: ResearchStore):
         """Resolved forward-observation record with sample sizes and caveats."""
         return {
             "hypothesis": HYPOTHESIS,
+            "disclaimer": DISCLAIMER,
             "selected": summarize_rows(store.observations()),
             "rejected_cohort": summarize_rows(store.rejected()),
             "caveat": "Forward observations are a research record, not a validated edge. "
@@ -179,6 +186,18 @@ def self_test(store: ResearchStore):
         ranked = rank_by_profile(s, {"tickers": [{"symbol": "MU", "weight": 0.9}], "holdings": [{"symbol": "SKHY", "weight": 1.0}]})
         print("brief items:", len(ranked), "| top:", ranked[0]["headline"][:80] if ranked else None)
         print("cohort total:", len(store.observations()), "rejected:", len(store.rejected()))
+        # compliance lint: clean text passes, calls to action raise
+        from compliance import assert_clean, ComplianceError, lint
+        assert lint("MU moved -4.8% vs -3.6% implied by QQQ (z -0.9), within its own range.") == []
+        assert lint("Not a recommendation to buy, sell or hold any security.") == []
+        for bad in ("You should buy MU here.", "Our validated edge.", "Price target $300."):
+            try:
+                assert_clean(bad, "test")
+            except ComplianceError:
+                pass
+            else:
+                raise AssertionError(f"lint missed: {bad}")
+        print("COMPLIANCE LINT OK")
         print("SELF-TEST OK")
     import asyncio
     asyncio.run(run())

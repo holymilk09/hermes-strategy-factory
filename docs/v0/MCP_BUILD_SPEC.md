@@ -63,8 +63,16 @@ Returns rule-based selections with features and the completeness guarantee. Ship
 
 - Every tool response includes: evidence label per claim, sample sizes, horizon conventions, and known limitations.
 - Interest ranking must be explainable: each ranked item carries `why_shown` (e.g. "matches tickers MU, SKHY in profile").
-- No tool may emit a buy/sell recommendation. Research outputs only.
+- No tool may emit a buy/sell recommendation. Research outputs only. `brief` headlines pass a
+  runtime compliance lint (`docs/v0/tools/mcp_server/compliance.py`) that rejects calls to
+  action and performance claims; every response carries the research-only disclaimer.
+  Basis: the compliance analysis in `docs/claude-v0/COMPLIANCE.md` on the sibling branch
+  (Advisers Act / Lowe impersonal-publication line) — adopted here as code, not copy.
 - Rate-limited, logged; anomalous usage patterns are visible to the operator.
+- Data licensing: the P1 prototype reads Yahoo Finance (research use). Yahoo's terms, like
+  Robinhood's, restrict commercial redistribution — a licensed, redistributable daily-data
+  vendor must replace Yahoo in the product path before any paid distribution, and Phase 1
+  data-integrity checks must be re-run on the vendor's feed. This is a Matt decision (§10).
 
 ## 7. Security boundaries
 
