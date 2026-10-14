@@ -41,6 +41,12 @@ Usage:
   scanner.py scan    --fetch --as-of 2026-07-01 --ledger obs.csv --log-rejected rej.csv
   scanner.py resolve --cache-dir /path/ohlcv --ledger obs.csv
   scanner.py summary --ledger obs.csv
+  scanner.py scan    --fetch --track holdings --ledger h_obs.csv --log-rejected h_rej.csv
+
+--track holdings runs the parallel holdings hypothesis
+(momentum_continuation_ret5d_ma50_holdings_v1, preregistered 2026-10-14):
+identical rule, 7-symbol holdings universe, its own ledgers. Track rows are
+never merged into the v1 record.
 """
 from __future__ import annotations
 
@@ -54,6 +60,16 @@ from datetime import date, datetime, timedelta, timezone
 
 HYPOTHESIS = "momentum_continuation_ret5d_ma50_v1"
 BENCHMARKS = {"SPY", "QQQ"}
+
+# Parallel holdings track (P1, 2026-10-14): same rule, separate hypothesis ID,
+# separate ledgers, NEVER merged into the v1 counts. See
+# HYPOTHESIS_momentum_ret5d_ma50_holdings_v1.md for the frozen universe rationale.
+HOLDINGS_HYPOTHESIS = "momentum_continuation_ret5d_ma50_holdings_v1"
+HOLDINGS_UNIVERSE = ['GME', 'HOOD', 'NNE', 'BE', 'NVTS', 'VRT', 'VST']
+
+# The hypothesis the current invocation operates on; --track holdings switches it.
+# Defaults to the v1 hypothesis so every pre-P1 invocation is unchanged.
+ACTIVE_HYPOTHESIS = HYPOTHESIS
 
 DEFAULT_UNIVERSE = [
     'AAPL', 'ABBV', 'ADBE', 'ALB', 'AMD', 'AMGN', 'AMZN', 'ARM', 'ARQQ', 'ASML',
@@ -91,7 +107,7 @@ def _finite(value) -> float | None:
 
 def obs_id(symbol: str, signal_date: str) -> str:
     """Stable observation id. Format frozen — existing ledgers depend on it."""
-    return hashlib.sha256(f"{HYPOTHESIS}|{symbol}|{signal_date}".encode()).hexdigest()[:24]
+    return hashlib.sha256(f"{ACTIVE_HYPOTHESIS}|{symbol}|{signal_date}".encode()).hexdigest()[:24]
 
 
 def load_series(path: pathlib.Path) -> list[tuple[str, float]]:
@@ -301,7 +317,7 @@ def make_row(symbol: str, signal_date: str, features: dict, selected: bool) -> d
     oid = obs_id(symbol, signal_date if selected else signal_date + "|rejected")
     return {
         "observation_id": oid,
-        "hypothesis": HYPOTHESIS if selected else HYPOTHESIS + "_rejected_cohort",
+        "hypothesis": ACTIVE_HYPOTHESIS if selected else ACTIVE_HYPOTHESIS + "_rejected_cohort",
         "signal_date": signal_date,
         "symbol": symbol,
         "signal_close": f"{features['close']:.10g}",
@@ -318,7 +334,22 @@ def make_row(symbol: str, signal_date: str, features: dict, selected: bool) -> d
 
 # ---------------------------------------------------------------- commands
 
+def _apply_track(args) -> list[str]:
+    """Set ACTIVE_HYPOTHESIS from --track and return the universe to scan.
+
+    Default (v1) reproduces every pre-P1 invocation exactly: same hypothesis
+    ID (so the same observation_ids) and the frozen 78-symbol universe.
+    """
+    global ACTIVE_HYPOTHESIS
+    if getattr(args, "track", "v1") == "holdings":
+        ACTIVE_HYPOTHESIS = HOLDINGS_HYPOTHESIS
+        return HOLDINGS_UNIVERSE
+    ACTIVE_HYPOTHESIS = HYPOTHESIS
+    return DEFAULT_UNIVERSE
+
+
 def cmd_scan(args) -> None:
+    universe = _apply_track(args)
     rows = load_ledger(args.ledger)
     existing = {r["observation_id"] for r in rows}
     rej_existing: set[str] = set()
@@ -335,7 +366,7 @@ def cmd_scan(args) -> None:
     skipped: list[tuple[str, str]] = []
     scanned = 0
 
-    for sym in DEFAULT_UNIVERSE:
+    for sym in universe:
         try:
             series = get_series(sym, args.cache_dir, args.fetch, end=end)
         except Exception as e:
@@ -393,6 +424,7 @@ def cmd_resolve(args) -> None:
     complete benchmark window. Otherwise it stays PENDING and the block is logged.
     Resolved rows are never recomputed (preservation).
     """
+    _apply_track(args)
     rows = load_ledger(args.ledger)
     try:
         spy = get_series("SPY", args.cache_dir, args.fetch)
@@ -443,9 +475,10 @@ def cmd_resolve(args) -> None:
 
 
 def cmd_summary(args) -> None:
+    _apply_track(args)
     rows = load_ledger(args.ledger)
     res = [r for r in rows if r["outcome_status"] == "RESOLVED"]
-    print(f"{HYPOTHESIS}: total={len(rows)} resolved={len(res)} pending={len(rows) - len(res)}")
+    print(f"{ACTIVE_HYPOTHESIS}: total={len(rows)} resolved={len(res)} pending={len(rows) - len(res)}")
     if not res:
         return
     vals = [float(r["outcome_return_pp"]) for r in res]
@@ -474,6 +507,9 @@ def main() -> None:
         p.add_argument("--as-of", default=None, help="YYYY-MM-DD (scan only)")
         p.add_argument("--log-rejected", type=pathlib.Path, default=None,
                        help="also log non-selected names to this ledger (scan only)")
+        p.add_argument("--track", choices=("v1", "holdings"), default="v1",
+                       help="forward track: v1 (78-symbol universe) or holdings "
+                            "(parallel holdings hypothesis, own ledgers)")
     args = ap.parse_args()
     {"scan": cmd_scan, "resolve": cmd_resolve, "summary": cmd_summary}[args.cmd](args)
 

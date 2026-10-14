@@ -186,6 +186,39 @@ def test_resolved_rows_preserved_byte_identical(tmp_path):
     assert rows[1]["outcome_status"] == "RESOLVED"
 
 
+# ---------------------------------------------------------------- tracks
+
+def test_holdings_track_scan_uses_own_ids_and_universe(tmp_path):
+    dates = gen_dates("2026-07-01", 75)
+    # GME in a steady uptrend: ret_5d > 0 and close > ma50 at the last bar.
+    write_cache(tmp_path, "GME", dates, [100.0 + i for i in range(75)])
+    ledger = tmp_path / "h_obs.csv"
+    rejected = tmp_path / "h_rej.csv"
+    args = argparse.Namespace(ledger=ledger, cache_dir=tmp_path, fetch=False,
+                              as_of=None, log_rejected=rejected, track="holdings")
+    scanner.cmd_scan(args)
+    (row,) = read_rows(ledger)
+    assert row["symbol"] == "GME"
+    assert row["hypothesis"] == scanner.HOLDINGS_HYPOTHESIS
+    # holdings obs_id differs from the v1 id for the same symbol/date
+    import hashlib
+    v1_id = hashlib.sha256(
+        f"{scanner.HYPOTHESIS}|GME|{dates[-1]}".encode()).hexdigest()[:24]
+    assert row["observation_id"] != v1_id
+    assert row["observation_id"] == hashlib.sha256(
+        f"{scanner.HOLDINGS_HYPOTHESIS}|GME|{dates[-1]}".encode()).hexdigest()[:24]
+    # scanner state must reset cleanly for a following v1 call
+    scanner._apply_track(argparse.Namespace(track="v1"))
+    assert scanner.ACTIVE_HYPOTHESIS == scanner.HYPOTHESIS
+
+
+def test_v1_obs_id_unchanged_by_track_support():
+    import hashlib
+    scanner._apply_track(argparse.Namespace(track="v1"))
+    assert scanner.obs_id("MU", "2026-10-02") == hashlib.sha256(
+        b"momentum_continuation_ret5d_ma50_v1|MU|2026-10-02").hexdigest()[:24]
+
+
 # ---------------------------------------------------------------- verifier
 
 def _run_verifier(before: pathlib.Path, after: pathlib.Path, *extra: str) -> int:
