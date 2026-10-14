@@ -23,6 +23,13 @@ Data conventions:
     or Yahoo Finance fetch with --fetch (auto_adjust=False).
   - Resolution: 10 completed trading bars after signal, signal excluded, raw return in pp.
     Cost-adj = raw - 0.15pp, delay-adj = raw - 0.05pp are reporting-only (not stored).
+  - Resolution is GUARDED (2026-10-14, P0 hardening, Matt-approved): the SPY series is
+    the session calendar. A row resolves only if the symbol's bars on the 10 expected
+    sessions after the signal exactly match SPY's sessions for that window (a missing
+    session blocks resolution — the window never slides over available bars), and only
+    if the SPY benchmark window itself is complete (a row is never stamped RESOLVED
+    with blank spy/excess fields, because preservation would make that permanent).
+    Ledger writes are atomic (temp file + replace in the same directory).
 
 Ledger format (frozen — do not reorder FIELDS or change obs_id; existing ledgers
 in the wild depend on both):
@@ -186,6 +193,76 @@ def nth_bar(series: list[tuple[str, float]], signal_date: str,
     return series[i + n]
 
 
+# NYSE full-closure holidays, used to cross-check the SPY-derived session calendar
+# (a vendor-wide dropped session would shift SPY and every symbol together; the
+# symbol-vs-SPY check alone cannot see that). Fail-closed: a disagreement blocks
+# resolution and is logged for operator review. Extend this set before 2028.
+NYSE_HOLIDAYS = {
+    # 2026
+    "2026-01-01", "2026-01-19", "2026-02-16", "2026-04-03", "2026-05-25",
+    "2026-06-19", "2026-07-03", "2026-09-07", "2026-11-26", "2026-12-25",
+    # 2027
+    "2027-01-01", "2027-01-18", "2027-02-15", "2027-03-26", "2027-05-31",
+    "2027-06-18", "2027-07-05", "2027-09-06", "2027-11-25", "2027-12-24",
+}
+
+
+def expected_sessions(signal_date: str, n: int = RESOLVE_BARS) -> list[str] | None:
+    """The n expected trading sessions after signal_date per the NYSE calendar.
+
+    Returns None when the window runs past the holiday table's coverage, in
+    which case callers fall back to the SPY-calendar check alone.
+    """
+    d = date.fromisoformat(signal_date)
+    out: list[str] = []
+    while len(out) < n:
+        d += timedelta(days=1)
+        if d.isoformat()[:4] not in ("2026", "2027"):
+            return None
+        if d.weekday() < 5 and d.isoformat() not in NYSE_HOLIDAYS:
+            out.append(d.isoformat())
+    return out
+
+
+def forward_window_check(symbol_series: list[tuple[str, float]],
+                         spy_series: list[tuple[str, float]],
+                         signal_date: str,
+                         n: int = RESOLVE_BARS) -> tuple[tuple[str, float] | None, str, str | None]:
+    """Guarded resolution window check (P0, 2026-10-14). SPY is the session calendar.
+
+    Returns (outcome, category, detail):
+      - ((outcome_date, outcome_close), "OK", None) — safe to resolve.
+      - (None, "NOT_MATURE", None) — fewer than n SPY sessions after the signal yet.
+      - (None, "BENCHMARK", detail) — SPY lacks the signal bar or its window is
+        unusable; the row must NOT resolve (its excess-vs-SPY would be blank forever).
+      - (None, "WINDOW", detail) — the symbol is missing an expected session inside
+        the window (or its signal bar); block, never slide to the nth available bar.
+    """
+    spy_dates = [d for d, _ in spy_series]
+    if signal_date not in spy_dates:
+        return None, "BENCHMARK", f"SPY has no bar on signal date {signal_date}"
+    si = spy_dates.index(signal_date)
+    if si + n >= len(spy_series):
+        return None, "NOT_MATURE", None
+    spy_sessions = spy_dates[si + 1: si + n + 1]
+    expected_outcome_date = spy_sessions[-1]
+
+    cal_sessions = expected_sessions(signal_date, n)
+    if cal_sessions is not None and cal_sessions != spy_sessions:
+        return None, "BENCHMARK", (f"SPY window sessions {spy_sessions} disagree with "
+                                   f"the NYSE calendar {cal_sessions}; possible dropped "
+                                   f"session in the benchmark series — do not resolve")
+
+    sym_by_date = dict(symbol_series)
+    if signal_date not in sym_by_date:
+        return None, "WINDOW", f"symbol has no bar on signal date {signal_date}"
+    missing = [d for d in spy_sessions if d not in sym_by_date]
+    if missing:
+        return None, "WINDOW", (f"missing expected session(s) {missing} in forward "
+                                f"window -> {expected_outcome_date}; window must not slide")
+    return (expected_outcome_date, sym_by_date[expected_outcome_date]), "OK", None
+
+
 # ---------------------------------------------------------------- ledgers
 
 def load_ledger(path: pathlib.Path) -> list[dict]:
@@ -196,11 +273,27 @@ def load_ledger(path: pathlib.Path) -> list[dict]:
 
 
 def write_ledger(path: pathlib.Path, rows: list[dict]) -> None:
+    """Write the ledger atomically: temp file in the same dir, then os.replace.
+
+    A crash mid-write must never leave a truncated ledger behind — the ledger is
+    the forward record and cannot be recreated.
+    """
+    import os
+    import tempfile
     path.parent.mkdir(parents=True, exist_ok=True)
-    with open(path, "w", newline='') as f:
-        w = csv.DictWriter(f, fieldnames=FIELDS)
-        w.writeheader()
-        w.writerows(rows)
+    fd, tmp = tempfile.mkstemp(dir=path.parent, prefix=path.name + ".", suffix=".tmp")
+    try:
+        with os.fdopen(fd, "w", newline='') as f:
+            w = csv.DictWriter(f, fieldnames=FIELDS)
+            w.writeheader()
+            w.writerows(rows)
+        os.replace(tmp, path)
+    except BaseException:
+        try:
+            os.unlink(tmp)
+        except OSError:
+            pass
+        raise
 
 
 def make_row(symbol: str, signal_date: str, features: dict, selected: bool) -> dict:
@@ -294,40 +387,59 @@ def cmd_scan(args) -> None:
 
 
 def cmd_resolve(args) -> None:
+    """Guarded resolution (P0, 2026-10-14). See forward_window_check.
+
+    A row resolves only with a complete SPY-calendar window for the symbol AND a
+    complete benchmark window. Otherwise it stays PENDING and the block is logged.
+    Resolved rows are never recomputed (preservation).
+    """
     rows = load_ledger(args.ledger)
     try:
         spy = get_series("SPY", args.cache_dir, args.fetch)
-    except Exception:
+    except Exception as e:
         spy = []
+        print(f"resolve BLOCKED: SPY benchmark series unavailable ({e}); "
+              f"0 rows resolved, ledger untouched")
+    if not spy:
+        print("resolve BLOCKED: SPY benchmark series empty; "
+              "0 rows resolved, ledger untouched")
+        print(f"resolved 0 rows; total {len(rows)}")
+        return
     spy_by_date = dict(spy)
     changed = 0
+    counts = {"NOT_MATURE": 0, "BENCHMARK": 0, "WINDOW": 0, "FETCH": 0}
     for r in rows:
         if r["outcome_status"] == "RESOLVED":
             continue  # preservation: never recompute a resolved row
         try:
             series = get_series(r["symbol"], args.cache_dir, args.fetch)
         except Exception:
+            counts["FETCH"] += 1
             continue
-        tenth = nth_bar(series, r["signal_date"])
-        if tenth is None:
+        outcome, category, detail = forward_window_check(series, spy, r["signal_date"])
+        if outcome is None:
+            counts[category] += 1
+            if detail:
+                print(f"  BLOCK {r['symbol']} signal {r['signal_date']}: {detail}")
             continue
-        out_date, out_close = tenth
+        out_date, out_close = outcome
         # series-consistent: signal close comes from the same series, never the ledger level
-        sig_series = dict(series)[r["signal_date"]]
-        ret = (out_close / sig_series - 1.0) * 100
+        sig_close = dict(series)[r["signal_date"]]
+        ret = (out_close / sig_close - 1.0) * 100
+        # benchmark window is guaranteed complete by the check above
+        spy_out_close = spy_by_date[out_date]
+        sret = (spy_out_close / spy_by_date[r["signal_date"]] - 1.0) * 100
         r["outcome_date"] = out_date
         r["outcome_close"] = f"{out_close:.10g}"
         r["outcome_return_pp"] = f"{ret:.4f}"
         r["outcome_status"] = "RESOLVED"
-        if spy:
-            st = nth_bar(spy, r["signal_date"])
-            if st:
-                sret = (st[1] / spy_by_date[r["signal_date"]] - 1.0) * 100
-                r["spy_return_pp"] = f"{sret:.4f}"
-                r["excess_vs_spy_pp"] = f"{ret - sret:.4f}"
+        r["spy_return_pp"] = f"{sret:.4f}"
+        r["excess_vs_spy_pp"] = f"{ret - sret:.4f}"
         changed += 1
     write_ledger(args.ledger, rows)
-    print(f"resolved {changed} rows; total {len(rows)}")
+    print(f"resolved {changed} rows; total {len(rows)}; "
+          f"not_mature={counts['NOT_MATURE']} blocked_window={counts['WINDOW']} "
+          f"blocked_benchmark={counts['BENCHMARK']} fetch_failed={counts['FETCH']}")
 
 
 def cmd_summary(args) -> None:
