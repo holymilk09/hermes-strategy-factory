@@ -40,6 +40,6 @@ Self-test:
 
 - `brief(interest_profile)` — interest-ranked research brief; ranking is explainable (`why_shown`)
 - `cohort_summary()` — resolved record with sample sizes and caveats
-- `relationship_map()` — PLANNED, returns pending status until the relationship engine is built
+- `relationship_map()` — BUILT (2026-10-17): serves the relationship engine's point-in-time clusters / betas / lead-lag when the server is started with `--relationship-json <map.json>` (built by `docs/v0/tools/relationship_engine.py` from Massive bars); returns the pending status when no map is supplied
 - `hypothesis_status()` — forward-test state, bars, progress
 - `scan_setups()` — GATED until the hypothesis passes its preregistered bars
