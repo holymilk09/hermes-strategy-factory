@@ -8,7 +8,8 @@ no ledger writes. Signal tools are gated behind the forward-test verdict.
 Tools:
   brief             interest-ranked research brief
   cohort_summary    resolved forward-observation record
-  relationship_map  sector clusters / betas / lead-lag (status: pending data build)
+  relationship_map  sector clusters / betas / lead-lag (built 2026-10-17: reads
+                    relationship_engine.py output via --relationship-json)
   hypothesis_status forward-test state, bars, next resolution date
   scan_setups       GATED — returns gating reason until the hypothesis passes
 
@@ -82,15 +83,27 @@ def rank_by_profile(items, profile):
     return ranked
 
 class ResearchStore:
-    def __init__(self, forward_dir: pathlib.Path, research_root: pathlib.Path):
+    def __init__(self, forward_dir: pathlib.Path, research_root: pathlib.Path,
+                 relationship_json: pathlib.Path | None = None):
         self.forward_dir = forward_dir
         self.research_root = research_root
+        self.relationship_json = relationship_json
 
     def observations(self):
         return load_csv(self.forward_dir / "observations.csv")
 
     def rejected(self):
         return load_csv(self.forward_dir / "rejected.csv")
+
+    def relationship_map_data(self):
+        """Latest relationship-engine output (relationship_engine.py JSON), or
+        None when no map has been built yet. Read-only; never computed here."""
+        if not self.relationship_json or not self.relationship_json.exists():
+            return None
+        try:
+            return json.loads(self.relationship_json.read_text())
+        except (OSError, json.JSONDecodeError):
+            return None
 
     def brief_items(self):
         items = []
@@ -144,11 +157,26 @@ def make_server(store: ResearchStore):
 
     @mcp.tool()
     def relationship_map() -> dict:
-        """Sector clusters, betas, lead-lag linkages. Status: pending data build."""
+        """Sector clusters, betas, lead-lag linkages from the relationship
+        engine (Massive daily bars, point-in-time as of the map's as_of date)."""
+        data = store.relationship_map_data()
+        if not data:
+            return {
+                "status": "PLANNED — relationship engine data not yet built",
+                "note": "Point-in-time correlations only when built; a decoupling is itself the signal.",
+                "clusters": [], "betas": [], "lead_lag": [],
+            }
         return {
-            "status": "PLANNED — relationship engine data not yet built",
-            "note": "Point-in-time correlations only when built; a decoupling is itself the signal.",
-            "clusters": [], "betas": [], "lead_lag": [],
+            "status": f"BUILT — point-in-time as of {data.get('as_of')}",
+            "disclaimer": DISCLAIMER,
+            "as_of": data.get("as_of"),
+            "source": data.get("source"),
+            "method": data.get("method"),
+            "clusters": data.get("clusters", []),
+            "betas": data.get("betas", {}),
+            "top_correlated_pairs": data.get("top_correlated_pairs", []),
+            "lead_lag": data.get("lead_lag_links", []),
+            "caveat": data.get("caveat"),
         }
 
     @mcp.tool()
@@ -198,6 +226,15 @@ def self_test(store: ResearchStore):
             else:
                 raise AssertionError(f"lint missed: {bad}")
         print("COMPLIANCE LINT OK")
+        # relationship map: absent file -> None (PLANNED path); present -> parsed
+        assert store.relationship_map_data() is None or isinstance(
+            store.relationship_map_data(), dict)
+        if store.relationship_json:
+            data = store.relationship_map_data()
+            assert data and "clusters" in data and "betas" in data, \
+                "relationship JSON provided but did not load with expected keys"
+            print(f"relationship map: as_of={data.get('as_of')} "
+                  f"clusters={len(data.get('clusters', []))}")
         print("SELF-TEST OK")
     import asyncio
     asyncio.run(run())
@@ -206,9 +243,12 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--forward-dir", type=pathlib.Path, required=True)
     ap.add_argument("--research-root", type=pathlib.Path, required=True)
+    ap.add_argument("--relationship-json", type=pathlib.Path, default=None,
+                    help="relationship_engine.py output JSON for relationship_map")
     ap.add_argument("--self-test", action="store_true")
     args = ap.parse_args()
-    store = ResearchStore(args.forward_dir, args.research_root)
+    store = ResearchStore(args.forward_dir, args.research_root,
+                          relationship_json=args.relationship_json)
     if args.self_test:
         self_test(store)
         return
