@@ -95,10 +95,24 @@ def cmd_pull(args) -> int:
         return 2
     ok, empty, failed = [], [], []
     for sym in symbols:
-        try:
-            bars = fetch_aggs(sym, args.from_date, args.to_date)
-        except Exception as e:
-            msg = str(e)
+        bars, err = None, None
+        # Bounded retry for transient (non-429) failures only — the Oct 17
+        # bulk pull lost 4 symbols to one-off connection errors that all
+        # healed on a manual retry. A 429 is never retried: it stops the
+        # run immediately with partial progress, per provider limits.
+        for attempt in range(3):
+            try:
+                bars = fetch_aggs(sym, args.from_date, args.to_date)
+                err = None
+                break
+            except Exception as e:
+                err = e
+                if "429" in str(e):
+                    break
+                if attempt < 2:
+                    time.sleep(1.0 * (attempt + 1))
+        if err is not None:
+            msg = str(err)
             if "429" in msg:
                 print(f"RATE LIMITED at {sym}; stopping with partial progress "
                       f"({len(ok)} ok, {len(empty)} empty, {len(failed)} failed)")

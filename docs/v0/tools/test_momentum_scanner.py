@@ -246,3 +246,16 @@ def test_verifier_pass_and_fail(tmp_path):
     rows[0]["spy_return_pp"] = ""  # incomplete resolution must fail
     make_ledger(after, rows)
     assert _run_verifier(before, after) == 1
+
+
+def test_expected_sessions_2028_calendar():
+    # F7 fix (2026-11-02): holiday table extended through 2030.
+    # Signal Fri 2027-12-30 -> sessions skip Dec 31 (observed New Year),
+    # the weekend, and MLK Day 2028-01-17 is outside this window.
+    out = scanner.expected_sessions("2027-12-30", 3)
+    assert out == ["2028-01-03", "2028-01-04", "2028-01-05"]
+    # Thanksgiving 2029 (Thu Nov 22) is skipped.
+    out = scanner.expected_sessions("2029-11-21", 2)
+    assert out == ["2029-11-23", "2029-11-26"]
+    # Past table coverage (2031) still fails closed to None.
+    assert scanner.expected_sessions("2030-12-30", 3) is None

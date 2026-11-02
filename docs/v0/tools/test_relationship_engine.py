@@ -101,3 +101,45 @@ def test_point_in_time_cutoff(tmp_path):
     early = eng.build(tmp_path, as_of=dates[60], windows=(60,))
     # with data through dates[60] only, AAA tracks SPY almost perfectly
     assert early["betas"]["AAA"]["spy_60d"]["r2"] > 0.99
+
+
+# --- massive_data pull retry (F6 fix, 2026-11-02) ---
+
+class _Args:
+    symbols = ["AAA", "BBB"]
+    universe_file = None
+    from_date = "2026-01-01"
+    to_date = "2026-01-31"
+    out = "."
+
+
+def _no_sleep(_s):
+    pass
+
+
+def test_pull_retries_transient_failure(monkeypatch):
+    calls = {"AAA": 0}
+    def flaky(sym, _f, _t):
+        if sym == "AAA":
+            calls["AAA"] += 1
+            if calls["AAA"] < 3:
+                raise RuntimeError("connection reset")
+            return [{"x": 1}]
+        return [{"x": 1}]
+    monkeypatch.setattr(md, "fetch_aggs", flaky)
+    monkeypatch.setattr(md, "write_cache", lambda *_a: 1)
+    monkeypatch.setattr(md.time, "sleep", _no_sleep)
+    assert md.cmd_pull(_Args()) == 0
+    assert calls["AAA"] == 3
+
+
+def test_pull_never_retries_429_and_stops(monkeypatch):
+    seen = []
+    def limited(sym, _f, _t):
+        seen.append(sym)
+        raise RuntimeError("HTTP 429 too many requests")
+    monkeypatch.setattr(md, "fetch_aggs", limited)
+    monkeypatch.setattr(md, "write_cache", lambda *_a: 1)
+    monkeypatch.setattr(md.time, "sleep", _no_sleep)
+    assert md.cmd_pull(_Args()) == 1
+    assert seen == ["AAA"]  # one attempt only, run stops before BBB
