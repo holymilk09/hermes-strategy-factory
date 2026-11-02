@@ -67,6 +67,15 @@ BENCHMARKS = {"SPY", "QQQ"}
 HOLDINGS_HYPOTHESIS = "momentum_continuation_ret5d_ma50_holdings_v1"
 HOLDINGS_UNIVERSE = ['GME', 'HOOD', 'NNE', 'BE', 'NVTS', 'VRT', 'VST']
 
+# Regime-gated successor (2026-11-02, Matt's option-B decision after v1's
+# FAILED verdict): same base rule and 78-symbol universe as v1, but a symbol
+# is selected only when the regime gate is ON — SPY close > SPY ma50 on the
+# signal date. See HYPOTHESIS_momentum_ret5d_ma50_regime_v1.md (which also
+# discloses that this gate anti-separated v1's cohorts in-sample; it was
+# chosen a priori, and the forward test is the arbiter).
+REGIME_HYPOTHESIS = "momentum_continuation_ret5d_ma50_regime_v1"
+REGIME_GATE = False  # True only while --track regime is active
+
 # The hypothesis the current invocation operates on; --track holdings switches it.
 # Defaults to the v1 hypothesis so every pre-P1 invocation is unchanged.
 ACTIVE_HYPOTHESIS = HYPOTHESIS
@@ -352,12 +361,32 @@ def _apply_track(args) -> list[str]:
     Default (v1) reproduces every pre-P1 invocation exactly: same hypothesis
     ID (so the same observation_ids) and the frozen 78-symbol universe.
     """
-    global ACTIVE_HYPOTHESIS
-    if getattr(args, "track", "v1") == "holdings":
+    global ACTIVE_HYPOTHESIS, REGIME_GATE
+    track = getattr(args, "track", "v1")
+    if track == "holdings":
         ACTIVE_HYPOTHESIS = HOLDINGS_HYPOTHESIS
+        REGIME_GATE = False
         return HOLDINGS_UNIVERSE
+    if track == "regime":
+        ACTIVE_HYPOTHESIS = REGIME_HYPOTHESIS
+        REGIME_GATE = True
+        return DEFAULT_UNIVERSE
     ACTIVE_HYPOTHESIS = HYPOTHESIS
+    REGIME_GATE = False
     return DEFAULT_UNIVERSE
+
+
+def regime_gate_on(spy_series: list[tuple[str, float]],
+                   signal_date: str) -> bool | None:
+    """SPY close > SPY ma50 at signal_date; None when undeterminable.
+
+    Fail-closed contract: callers must treat None as 'abort the scan',
+    never as gate ON or OFF.
+    """
+    ft, _err = compute_features(spy_series, signal_date)
+    if ft is None:
+        return None
+    return bool(ft["above"])
 
 
 def cmd_scan(args) -> None:
@@ -371,6 +400,26 @@ def cmd_scan(args) -> None:
     end = None
     if args.as_of and args.fetch:
         end = (date.fromisoformat(args.as_of) + timedelta(days=1)).isoformat()
+
+    gate_on: bool | None = None
+    if REGIME_GATE:
+        try:
+            spy_series = get_series("SPY", args.cache_dir, args.fetch, end=end)
+        except Exception:
+            spy_series = []
+        if args.as_of:
+            spy_series = [(d, c) for d, c in spy_series if d <= args.as_of]
+        if not spy_series:
+            print("REGIME GATE UNDETERMINED: no SPY series — scan aborted, "
+                  "ledgers untouched")
+            return
+        gate_on = regime_gate_on(spy_series, spy_series[-1][0])
+        if gate_on is None:
+            print("REGIME GATE UNDETERMINED: SPY features unavailable — "
+                  "scan aborted, ledgers untouched")
+            return
+        print(f"regime gate: {'ON' if gate_on else 'OFF'} "
+              f"(SPY as of {spy_series[-1][0]})")
 
     new_selected: list[dict] = []
     new_rejected: list[dict] = []
@@ -399,7 +448,7 @@ def cmd_scan(args) -> None:
         if ft is None:
             skipped.append((sym, err))
             continue
-        is_sel = ft["ret_5d"] > 0 and ft["above"]
+        is_sel = ft["ret_5d"] > 0 and ft["above"] and gate_on is not False
         row = make_row(sym, signal_date, ft, selected=is_sel)
         seen = existing if is_sel else rej_existing
         if row["observation_id"] in seen:
@@ -519,9 +568,10 @@ def main() -> None:
         p.add_argument("--as-of", default=None, help="YYYY-MM-DD (scan only)")
         p.add_argument("--log-rejected", type=pathlib.Path, default=None,
                        help="also log non-selected names to this ledger (scan only)")
-        p.add_argument("--track", choices=("v1", "holdings"), default="v1",
-                       help="forward track: v1 (78-symbol universe) or holdings "
-                            "(parallel holdings hypothesis, own ledgers)")
+        p.add_argument("--track", choices=("v1", "holdings", "regime"), default="v1",
+                       help="forward track: v1 (78-symbol universe), holdings "
+                            "(parallel holdings hypothesis, own ledgers), or regime "
+                            "(SPY>ma50-gated successor of v1, own ledgers)")
     args = ap.parse_args()
     {"scan": cmd_scan, "resolve": cmd_resolve, "summary": cmd_summary}[args.cmd](args)
 

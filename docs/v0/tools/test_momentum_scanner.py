@@ -259,3 +259,53 @@ def test_expected_sessions_2028_calendar():
     assert out == ["2029-11-23", "2029-11-26"]
     # Past table coverage (2031) still fails closed to None.
     assert scanner.expected_sessions("2030-12-30", 3) is None
+
+
+# ---------------------------------------------------------------- regime track
+
+def test_regime_gate_on_pure():
+    dates = gen_dates("2026-07-01", 75)
+    rising = list(zip(dates, [100.0 + i for i in range(75)]))
+    falling = list(zip(dates, [200.0 - i for i in range(75)]))
+    assert scanner.regime_gate_on(rising, dates[-1]) is True
+    assert scanner.regime_gate_on(falling, dates[-1]) is False
+    assert scanner.regime_gate_on(rising[:40], dates[39]) is None  # ma50 unavailable
+
+
+def _regime_scan(tmp_path, spy_closes):
+    dates = gen_dates("2026-07-01", 75)
+    write_cache(tmp_path, "SPY", dates, spy_closes)
+    # AAPL in a steady uptrend: passes the base rule on its own.
+    write_cache(tmp_path, "AAPL", dates, [100.0 + i for i in range(75)])
+    ledger = tmp_path / "r_obs.csv"
+    rejected = tmp_path / "r_rej.csv"
+    args = argparse.Namespace(ledger=ledger, cache_dir=tmp_path, fetch=False,
+                              as_of=None, log_rejected=rejected, track="regime")
+    scanner.cmd_scan(args)
+    scanner._apply_track(argparse.Namespace(track="v1"))  # reset global state
+    return ledger, rejected
+
+
+def test_regime_track_gate_on_selects(tmp_path):
+    ledger, _rej = _regime_scan(tmp_path, [100.0 + i for i in range(75)])
+    (row,) = read_rows(ledger)
+    assert row["symbol"] == "AAPL"
+    assert row["hypothesis"] == scanner.REGIME_HYPOTHESIS
+
+
+def test_regime_track_gate_off_rejects(tmp_path):
+    ledger, rejected = _regime_scan(tmp_path, [200.0 - i for i in range(75)])
+    assert read_rows(ledger) == []
+    (row,) = [r for r in read_rows(rejected) if r["symbol"] == "AAPL"]
+    assert row["hypothesis"] == scanner.REGIME_HYPOTHESIS + "_rejected_cohort"
+
+
+def test_regime_track_missing_spy_aborts(tmp_path):
+    dates = gen_dates("2026-07-01", 75)
+    write_cache(tmp_path, "AAPL", dates, [100.0 + i for i in range(75)])
+    ledger = tmp_path / "r_obs.csv"
+    args = argparse.Namespace(ledger=ledger, cache_dir=tmp_path, fetch=False,
+                              as_of=None, log_rejected=None, track="regime")
+    scanner.cmd_scan(args)
+    scanner._apply_track(argparse.Namespace(track="v1"))
+    assert not ledger.exists()  # fail closed: nothing written
