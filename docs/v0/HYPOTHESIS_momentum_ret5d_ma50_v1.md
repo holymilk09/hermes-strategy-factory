@@ -1,6 +1,6 @@
 # Hypothesis: momentum_continuation_ret5d_ma50_v1 (PREREGISTERED)
 
-Date: 2026-10-05 | Status: PLANNED / EXPLORATORY — forward observation only
+Date: 2026-10-05 | Status: **FAILED — forward tested, killed 2026-11-02** (see VERDICT_momentum_ret5d_ma50_v1.md)
 Evidence label for everything so far: EXPLORATORY (in-sample reclassification), not validation.
 
 ## Why this exists
@@ -53,3 +53,4 @@ Tooling verified 2026-10-05 (offline, cache mode): scan as-of 2026-07-01 selecte
 ## Decision log
 
 - 2026-10-05 — Registered by Muse on Matt's instruction to proceed with the recommended build. Old lineage downgraded to watch-only in the operator handoff (no further promotion work; its record stays as resolved).
+- 2026-11-02 — **Verdict: FAILED.** Final record 81 resolved selected (mean −4.81%, hit 42%, excess −3.38pp vs SPY; rejected cohort excess +0.21pp). Both kill bars tripped, all success bars failed. Matt's decision (option B): kill v1 and preregister a regime-gated successor as a new hypothesis. Scanning stopped; pending rows resolve for the record. Full verdict: `VERDICT_momentum_ret5d_ma50_v1.md`.
